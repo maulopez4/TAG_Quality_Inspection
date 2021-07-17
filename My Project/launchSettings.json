@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TAG_Quality_Inspection": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
