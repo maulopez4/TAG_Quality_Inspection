@@ -4,10 +4,14 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TAG_Quality_Inspection</RootNamespace>
-    <StartupObject>TAG_Quality_Inspection.AddUserForm</StartupObject>
+    <StartupObject>TAG_Quality_Inspection.LoginForm</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>My Documents.ico</ApplicationIcon>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\Users\malopez\source\repos\TAG_Quality_Inspection\bin\Build\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +28,22 @@
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.25" />
     <PackageReference Include="MySqlConnector" Version="1.3.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="My Project\Resources.Designer.vb">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="My Project\Resources.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

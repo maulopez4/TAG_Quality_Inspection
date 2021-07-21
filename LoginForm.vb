@@ -29,8 +29,8 @@ Public Class LoginForm
             MessageBox.Show("Invalid Username Or Password")
         Else
             MessageBox.Show("Logged In")
-            '    '           Dim newForm As New Insert_Update_Delete_Search()
-            '    '           newForm.Show()
+            Dim newForm As New AddDefect()
+            newForm.Show()
             Me.Hide()
         End If
     End Sub

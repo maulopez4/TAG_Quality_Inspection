@@ -32,13 +32,15 @@ Partial Class AddUserForm
         Me.AddUser_Button = New System.Windows.Forms.Button()
         Me.WorkstationComboBox = New System.Windows.Forms.ComboBox()
         Me.Cancel_Button = New System.Windows.Forms.Button()
+        Me.RoleLabel = New System.Windows.Forms.Label()
+        Me.RoleComboBox = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'User_NameLabel
         '
         Me.User_NameLabel.AutoSize = True
         Me.User_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.User_NameLabel.Location = New System.Drawing.Point(12, 22)
+        Me.User_NameLabel.Location = New System.Drawing.Point(12, 59)
         Me.User_NameLabel.Name = "User_NameLabel"
         Me.User_NameLabel.Size = New System.Drawing.Size(81, 19)
         Me.User_NameLabel.TabIndex = 0
@@ -46,23 +48,23 @@ Partial Class AddUserForm
         '
         'User_NameTextBox
         '
-        Me.User_NameTextBox.Location = New System.Drawing.Point(12, 44)
+        Me.User_NameTextBox.Location = New System.Drawing.Point(12, 81)
         Me.User_NameTextBox.Name = "User_NameTextBox"
         Me.User_NameTextBox.Size = New System.Drawing.Size(250, 23)
-        Me.User_NameTextBox.TabIndex = 1
+        Me.User_NameTextBox.TabIndex = 2
         '
         'Real_NameTextBox
         '
-        Me.Real_NameTextBox.Location = New System.Drawing.Point(12, 93)
+        Me.Real_NameTextBox.Location = New System.Drawing.Point(12, 31)
         Me.Real_NameTextBox.Name = "Real_NameTextBox"
         Me.Real_NameTextBox.Size = New System.Drawing.Size(250, 23)
-        Me.Real_NameTextBox.TabIndex = 3
+        Me.Real_NameTextBox.TabIndex = 1
         '
         'Real_NameLabel
         '
         Me.Real_NameLabel.AutoSize = True
         Me.Real_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Real_NameLabel.Location = New System.Drawing.Point(12, 71)
+        Me.Real_NameLabel.Location = New System.Drawing.Point(12, 9)
         Me.Real_NameLabel.Name = "Real_NameLabel"
         Me.Real_NameLabel.Size = New System.Drawing.Size(80, 19)
         Me.Real_NameLabel.TabIndex = 2
@@ -72,7 +74,7 @@ Partial Class AddUserForm
         '
         Me.WorkstationLabel.AutoSize = True
         Me.WorkstationLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.WorkstationLabel.Location = New System.Drawing.Point(12, 171)
+        Me.WorkstationLabel.Location = New System.Drawing.Point(12, 209)
         Me.WorkstationLabel.Name = "WorkstationLabel"
         Me.WorkstationLabel.Size = New System.Drawing.Size(89, 19)
         Me.WorkstationLabel.TabIndex = 6
@@ -80,16 +82,16 @@ Partial Class AddUserForm
         '
         'PasswordTextBox
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(12, 142)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(12, 131)
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.Size = New System.Drawing.Size(250, 23)
-        Me.PasswordTextBox.TabIndex = 5
+        Me.PasswordTextBox.TabIndex = 3
         '
         'PasswordLabel
         '
         Me.PasswordLabel.AutoSize = True
         Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.PasswordLabel.Location = New System.Drawing.Point(12, 120)
+        Me.PasswordLabel.Location = New System.Drawing.Point(12, 109)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(71, 19)
         Me.PasswordLabel.TabIndex = 4
@@ -97,38 +99,60 @@ Partial Class AddUserForm
         '
         'AddUser_Button
         '
-        Me.AddUser_Button.Location = New System.Drawing.Point(12, 229)
+        Me.AddUser_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.AddUser_Button.Location = New System.Drawing.Point(12, 284)
         Me.AddUser_Button.Name = "AddUser_Button"
         Me.AddUser_Button.Size = New System.Drawing.Size(114, 29)
-        Me.AddUser_Button.TabIndex = 8
+        Me.AddUser_Button.TabIndex = 6
         Me.AddUser_Button.Text = "Add User"
         Me.AddUser_Button.UseVisualStyleBackColor = True
         '
         'WorkstationComboBox
         '
         Me.WorkstationComboBox.FormattingEnabled = True
-        Me.WorkstationComboBox.Location = New System.Drawing.Point(12, 193)
+        Me.WorkstationComboBox.Location = New System.Drawing.Point(12, 231)
         Me.WorkstationComboBox.Name = "WorkstationComboBox"
         Me.WorkstationComboBox.Size = New System.Drawing.Size(250, 23)
-        Me.WorkstationComboBox.TabIndex = 10
+        Me.WorkstationComboBox.TabIndex = 5
         '
         'Cancel_Button
         '
-        Me.Cancel_Button.Location = New System.Drawing.Point(146, 229)
+        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Cancel_Button.Location = New System.Drawing.Point(146, 284)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(114, 29)
-        Me.Cancel_Button.TabIndex = 8
+        Me.Cancel_Button.TabIndex = 7
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
+        '
+        'RoleLabel
+        '
+        Me.RoleLabel.AutoSize = True
+        Me.RoleLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.RoleLabel.Location = New System.Drawing.Point(12, 159)
+        Me.RoleLabel.Name = "RoleLabel"
+        Me.RoleLabel.Size = New System.Drawing.Size(40, 19)
+        Me.RoleLabel.TabIndex = 6
+        Me.RoleLabel.Text = "Role:"
+        '
+        'RoleComboBox
+        '
+        Me.RoleComboBox.FormattingEnabled = True
+        Me.RoleComboBox.Location = New System.Drawing.Point(12, 181)
+        Me.RoleComboBox.Name = "RoleComboBox"
+        Me.RoleComboBox.Size = New System.Drawing.Size(250, 23)
+        Me.RoleComboBox.TabIndex = 4
         '
         'AddUserForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(272, 270)
+        Me.ClientSize = New System.Drawing.Size(272, 323)
+        Me.Controls.Add(Me.RoleComboBox)
         Me.Controls.Add(Me.WorkstationComboBox)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.AddUser_Button)
+        Me.Controls.Add(Me.RoleLabel)
         Me.Controls.Add(Me.WorkstationLabel)
         Me.Controls.Add(Me.PasswordTextBox)
         Me.Controls.Add(Me.PasswordLabel)
@@ -154,4 +178,6 @@ Partial Class AddUserForm
     Friend WithEvents Cancel As Button
     Friend WithEvents WorkstationComboBox As ComboBox
     Friend WithEvents Cancel_Button As Button
+    Friend WithEvents RoleLabel As Label
+    Friend WithEvents RoleComboBox As ComboBox
 End Class
