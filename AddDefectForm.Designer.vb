@@ -94,12 +94,15 @@ Partial Class AddDefect
         Me.AdditionalDefectsCheckBox = New System.Windows.Forms.CheckBox()
         Me.AdditionalDefectsLabel = New System.Windows.Forms.Label()
         Me.ButtonsGroupBox = New System.Windows.Forms.GroupBox()
+        Me.CommentsGroupBox = New System.Windows.Forms.GroupBox()
+        Me.CommentsRichTextBox = New System.Windows.Forms.RichTextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ButtonsGroupBox.SuspendLayout()
+        Me.CommentsGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -214,7 +217,7 @@ Partial Class AddDefect
         Me.TimeTextBox.Location = New System.Drawing.Point(20, 89)
         Me.TimeTextBox.Name = "TimeTextBox"
         Me.TimeTextBox.Size = New System.Drawing.Size(75, 25)
-        Me.TimeTextBox.TabIndex = 1
+        Me.TimeTextBox.TabIndex = 0
         Me.TimeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TimeLabel
@@ -237,13 +240,14 @@ Partial Class AddDefect
         '
         'DatePicker
         '
+        Me.DatePicker.CustomFormat = "mm/dd/yyyy"
         Me.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DatePicker.Location = New System.Drawing.Point(20, 39)
         Me.DatePicker.MaxDate = New Date(2100, 12, 31, 0, 0, 0, 0)
         Me.DatePicker.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DatePicker.Name = "DatePicker"
         Me.DatePicker.Size = New System.Drawing.Size(150, 25)
-        Me.DatePicker.TabIndex = 0
+        Me.DatePicker.TabIndex = 1
         '
         'GroupBox2
         '
@@ -300,7 +304,7 @@ Partial Class AddDefect
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox2.Location = New System.Drawing.Point(10, 150)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1115, 407)
+        Me.GroupBox2.Size = New System.Drawing.Size(1115, 379)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Defect Data:"
@@ -799,41 +803,46 @@ Partial Class AddDefect
         '
         'OK_Button
         '
-        Me.OK_Button.Location = New System.Drawing.Point(27, 41)
+        Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
+        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.OK_Button.Location = New System.Drawing.Point(27, 70)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(100, 38)
-        Me.OK_Button.TabIndex = 12
+        Me.OK_Button.Size = New System.Drawing.Size(125, 71)
+        Me.OK_Button.TabIndex = 13
         Me.OK_Button.Text = "Add Defect"
         Me.OK_Button.UseVisualStyleBackColor = True
         '
         'Cancel_Button
         '
-        Me.Cancel_Button.Location = New System.Drawing.Point(133, 41)
+        Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
+        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Cancel_Button.Location = New System.Drawing.Point(197, 70)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(100, 38)
-        Me.Cancel_Button.TabIndex = 13
+        Me.Cancel_Button.Size = New System.Drawing.Size(125, 71)
+        Me.Cancel_Button.TabIndex = 14
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
         '
         'AdditionalDefectsCheckBox
         '
         Me.AdditionalDefectsCheckBox.AutoSize = True
-        Me.AdditionalDefectsCheckBox.Location = New System.Drawing.Point(162, 15)
+        Me.AdditionalDefectsCheckBox.Location = New System.Drawing.Point(188, 21)
         Me.AdditionalDefectsCheckBox.Name = "AdditionalDefectsCheckBox"
         Me.AdditionalDefectsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.AdditionalDefectsCheckBox.Size = New System.Drawing.Size(47, 21)
-        Me.AdditionalDefectsCheckBox.TabIndex = 11
-        Me.AdditionalDefectsCheckBox.Text = "Yes"
+        Me.AdditionalDefectsCheckBox.Size = New System.Drawing.Size(49, 21)
+        Me.AdditionalDefectsCheckBox.TabIndex = 12
+        Me.AdditionalDefectsCheckBox.Text = "YES"
         Me.AdditionalDefectsCheckBox.UseVisualStyleBackColor = True
         '
         'AdditionalDefectsLabel
         '
         Me.AdditionalDefectsLabel.AutoSize = True
-        Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(40, 16)
+        Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(57, 22)
         Me.AdditionalDefectsLabel.Name = "AdditionalDefectsLabel"
-        Me.AdditionalDefectsLabel.Size = New System.Drawing.Size(118, 17)
+        Me.AdditionalDefectsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.AdditionalDefectsLabel.Size = New System.Drawing.Size(127, 17)
         Me.AdditionalDefectsLabel.TabIndex = 1
-        Me.AdditionalDefectsLabel.Text = "&Additional Defects"
+        Me.AdditionalDefectsLabel.Text = "&Additional Defects?:"
         '
         'ButtonsGroupBox
         '
@@ -842,18 +851,37 @@ Partial Class AddDefect
         Me.ButtonsGroupBox.Controls.Add(Me.AdditionalDefectsLabel)
         Me.ButtonsGroupBox.Controls.Add(Me.OK_Button)
         Me.ButtonsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonsGroupBox.Location = New System.Drawing.Point(512, 563)
+        Me.ButtonsGroupBox.Location = New System.Drawing.Point(391, 534)
         Me.ButtonsGroupBox.Name = "ButtonsGroupBox"
         Me.ButtonsGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.ButtonsGroupBox.Size = New System.Drawing.Size(256, 85)
+        Me.ButtonsGroupBox.Size = New System.Drawing.Size(375, 150)
         Me.ButtonsGroupBox.TabIndex = 4
         Me.ButtonsGroupBox.TabStop = False
+        '
+        'CommentsGroupBox
+        '
+        Me.CommentsGroupBox.Controls.Add(Me.CommentsRichTextBox)
+        Me.CommentsGroupBox.Location = New System.Drawing.Point(10, 534)
+        Me.CommentsGroupBox.Name = "CommentsGroupBox"
+        Me.CommentsGroupBox.Size = New System.Drawing.Size(375, 150)
+        Me.CommentsGroupBox.TabIndex = 6
+        Me.CommentsGroupBox.TabStop = False
+        Me.CommentsGroupBox.Text = "Comments:"
+        '
+        'CommentsRichTextBox
+        '
+        Me.CommentsRichTextBox.Location = New System.Drawing.Point(18, 21)
+        Me.CommentsRichTextBox.Name = "CommentsRichTextBox"
+        Me.CommentsRichTextBox.Size = New System.Drawing.Size(351, 120)
+        Me.CommentsRichTextBox.TabIndex = 11
+        Me.CommentsRichTextBox.Text = ""
         '
         'AddDefect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1139, 681)
+        Me.ClientSize = New System.Drawing.Size(1139, 697)
+        Me.Controls.Add(Me.CommentsGroupBox)
         Me.Controls.Add(Me.ButtonsGroupBox)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -868,6 +896,7 @@ Partial Class AddDefect
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ButtonsGroupBox.ResumeLayout(False)
         Me.ButtonsGroupBox.PerformLayout()
+        Me.CommentsGroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -943,4 +972,6 @@ Partial Class AddDefect
     Friend WithEvents LinkLabel3 As LinkLabel
     Friend WithEvents LinkLabel2 As LinkLabel
     Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents CommentsGroupBox As GroupBox
+    Friend WithEvents CommentsRichTextBox As RichTextBox
 End Class

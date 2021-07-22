@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>C:\Users\malopez\source\repos\TAG_Quality_Inspection\bin\Build\</OutputPath>
+    <OutputPath>bin\Release\netcoreapp3.1\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
