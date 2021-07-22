@@ -96,6 +96,10 @@ Partial Class AddDefect
         Me.ButtonsGroupBox = New System.Windows.Forms.GroupBox()
         Me.CommentsGroupBox = New System.Windows.Forms.GroupBox()
         Me.CommentsRichTextBox = New System.Windows.Forms.RichTextBox()
+        Me.ModelDescriptionTextBox = New System.Windows.Forms.TextBox()
+        Me.ModelDescriptionLabel = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.PaintCodeTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,9 +116,13 @@ Partial Class AddDefect
         Me.GroupBox1.Controls.Add(Me.WorkStationLabel)
         Me.GroupBox1.Controls.Add(Me.ConsecutiveLabel)
         Me.GroupBox1.Controls.Add(Me.SerialNumberTextBox)
+        Me.GroupBox1.Controls.Add(Me.ModelDescriptionTextBox)
         Me.GroupBox1.Controls.Add(Me.ModelTextBox)
         Me.GroupBox1.Controls.Add(Me.SerialNumberLabel)
+        Me.GroupBox1.Controls.Add(Me.ModelDescriptionLabel)
         Me.GroupBox1.Controls.Add(Me.ModelLabel)
+        Me.GroupBox1.Controls.Add(Me.PaintCodeTextBox)
+        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.WorkOrderTextBox)
         Me.GroupBox1.Controls.Add(Me.WorkOrderLabel)
         Me.GroupBox1.Controls.Add(Me.TimeTextBox)
@@ -124,7 +132,7 @@ Partial Class AddDefect
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox1.Location = New System.Drawing.Point(10, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1115, 125)
+        Me.GroupBox1.Size = New System.Drawing.Size(1115, 139)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Work Order Info:"
@@ -132,7 +140,7 @@ Partial Class AddDefect
         'WorkStationComboBox
         '
         Me.WorkStationComboBox.FormattingEnabled = True
-        Me.WorkStationComboBox.Location = New System.Drawing.Point(134, 89)
+        Me.WorkStationComboBox.Location = New System.Drawing.Point(180, 40)
         Me.WorkStationComboBox.Name = "WorkStationComboBox"
         Me.WorkStationComboBox.Size = New System.Drawing.Size(200, 25)
         Me.WorkStationComboBox.TabIndex = 2
@@ -140,7 +148,7 @@ Partial Class AddDefect
         '
         'ConsecutiveTextBox
         '
-        Me.ConsecutiveTextBox.Location = New System.Drawing.Point(651, 90)
+        Me.ConsecutiveTextBox.Location = New System.Drawing.Point(810, 40)
         Me.ConsecutiveTextBox.Name = "ConsecutiveTextBox"
         Me.ConsecutiveTextBox.Size = New System.Drawing.Size(150, 25)
         Me.ConsecutiveTextBox.TabIndex = 5
@@ -148,7 +156,7 @@ Partial Class AddDefect
         'WorkStationLabel
         '
         Me.WorkStationLabel.AutoSize = True
-        Me.WorkStationLabel.Location = New System.Drawing.Point(134, 67)
+        Me.WorkStationLabel.Location = New System.Drawing.Point(180, 16)
         Me.WorkStationLabel.Name = "WorkStationLabel"
         Me.WorkStationLabel.Size = New System.Drawing.Size(95, 19)
         Me.WorkStationLabel.TabIndex = 1
@@ -157,7 +165,7 @@ Partial Class AddDefect
         'ConsecutiveLabel
         '
         Me.ConsecutiveLabel.AutoSize = True
-        Me.ConsecutiveLabel.Location = New System.Drawing.Point(651, 68)
+        Me.ConsecutiveLabel.Location = New System.Drawing.Point(810, 16)
         Me.ConsecutiveLabel.Name = "ConsecutiveLabel"
         Me.ConsecutiveLabel.Size = New System.Drawing.Size(144, 19)
         Me.ConsecutiveLabel.TabIndex = 2
@@ -165,22 +173,22 @@ Partial Class AddDefect
         '
         'SerialNumberTextBox
         '
-        Me.SerialNumberTextBox.Location = New System.Drawing.Point(807, 90)
+        Me.SerialNumberTextBox.Location = New System.Drawing.Point(810, 94)
         Me.SerialNumberTextBox.Name = "SerialNumberTextBox"
         Me.SerialNumberTextBox.Size = New System.Drawing.Size(150, 25)
         Me.SerialNumberTextBox.TabIndex = 6
         '
         'ModelTextBox
         '
-        Me.ModelTextBox.Location = New System.Drawing.Point(495, 90)
+        Me.ModelTextBox.Location = New System.Drawing.Point(390, 40)
         Me.ModelTextBox.Name = "ModelTextBox"
-        Me.ModelTextBox.Size = New System.Drawing.Size(150, 25)
+        Me.ModelTextBox.Size = New System.Drawing.Size(200, 25)
         Me.ModelTextBox.TabIndex = 4
         '
         'SerialNumberLabel
         '
         Me.SerialNumberLabel.AutoSize = True
-        Me.SerialNumberLabel.Location = New System.Drawing.Point(807, 68)
+        Me.SerialNumberLabel.Location = New System.Drawing.Point(810, 70)
         Me.SerialNumberLabel.Name = "SerialNumberLabel"
         Me.SerialNumberLabel.Size = New System.Drawing.Size(103, 19)
         Me.SerialNumberLabel.TabIndex = 2
@@ -189,7 +197,7 @@ Partial Class AddDefect
         'ModelLabel
         '
         Me.ModelLabel.AutoSize = True
-        Me.ModelLabel.Location = New System.Drawing.Point(495, 68)
+        Me.ModelLabel.Location = New System.Drawing.Point(390, 16)
         Me.ModelLabel.Name = "ModelLabel"
         Me.ModelLabel.Size = New System.Drawing.Size(52, 19)
         Me.ModelLabel.TabIndex = 2
@@ -197,15 +205,15 @@ Partial Class AddDefect
         '
         'WorkOrderTextBox
         '
-        Me.WorkOrderTextBox.Location = New System.Drawing.Point(339, 90)
+        Me.WorkOrderTextBox.Location = New System.Drawing.Point(180, 94)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
-        Me.WorkOrderTextBox.Size = New System.Drawing.Size(150, 25)
+        Me.WorkOrderTextBox.Size = New System.Drawing.Size(200, 25)
         Me.WorkOrderTextBox.TabIndex = 3
         '
         'WorkOrderLabel
         '
         Me.WorkOrderLabel.AutoSize = True
-        Me.WorkOrderLabel.Location = New System.Drawing.Point(339, 68)
+        Me.WorkOrderLabel.Location = New System.Drawing.Point(180, 70)
         Me.WorkOrderLabel.Name = "WorkOrderLabel"
         Me.WorkOrderLabel.Size = New System.Drawing.Size(87, 19)
         Me.WorkOrderLabel.TabIndex = 2
@@ -214,16 +222,16 @@ Partial Class AddDefect
         'TimeTextBox
         '
         Me.TimeTextBox.Enabled = False
-        Me.TimeTextBox.Location = New System.Drawing.Point(20, 89)
+        Me.TimeTextBox.Location = New System.Drawing.Point(20, 94)
         Me.TimeTextBox.Name = "TimeTextBox"
-        Me.TimeTextBox.Size = New System.Drawing.Size(75, 25)
+        Me.TimeTextBox.Size = New System.Drawing.Size(150, 25)
         Me.TimeTextBox.TabIndex = 0
         Me.TimeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TimeLabel
         '
         Me.TimeLabel.AutoSize = True
-        Me.TimeLabel.Location = New System.Drawing.Point(20, 67)
+        Me.TimeLabel.Location = New System.Drawing.Point(20, 70)
         Me.TimeLabel.Name = "TimeLabel"
         Me.TimeLabel.Size = New System.Drawing.Size(43, 19)
         Me.TimeLabel.TabIndex = 2
@@ -242,7 +250,7 @@ Partial Class AddDefect
         '
         Me.DatePicker.CustomFormat = "mm/dd/yyyy"
         Me.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DatePicker.Location = New System.Drawing.Point(20, 39)
+        Me.DatePicker.Location = New System.Drawing.Point(20, 40)
         Me.DatePicker.MaxDate = New Date(2100, 12, 31, 0, 0, 0, 0)
         Me.DatePicker.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DatePicker.Name = "DatePicker"
@@ -732,7 +740,7 @@ Partial Class AddDefect
         'DefectLocationComboBox
         '
         Me.DefectLocationComboBox.FormattingEnabled = True
-        Me.DefectLocationComboBox.Location = New System.Drawing.Point(641, 40)
+        Me.DefectLocationComboBox.Location = New System.Drawing.Point(810, 40)
         Me.DefectLocationComboBox.Name = "DefectLocationComboBox"
         Me.DefectLocationComboBox.Size = New System.Drawing.Size(150, 25)
         Me.DefectLocationComboBox.TabIndex = 10
@@ -741,7 +749,7 @@ Partial Class AddDefect
         'DefectLocationLabel
         '
         Me.DefectLocationLabel.AutoSize = True
-        Me.DefectLocationLabel.Location = New System.Drawing.Point(641, 21)
+        Me.DefectLocationLabel.Location = New System.Drawing.Point(810, 18)
         Me.DefectLocationLabel.Name = "DefectLocationLabel"
         Me.DefectLocationLabel.Size = New System.Drawing.Size(66, 19)
         Me.DefectLocationLabel.TabIndex = 1
@@ -750,16 +758,16 @@ Partial Class AddDefect
         'DefectComboBox
         '
         Me.DefectComboBox.FormattingEnabled = True
-        Me.DefectComboBox.Location = New System.Drawing.Point(329, 40)
+        Me.DefectComboBox.Location = New System.Drawing.Point(390, 40)
         Me.DefectComboBox.Name = "DefectComboBox"
-        Me.DefectComboBox.Size = New System.Drawing.Size(306, 25)
+        Me.DefectComboBox.Size = New System.Drawing.Size(405, 25)
         Me.DefectComboBox.TabIndex = 9
         Me.DefectComboBox.Text = "Select Option"
         '
         'DefectLabel
         '
         Me.DefectLabel.AutoSize = True
-        Me.DefectLabel.Location = New System.Drawing.Point(329, 21)
+        Me.DefectLabel.Location = New System.Drawing.Point(390, 18)
         Me.DefectLabel.Name = "DefectLabel"
         Me.DefectLabel.Size = New System.Drawing.Size(53, 19)
         Me.DefectLabel.TabIndex = 1
@@ -768,16 +776,16 @@ Partial Class AddDefect
         'DefectOriginComboBox
         '
         Me.DefectOriginComboBox.FormattingEnabled = True
-        Me.DefectOriginComboBox.Location = New System.Drawing.Point(173, 40)
+        Me.DefectOriginComboBox.Location = New System.Drawing.Point(180, 40)
         Me.DefectOriginComboBox.Name = "DefectOriginComboBox"
-        Me.DefectOriginComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.DefectOriginComboBox.Size = New System.Drawing.Size(200, 25)
         Me.DefectOriginComboBox.TabIndex = 8
         Me.DefectOriginComboBox.Text = "Select Option"
         '
         'DefectOriginLabel
         '
         Me.DefectOriginLabel.AutoSize = True
-        Me.DefectOriginLabel.Location = New System.Drawing.Point(173, 21)
+        Me.DefectOriginLabel.Location = New System.Drawing.Point(180, 20)
         Me.DefectOriginLabel.Name = "DefectOriginLabel"
         Me.DefectOriginLabel.Size = New System.Drawing.Size(97, 19)
         Me.DefectOriginLabel.TabIndex = 1
@@ -788,14 +796,14 @@ Partial Class AddDefect
         Me.ReworkTypeComboBox.FormattingEnabled = True
         Me.ReworkTypeComboBox.Location = New System.Drawing.Point(17, 40)
         Me.ReworkTypeComboBox.Name = "ReworkTypeComboBox"
-        Me.ReworkTypeComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.ReworkTypeComboBox.Size = New System.Drawing.Size(153, 25)
         Me.ReworkTypeComboBox.TabIndex = 7
         Me.ReworkTypeComboBox.Text = "Select Option"
         '
         'ReworkTypeLabel
         '
         Me.ReworkTypeLabel.AutoSize = True
-        Me.ReworkTypeLabel.Location = New System.Drawing.Point(17, 21)
+        Me.ReworkTypeLabel.Location = New System.Drawing.Point(17, 20)
         Me.ReworkTypeLabel.Name = "ReworkTypeLabel"
         Me.ReworkTypeLabel.Size = New System.Drawing.Size(92, 19)
         Me.ReworkTypeLabel.TabIndex = 1
@@ -875,6 +883,39 @@ Partial Class AddDefect
         Me.CommentsRichTextBox.Size = New System.Drawing.Size(351, 120)
         Me.CommentsRichTextBox.TabIndex = 11
         Me.CommentsRichTextBox.Text = ""
+        '
+        'ModelDescriptionTextBox
+        '
+        Me.ModelDescriptionTextBox.Enabled = False
+        Me.ModelDescriptionTextBox.Location = New System.Drawing.Point(390, 94)
+        Me.ModelDescriptionTextBox.Name = "ModelDescriptionTextBox"
+        Me.ModelDescriptionTextBox.Size = New System.Drawing.Size(410, 25)
+        Me.ModelDescriptionTextBox.TabIndex = 4
+        '
+        'ModelDescriptionLabel
+        '
+        Me.ModelDescriptionLabel.AutoSize = True
+        Me.ModelDescriptionLabel.Location = New System.Drawing.Point(390, 70)
+        Me.ModelDescriptionLabel.Name = "ModelDescriptionLabel"
+        Me.ModelDescriptionLabel.Size = New System.Drawing.Size(128, 19)
+        Me.ModelDescriptionLabel.TabIndex = 2
+        Me.ModelDescriptionLabel.Text = "&Model Description:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(600, 16)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(80, 19)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "&Paint Code:"
+        '
+        'PaintCodeTextBox
+        '
+        Me.PaintCodeTextBox.Location = New System.Drawing.Point(600, 40)
+        Me.PaintCodeTextBox.Name = "PaintCodeTextBox"
+        Me.PaintCodeTextBox.Size = New System.Drawing.Size(200, 25)
+        Me.PaintCodeTextBox.TabIndex = 3
         '
         'AddDefect
         '
@@ -974,4 +1015,8 @@ Partial Class AddDefect
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents CommentsGroupBox As GroupBox
     Friend WithEvents CommentsRichTextBox As RichTextBox
+    Friend WithEvents ModelDescriptionTextBox As TextBox
+    Friend WithEvents ModelDescriptionLabel As Label
+    Friend WithEvents PaintCodeTextBox As TextBox
+    Friend WithEvents Label2 As Label
 End Class
