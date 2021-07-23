@@ -39,8 +39,7 @@ Partial Class LoginForm
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
         Me.ShowPasswordCheckBox = New System.Windows.Forms.CheckBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.WorkstationComboBox = New System.Windows.Forms.ComboBox()
+        Me.RoleComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -56,33 +55,33 @@ Partial Class LoginForm
         'UsernameLabel
         '
         Me.UsernameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.UsernameLabel.Location = New System.Drawing.Point(250, 2)
+        Me.UsernameLabel.Location = New System.Drawing.Point(253, 26)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
         Me.UsernameLabel.TabIndex = 0
-        Me.UsernameLabel.Text = "&User name"
+        Me.UsernameLabel.Text = "&Username:"
         Me.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'PasswordLabel
         '
         Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.PasswordLabel.Location = New System.Drawing.Point(250, 51)
+        Me.PasswordLabel.Location = New System.Drawing.Point(252, 78)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
         Me.PasswordLabel.TabIndex = 2
-        Me.PasswordLabel.Text = "&Password"
+        Me.PasswordLabel.Text = "&Password:"
         Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'UsernameTextBox
         '
-        Me.UsernameTextBox.Location = New System.Drawing.Point(252, 22)
+        Me.UsernameTextBox.Location = New System.Drawing.Point(252, 52)
         Me.UsernameTextBox.Name = "UsernameTextBox"
         Me.UsernameTextBox.Size = New System.Drawing.Size(220, 23)
         Me.UsernameTextBox.TabIndex = 1
         '
         'PasswordTextBox
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(252, 71)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(252, 104)
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.Size = New System.Drawing.Size(220, 23)
         Me.PasswordTextBox.TabIndex = 3
@@ -108,30 +107,23 @@ Partial Class LoginForm
         'ShowPasswordCheckBox
         '
         Me.ShowPasswordCheckBox.AutoSize = True
-        Me.ShowPasswordCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ShowPasswordCheckBox.Location = New System.Drawing.Point(252, 100)
+        Me.ShowPasswordCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ShowPasswordCheckBox.Location = New System.Drawing.Point(253, 133)
         Me.ShowPasswordCheckBox.Name = "ShowPasswordCheckBox"
-        Me.ShowPasswordCheckBox.Size = New System.Drawing.Size(109, 19)
+        Me.ShowPasswordCheckBox.Size = New System.Drawing.Size(122, 21)
         Me.ShowPasswordCheckBox.TabIndex = 6
         Me.ShowPasswordCheckBox.Text = "Show Password"
         Me.ShowPasswordCheckBox.UseVisualStyleBackColor = True
         '
-        'Label1
+        'RoleComboBox
         '
-        Me.Label1.Location = New System.Drawing.Point(249, 121)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(220, 23)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "&Workstation"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'WorkstationComboBox
-        '
-        Me.WorkstationComboBox.FormattingEnabled = True
-        Me.WorkstationComboBox.Location = New System.Drawing.Point(253, 142)
-        Me.WorkstationComboBox.Name = "WorkstationComboBox"
-        Me.WorkstationComboBox.Size = New System.Drawing.Size(220, 23)
-        Me.WorkstationComboBox.TabIndex = 7
+        Me.RoleComboBox.Enabled = False
+        Me.RoleComboBox.FormattingEnabled = True
+        Me.RoleComboBox.Location = New System.Drawing.Point(12, 180)
+        Me.RoleComboBox.Name = "RoleComboBox"
+        Me.RoleComboBox.Size = New System.Drawing.Size(223, 23)
+        Me.RoleComboBox.TabIndex = 7
+        Me.RoleComboBox.Visible = False
         '
         'LoginForm
         '
@@ -140,14 +132,13 @@ Partial Class LoginForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(493, 217)
-        Me.Controls.Add(Me.WorkstationComboBox)
+        Me.Controls.Add(Me.RoleComboBox)
         Me.Controls.Add(Me.ShowPasswordCheckBox)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
         Me.Controls.Add(Me.PasswordTextBox)
         Me.Controls.Add(Me.UsernameTextBox)
         Me.Controls.Add(Me.PasswordLabel)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.UsernameLabel)
         Me.Controls.Add(Me.LogoPictureBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -164,6 +155,5 @@ Partial Class LoginForm
     End Sub
 
     Friend WithEvents ShowPasswordCheckBox As CheckBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents WorkstationComboBox As ComboBox
+    Friend WithEvents RoleComboBox As ComboBox
 End Class

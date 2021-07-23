@@ -3,21 +3,34 @@ Imports System.Configuration
 Public Class AddDefect
     Dim connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Dim connection As New MySqlConnection(connection_string)
+    'Load images variables
+    Dim imgpath As String
+    Dim arrImage1() As Byte
+    Dim arrImage2() As Byte
+    Dim arrImage3() As Byte
     Private Sub AddDefect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim t As String = System.DateTime.Now.ToString("HH:mm:ss")
+        Dim t As String = Date.Now.ToString("HH:mm:ss")
         TimeTextBox.Text = t
         Using WScommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
             Dim WSadapter As New MySqlDataAdapter(WScommand)
             Dim WStable As New DataTable()
-            WSadapter.Fill(WStable)
+            Dim WS = WSadapter.Fill(WStable)
             WorkStationComboBox.DataSource = WStable
             WorkStationComboBox.ValueMember = "workstation_code"
             WorkStationComboBox.DisplayMember = "workstation_description"
         End Using
+        Using MOcommand As New MySqlCommand("SELECT `model_code`, `model_description` FROM `models`", connection)
+            Dim MOadapter As New MySqlDataAdapter(MOcommand)
+            Dim MOtable As New DataTable()
+            Dim MO = MOadapter.Fill(MOtable)
+            ModelComboBox.DataSource = MOtable
+            ModelComboBox.ValueMember = "model_code"
+            ModelComboBox.DisplayMember = "model_code"
+        End Using
         Using RWcommand As New MySqlCommand("SELECT `rework_code`, `rework_description` FROM `rework`", connection)
             Dim RWadapter As New MySqlDataAdapter(RWcommand)
             Dim RWtable As New DataTable()
-            RWadapter.Fill(RWtable)
+            Dim RW = RWadapter.Fill(RWtable)
             ReworkTypeComboBox.DataSource = RWtable
             ReworkTypeComboBox.ValueMember = "rework_code"
             ReworkTypeComboBox.DisplayMember = "rework_description"
@@ -25,19 +38,142 @@ Public Class AddDefect
         Using DLcommand As New MySqlCommand("SELECT `location_code`, `location_description` FROM `locations`", connection)
             Dim DLadapter As New MySqlDataAdapter(DLcommand)
             Dim DLtable As New DataTable()
-            DLadapter.Fill(DLtable)
+            Dim DL = DLadapter.Fill(DLtable)
             DefectLocationComboBox.DataSource = DLtable
             DefectLocationComboBox.ValueMember = "location_code"
             DefectLocationComboBox.DisplayMember = "location_description"
         End Using
-        Using DOcommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
-            Dim DOadapter As New MySqlDataAdapter(DOcommand)
-            Dim DOtable As New DataTable()
-            DOadapter.Fill(DOtable)
-            DefectOriginComboBox.DataSource = DOtable
+        Using WOcommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
+            Dim WOadapter As New MySqlDataAdapter(WOcommand)
+            Dim WOtable As New DataTable()
+            Dim WO = WOadapter.Fill(WOtable)
+            DefectOriginComboBox.DataSource = WOtable
             DefectOriginComboBox.ValueMember = "workstation_code"
             DefectOriginComboBox.DisplayMember = "workstation_description"
         End Using
+    End Sub
+    Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
+        Me.Close()
+    End Sub
+    Private Sub DefectOriginComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectOriginComboBox.SelectedIndexChanged
+        Dim Defect_Origin As String
+        Dim toString As String = DefectOriginComboBox.Text.ToString
+        Defect_Origin = toString
+        With DefectComboBox
+            Using DFcommand As New MySqlCommand("SELECT `defect_code`, `defect_description` FROM `defects` WHERE `defect_workstation` = @Defect_Origin", connection)
+                DFcommand.Parameters.Add("@Defect_Origin", MySqlDbType.String).Value = Defect_Origin
+                Dim DFadapter As New MySqlDataAdapter(DFcommand)
+                Dim DFtable As New DataTable()
+                DFadapter.Fill(DFtable)
+
+                DefectComboBox.DataSource = DFtable
+                DefectComboBox.ValueMember = "defect_code"
+                DefectComboBox.DisplayMember = "defect_description"
+            End Using
+        End With
+    End Sub
+    'Private Sub ModelComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ModelComboBox.SelectedIndexChanged
+    '    Dim Model_Desc As String
+    '    Dim MD_result As String
+    '    Dim toString As String = ModelComboBox.Text.ToString
+    '    Model_Desc = toString
+    '    With ModelDescriptionTextBox
+    '        Using MDcommand As New MySqlCommand("SELECT model_description` FROM `models` WHERE `model_code` = @Model_Desc", connection)
+    '            MDcommand.Parameters.Add("@Model_Desc", MySqlDbType.String).Value = Model_Desc
+    '            Dim MDadapter As New MySqlDataAdapter(MDcommand)
+    '            Dim MDtable As New DataTable()
+    '            MDadapter.Fill(MDtable)
+    '            While DataTableReader
+
+    '            End While
+    '            ReaderOptions.Close()
+    '        End Using
+    '    End With
+    'End Sub
+    Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
+        Dim mstream1 As New System.IO.MemoryStream()
+        PictureBox1.Image.Save(mstream1, Imaging.ImageFormat.Jpeg)
+        arrImage1 = mstream1.GetBuffer()
+        Dim FileSize1 As UInteger
+        FileSize1 = mstream1.Length
+        mstream1.Close()
+        Dim mstream2 As New System.IO.MemoryStream()
+        PictureBox2.Image.Save(mstream2, Imaging.ImageFormat.Jpeg)
+        arrImage2 = mstream2.GetBuffer()
+        Dim FileSize2 As UInteger
+        FileSize2 = mstream2.Length
+        mstream2.Close()
+        Dim mstream3 As New System.IO.MemoryStream()
+        PictureBox3.Image.Save(mstream3, Imaging.ImageFormat.Jpeg)
+        arrImage3 = mstream3.GetBuffer()
+        Dim FileSize3 As UInteger
+        FileSize3 = mstream3.Length
+        mstream3.Close()
+
+        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_workstation`, `workorder_number`, `workorder_model`, `workorder_consecutive`, `workorder_serial`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments`, `additional_error`, `Image1`, `Image2`, `Image3`) VALUES (@workorder_date,@workorder_time,@workorder_workstation,@workorder_number,@workorder_model,@workorder_consecutive,@workorder_serial,@workorder_rework,@workorder_defect_origin,@workorder_defect,@workorder_defect_location,@workorder_comments,@additional_error,@Image1,@Image2,@Image3)", connection)
+        ' add Parameters to the command
+        command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
+        command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
+        command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
+        command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
+        command.Parameters.Add("@workorder_model", MySqlDbType.VarChar).Value = ModelComboBox.SelectedValue
+        command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = ConsecutiveTextBox.Text
+        command.Parameters.Add("@workorder_serial", MySqlDbType.VarChar).Value = SerialNumberTextBox.Text
+        command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkTypeComboBox.SelectedValue
+        command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = DefectOriginComboBox.SelectedValue
+        command.Parameters.Add("@workorder_defect", MySqlDbType.VarChar).Value = DefectComboBox.SelectedValue
+        command.Parameters.Add("@workorder_defect_location", MySqlDbType.VarChar).Value = DefectLocationComboBox.SelectedValue
+        command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = CommentsRichTextBox.Text
+        command.Parameters.Add("@additional_error", MySqlDbType.VarChar).Value = AdditionalDefectsCheckBox.Text
+        command.Parameters.Add("@Image1", MySqlDbType.LongBlob).Value = arrImage1
+        command.Parameters.Add("@Image2", MySqlDbType.LongBlob).Value = arrImage2
+        command.Parameters.Add("@Image3", MySqlDbType.LongBlob).Value = arrImage3
+        connection.Open()
+        If command.ExecuteNonQuery() = 1 Then
+            MessageBox.Show("Data Inserted")
+        Else
+            MessageBox.Show("ERROR")
+        End If
+        connection.Close()
+    End Sub
+    Private Sub AddImageButton1_Click(sender As Object, e As EventArgs) Handles AddImageButton1.Click
+        Try
+            Dim OFD As FileDialog = New OpenFileDialog()
+            OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
+            If OFD.ShowDialog() = DialogResult.OK Then
+                imgpath = OFD.FileName
+                PictureBox1.ImageLocation = imgpath
+            End If
+            OFD = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message.ToString())
+        End Try
+    End Sub
+    Private Sub AddImageButton2_Click(sender As Object, e As EventArgs) Handles AddImageButton2.Click
+        Try
+            Dim OFD As FileDialog = New OpenFileDialog()
+            OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
+            If OFD.ShowDialog() = DialogResult.OK Then
+                imgpath = OFD.FileName
+                PictureBox2.ImageLocation = imgpath
+            End If
+            OFD = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message.ToString())
+        End Try
+    End Sub
+    Private Sub AddImageButton3_Click(sender As Object, e As EventArgs) Handles AddImageButton3.Click
+        Try
+            Dim OFD As FileDialog = New OpenFileDialog()
+            OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
+            If OFD.ShowDialog() = DialogResult.OK Then
+                imgpath = OFD.FileName
+                PictureBox3.ImageLocation = imgpath
+            End If
+            OFD = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message.ToString())
+        End Try
     End Sub
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         DefectLocationComboBox.SelectedValue = LinkLabel1.Text
@@ -155,50 +291,5 @@ Public Class AddDefect
     End Sub
     Private Sub LinkLabel39_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel39.LinkClicked
         DefectLocationComboBox.SelectedValue = LinkLabel39.Text
-    End Sub
-    Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
-        Me.Close()
-    End Sub
-    Private Sub DefectOriginComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectOriginComboBox.SelectedIndexChanged
-        Dim Defect_Origin As String
-        Dim toString As String = DefectOriginComboBox.Text.ToString
-        Defect_Origin = toString
-        With DefectComboBox
-            Using DFcommand As New MySqlCommand("SELECT `defect_code`, `defect_description` FROM `defects` WHERE `defect_workstation` = @Defect_Origin", connection)
-                DFcommand.Parameters.Add("@Defect_Origin", MySqlDbType.String).Value = Defect_Origin
-                Dim DFadapter As New MySqlDataAdapter(DFcommand)
-                Dim DFtable As New DataTable()
-                DFadapter.Fill(DFtable)
-
-                DefectComboBox.DataSource = DFtable
-                DefectComboBox.ValueMember = "defect_code"
-                DefectComboBox.DisplayMember = "defect_description"
-            End Using
-        End With
-    End Sub
-    Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
-
-        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_workstation`, `workorder_number`, `workorder_model`, `workorder_consecutive`, `workorder_serial`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments`, `additional_error`) VALUES (@workorder_date,@workorder_time,@workorder_workstation,@workorder_number,@workorder_model,@workorder_consecutive,@workorder_serial,@workorder_rework,@workorder_defect_origin,@workorder_defect,@workorder_defect_location,@workorder_comments,@additional_error)", connection)
-        ' add Parameters to the command
-        command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
-        command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
-        command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-        command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
-        command.Parameters.Add("@workorder_model", MySqlDbType.VarChar).Value = ModelTextBox.Text
-        command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = ConsecutiveTextBox.Text
-        command.Parameters.Add("@workorder_serial", MySqlDbType.VarChar).Value = SerialNumberTextBox.Text
-        command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkTypeComboBox.SelectedValue
-        command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = DefectOriginComboBox.SelectedValue
-        command.Parameters.Add("@workorder_defect", MySqlDbType.VarChar).Value = DefectComboBox.SelectedValue
-        command.Parameters.Add("@workorder_defect_location", MySqlDbType.VarChar).Value = DefectLocationComboBox.SelectedValue
-        command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = CommentsRichTextBox.Text
-        command.Parameters.Add("@additional_error", MySqlDbType.VarChar).Value = AdditionalDefectsCheckBox.Text
-        connection.Open()
-        If command.ExecuteNonQuery() = 1 Then
-            MessageBox.Show("Data Inserted")
-        Else
-            MessageBox.Show("ERROR")
-        End If
-        connection.Close()
     End Sub
 End Class

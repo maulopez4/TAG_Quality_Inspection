@@ -24,14 +24,18 @@ Partial Class AddDefect
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddDefect))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ModelComboBox = New System.Windows.Forms.ComboBox()
         Me.WorkStationComboBox = New System.Windows.Forms.ComboBox()
         Me.ConsecutiveTextBox = New System.Windows.Forms.TextBox()
         Me.WorkStationLabel = New System.Windows.Forms.Label()
         Me.ConsecutiveLabel = New System.Windows.Forms.Label()
         Me.SerialNumberTextBox = New System.Windows.Forms.TextBox()
-        Me.ModelTextBox = New System.Windows.Forms.TextBox()
+        Me.ModelDescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.SerialNumberLabel = New System.Windows.Forms.Label()
+        Me.ModelDescriptionLabel = New System.Windows.Forms.Label()
         Me.ModelLabel = New System.Windows.Forms.Label()
+        Me.PaintCodeTextBox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.WorkOrderTextBox = New System.Windows.Forms.TextBox()
         Me.WorkOrderLabel = New System.Windows.Forms.Label()
         Me.TimeTextBox = New System.Windows.Forms.TextBox()
@@ -39,10 +43,12 @@ Partial Class AddDefect
         Me.DateLabel = New System.Windows.Forms.Label()
         Me.DatePicker = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.AdditionalDefectsCheckBox = New System.Windows.Forms.CheckBox()
         Me.LinkLabel14 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel39 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel38 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel37 = New System.Windows.Forms.LinkLabel()
+        Me.AdditionalDefectsLabel = New System.Windows.Forms.Label()
         Me.LinkLabel36 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel35 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel34 = New System.Windows.Forms.LinkLabel()
@@ -66,8 +72,8 @@ Partial Class AddDefect
         Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Zona42PictureBox = New System.Windows.Forms.PictureBox()
+        Me.Zona32PictureBox = New System.Windows.Forms.PictureBox()
         Me.LinkLabel18 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel19 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel26 = New System.Windows.Forms.LinkLabel()
@@ -80,7 +86,7 @@ Partial Class AddDefect
         Me.LinkLabel17 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel16 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel15 = New System.Windows.Forms.LinkLabel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Zona1PictureBox = New System.Windows.Forms.PictureBox()
         Me.DefectLocationComboBox = New System.Windows.Forms.ComboBox()
         Me.DefectLocationLabel = New System.Windows.Forms.Label()
         Me.DefectComboBox = New System.Windows.Forms.ComboBox()
@@ -91,33 +97,36 @@ Partial Class AddDefect
         Me.ReworkTypeLabel = New System.Windows.Forms.Label()
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
-        Me.AdditionalDefectsCheckBox = New System.Windows.Forms.CheckBox()
-        Me.AdditionalDefectsLabel = New System.Windows.Forms.Label()
-        Me.ButtonsGroupBox = New System.Windows.Forms.GroupBox()
         Me.CommentsGroupBox = New System.Windows.Forms.GroupBox()
         Me.CommentsRichTextBox = New System.Windows.Forms.RichTextBox()
-        Me.ModelDescriptionTextBox = New System.Windows.Forms.TextBox()
-        Me.ModelDescriptionLabel = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.PaintCodeTextBox = New System.Windows.Forms.TextBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.AddImageButton3 = New System.Windows.Forms.Button()
+        Me.AddImageButton2 = New System.Windows.Forms.Button()
+        Me.AddImageButton1 = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Zona32PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Zona1PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.CommentsGroupBox.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ButtonsGroupBox.SuspendLayout()
-        Me.CommentsGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.ModelComboBox)
         Me.GroupBox1.Controls.Add(Me.WorkStationComboBox)
         Me.GroupBox1.Controls.Add(Me.ConsecutiveTextBox)
         Me.GroupBox1.Controls.Add(Me.WorkStationLabel)
         Me.GroupBox1.Controls.Add(Me.ConsecutiveLabel)
         Me.GroupBox1.Controls.Add(Me.SerialNumberTextBox)
         Me.GroupBox1.Controls.Add(Me.ModelDescriptionTextBox)
-        Me.GroupBox1.Controls.Add(Me.ModelTextBox)
         Me.GroupBox1.Controls.Add(Me.SerialNumberLabel)
         Me.GroupBox1.Controls.Add(Me.ModelDescriptionLabel)
         Me.GroupBox1.Controls.Add(Me.ModelLabel)
@@ -132,15 +141,23 @@ Partial Class AddDefect
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox1.Location = New System.Drawing.Point(10, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1115, 139)
+        Me.GroupBox1.Size = New System.Drawing.Size(1115, 125)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Work Order Info:"
         '
+        'ModelComboBox
+        '
+        Me.ModelComboBox.FormattingEnabled = True
+        Me.ModelComboBox.Location = New System.Drawing.Point(588, 39)
+        Me.ModelComboBox.Name = "ModelComboBox"
+        Me.ModelComboBox.Size = New System.Drawing.Size(200, 25)
+        Me.ModelComboBox.TabIndex = 7
+        '
         'WorkStationComboBox
         '
         Me.WorkStationComboBox.FormattingEnabled = True
-        Me.WorkStationComboBox.Location = New System.Drawing.Point(180, 40)
+        Me.WorkStationComboBox.Location = New System.Drawing.Point(176, 40)
         Me.WorkStationComboBox.Name = "WorkStationComboBox"
         Me.WorkStationComboBox.Size = New System.Drawing.Size(200, 25)
         Me.WorkStationComboBox.TabIndex = 2
@@ -148,15 +165,15 @@ Partial Class AddDefect
         '
         'ConsecutiveTextBox
         '
-        Me.ConsecutiveTextBox.Location = New System.Drawing.Point(810, 40)
+        Me.ConsecutiveTextBox.Location = New System.Drawing.Point(588, 94)
         Me.ConsecutiveTextBox.Name = "ConsecutiveTextBox"
-        Me.ConsecutiveTextBox.Size = New System.Drawing.Size(150, 25)
+        Me.ConsecutiveTextBox.Size = New System.Drawing.Size(200, 25)
         Me.ConsecutiveTextBox.TabIndex = 5
         '
         'WorkStationLabel
         '
         Me.WorkStationLabel.AutoSize = True
-        Me.WorkStationLabel.Location = New System.Drawing.Point(180, 16)
+        Me.WorkStationLabel.Location = New System.Drawing.Point(176, 16)
         Me.WorkStationLabel.Name = "WorkStationLabel"
         Me.WorkStationLabel.Size = New System.Drawing.Size(95, 19)
         Me.WorkStationLabel.TabIndex = 1
@@ -165,7 +182,7 @@ Partial Class AddDefect
         'ConsecutiveLabel
         '
         Me.ConsecutiveLabel.AutoSize = True
-        Me.ConsecutiveLabel.Location = New System.Drawing.Point(810, 16)
+        Me.ConsecutiveLabel.Location = New System.Drawing.Point(588, 70)
         Me.ConsecutiveLabel.Name = "ConsecutiveLabel"
         Me.ConsecutiveLabel.Size = New System.Drawing.Size(144, 19)
         Me.ConsecutiveLabel.TabIndex = 2
@@ -173,39 +190,67 @@ Partial Class AddDefect
         '
         'SerialNumberTextBox
         '
-        Me.SerialNumberTextBox.Location = New System.Drawing.Point(810, 94)
+        Me.SerialNumberTextBox.Location = New System.Drawing.Point(380, 94)
         Me.SerialNumberTextBox.Name = "SerialNumberTextBox"
-        Me.SerialNumberTextBox.Size = New System.Drawing.Size(150, 25)
+        Me.SerialNumberTextBox.Size = New System.Drawing.Size(200, 25)
         Me.SerialNumberTextBox.TabIndex = 6
         '
-        'ModelTextBox
+        'ModelDescriptionTextBox
         '
-        Me.ModelTextBox.Location = New System.Drawing.Point(390, 40)
-        Me.ModelTextBox.Name = "ModelTextBox"
-        Me.ModelTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.ModelTextBox.TabIndex = 4
+        Me.ModelDescriptionTextBox.Enabled = False
+        Me.ModelDescriptionTextBox.Location = New System.Drawing.Point(794, 40)
+        Me.ModelDescriptionTextBox.Name = "ModelDescriptionTextBox"
+        Me.ModelDescriptionTextBox.Size = New System.Drawing.Size(280, 25)
+        Me.ModelDescriptionTextBox.TabIndex = 4
+        Me.ModelDescriptionTextBox.Visible = False
         '
         'SerialNumberLabel
         '
         Me.SerialNumberLabel.AutoSize = True
-        Me.SerialNumberLabel.Location = New System.Drawing.Point(810, 70)
+        Me.SerialNumberLabel.Location = New System.Drawing.Point(380, 70)
         Me.SerialNumberLabel.Name = "SerialNumberLabel"
         Me.SerialNumberLabel.Size = New System.Drawing.Size(103, 19)
         Me.SerialNumberLabel.TabIndex = 2
         Me.SerialNumberLabel.Text = "&Serial Number:"
         '
+        'ModelDescriptionLabel
+        '
+        Me.ModelDescriptionLabel.AutoSize = True
+        Me.ModelDescriptionLabel.Location = New System.Drawing.Point(794, 16)
+        Me.ModelDescriptionLabel.Name = "ModelDescriptionLabel"
+        Me.ModelDescriptionLabel.Size = New System.Drawing.Size(128, 19)
+        Me.ModelDescriptionLabel.TabIndex = 2
+        Me.ModelDescriptionLabel.Text = "&Model Description:"
+        Me.ModelDescriptionLabel.Visible = False
+        '
         'ModelLabel
         '
         Me.ModelLabel.AutoSize = True
-        Me.ModelLabel.Location = New System.Drawing.Point(390, 16)
+        Me.ModelLabel.Location = New System.Drawing.Point(588, 16)
         Me.ModelLabel.Name = "ModelLabel"
-        Me.ModelLabel.Size = New System.Drawing.Size(52, 19)
+        Me.ModelLabel.Size = New System.Drawing.Size(142, 19)
         Me.ModelLabel.TabIndex = 2
-        Me.ModelLabel.Text = "&Model:"
+        Me.ModelLabel.Text = "&Model/Item Number:"
+        '
+        'PaintCodeTextBox
+        '
+        Me.PaintCodeTextBox.Location = New System.Drawing.Point(176, 94)
+        Me.PaintCodeTextBox.Name = "PaintCodeTextBox"
+        Me.PaintCodeTextBox.Size = New System.Drawing.Size(200, 25)
+        Me.PaintCodeTextBox.TabIndex = 3
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(176, 70)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(80, 19)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "&Paint Code:"
         '
         'WorkOrderTextBox
         '
-        Me.WorkOrderTextBox.Location = New System.Drawing.Point(180, 94)
+        Me.WorkOrderTextBox.Location = New System.Drawing.Point(382, 40)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
         Me.WorkOrderTextBox.Size = New System.Drawing.Size(200, 25)
         Me.WorkOrderTextBox.TabIndex = 3
@@ -213,11 +258,11 @@ Partial Class AddDefect
         'WorkOrderLabel
         '
         Me.WorkOrderLabel.AutoSize = True
-        Me.WorkOrderLabel.Location = New System.Drawing.Point(180, 70)
+        Me.WorkOrderLabel.Location = New System.Drawing.Point(382, 16)
         Me.WorkOrderLabel.Name = "WorkOrderLabel"
-        Me.WorkOrderLabel.Size = New System.Drawing.Size(87, 19)
+        Me.WorkOrderLabel.Size = New System.Drawing.Size(184, 19)
         Me.WorkOrderLabel.TabIndex = 2
-        Me.WorkOrderLabel.Text = "W&ork Order:"
+        Me.WorkOrderLabel.Text = "W&ork Order/Order Number:"
         '
         'TimeTextBox
         '
@@ -259,10 +304,12 @@ Partial Class AddDefect
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.AdditionalDefectsCheckBox)
         Me.GroupBox2.Controls.Add(Me.LinkLabel14)
         Me.GroupBox2.Controls.Add(Me.LinkLabel39)
         Me.GroupBox2.Controls.Add(Me.LinkLabel38)
         Me.GroupBox2.Controls.Add(Me.LinkLabel37)
+        Me.GroupBox2.Controls.Add(Me.AdditionalDefectsLabel)
         Me.GroupBox2.Controls.Add(Me.LinkLabel36)
         Me.GroupBox2.Controls.Add(Me.LinkLabel35)
         Me.GroupBox2.Controls.Add(Me.LinkLabel34)
@@ -286,8 +333,8 @@ Partial Class AddDefect
         Me.GroupBox2.Controls.Add(Me.LinkLabel3)
         Me.GroupBox2.Controls.Add(Me.LinkLabel2)
         Me.GroupBox2.Controls.Add(Me.LinkLabel1)
-        Me.GroupBox2.Controls.Add(Me.PictureBox3)
-        Me.GroupBox2.Controls.Add(Me.PictureBox2)
+        Me.GroupBox2.Controls.Add(Me.Zona42PictureBox)
+        Me.GroupBox2.Controls.Add(Me.Zona32PictureBox)
         Me.GroupBox2.Controls.Add(Me.LinkLabel18)
         Me.GroupBox2.Controls.Add(Me.LinkLabel19)
         Me.GroupBox2.Controls.Add(Me.LinkLabel26)
@@ -300,7 +347,7 @@ Partial Class AddDefect
         Me.GroupBox2.Controls.Add(Me.LinkLabel17)
         Me.GroupBox2.Controls.Add(Me.LinkLabel16)
         Me.GroupBox2.Controls.Add(Me.LinkLabel15)
-        Me.GroupBox2.Controls.Add(Me.PictureBox1)
+        Me.GroupBox2.Controls.Add(Me.Zona1PictureBox)
         Me.GroupBox2.Controls.Add(Me.DefectLocationComboBox)
         Me.GroupBox2.Controls.Add(Me.DefectLocationLabel)
         Me.GroupBox2.Controls.Add(Me.DefectComboBox)
@@ -310,12 +357,24 @@ Partial Class AddDefect
         Me.GroupBox2.Controls.Add(Me.ReworkTypeComboBox)
         Me.GroupBox2.Controls.Add(Me.ReworkTypeLabel)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox2.Location = New System.Drawing.Point(10, 150)
+        Me.GroupBox2.Location = New System.Drawing.Point(10, 130)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1115, 379)
+        Me.GroupBox2.Size = New System.Drawing.Size(1115, 355)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Defect Data:"
+        '
+        'AdditionalDefectsCheckBox
+        '
+        Me.AdditionalDefectsCheckBox.AutoSize = True
+        Me.AdditionalDefectsCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.AdditionalDefectsCheckBox.Location = New System.Drawing.Point(930, 44)
+        Me.AdditionalDefectsCheckBox.Name = "AdditionalDefectsCheckBox"
+        Me.AdditionalDefectsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.AdditionalDefectsCheckBox.Size = New System.Drawing.Size(46, 19)
+        Me.AdditionalDefectsCheckBox.TabIndex = 12
+        Me.AdditionalDefectsCheckBox.Text = "YES"
+        Me.AdditionalDefectsCheckBox.UseVisualStyleBackColor = True
         '
         'LinkLabel14
         '
@@ -356,6 +415,17 @@ Partial Class AddDefect
         Me.LinkLabel37.TabIndex = 16
         Me.LinkLabel37.TabStop = True
         Me.LinkLabel37.Text = "B37"
+        '
+        'AdditionalDefectsLabel
+        '
+        Me.AdditionalDefectsLabel.AutoSize = True
+        Me.AdditionalDefectsLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(898, 18)
+        Me.AdditionalDefectsLabel.Name = "AdditionalDefectsLabel"
+        Me.AdditionalDefectsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.AdditionalDefectsLabel.Size = New System.Drawing.Size(127, 17)
+        Me.AdditionalDefectsLabel.TabIndex = 1
+        Me.AdditionalDefectsLabel.Text = "&Additional Defects?:"
         '
         'LinkLabel36
         '
@@ -587,24 +657,25 @@ Partial Class AddDefect
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "T1"
         '
-        'PictureBox3
+        'Zona42PictureBox
         '
-        Me.PictureBox3.BackgroundImage = CType(resources.GetObject("PictureBox3.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox3.Location = New System.Drawing.Point(740, 94)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(350, 275)
-        Me.PictureBox3.TabIndex = 15
-        Me.PictureBox3.TabStop = False
+        Me.Zona42PictureBox.BackgroundImage = CType(resources.GetObject("Zona42PictureBox.BackgroundImage"), System.Drawing.Image)
+        Me.Zona42PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Zona42PictureBox.Location = New System.Drawing.Point(740, 74)
+        Me.Zona42PictureBox.Name = "Zona42PictureBox"
+        Me.Zona42PictureBox.Size = New System.Drawing.Size(360, 275)
+        Me.Zona42PictureBox.TabIndex = 15
+        Me.Zona42PictureBox.TabStop = False
         '
-        'PictureBox2
+        'Zona32PictureBox
         '
-        Me.PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(380, 94)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(350, 275)
-        Me.PictureBox2.TabIndex = 14
-        Me.PictureBox2.TabStop = False
+        Me.Zona32PictureBox.BackgroundImage = CType(resources.GetObject("Zona32PictureBox.BackgroundImage"), System.Drawing.Image)
+        Me.Zona32PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Zona32PictureBox.Location = New System.Drawing.Point(380, 74)
+        Me.Zona32PictureBox.Name = "Zona32PictureBox"
+        Me.Zona32PictureBox.Size = New System.Drawing.Size(360, 275)
+        Me.Zona32PictureBox.TabIndex = 14
+        Me.Zona32PictureBox.TabStop = False
         '
         'LinkLabel18
         '
@@ -727,20 +798,20 @@ Partial Class AddDefect
         Me.LinkLabel15.TabStop = True
         Me.LinkLabel15.Text = "D15"
         '
-        'PictureBox1
+        'Zona1PictureBox
         '
-        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.PictureBox1.Location = New System.Drawing.Point(20, 94)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(350, 275)
-        Me.PictureBox1.TabIndex = 11
-        Me.PictureBox1.TabStop = False
+        Me.Zona1PictureBox.BackgroundImage = CType(resources.GetObject("Zona1PictureBox.BackgroundImage"), System.Drawing.Image)
+        Me.Zona1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Zona1PictureBox.Location = New System.Drawing.Point(20, 74)
+        Me.Zona1PictureBox.Name = "Zona1PictureBox"
+        Me.Zona1PictureBox.Size = New System.Drawing.Size(360, 275)
+        Me.Zona1PictureBox.TabIndex = 11
+        Me.Zona1PictureBox.TabStop = False
         '
         'DefectLocationComboBox
         '
         Me.DefectLocationComboBox.FormattingEnabled = True
-        Me.DefectLocationComboBox.Location = New System.Drawing.Point(810, 40)
+        Me.DefectLocationComboBox.Location = New System.Drawing.Point(742, 44)
         Me.DefectLocationComboBox.Name = "DefectLocationComboBox"
         Me.DefectLocationComboBox.Size = New System.Drawing.Size(150, 25)
         Me.DefectLocationComboBox.TabIndex = 10
@@ -749,25 +820,25 @@ Partial Class AddDefect
         'DefectLocationLabel
         '
         Me.DefectLocationLabel.AutoSize = True
-        Me.DefectLocationLabel.Location = New System.Drawing.Point(810, 18)
+        Me.DefectLocationLabel.Location = New System.Drawing.Point(740, 18)
         Me.DefectLocationLabel.Name = "DefectLocationLabel"
-        Me.DefectLocationLabel.Size = New System.Drawing.Size(66, 19)
+        Me.DefectLocationLabel.Size = New System.Drawing.Size(111, 19)
         Me.DefectLocationLabel.TabIndex = 1
-        Me.DefectLocationLabel.Text = "&Location:"
+        Me.DefectLocationLabel.Text = "Defect &Location:"
         '
         'DefectComboBox
         '
         Me.DefectComboBox.FormattingEnabled = True
-        Me.DefectComboBox.Location = New System.Drawing.Point(390, 40)
+        Me.DefectComboBox.Location = New System.Drawing.Point(461, 44)
         Me.DefectComboBox.Name = "DefectComboBox"
-        Me.DefectComboBox.Size = New System.Drawing.Size(405, 25)
+        Me.DefectComboBox.Size = New System.Drawing.Size(275, 25)
         Me.DefectComboBox.TabIndex = 9
         Me.DefectComboBox.Text = "Select Option"
         '
         'DefectLabel
         '
         Me.DefectLabel.AutoSize = True
-        Me.DefectLabel.Location = New System.Drawing.Point(390, 18)
+        Me.DefectLabel.Location = New System.Drawing.Point(461, 18)
         Me.DefectLabel.Name = "DefectLabel"
         Me.DefectLabel.Size = New System.Drawing.Size(53, 19)
         Me.DefectLabel.TabIndex = 1
@@ -776,9 +847,9 @@ Partial Class AddDefect
         'DefectOriginComboBox
         '
         Me.DefectOriginComboBox.FormattingEnabled = True
-        Me.DefectOriginComboBox.Location = New System.Drawing.Point(180, 40)
+        Me.DefectOriginComboBox.Location = New System.Drawing.Point(180, 44)
         Me.DefectOriginComboBox.Name = "DefectOriginComboBox"
-        Me.DefectOriginComboBox.Size = New System.Drawing.Size(200, 25)
+        Me.DefectOriginComboBox.Size = New System.Drawing.Size(275, 25)
         Me.DefectOriginComboBox.TabIndex = 8
         Me.DefectOriginComboBox.Text = "Select Option"
         '
@@ -794,7 +865,7 @@ Partial Class AddDefect
         'ReworkTypeComboBox
         '
         Me.ReworkTypeComboBox.FormattingEnabled = True
-        Me.ReworkTypeComboBox.Location = New System.Drawing.Point(17, 40)
+        Me.ReworkTypeComboBox.Location = New System.Drawing.Point(20, 44)
         Me.ReworkTypeComboBox.Name = "ReworkTypeComboBox"
         Me.ReworkTypeComboBox.Size = New System.Drawing.Size(153, 25)
         Me.ReworkTypeComboBox.TabIndex = 7
@@ -803,7 +874,7 @@ Partial Class AddDefect
         'ReworkTypeLabel
         '
         Me.ReworkTypeLabel.AutoSize = True
-        Me.ReworkTypeLabel.Location = New System.Drawing.Point(17, 20)
+        Me.ReworkTypeLabel.Location = New System.Drawing.Point(20, 20)
         Me.ReworkTypeLabel.Name = "ReworkTypeLabel"
         Me.ReworkTypeLabel.Size = New System.Drawing.Size(92, 19)
         Me.ReworkTypeLabel.TabIndex = 1
@@ -811,119 +882,132 @@ Partial Class AddDefect
         '
         'OK_Button
         '
-        Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
+        Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.OK_Button.Location = New System.Drawing.Point(27, 70)
+        Me.OK_Button.Location = New System.Drawing.Point(756, 649)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(125, 71)
+        Me.OK_Button.Size = New System.Drawing.Size(184, 31)
         Me.OK_Button.TabIndex = 13
         Me.OK_Button.Text = "Add Defect"
         Me.OK_Button.UseVisualStyleBackColor = True
         '
         'Cancel_Button
         '
-        Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver
+        Me.Cancel_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Cancel_Button.Location = New System.Drawing.Point(197, 70)
+        Me.Cancel_Button.Location = New System.Drawing.Point(958, 648)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(125, 71)
+        Me.Cancel_Button.Size = New System.Drawing.Size(167, 31)
         Me.Cancel_Button.TabIndex = 14
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
         '
-        'AdditionalDefectsCheckBox
-        '
-        Me.AdditionalDefectsCheckBox.AutoSize = True
-        Me.AdditionalDefectsCheckBox.Location = New System.Drawing.Point(188, 21)
-        Me.AdditionalDefectsCheckBox.Name = "AdditionalDefectsCheckBox"
-        Me.AdditionalDefectsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.AdditionalDefectsCheckBox.Size = New System.Drawing.Size(49, 21)
-        Me.AdditionalDefectsCheckBox.TabIndex = 12
-        Me.AdditionalDefectsCheckBox.Text = "YES"
-        Me.AdditionalDefectsCheckBox.UseVisualStyleBackColor = True
-        '
-        'AdditionalDefectsLabel
-        '
-        Me.AdditionalDefectsLabel.AutoSize = True
-        Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(57, 22)
-        Me.AdditionalDefectsLabel.Name = "AdditionalDefectsLabel"
-        Me.AdditionalDefectsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.AdditionalDefectsLabel.Size = New System.Drawing.Size(127, 17)
-        Me.AdditionalDefectsLabel.TabIndex = 1
-        Me.AdditionalDefectsLabel.Text = "&Additional Defects?:"
-        '
-        'ButtonsGroupBox
-        '
-        Me.ButtonsGroupBox.Controls.Add(Me.AdditionalDefectsCheckBox)
-        Me.ButtonsGroupBox.Controls.Add(Me.Cancel_Button)
-        Me.ButtonsGroupBox.Controls.Add(Me.AdditionalDefectsLabel)
-        Me.ButtonsGroupBox.Controls.Add(Me.OK_Button)
-        Me.ButtonsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonsGroupBox.Location = New System.Drawing.Point(391, 534)
-        Me.ButtonsGroupBox.Name = "ButtonsGroupBox"
-        Me.ButtonsGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.ButtonsGroupBox.Size = New System.Drawing.Size(375, 150)
-        Me.ButtonsGroupBox.TabIndex = 4
-        Me.ButtonsGroupBox.TabStop = False
-        '
         'CommentsGroupBox
         '
         Me.CommentsGroupBox.Controls.Add(Me.CommentsRichTextBox)
-        Me.CommentsGroupBox.Location = New System.Drawing.Point(10, 534)
+        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.CommentsGroupBox.Location = New System.Drawing.Point(665, 486)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
-        Me.CommentsGroupBox.Size = New System.Drawing.Size(375, 150)
+        Me.CommentsGroupBox.Size = New System.Drawing.Size(460, 150)
         Me.CommentsGroupBox.TabIndex = 6
         Me.CommentsGroupBox.TabStop = False
         Me.CommentsGroupBox.Text = "Comments:"
         '
         'CommentsRichTextBox
         '
-        Me.CommentsRichTextBox.Location = New System.Drawing.Point(18, 21)
+        Me.CommentsRichTextBox.Location = New System.Drawing.Point(6, 17)
         Me.CommentsRichTextBox.Name = "CommentsRichTextBox"
-        Me.CommentsRichTextBox.Size = New System.Drawing.Size(351, 120)
+        Me.CommentsRichTextBox.Size = New System.Drawing.Size(439, 127)
         Me.CommentsRichTextBox.TabIndex = 11
         Me.CommentsRichTextBox.Text = ""
         '
-        'ModelDescriptionTextBox
+        'GroupBox3
         '
-        Me.ModelDescriptionTextBox.Enabled = False
-        Me.ModelDescriptionTextBox.Location = New System.Drawing.Point(390, 94)
-        Me.ModelDescriptionTextBox.Name = "ModelDescriptionTextBox"
-        Me.ModelDescriptionTextBox.Size = New System.Drawing.Size(410, 25)
-        Me.ModelDescriptionTextBox.TabIndex = 4
+        Me.GroupBox3.Controls.Add(Me.PictureBox3)
+        Me.GroupBox3.Controls.Add(Me.AddImageButton3)
+        Me.GroupBox3.Controls.Add(Me.AddImageButton2)
+        Me.GroupBox3.Controls.Add(Me.AddImageButton1)
+        Me.GroupBox3.Controls.Add(Me.PictureBox2)
+        Me.GroupBox3.Controls.Add(Me.PictureBox1)
+        Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 485)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(647, 200)
+        Me.GroupBox3.TabIndex = 7
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Add Pictures"
         '
-        'ModelDescriptionLabel
+        'PictureBox3
         '
-        Me.ModelDescriptionLabel.AutoSize = True
-        Me.ModelDescriptionLabel.Location = New System.Drawing.Point(390, 70)
-        Me.ModelDescriptionLabel.Name = "ModelDescriptionLabel"
-        Me.ModelDescriptionLabel.Size = New System.Drawing.Size(128, 19)
-        Me.ModelDescriptionLabel.TabIndex = 2
-        Me.ModelDescriptionLabel.Text = "&Model Description:"
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox3.Location = New System.Drawing.Point(459, 18)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(175, 140)
+        Me.PictureBox3.TabIndex = 1
+        Me.PictureBox3.TabStop = False
         '
-        'Label2
+        'AddImageButton3
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(600, 16)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(80, 19)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "&Paint Code:"
+        Me.AddImageButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.AddImageButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.AddImageButton3.Location = New System.Drawing.Point(495, 161)
+        Me.AddImageButton3.Name = "AddImageButton3"
+        Me.AddImageButton3.Size = New System.Drawing.Size(110, 33)
+        Me.AddImageButton3.TabIndex = 2
+        Me.AddImageButton3.Text = "Add Image"
+        Me.AddImageButton3.UseVisualStyleBackColor = True
         '
-        'PaintCodeTextBox
+        'AddImageButton2
         '
-        Me.PaintCodeTextBox.Location = New System.Drawing.Point(600, 40)
-        Me.PaintCodeTextBox.Name = "PaintCodeTextBox"
-        Me.PaintCodeTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.PaintCodeTextBox.TabIndex = 3
+        Me.AddImageButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.AddImageButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.AddImageButton2.Location = New System.Drawing.Point(311, 161)
+        Me.AddImageButton2.Name = "AddImageButton2"
+        Me.AddImageButton2.Size = New System.Drawing.Size(110, 33)
+        Me.AddImageButton2.TabIndex = 2
+        Me.AddImageButton2.Text = "Add Image"
+        Me.AddImageButton2.UseVisualStyleBackColor = True
+        '
+        'AddImageButton1
+        '
+        Me.AddImageButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.AddImageButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.AddImageButton1.Location = New System.Drawing.Point(126, 163)
+        Me.AddImageButton1.Name = "AddImageButton1"
+        Me.AddImageButton1.Size = New System.Drawing.Size(110, 33)
+        Me.AddImageButton1.TabIndex = 2
+        Me.AddImageButton1.Text = "Add Image"
+        Me.AddImageButton1.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox2.Location = New System.Drawing.Point(278, 18)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(175, 140)
+        Me.PictureBox2.TabIndex = 1
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox1.Location = New System.Drawing.Point(99, 18)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(175, 140)
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
         '
         'AddDefect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1139, 697)
+        Me.ClientSize = New System.Drawing.Size(1134, 697)
+        Me.Controls.Add(Me.Cancel_Button)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.CommentsGroupBox)
-        Me.Controls.Add(Me.ButtonsGroupBox)
+        Me.Controls.Add(Me.OK_Button)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "AddDefect"
@@ -932,12 +1016,14 @@ Partial Class AddDefect
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Zona32PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Zona1PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.CommentsGroupBox.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ButtonsGroupBox.ResumeLayout(False)
-        Me.ButtonsGroupBox.PerformLayout()
-        Me.CommentsGroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -951,7 +1037,6 @@ Partial Class AddDefect
     Friend WithEvents ConsecutiveTextBox As TextBox
     Friend WithEvents ConsecutiveLabel As Label
     Friend WithEvents SerialNumberTextBox As TextBox
-    Friend WithEvents ModelTextBox As TextBox
     Friend WithEvents SerialNumberLabel As Label
     Friend WithEvents ModelLabel As Label
     Friend WithEvents WorkOrderTextBox As TextBox
@@ -970,10 +1055,9 @@ Partial Class AddDefect
     Friend WithEvents Cancel_Button As Button
     Friend WithEvents AdditionalDefectsCheckBox As CheckBox
     Friend WithEvents AdditionalDefectsLabel As Label
-    Friend WithEvents ButtonsGroupBox As GroupBox
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Zona1PictureBox As PictureBox
+    Friend WithEvents Zona42PictureBox As PictureBox
+    Friend WithEvents Zona32PictureBox As PictureBox
     Friend WithEvents LinkLabel15 As LinkLabel
     Friend WithEvents LinkLabel16 As LinkLabel
     Friend WithEvents LinkLabel17 As LinkLabel
@@ -1019,4 +1103,12 @@ Partial Class AddDefect
     Friend WithEvents ModelDescriptionLabel As Label
     Friend WithEvents PaintCodeTextBox As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents AddImageButton3 As Button
+    Friend WithEvents AddImageButton2 As Button
+    Friend WithEvents AddImageButton1 As Button
+    Friend WithEvents ModelComboBox As ComboBox
 End Class
