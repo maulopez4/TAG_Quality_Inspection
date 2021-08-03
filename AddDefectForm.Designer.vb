@@ -152,7 +152,7 @@ Partial Class AddDefect
         Me.ModelComboBox.Location = New System.Drawing.Point(588, 39)
         Me.ModelComboBox.Name = "ModelComboBox"
         Me.ModelComboBox.Size = New System.Drawing.Size(200, 25)
-        Me.ModelComboBox.TabIndex = 2
+        Me.ModelComboBox.TabIndex = 4
         '
         'WorkStationComboBox
         '
@@ -168,7 +168,7 @@ Partial Class AddDefect
         Me.ConsecutiveTextBox.Location = New System.Drawing.Point(588, 94)
         Me.ConsecutiveTextBox.Name = "ConsecutiveTextBox"
         Me.ConsecutiveTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.ConsecutiveTextBox.TabIndex = 5
+        Me.ConsecutiveTextBox.TabIndex = 7
         '
         'WorkStationLabel
         '
@@ -193,7 +193,7 @@ Partial Class AddDefect
         Me.SerialNumberTextBox.Location = New System.Drawing.Point(380, 94)
         Me.SerialNumberTextBox.Name = "SerialNumberTextBox"
         Me.SerialNumberTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.SerialNumberTextBox.TabIndex = 4
+        Me.SerialNumberTextBox.TabIndex = 6
         '
         'ModelDescriptionTextBox
         '
@@ -201,7 +201,7 @@ Partial Class AddDefect
         Me.ModelDescriptionTextBox.Location = New System.Drawing.Point(794, 40)
         Me.ModelDescriptionTextBox.Name = "ModelDescriptionTextBox"
         Me.ModelDescriptionTextBox.Size = New System.Drawing.Size(280, 25)
-        Me.ModelDescriptionTextBox.TabIndex = 99
+        Me.ModelDescriptionTextBox.TabIndex = 0
         Me.ModelDescriptionTextBox.Visible = False
         '
         'SerialNumberLabel
@@ -237,7 +237,7 @@ Partial Class AddDefect
         Me.PaintCodeTextBox.Location = New System.Drawing.Point(176, 94)
         Me.PaintCodeTextBox.Name = "PaintCodeTextBox"
         Me.PaintCodeTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.PaintCodeTextBox.TabIndex = 3
+        Me.PaintCodeTextBox.TabIndex = 5
         '
         'Label2
         '
@@ -253,7 +253,7 @@ Partial Class AddDefect
         Me.WorkOrderTextBox.Location = New System.Drawing.Point(382, 40)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
         Me.WorkOrderTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.WorkOrderTextBox.TabIndex = 1
+        Me.WorkOrderTextBox.TabIndex = 3
         '
         'WorkOrderLabel
         '
@@ -372,7 +372,7 @@ Partial Class AddDefect
         Me.AdditionalDefectsCheckBox.Name = "AdditionalDefectsCheckBox"
         Me.AdditionalDefectsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.AdditionalDefectsCheckBox.Size = New System.Drawing.Size(46, 19)
-        Me.AdditionalDefectsCheckBox.TabIndex = 10
+        Me.AdditionalDefectsCheckBox.TabIndex = 12
         Me.AdditionalDefectsCheckBox.Text = "YES"
         Me.AdditionalDefectsCheckBox.UseVisualStyleBackColor = True
         '
@@ -382,7 +382,7 @@ Partial Class AddDefect
         Me.LinkLabel14.Location = New System.Drawing.Point(651, 161)
         Me.LinkLabel14.Name = "LinkLabel14"
         Me.LinkLabel14.Size = New System.Drawing.Size(31, 19)
-        Me.LinkLabel14.TabIndex = 16
+        Me.LinkLabel14.TabIndex = 0
         Me.LinkLabel14.TabStop = True
         Me.LinkLabel14.Text = "T14"
         '
@@ -392,7 +392,7 @@ Partial Class AddDefect
         Me.LinkLabel39.Location = New System.Drawing.Point(1044, 263)
         Me.LinkLabel39.Name = "LinkLabel39"
         Me.LinkLabel39.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel39.TabIndex = 16
+        Me.LinkLabel39.TabIndex = 0
         Me.LinkLabel39.TabStop = True
         Me.LinkLabel39.Text = "B39"
         '
@@ -402,7 +402,7 @@ Partial Class AddDefect
         Me.LinkLabel38.Location = New System.Drawing.Point(755, 263)
         Me.LinkLabel38.Name = "LinkLabel38"
         Me.LinkLabel38.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel38.TabIndex = 16
+        Me.LinkLabel38.TabIndex = 0
         Me.LinkLabel38.TabStop = True
         Me.LinkLabel38.Text = "B38"
         '
@@ -412,7 +412,7 @@ Partial Class AddDefect
         Me.LinkLabel37.Location = New System.Drawing.Point(992, 209)
         Me.LinkLabel37.Name = "LinkLabel37"
         Me.LinkLabel37.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel37.TabIndex = 16
+        Me.LinkLabel37.TabIndex = 0
         Me.LinkLabel37.TabStop = True
         Me.LinkLabel37.Text = "B37"
         '
@@ -433,7 +433,7 @@ Partial Class AddDefect
         Me.LinkLabel36.Location = New System.Drawing.Point(899, 209)
         Me.LinkLabel36.Name = "LinkLabel36"
         Me.LinkLabel36.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel36.TabIndex = 16
+        Me.LinkLabel36.TabIndex = 0
         Me.LinkLabel36.TabStop = True
         Me.LinkLabel36.Text = "B36"
         '
@@ -443,7 +443,7 @@ Partial Class AddDefect
         Me.LinkLabel35.Location = New System.Drawing.Point(820, 209)
         Me.LinkLabel35.Name = "LinkLabel35"
         Me.LinkLabel35.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel35.TabIndex = 16
+        Me.LinkLabel35.TabIndex = 0
         Me.LinkLabel35.TabStop = True
         Me.LinkLabel35.Text = "B35"
         '
@@ -453,7 +453,7 @@ Partial Class AddDefect
         Me.LinkLabel34.Location = New System.Drawing.Point(993, 161)
         Me.LinkLabel34.Name = "LinkLabel34"
         Me.LinkLabel34.Size = New System.Drawing.Size(32, 19)
-        Me.LinkLabel34.TabIndex = 16
+        Me.LinkLabel34.TabIndex = 0
         Me.LinkLabel34.TabStop = True
         Me.LinkLabel34.Text = "F34"
         '
@@ -463,7 +463,7 @@ Partial Class AddDefect
         Me.LinkLabel33.Location = New System.Drawing.Point(899, 161)
         Me.LinkLabel33.Name = "LinkLabel33"
         Me.LinkLabel33.Size = New System.Drawing.Size(32, 19)
-        Me.LinkLabel33.TabIndex = 16
+        Me.LinkLabel33.TabIndex = 0
         Me.LinkLabel33.TabStop = True
         Me.LinkLabel33.Text = "F33"
         '
@@ -473,7 +473,7 @@ Partial Class AddDefect
         Me.LinkLabel32.Location = New System.Drawing.Point(820, 161)
         Me.LinkLabel32.Name = "LinkLabel32"
         Me.LinkLabel32.Size = New System.Drawing.Size(32, 19)
-        Me.LinkLabel32.TabIndex = 16
+        Me.LinkLabel32.TabIndex = 0
         Me.LinkLabel32.TabStop = True
         Me.LinkLabel32.Text = "F32"
         '
@@ -483,7 +483,7 @@ Partial Class AddDefect
         Me.LinkLabel31.Location = New System.Drawing.Point(1044, 141)
         Me.LinkLabel31.Name = "LinkLabel31"
         Me.LinkLabel31.Size = New System.Drawing.Size(30, 19)
-        Me.LinkLabel31.TabIndex = 16
+        Me.LinkLabel31.TabIndex = 0
         Me.LinkLabel31.TabStop = True
         Me.LinkLabel31.Text = "F31"
         '
@@ -493,7 +493,7 @@ Partial Class AddDefect
         Me.LinkLabel30.Location = New System.Drawing.Point(756, 141)
         Me.LinkLabel30.Name = "LinkLabel30"
         Me.LinkLabel30.Size = New System.Drawing.Size(32, 19)
-        Me.LinkLabel30.TabIndex = 16
+        Me.LinkLabel30.TabIndex = 0
         Me.LinkLabel30.TabStop = True
         Me.LinkLabel30.Text = "F30"
         '
@@ -503,7 +503,7 @@ Partial Class AddDefect
         Me.LinkLabel29.Location = New System.Drawing.Point(993, 102)
         Me.LinkLabel29.Name = "LinkLabel29"
         Me.LinkLabel29.Size = New System.Drawing.Size(32, 19)
-        Me.LinkLabel29.TabIndex = 16
+        Me.LinkLabel29.TabIndex = 0
         Me.LinkLabel29.TabStop = True
         Me.LinkLabel29.Text = "F29"
         '
@@ -513,7 +513,7 @@ Partial Class AddDefect
         Me.LinkLabel28.Location = New System.Drawing.Point(898, 102)
         Me.LinkLabel28.Name = "LinkLabel28"
         Me.LinkLabel28.Size = New System.Drawing.Size(32, 19)
-        Me.LinkLabel28.TabIndex = 16
+        Me.LinkLabel28.TabIndex = 0
         Me.LinkLabel28.TabStop = True
         Me.LinkLabel28.Text = "F28"
         '
@@ -523,7 +523,7 @@ Partial Class AddDefect
         Me.LinkLabel27.Location = New System.Drawing.Point(819, 102)
         Me.LinkLabel27.Name = "LinkLabel27"
         Me.LinkLabel27.Size = New System.Drawing.Size(32, 19)
-        Me.LinkLabel27.TabIndex = 16
+        Me.LinkLabel27.TabIndex = 0
         Me.LinkLabel27.TabStop = True
         Me.LinkLabel27.Text = "F27"
         '
@@ -533,7 +533,7 @@ Partial Class AddDefect
         Me.LinkLabel13.Location = New System.Drawing.Point(651, 209)
         Me.LinkLabel13.Name = "LinkLabel13"
         Me.LinkLabel13.Size = New System.Drawing.Size(31, 19)
-        Me.LinkLabel13.TabIndex = 16
+        Me.LinkLabel13.TabIndex = 0
         Me.LinkLabel13.TabStop = True
         Me.LinkLabel13.Text = "T13"
         '
@@ -543,7 +543,7 @@ Partial Class AddDefect
         Me.LinkLabel12.Location = New System.Drawing.Point(600, 120)
         Me.LinkLabel12.Name = "LinkLabel12"
         Me.LinkLabel12.Size = New System.Drawing.Size(31, 19)
-        Me.LinkLabel12.TabIndex = 16
+        Me.LinkLabel12.TabIndex = 0
         Me.LinkLabel12.TabStop = True
         Me.LinkLabel12.Text = "T12"
         '
@@ -553,7 +553,7 @@ Partial Class AddDefect
         Me.LinkLabel11.Location = New System.Drawing.Point(600, 247)
         Me.LinkLabel11.Name = "LinkLabel11"
         Me.LinkLabel11.Size = New System.Drawing.Size(29, 19)
-        Me.LinkLabel11.TabIndex = 16
+        Me.LinkLabel11.TabIndex = 0
         Me.LinkLabel11.TabStop = True
         Me.LinkLabel11.Text = "T11"
         '
@@ -563,7 +563,7 @@ Partial Class AddDefect
         Me.LinkLabel10.Location = New System.Drawing.Point(516, 120)
         Me.LinkLabel10.Name = "LinkLabel10"
         Me.LinkLabel10.Size = New System.Drawing.Size(31, 19)
-        Me.LinkLabel10.TabIndex = 16
+        Me.LinkLabel10.TabIndex = 0
         Me.LinkLabel10.TabStop = True
         Me.LinkLabel10.Text = "T10"
         '
@@ -573,7 +573,7 @@ Partial Class AddDefect
         Me.LinkLabel9.Location = New System.Drawing.Point(522, 247)
         Me.LinkLabel9.Name = "LinkLabel9"
         Me.LinkLabel9.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel9.TabIndex = 16
+        Me.LinkLabel9.TabIndex = 0
         Me.LinkLabel9.TabStop = True
         Me.LinkLabel9.Text = "T9"
         '
@@ -583,7 +583,7 @@ Partial Class AddDefect
         Me.LinkLabel8.Location = New System.Drawing.Point(438, 120)
         Me.LinkLabel8.Name = "LinkLabel8"
         Me.LinkLabel8.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel8.TabIndex = 16
+        Me.LinkLabel8.TabIndex = 0
         Me.LinkLabel8.TabStop = True
         Me.LinkLabel8.Text = "T8"
         '
@@ -593,7 +593,7 @@ Partial Class AddDefect
         Me.LinkLabel7.Location = New System.Drawing.Point(438, 247)
         Me.LinkLabel7.Name = "LinkLabel7"
         Me.LinkLabel7.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel7.TabIndex = 16
+        Me.LinkLabel7.TabIndex = 0
         Me.LinkLabel7.TabStop = True
         Me.LinkLabel7.Text = "T7"
         '
@@ -603,7 +603,7 @@ Partial Class AddDefect
         Me.LinkLabel6.Location = New System.Drawing.Point(606, 161)
         Me.LinkLabel6.Name = "LinkLabel6"
         Me.LinkLabel6.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel6.TabIndex = 16
+        Me.LinkLabel6.TabIndex = 0
         Me.LinkLabel6.TabStop = True
         Me.LinkLabel6.Text = "T6"
         '
@@ -613,7 +613,7 @@ Partial Class AddDefect
         Me.LinkLabel5.Location = New System.Drawing.Point(604, 209)
         Me.LinkLabel5.Name = "LinkLabel5"
         Me.LinkLabel5.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel5.TabIndex = 16
+        Me.LinkLabel5.TabIndex = 0
         Me.LinkLabel5.TabStop = True
         Me.LinkLabel5.Text = "T5"
         '
@@ -623,7 +623,7 @@ Partial Class AddDefect
         Me.LinkLabel4.Location = New System.Drawing.Point(516, 161)
         Me.LinkLabel4.Name = "LinkLabel4"
         Me.LinkLabel4.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel4.TabIndex = 16
+        Me.LinkLabel4.TabIndex = 0
         Me.LinkLabel4.TabStop = True
         Me.LinkLabel4.Text = "T4"
         '
@@ -633,7 +633,7 @@ Partial Class AddDefect
         Me.LinkLabel3.Location = New System.Drawing.Point(522, 209)
         Me.LinkLabel3.Name = "LinkLabel3"
         Me.LinkLabel3.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel3.TabIndex = 16
+        Me.LinkLabel3.TabIndex = 0
         Me.LinkLabel3.TabStop = True
         Me.LinkLabel3.Text = "T3"
         '
@@ -643,7 +643,7 @@ Partial Class AddDefect
         Me.LinkLabel2.Location = New System.Drawing.Point(438, 161)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(25, 19)
-        Me.LinkLabel2.TabIndex = 16
+        Me.LinkLabel2.TabIndex = 0
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = "T2"
         '
@@ -653,7 +653,7 @@ Partial Class AddDefect
         Me.LinkLabel1.Location = New System.Drawing.Point(438, 209)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(23, 19)
-        Me.LinkLabel1.TabIndex = 16
+        Me.LinkLabel1.TabIndex = 0
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "T1"
         '
@@ -683,7 +683,7 @@ Partial Class AddDefect
         Me.LinkLabel18.Location = New System.Drawing.Point(79, 161)
         Me.LinkLabel18.Name = "LinkLabel18"
         Me.LinkLabel18.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel18.TabIndex = 12
+        Me.LinkLabel18.TabIndex = 0
         Me.LinkLabel18.TabStop = True
         Me.LinkLabel18.Text = "D18"
         '
@@ -693,7 +693,7 @@ Partial Class AddDefect
         Me.LinkLabel19.Location = New System.Drawing.Point(176, 161)
         Me.LinkLabel19.Name = "LinkLabel19"
         Me.LinkLabel19.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel19.TabIndex = 12
+        Me.LinkLabel19.TabIndex = 0
         Me.LinkLabel19.TabStop = True
         Me.LinkLabel19.Text = "D19"
         '
@@ -703,7 +703,7 @@ Partial Class AddDefect
         Me.LinkLabel26.Location = New System.Drawing.Point(101, 263)
         Me.LinkLabel26.Name = "LinkLabel26"
         Me.LinkLabel26.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel26.TabIndex = 12
+        Me.LinkLabel26.TabIndex = 0
         Me.LinkLabel26.TabStop = True
         Me.LinkLabel26.Text = "P26"
         '
@@ -713,7 +713,7 @@ Partial Class AddDefect
         Me.LinkLabel25.Location = New System.Drawing.Point(180, 263)
         Me.LinkLabel25.Name = "LinkLabel25"
         Me.LinkLabel25.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel25.TabIndex = 12
+        Me.LinkLabel25.TabIndex = 0
         Me.LinkLabel25.TabStop = True
         Me.LinkLabel25.Text = "P25"
         '
@@ -723,7 +723,7 @@ Partial Class AddDefect
         Me.LinkLabel24.Location = New System.Drawing.Point(297, 263)
         Me.LinkLabel24.Name = "LinkLabel24"
         Me.LinkLabel24.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel24.TabIndex = 12
+        Me.LinkLabel24.TabIndex = 0
         Me.LinkLabel24.TabStop = True
         Me.LinkLabel24.Text = "P24"
         '
@@ -733,7 +733,7 @@ Partial Class AddDefect
         Me.LinkLabel23.Location = New System.Drawing.Point(79, 225)
         Me.LinkLabel23.Name = "LinkLabel23"
         Me.LinkLabel23.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel23.TabIndex = 12
+        Me.LinkLabel23.TabIndex = 0
         Me.LinkLabel23.TabStop = True
         Me.LinkLabel23.Text = "P23"
         '
@@ -743,7 +743,7 @@ Partial Class AddDefect
         Me.LinkLabel22.Location = New System.Drawing.Point(180, 209)
         Me.LinkLabel22.Name = "LinkLabel22"
         Me.LinkLabel22.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel22.TabIndex = 12
+        Me.LinkLabel22.TabIndex = 0
         Me.LinkLabel22.TabStop = True
         Me.LinkLabel22.Text = "P22"
         '
@@ -753,7 +753,7 @@ Partial Class AddDefect
         Me.LinkLabel21.Location = New System.Drawing.Point(343, 225)
         Me.LinkLabel21.Name = "LinkLabel21"
         Me.LinkLabel21.Size = New System.Drawing.Size(31, 19)
-        Me.LinkLabel21.TabIndex = 12
+        Me.LinkLabel21.TabIndex = 0
         Me.LinkLabel21.TabStop = True
         Me.LinkLabel21.Text = "P21"
         '
@@ -763,7 +763,7 @@ Partial Class AddDefect
         Me.LinkLabel20.Location = New System.Drawing.Point(297, 161)
         Me.LinkLabel20.Name = "LinkLabel20"
         Me.LinkLabel20.Size = New System.Drawing.Size(35, 19)
-        Me.LinkLabel20.TabIndex = 12
+        Me.LinkLabel20.TabIndex = 0
         Me.LinkLabel20.TabStop = True
         Me.LinkLabel20.Text = "D20"
         '
@@ -774,7 +774,7 @@ Partial Class AddDefect
         Me.LinkLabel17.Name = "LinkLabel17"
         Me.LinkLabel17.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.LinkLabel17.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel17.TabIndex = 12
+        Me.LinkLabel17.TabIndex = 0
         Me.LinkLabel17.TabStop = True
         Me.LinkLabel17.Text = "D17"
         '
@@ -784,7 +784,7 @@ Partial Class AddDefect
         Me.LinkLabel16.Location = New System.Drawing.Point(176, 102)
         Me.LinkLabel16.Name = "LinkLabel16"
         Me.LinkLabel16.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel16.TabIndex = 12
+        Me.LinkLabel16.TabIndex = 0
         Me.LinkLabel16.TabStop = True
         Me.LinkLabel16.Text = "D16"
         '
@@ -794,7 +794,7 @@ Partial Class AddDefect
         Me.LinkLabel15.Location = New System.Drawing.Point(30, 120)
         Me.LinkLabel15.Name = "LinkLabel15"
         Me.LinkLabel15.Size = New System.Drawing.Size(33, 19)
-        Me.LinkLabel15.TabIndex = 12
+        Me.LinkLabel15.TabIndex = 0
         Me.LinkLabel15.TabStop = True
         Me.LinkLabel15.Text = "D15"
         '
@@ -814,7 +814,7 @@ Partial Class AddDefect
         Me.DefectLocationComboBox.Location = New System.Drawing.Point(742, 44)
         Me.DefectLocationComboBox.Name = "DefectLocationComboBox"
         Me.DefectLocationComboBox.Size = New System.Drawing.Size(150, 25)
-        Me.DefectLocationComboBox.TabIndex = 9
+        Me.DefectLocationComboBox.TabIndex = 11
         Me.DefectLocationComboBox.Text = "Select"
         '
         'DefectLocationLabel
@@ -832,7 +832,7 @@ Partial Class AddDefect
         Me.DefectComboBox.Location = New System.Drawing.Point(461, 44)
         Me.DefectComboBox.Name = "DefectComboBox"
         Me.DefectComboBox.Size = New System.Drawing.Size(275, 25)
-        Me.DefectComboBox.TabIndex = 8
+        Me.DefectComboBox.TabIndex = 10
         Me.DefectComboBox.Text = "Select Option"
         '
         'DefectLabel
@@ -850,7 +850,7 @@ Partial Class AddDefect
         Me.DefectOriginComboBox.Location = New System.Drawing.Point(180, 44)
         Me.DefectOriginComboBox.Name = "DefectOriginComboBox"
         Me.DefectOriginComboBox.Size = New System.Drawing.Size(275, 25)
-        Me.DefectOriginComboBox.TabIndex = 7
+        Me.DefectOriginComboBox.TabIndex = 9
         Me.DefectOriginComboBox.Text = "Select Option"
         '
         'DefectOriginLabel
@@ -868,7 +868,7 @@ Partial Class AddDefect
         Me.ReworkTypeComboBox.Location = New System.Drawing.Point(20, 44)
         Me.ReworkTypeComboBox.Name = "ReworkTypeComboBox"
         Me.ReworkTypeComboBox.Size = New System.Drawing.Size(153, 25)
-        Me.ReworkTypeComboBox.TabIndex = 6
+        Me.ReworkTypeComboBox.TabIndex = 8
         Me.ReworkTypeComboBox.Text = "Select Option"
         '
         'ReworkTypeLabel
@@ -888,7 +888,7 @@ Partial Class AddDefect
         Me.OK_Button.Location = New System.Drawing.Point(756, 628)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(184, 31)
-        Me.OK_Button.TabIndex = 20
+        Me.OK_Button.TabIndex = 14
         Me.OK_Button.Text = "Add Defect"
         Me.OK_Button.UseVisualStyleBackColor = True
         '
@@ -900,7 +900,7 @@ Partial Class AddDefect
         Me.Cancel_Button.Location = New System.Drawing.Point(973, 628)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(152, 31)
-        Me.Cancel_Button.TabIndex = 21
+        Me.Cancel_Button.TabIndex = 15
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
         '
@@ -920,7 +920,7 @@ Partial Class AddDefect
         Me.CommentsRichTextBox.Location = New System.Drawing.Point(10, 16)
         Me.CommentsRichTextBox.Name = "CommentsRichTextBox"
         Me.CommentsRichTextBox.Size = New System.Drawing.Size(527, 127)
-        Me.CommentsRichTextBox.TabIndex = 11
+        Me.CommentsRichTextBox.TabIndex = 13
         Me.CommentsRichTextBox.Text = ""
         '
         'GroupBox3
@@ -976,7 +976,7 @@ Partial Class AddDefect
         Me.AddImageButton3.Location = New System.Drawing.Point(402, 159)
         Me.AddImageButton3.Name = "AddImageButton3"
         Me.AddImageButton3.Size = New System.Drawing.Size(110, 33)
-        Me.AddImageButton3.TabIndex = 16
+        Me.AddImageButton3.TabIndex = 0
         Me.AddImageButton3.Text = "Add Image"
         Me.AddImageButton3.UseVisualStyleBackColor = True
         '
@@ -987,7 +987,7 @@ Partial Class AddDefect
         Me.AddImageButton2.Location = New System.Drawing.Point(218, 159)
         Me.AddImageButton2.Name = "AddImageButton2"
         Me.AddImageButton2.Size = New System.Drawing.Size(110, 33)
-        Me.AddImageButton2.TabIndex = 15
+        Me.AddImageButton2.TabIndex = 0
         Me.AddImageButton2.Text = "Add Image"
         Me.AddImageButton2.UseVisualStyleBackColor = True
         '
@@ -998,7 +998,7 @@ Partial Class AddDefect
         Me.AddImageButton1.Location = New System.Drawing.Point(28, 159)
         Me.AddImageButton1.Name = "AddImageButton1"
         Me.AddImageButton1.Size = New System.Drawing.Size(110, 33)
-        Me.AddImageButton1.TabIndex = 14
+        Me.AddImageButton1.TabIndex = 0
         Me.AddImageButton1.Text = "Add Image"
         Me.AddImageButton1.UseVisualStyleBackColor = True
         '

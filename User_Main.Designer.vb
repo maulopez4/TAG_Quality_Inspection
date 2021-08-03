@@ -35,7 +35,7 @@ Partial Class User_Main
         Me.AdminGroupBox = New System.Windows.Forms.GroupBox()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.AddUserButton = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.CurrentUserTextBox = New System.Windows.Forms.TextBox()
         Me.UserGroupBox.SuspendLayout()
@@ -145,7 +145,7 @@ Partial Class User_Main
         '
         Me.AdminGroupBox.Controls.Add(Me.Button8)
         Me.AdminGroupBox.Controls.Add(Me.Button7)
-        Me.AdminGroupBox.Controls.Add(Me.Button5)
+        Me.AdminGroupBox.Controls.Add(Me.AddUserButton)
         Me.AdminGroupBox.Controls.Add(Me.Button6)
         Me.AdminGroupBox.Location = New System.Drawing.Point(6, 368)
         Me.AdminGroupBox.Name = "AdminGroupBox"
@@ -172,14 +172,14 @@ Partial Class User_Main
         Me.Button7.Text = "Add Model"
         Me.Button7.UseVisualStyleBackColor = True
         '
-        'Button5
+        'AddUserButton
         '
-        Me.Button5.Location = New System.Drawing.Point(12, 22)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(162, 60)
-        Me.Button5.TabIndex = 0
-        Me.Button5.Text = "Add User"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.AddUserButton.Location = New System.Drawing.Point(12, 22)
+        Me.AddUserButton.Name = "AddUserButton"
+        Me.AddUserButton.Size = New System.Drawing.Size(162, 60)
+        Me.AddUserButton.TabIndex = 0
+        Me.AddUserButton.Text = "Add User"
+        Me.AddUserButton.UseVisualStyleBackColor = True
         '
         'Button6
         '
@@ -233,7 +233,7 @@ Partial Class User_Main
     Friend WithEvents AdminGroupBox As GroupBox
     Friend WithEvents Button8 As Button
     Friend WithEvents Button7 As Button
-    Friend WithEvents Button5 As Button
+    Friend WithEvents AddUserButton As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents CurrentUserTextBox As TextBox
 End Class
