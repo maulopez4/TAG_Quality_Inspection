@@ -27,7 +27,7 @@ Partial Class AddPicture
         Me.cmdok = New System.Windows.Forms.Button()
         Me.cmdno = New System.Windows.Forms.Button()
         Me.pbcapture = New System.Windows.Forms.Button()
-        Me.PictureName = New System.Windows.Forms.TextBox()
+        Me.ImagePathText = New System.Windows.Forms.TextBox()
         CType(Me.pbcaptureimage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -66,20 +66,19 @@ Partial Class AddPicture
         Me.pbcapture.TabIndex = 1
         Me.pbcapture.UseVisualStyleBackColor = True
         '
-        'PictureName
+        'ImagePathText
         '
-        Me.PictureName.Enabled = False
-        Me.PictureName.Location = New System.Drawing.Point(420, 503)
-        Me.PictureName.Name = "PictureName"
-        Me.PictureName.Size = New System.Drawing.Size(204, 23)
-        Me.PictureName.TabIndex = 2
+        Me.ImagePathText.Location = New System.Drawing.Point(420, 503)
+        Me.ImagePathText.Name = "ImagePathText"
+        Me.ImagePathText.Size = New System.Drawing.Size(204, 23)
+        Me.ImagePathText.TabIndex = 2
         '
         'AddPicture
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(652, 552)
-        Me.Controls.Add(Me.PictureName)
+        Me.Controls.Add(Me.ImagePathText)
         Me.Controls.Add(Me.pbcapture)
         Me.Controls.Add(Me.cmdno)
         Me.Controls.Add(Me.cmdok)
@@ -96,5 +95,5 @@ Partial Class AddPicture
     Friend WithEvents cmdok As Button
     Friend WithEvents cmdno As Button
     Friend WithEvents pbcapture As Button
-    Friend WithEvents PictureName As TextBox
+    Friend WithEvents ImagePathText As TextBox
 End Class

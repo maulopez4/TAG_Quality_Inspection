@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TAG_Quality_Inspection", "TAG_Quality_Inspection.vbproj", "{85F3403F-5C8E-48B5-91E2-128444AF9360}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TAG_Quality_Inspection", "TAG_Quality_Inspection.vbproj", "{85F3403F-5C8E-48B5-91E2-128444AF9360}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3EE37A7-EBAD-4178-9009-03DD851C1A6A}"
+	ProjectSection(SolutionItems) = preProject
+		Image1.jpg = Image1.jpg
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

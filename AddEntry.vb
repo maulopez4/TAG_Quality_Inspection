@@ -1,19 +1,17 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Configuration
-
-Public Class AddDefect
-    Dim connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
-    Dim connection As New MySqlConnection(connection_string)
-
-    Public IPath As String = AddPicture.GetImagePath
-    'Load images variables
-    Dim imgpath1 As String
-    Dim arrImage1() As Byte
-    Dim imgpath2 As String
-    Dim arrImage2() As Byte
-    Dim imgpath3 As String
-    Dim arrImage3() As Byte
+Imports AForge
+Imports AForge.Video
+Imports AForge.Video.DirectShow
+Imports System.IO
+Public Class AddEntry
+    Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
+    Private ReadOnly connection As New MySqlConnection(connection_string)
     Public Shared Property WorkOrderValue As Object
+    Dim arrImage1() As Byte
+    Dim arrImage2() As Byte
+    Dim arrImage3() As Byte
+    Dim workorder_approval As Boolean
     Private Sub AddDefect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim t As String = Date.Now.ToString("HH:mm:ss")
         TimeTextBox.Text = t
@@ -57,6 +55,8 @@ Public Class AddDefect
             DefectOriginComboBox.ValueMember = "workstation_code"
             DefectOriginComboBox.DisplayMember = "workstation_description"
         End Using
+        ARPictureBox.Image = My.Resources.leer_logo
+        ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
     End Sub
     Friend Shared Function GetWorkOrder()
         Return WorkOrderValue
@@ -82,8 +82,43 @@ Public Class AddDefect
         End With
     End Sub
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
+        '***Add images***************************************************************************
+        If PictureBox1.ImageLocation IsNot Nothing Then
+            Dim mstream1 As New System.IO.MemoryStream()
+            PictureBox1.Image.Save(mstream1, Imaging.ImageFormat.Jpeg)
+            PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            arrImage1 = mstream1.GetBuffer()
+            Dim FileSize1 As UInt32
+            FileSize1 = mstream1.Length
+            mstream1.Close()
+        Else
+            PictureBox1.Image = My.Resources.leer_logo
+            PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        End If
+        If PictureBox2.ImageLocation IsNot Nothing Then
+            Dim mstream2 As New System.IO.MemoryStream()
+            PictureBox2.Image.Save(mstream2, Imaging.ImageFormat.Jpeg)
+            arrImage2 = mstream2.GetBuffer()
+            Dim FileSize2 As UInt32
+            FileSize2 = mstream2.Length
+            mstream2.Close()
+        Else
+            PictureBox2.Image = My.Resources.leer_logo
+        End If
+        If PictureBox3.ImageLocation IsNot Nothing Then
+            Dim mstream3 As New System.IO.MemoryStream()
+            PictureBox3.Image.Save(mstream3, Imaging.ImageFormat.Jpeg)
+            arrImage3 = mstream3.GetBuffer()
+            Dim FileSize3 As UInt32
+            FileSize3 = mstream3.Length
+            mstream3.Close()
+        Else
+            PictureBox3.Image = My.Resources.leer_logo
+        End If
 
-        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `reported_by`, `workorder_workstation`, `workorder_number`, `workorder_model`, `workorder_consecutive`, `workorder_serial`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments`, `additional_error`, `Image1`) VALUES (@workorder_date,@workorder_time,@reported_by,@workorder_workstation,@workorder_number,@workorder_model,@workorder_consecutive,@workorder_serial,@workorder_rework,@workorder_defect_origin,@workorder_defect,@workorder_defect_location,@workorder_comments,@additional_error,@Image1)", connection)
+        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `reported_by`, `workorder_workstation`, `workorder_number`, `workorder_model`, `workorder_consecutive`, `workorder_serial`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments`, `additional_error`, `Image1`, `Image2`, `Image3`) 
+                                        VALUES 
+                                        (@workorder_date,@workorder_time,@reported_by,@workorder_workstation,@workorder_number,@workorder_model,@workorder_consecutive,@workorder_serial,@workorder_rework,@workorder_defect_origin,@workorder_defect,@workorder_defect_location,@workorder_comments,@additional_error,@Image1,@Image2,@Image3)", connection)
         ' add Parameters to the command
         command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
         command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
@@ -100,80 +135,84 @@ Public Class AddDefect
         command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = CommentsRichTextBox.Text
         command.Parameters.Add("@additional_error", MySqlDbType.VarChar).Value = AdditionalDefectsCheckBox.Text
         command.Parameters.Add("@Image1", MySqlDbType.LongBlob).Value = arrImage1
+        command.Parameters.Add("@Image2", MySqlDbType.LongBlob).Value = arrImage2
+        command.Parameters.Add("@Image3", MySqlDbType.LongBlob).Value = arrImage3
         connection.Open()
-        '***Add images***************************************************************************
-        Dim mstream1 As New System.IO.MemoryStream()
-        PictureBox1.Image.Save(mstream1, Imaging.ImageFormat.Jpeg)
-        arrImage1 = mstream1.GetBuffer()
-        Dim FileSize1 As UInt32
-        FileSize1 = mstream1.Length
-        mstream1.Close()
-        Dim mstream2 As New System.IO.MemoryStream()
-        PictureBox2.Image.Save(mstream2, Imaging.ImageFormat.Jpeg)
-        arrImage2 = mstream2.GetBuffer()
-        Dim FileSize2 As UInt32
-        FileSize2 = mstream2.Length
-        mstream2.Close()
-        Dim mstream3 As New System.IO.MemoryStream()
-        PictureBox3.Image.Save(mstream3, Imaging.ImageFormat.Jpeg)
-        arrImage3 = mstream3.GetBuffer()
-        Dim FileSize3 As UInt32
-        FileSize3 = mstream3.Length
-        mstream3.Close()
 
-        If AdditionalDefectsCheckBox.Checked <> True Then
-            If command.ExecuteNonQuery() = 1 Then
-                MessageBox.Show("Data Inserted")
-            Else
-                MessageBox.Show("ERROR")
-            End If
-            Close()
+        'If AdditionalDefectsCheckBox.Checked <> True Then
+        If command.ExecuteNonQuery() = 1 Then
+            MessageBox.Show("Defect Data Entered")
         Else
-            If command.ExecuteNonQuery() = 1 Then
-                AdditionalDefectsCheckBox.Checked = False
-                PictureBox1.Image = Nothing
-                PictureBox2.Image = Nothing
-                PictureBox3.Image = Nothing
-                CommentsRichTextBox.Clear()
-                MessageBox.Show("Data Inserted")
-            Else
-                MessageBox.Show("ERROR")
-            End If
+            MessageBox.Show("ERROR")
         End If
+        Close()
+        'Else
+        '    If command.ExecuteNonQuery() = 1 Then
+        '        MessageBox.Show("Defect Data Entered, Please enter next defect Data")
+        '        Controls.Clear()
+        '        InitializeComponent()
+        '        AddDefect_Load(e, e)
+        '    Else
+        '        MessageBox.Show("ERROR")
+        '    End If
+        'End If
         connection.Close()
     End Sub
     Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged
         WorkOrderValue = WorkOrderTextBox.Text
     End Sub
+    Private Sub PictureButton1_Click(sender As Object, e As EventArgs) Handles PictureButton1.Click
+        Dim newForm As New AddPicture()
+        newForm.Show()
+    End Sub
+    Private Sub PictureButton2_Click(sender As Object, e As EventArgs) Handles PictureButton2.Click
+        Dim newForm As New AddPicture()
+        newForm.Show()
+    End Sub
+    Private Sub PictureButton3_Click(sender As Object, e As EventArgs) Handles PictureButton3.Click
+        Dim newForm As New AddPicture()
+        newForm.Show()
+    End Sub
     Private Sub AddImageButton1_Click(sender As Object, e As EventArgs) Handles AddImageButton1.Click
-        'Dim ImageName1 As String = GetWorkOrder()
-        'Dim newForm As New AddPicture()
-        'newForm.Show()
-
-        'imgpath1 = AddPicture.SavedImagePath
-        'PictureBox1.ImageLocation = imgpath1
-
-        '------------------------------------------------------------------------------------------------------
         Try
-            Dim OFD As FileDialog = New OpenFileDialog()
-            OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
+            Dim imgpath1 As String
+            Dim OFD As FileDialog = New OpenFileDialog With {
+            .InitialDirectory = Environment.SpecialFolder.UserProfile.MyPictures,
+            .FileName = $"{WorkOrderValue}-*",
+            .SupportMultiDottedExtensions = True,
+            .AddExtension = True,
+            .Filter = "JPG File|*.jpg"
+            }
             If OFD.ShowDialog() = DialogResult.OK Then
                 imgpath1 = OFD.FileName
                 PictureBox1.ImageLocation = imgpath1
+                PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            Else
+                PictureBox1.Image = My.Resources.leer_logo
+                PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
             End If
             OFD = Nothing
         Catch ex As Exception
             MessageBox.Show(ex.Message.ToString())
         End Try
-        '------------------------------------------------------------------------------------------------------
     End Sub
     Private Sub AddImageButton2_Click(sender As Object, e As EventArgs) Handles AddImageButton2.Click
         Try
-            Dim OFD As FileDialog = New OpenFileDialog()
-            OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
+            Dim imgpath2 As String
+            Dim OFD As FileDialog = New OpenFileDialog With {
+            .InitialDirectory = Environment.SpecialFolder.UserProfile.MyPictures,
+            .FileName = $"{WorkOrderValue}-*",
+            .SupportMultiDottedExtensions = True,
+            .AddExtension = True,
+            .Filter = "JPG File|*.jpg"
+            }
             If OFD.ShowDialog() = DialogResult.OK Then
                 imgpath2 = OFD.FileName
                 PictureBox2.ImageLocation = imgpath2
+                PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
+            Else
+                PictureBox2.Image = My.Resources.leer_logo
+                PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
             End If
             OFD = Nothing
         Catch ex As Exception
@@ -182,11 +221,21 @@ Public Class AddDefect
     End Sub
     Private Sub AddImageButton3_Click(sender As Object, e As EventArgs) Handles AddImageButton3.Click
         Try
-            Dim OFD As FileDialog = New OpenFileDialog()
-            OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
+            Dim imgpath3 As String
+            Dim OFD As FileDialog = New OpenFileDialog With {
+            .InitialDirectory = Environment.SpecialFolder.UserProfile.MyPictures,
+            .FileName = $"{WorkOrderValue}-*",
+            .SupportMultiDottedExtensions = True,
+            .AddExtension = True,
+            .Filter = "JPG File|*.jpg"
+            }
             If OFD.ShowDialog() = DialogResult.OK Then
                 imgpath3 = OFD.FileName
                 PictureBox3.ImageLocation = imgpath3
+                PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+            Else
+                PictureBox3.Image = My.Resources.leer_logo
+                PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
             End If
             OFD = Nothing
         Catch ex As Exception
@@ -310,21 +359,23 @@ Public Class AddDefect
     Private Sub LinkLabel39_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel39.LinkClicked
         DefectLocationComboBox.SelectedValue = LinkLabel39.Text
     End Sub
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        'Dim ImageName1 As String = GetWorkOrder()
-        'Dim newForm As New AddPicture()
-        'newForm.Show()
-        '------------------------------------------------------------------------------------------------------
-        'Try
-        '    Dim OFD As FileDialog = New OpenFileDialog()
-        '    OFD.Filter = “Image File (*.png;*)|*.png;*”
-        '    If OFD.ShowDialog() = DialogResult.OK Then
-        'imgpath1 = AddPicture.GetImagePath
-        'PictureBox1.ImageLocation = imgpath1
-        'End If
-        '    'OFD = Nothing
-        'Catch ex As Exception
-        '    MessageBox.Show(ex.Message.ToString())
-        'End Try
+
+    Private Sub ApprovedRadio_CheckedChanged(sender As Object, e As EventArgs) Handles ApprovedRadio.CheckedChanged
+        ARPictureBox.Image = My.Resources.Ok_icon
+        ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
     End Sub
+
+    Private Sub RejectedRadio_CheckedChanged(sender As Object, e As EventArgs) Handles RejectedRadio.CheckedChanged
+        ARPictureBox.Image = My.Resources.Actions_edit_delete_icon
+        ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
+    End Sub
+    ''Convert Bitmap image to Byte
+    'Public Shared Function BitmapToByteArray(ByVal value As Bitmap) As Byte()
+    '    Dim bitmapBytes As Byte()
+    '    Using MemStream As New System.IO.MemoryStream
+    '        value.Save(MemStream, Imaging.ImageFormat.Jpeg)
+    '        bitmapBytes = MemStream.ToArray
+    '    End Using
+    '    Return bitmapBytes
+    'End Function
 End Class

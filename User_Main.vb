@@ -1,6 +1,6 @@
 ﻿Public Class User_Main
     Private Sub AddNewDefectButton_Click(sender As Object, e As EventArgs) Handles AddNewDefectButton.Click
-        Dim newForm As New AddDefect()
+        Dim newForm As New AddEntry()
         newForm.Show()
     End Sub
     Private Sub User_Main_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -29,7 +29,7 @@
         CurrentUserTextBox.Text = "USER/ROLE: " & login_user.ToUpper & "/" & login_role.ToUpper
     End Sub
     Private Sub AddUserButton_Click(sender As Object, e As EventArgs) Handles AddUserButton.Click
-        Dim newForm As New AddUserForm()
+        Dim newForm As New AddUser()
         newForm.Show()
     End Sub
 End Class
