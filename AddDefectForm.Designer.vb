@@ -100,12 +100,12 @@ Partial Class AddDefect
         Me.CommentsGroupBox = New System.Windows.Forms.GroupBox()
         Me.CommentsRichTextBox = New System.Windows.Forms.RichTextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.AddImageButton3 = New System.Windows.Forms.Button()
         Me.AddImageButton2 = New System.Windows.Forms.Button()
         Me.AddImageButton1 = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -113,9 +113,9 @@ Partial Class AddDefect
         CType(Me.Zona1PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CommentsGroupBox.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -152,7 +152,7 @@ Partial Class AddDefect
         Me.ModelComboBox.Location = New System.Drawing.Point(588, 39)
         Me.ModelComboBox.Name = "ModelComboBox"
         Me.ModelComboBox.Size = New System.Drawing.Size(200, 25)
-        Me.ModelComboBox.TabIndex = 7
+        Me.ModelComboBox.TabIndex = 2
         '
         'WorkStationComboBox
         '
@@ -193,7 +193,7 @@ Partial Class AddDefect
         Me.SerialNumberTextBox.Location = New System.Drawing.Point(380, 94)
         Me.SerialNumberTextBox.Name = "SerialNumberTextBox"
         Me.SerialNumberTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.SerialNumberTextBox.TabIndex = 6
+        Me.SerialNumberTextBox.TabIndex = 4
         '
         'ModelDescriptionTextBox
         '
@@ -201,7 +201,7 @@ Partial Class AddDefect
         Me.ModelDescriptionTextBox.Location = New System.Drawing.Point(794, 40)
         Me.ModelDescriptionTextBox.Name = "ModelDescriptionTextBox"
         Me.ModelDescriptionTextBox.Size = New System.Drawing.Size(280, 25)
-        Me.ModelDescriptionTextBox.TabIndex = 4
+        Me.ModelDescriptionTextBox.TabIndex = 99
         Me.ModelDescriptionTextBox.Visible = False
         '
         'SerialNumberLabel
@@ -253,7 +253,7 @@ Partial Class AddDefect
         Me.WorkOrderTextBox.Location = New System.Drawing.Point(382, 40)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
         Me.WorkOrderTextBox.Size = New System.Drawing.Size(200, 25)
-        Me.WorkOrderTextBox.TabIndex = 3
+        Me.WorkOrderTextBox.TabIndex = 1
         '
         'WorkOrderLabel
         '
@@ -359,7 +359,7 @@ Partial Class AddDefect
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.GroupBox2.Location = New System.Drawing.Point(10, 130)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1115, 355)
+        Me.GroupBox2.Size = New System.Drawing.Size(1115, 331)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Defect Data:"
@@ -372,14 +372,14 @@ Partial Class AddDefect
         Me.AdditionalDefectsCheckBox.Name = "AdditionalDefectsCheckBox"
         Me.AdditionalDefectsCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.AdditionalDefectsCheckBox.Size = New System.Drawing.Size(46, 19)
-        Me.AdditionalDefectsCheckBox.TabIndex = 12
+        Me.AdditionalDefectsCheckBox.TabIndex = 10
         Me.AdditionalDefectsCheckBox.Text = "YES"
         Me.AdditionalDefectsCheckBox.UseVisualStyleBackColor = True
         '
         'LinkLabel14
         '
         Me.LinkLabel14.AutoSize = True
-        Me.LinkLabel14.Location = New System.Drawing.Point(651, 182)
+        Me.LinkLabel14.Location = New System.Drawing.Point(651, 161)
         Me.LinkLabel14.Name = "LinkLabel14"
         Me.LinkLabel14.Size = New System.Drawing.Size(31, 19)
         Me.LinkLabel14.TabIndex = 16
@@ -389,7 +389,7 @@ Partial Class AddDefect
         'LinkLabel39
         '
         Me.LinkLabel39.AutoSize = True
-        Me.LinkLabel39.Location = New System.Drawing.Point(1039, 306)
+        Me.LinkLabel39.Location = New System.Drawing.Point(1044, 263)
         Me.LinkLabel39.Name = "LinkLabel39"
         Me.LinkLabel39.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel39.TabIndex = 16
@@ -399,7 +399,7 @@ Partial Class AddDefect
         'LinkLabel38
         '
         Me.LinkLabel38.AutoSize = True
-        Me.LinkLabel38.Location = New System.Drawing.Point(763, 306)
+        Me.LinkLabel38.Location = New System.Drawing.Point(755, 263)
         Me.LinkLabel38.Name = "LinkLabel38"
         Me.LinkLabel38.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel38.TabIndex = 16
@@ -409,7 +409,7 @@ Partial Class AddDefect
         'LinkLabel37
         '
         Me.LinkLabel37.AutoSize = True
-        Me.LinkLabel37.Location = New System.Drawing.Point(963, 246)
+        Me.LinkLabel37.Location = New System.Drawing.Point(992, 209)
         Me.LinkLabel37.Name = "LinkLabel37"
         Me.LinkLabel37.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel37.TabIndex = 16
@@ -430,7 +430,7 @@ Partial Class AddDefect
         'LinkLabel36
         '
         Me.LinkLabel36.AutoSize = True
-        Me.LinkLabel36.Location = New System.Drawing.Point(897, 236)
+        Me.LinkLabel36.Location = New System.Drawing.Point(899, 209)
         Me.LinkLabel36.Name = "LinkLabel36"
         Me.LinkLabel36.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel36.TabIndex = 16
@@ -440,7 +440,7 @@ Partial Class AddDefect
         'LinkLabel35
         '
         Me.LinkLabel35.AutoSize = True
-        Me.LinkLabel35.Location = New System.Drawing.Point(807, 246)
+        Me.LinkLabel35.Location = New System.Drawing.Point(820, 209)
         Me.LinkLabel35.Name = "LinkLabel35"
         Me.LinkLabel35.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel35.TabIndex = 16
@@ -450,7 +450,7 @@ Partial Class AddDefect
         'LinkLabel34
         '
         Me.LinkLabel34.AutoSize = True
-        Me.LinkLabel34.Location = New System.Drawing.Point(963, 196)
+        Me.LinkLabel34.Location = New System.Drawing.Point(993, 161)
         Me.LinkLabel34.Name = "LinkLabel34"
         Me.LinkLabel34.Size = New System.Drawing.Size(32, 19)
         Me.LinkLabel34.TabIndex = 16
@@ -460,7 +460,7 @@ Partial Class AddDefect
         'LinkLabel33
         '
         Me.LinkLabel33.AutoSize = True
-        Me.LinkLabel33.Location = New System.Drawing.Point(898, 182)
+        Me.LinkLabel33.Location = New System.Drawing.Point(899, 161)
         Me.LinkLabel33.Name = "LinkLabel33"
         Me.LinkLabel33.Size = New System.Drawing.Size(32, 19)
         Me.LinkLabel33.TabIndex = 16
@@ -470,7 +470,7 @@ Partial Class AddDefect
         'LinkLabel32
         '
         Me.LinkLabel32.AutoSize = True
-        Me.LinkLabel32.Location = New System.Drawing.Point(798, 196)
+        Me.LinkLabel32.Location = New System.Drawing.Point(820, 161)
         Me.LinkLabel32.Name = "LinkLabel32"
         Me.LinkLabel32.Size = New System.Drawing.Size(32, 19)
         Me.LinkLabel32.TabIndex = 16
@@ -480,7 +480,7 @@ Partial Class AddDefect
         'LinkLabel31
         '
         Me.LinkLabel31.AutoSize = True
-        Me.LinkLabel31.Location = New System.Drawing.Point(1039, 161)
+        Me.LinkLabel31.Location = New System.Drawing.Point(1044, 141)
         Me.LinkLabel31.Name = "LinkLabel31"
         Me.LinkLabel31.Size = New System.Drawing.Size(30, 19)
         Me.LinkLabel31.TabIndex = 16
@@ -490,7 +490,7 @@ Partial Class AddDefect
         'LinkLabel30
         '
         Me.LinkLabel30.AutoSize = True
-        Me.LinkLabel30.Location = New System.Drawing.Point(763, 161)
+        Me.LinkLabel30.Location = New System.Drawing.Point(756, 141)
         Me.LinkLabel30.Name = "LinkLabel30"
         Me.LinkLabel30.Size = New System.Drawing.Size(32, 19)
         Me.LinkLabel30.TabIndex = 16
@@ -500,7 +500,7 @@ Partial Class AddDefect
         'LinkLabel29
         '
         Me.LinkLabel29.AutoSize = True
-        Me.LinkLabel29.Location = New System.Drawing.Point(963, 120)
+        Me.LinkLabel29.Location = New System.Drawing.Point(993, 102)
         Me.LinkLabel29.Name = "LinkLabel29"
         Me.LinkLabel29.Size = New System.Drawing.Size(32, 19)
         Me.LinkLabel29.TabIndex = 16
@@ -510,7 +510,7 @@ Partial Class AddDefect
         'LinkLabel28
         '
         Me.LinkLabel28.AutoSize = True
-        Me.LinkLabel28.Location = New System.Drawing.Point(898, 120)
+        Me.LinkLabel28.Location = New System.Drawing.Point(898, 102)
         Me.LinkLabel28.Name = "LinkLabel28"
         Me.LinkLabel28.Size = New System.Drawing.Size(32, 19)
         Me.LinkLabel28.TabIndex = 16
@@ -520,7 +520,7 @@ Partial Class AddDefect
         'LinkLabel27
         '
         Me.LinkLabel27.AutoSize = True
-        Me.LinkLabel27.Location = New System.Drawing.Point(798, 120)
+        Me.LinkLabel27.Location = New System.Drawing.Point(819, 102)
         Me.LinkLabel27.Name = "LinkLabel27"
         Me.LinkLabel27.Size = New System.Drawing.Size(32, 19)
         Me.LinkLabel27.TabIndex = 16
@@ -530,7 +530,7 @@ Partial Class AddDefect
         'LinkLabel13
         '
         Me.LinkLabel13.AutoSize = True
-        Me.LinkLabel13.Location = New System.Drawing.Point(651, 236)
+        Me.LinkLabel13.Location = New System.Drawing.Point(651, 209)
         Me.LinkLabel13.Name = "LinkLabel13"
         Me.LinkLabel13.Size = New System.Drawing.Size(31, 19)
         Me.LinkLabel13.TabIndex = 16
@@ -540,7 +540,7 @@ Partial Class AddDefect
         'LinkLabel12
         '
         Me.LinkLabel12.AutoSize = True
-        Me.LinkLabel12.Location = New System.Drawing.Point(598, 141)
+        Me.LinkLabel12.Location = New System.Drawing.Point(600, 120)
         Me.LinkLabel12.Name = "LinkLabel12"
         Me.LinkLabel12.Size = New System.Drawing.Size(31, 19)
         Me.LinkLabel12.TabIndex = 16
@@ -550,7 +550,7 @@ Partial Class AddDefect
         'LinkLabel11
         '
         Me.LinkLabel11.AutoSize = True
-        Me.LinkLabel11.Location = New System.Drawing.Point(600, 281)
+        Me.LinkLabel11.Location = New System.Drawing.Point(600, 247)
         Me.LinkLabel11.Name = "LinkLabel11"
         Me.LinkLabel11.Size = New System.Drawing.Size(29, 19)
         Me.LinkLabel11.TabIndex = 16
@@ -560,7 +560,7 @@ Partial Class AddDefect
         'LinkLabel10
         '
         Me.LinkLabel10.AutoSize = True
-        Me.LinkLabel10.Location = New System.Drawing.Point(516, 141)
+        Me.LinkLabel10.Location = New System.Drawing.Point(516, 120)
         Me.LinkLabel10.Name = "LinkLabel10"
         Me.LinkLabel10.Size = New System.Drawing.Size(31, 19)
         Me.LinkLabel10.TabIndex = 16
@@ -570,7 +570,7 @@ Partial Class AddDefect
         'LinkLabel9
         '
         Me.LinkLabel9.AutoSize = True
-        Me.LinkLabel9.Location = New System.Drawing.Point(522, 281)
+        Me.LinkLabel9.Location = New System.Drawing.Point(522, 247)
         Me.LinkLabel9.Name = "LinkLabel9"
         Me.LinkLabel9.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel9.TabIndex = 16
@@ -580,7 +580,7 @@ Partial Class AddDefect
         'LinkLabel8
         '
         Me.LinkLabel8.AutoSize = True
-        Me.LinkLabel8.Location = New System.Drawing.Point(438, 141)
+        Me.LinkLabel8.Location = New System.Drawing.Point(438, 120)
         Me.LinkLabel8.Name = "LinkLabel8"
         Me.LinkLabel8.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel8.TabIndex = 16
@@ -590,7 +590,7 @@ Partial Class AddDefect
         'LinkLabel7
         '
         Me.LinkLabel7.AutoSize = True
-        Me.LinkLabel7.Location = New System.Drawing.Point(438, 281)
+        Me.LinkLabel7.Location = New System.Drawing.Point(438, 247)
         Me.LinkLabel7.Name = "LinkLabel7"
         Me.LinkLabel7.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel7.TabIndex = 16
@@ -600,7 +600,7 @@ Partial Class AddDefect
         'LinkLabel6
         '
         Me.LinkLabel6.AutoSize = True
-        Me.LinkLabel6.Location = New System.Drawing.Point(604, 182)
+        Me.LinkLabel6.Location = New System.Drawing.Point(606, 161)
         Me.LinkLabel6.Name = "LinkLabel6"
         Me.LinkLabel6.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel6.TabIndex = 16
@@ -610,7 +610,7 @@ Partial Class AddDefect
         'LinkLabel5
         '
         Me.LinkLabel5.AutoSize = True
-        Me.LinkLabel5.Location = New System.Drawing.Point(604, 236)
+        Me.LinkLabel5.Location = New System.Drawing.Point(604, 209)
         Me.LinkLabel5.Name = "LinkLabel5"
         Me.LinkLabel5.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel5.TabIndex = 16
@@ -620,7 +620,7 @@ Partial Class AddDefect
         'LinkLabel4
         '
         Me.LinkLabel4.AutoSize = True
-        Me.LinkLabel4.Location = New System.Drawing.Point(522, 182)
+        Me.LinkLabel4.Location = New System.Drawing.Point(516, 161)
         Me.LinkLabel4.Name = "LinkLabel4"
         Me.LinkLabel4.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel4.TabIndex = 16
@@ -630,7 +630,7 @@ Partial Class AddDefect
         'LinkLabel3
         '
         Me.LinkLabel3.AutoSize = True
-        Me.LinkLabel3.Location = New System.Drawing.Point(522, 236)
+        Me.LinkLabel3.Location = New System.Drawing.Point(522, 209)
         Me.LinkLabel3.Name = "LinkLabel3"
         Me.LinkLabel3.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel3.TabIndex = 16
@@ -640,7 +640,7 @@ Partial Class AddDefect
         'LinkLabel2
         '
         Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(438, 182)
+        Me.LinkLabel2.Location = New System.Drawing.Point(438, 161)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(25, 19)
         Me.LinkLabel2.TabIndex = 16
@@ -650,7 +650,7 @@ Partial Class AddDefect
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(438, 236)
+        Me.LinkLabel1.Location = New System.Drawing.Point(438, 209)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(23, 19)
         Me.LinkLabel1.TabIndex = 16
@@ -660,27 +660,27 @@ Partial Class AddDefect
         'Zona42PictureBox
         '
         Me.Zona42PictureBox.BackgroundImage = CType(resources.GetObject("Zona42PictureBox.BackgroundImage"), System.Drawing.Image)
-        Me.Zona42PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Zona42PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Zona42PictureBox.Location = New System.Drawing.Point(740, 74)
         Me.Zona42PictureBox.Name = "Zona42PictureBox"
-        Me.Zona42PictureBox.Size = New System.Drawing.Size(360, 275)
+        Me.Zona42PictureBox.Size = New System.Drawing.Size(360, 251)
         Me.Zona42PictureBox.TabIndex = 15
         Me.Zona42PictureBox.TabStop = False
         '
         'Zona32PictureBox
         '
         Me.Zona32PictureBox.BackgroundImage = CType(resources.GetObject("Zona32PictureBox.BackgroundImage"), System.Drawing.Image)
-        Me.Zona32PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Zona32PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Zona32PictureBox.Location = New System.Drawing.Point(380, 74)
         Me.Zona32PictureBox.Name = "Zona32PictureBox"
-        Me.Zona32PictureBox.Size = New System.Drawing.Size(360, 275)
+        Me.Zona32PictureBox.Size = New System.Drawing.Size(360, 251)
         Me.Zona32PictureBox.TabIndex = 14
         Me.Zona32PictureBox.TabStop = False
         '
         'LinkLabel18
         '
         Me.LinkLabel18.AutoSize = True
-        Me.LinkLabel18.Location = New System.Drawing.Point(94, 196)
+        Me.LinkLabel18.Location = New System.Drawing.Point(79, 161)
         Me.LinkLabel18.Name = "LinkLabel18"
         Me.LinkLabel18.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel18.TabIndex = 12
@@ -690,7 +690,7 @@ Partial Class AddDefect
         'LinkLabel19
         '
         Me.LinkLabel19.AutoSize = True
-        Me.LinkLabel19.Location = New System.Drawing.Point(183, 196)
+        Me.LinkLabel19.Location = New System.Drawing.Point(176, 161)
         Me.LinkLabel19.Name = "LinkLabel19"
         Me.LinkLabel19.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel19.TabIndex = 12
@@ -700,7 +700,7 @@ Partial Class AddDefect
         'LinkLabel26
         '
         Me.LinkLabel26.AutoSize = True
-        Me.LinkLabel26.Location = New System.Drawing.Point(94, 306)
+        Me.LinkLabel26.Location = New System.Drawing.Point(101, 263)
         Me.LinkLabel26.Name = "LinkLabel26"
         Me.LinkLabel26.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel26.TabIndex = 12
@@ -710,7 +710,7 @@ Partial Class AddDefect
         'LinkLabel25
         '
         Me.LinkLabel25.AutoSize = True
-        Me.LinkLabel25.Location = New System.Drawing.Point(183, 306)
+        Me.LinkLabel25.Location = New System.Drawing.Point(180, 263)
         Me.LinkLabel25.Name = "LinkLabel25"
         Me.LinkLabel25.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel25.TabIndex = 12
@@ -720,7 +720,7 @@ Partial Class AddDefect
         'LinkLabel24
         '
         Me.LinkLabel24.AutoSize = True
-        Me.LinkLabel24.Location = New System.Drawing.Point(295, 306)
+        Me.LinkLabel24.Location = New System.Drawing.Point(297, 263)
         Me.LinkLabel24.Name = "LinkLabel24"
         Me.LinkLabel24.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel24.TabIndex = 12
@@ -730,7 +730,7 @@ Partial Class AddDefect
         'LinkLabel23
         '
         Me.LinkLabel23.AutoSize = True
-        Me.LinkLabel23.Location = New System.Drawing.Point(62, 271)
+        Me.LinkLabel23.Location = New System.Drawing.Point(79, 225)
         Me.LinkLabel23.Name = "LinkLabel23"
         Me.LinkLabel23.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel23.TabIndex = 12
@@ -740,7 +740,7 @@ Partial Class AddDefect
         'LinkLabel22
         '
         Me.LinkLabel22.AutoSize = True
-        Me.LinkLabel22.Location = New System.Drawing.Point(183, 246)
+        Me.LinkLabel22.Location = New System.Drawing.Point(180, 209)
         Me.LinkLabel22.Name = "LinkLabel22"
         Me.LinkLabel22.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel22.TabIndex = 12
@@ -750,7 +750,7 @@ Partial Class AddDefect
         'LinkLabel21
         '
         Me.LinkLabel21.AutoSize = True
-        Me.LinkLabel21.Location = New System.Drawing.Point(329, 271)
+        Me.LinkLabel21.Location = New System.Drawing.Point(343, 225)
         Me.LinkLabel21.Name = "LinkLabel21"
         Me.LinkLabel21.Size = New System.Drawing.Size(31, 19)
         Me.LinkLabel21.TabIndex = 12
@@ -760,7 +760,7 @@ Partial Class AddDefect
         'LinkLabel20
         '
         Me.LinkLabel20.AutoSize = True
-        Me.LinkLabel20.Location = New System.Drawing.Point(295, 196)
+        Me.LinkLabel20.Location = New System.Drawing.Point(297, 161)
         Me.LinkLabel20.Name = "LinkLabel20"
         Me.LinkLabel20.Size = New System.Drawing.Size(35, 19)
         Me.LinkLabel20.TabIndex = 12
@@ -770,7 +770,7 @@ Partial Class AddDefect
         'LinkLabel17
         '
         Me.LinkLabel17.AutoSize = True
-        Me.LinkLabel17.Location = New System.Drawing.Point(295, 161)
+        Me.LinkLabel17.Location = New System.Drawing.Point(297, 120)
         Me.LinkLabel17.Name = "LinkLabel17"
         Me.LinkLabel17.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.LinkLabel17.Size = New System.Drawing.Size(33, 19)
@@ -781,7 +781,7 @@ Partial Class AddDefect
         'LinkLabel16
         '
         Me.LinkLabel16.AutoSize = True
-        Me.LinkLabel16.Location = New System.Drawing.Point(183, 141)
+        Me.LinkLabel16.Location = New System.Drawing.Point(176, 102)
         Me.LinkLabel16.Name = "LinkLabel16"
         Me.LinkLabel16.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel16.TabIndex = 12
@@ -791,7 +791,7 @@ Partial Class AddDefect
         'LinkLabel15
         '
         Me.LinkLabel15.AutoSize = True
-        Me.LinkLabel15.Location = New System.Drawing.Point(30, 161)
+        Me.LinkLabel15.Location = New System.Drawing.Point(30, 120)
         Me.LinkLabel15.Name = "LinkLabel15"
         Me.LinkLabel15.Size = New System.Drawing.Size(33, 19)
         Me.LinkLabel15.TabIndex = 12
@@ -801,10 +801,10 @@ Partial Class AddDefect
         'Zona1PictureBox
         '
         Me.Zona1PictureBox.BackgroundImage = CType(resources.GetObject("Zona1PictureBox.BackgroundImage"), System.Drawing.Image)
-        Me.Zona1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Zona1PictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Zona1PictureBox.Location = New System.Drawing.Point(20, 74)
         Me.Zona1PictureBox.Name = "Zona1PictureBox"
-        Me.Zona1PictureBox.Size = New System.Drawing.Size(360, 275)
+        Me.Zona1PictureBox.Size = New System.Drawing.Size(360, 251)
         Me.Zona1PictureBox.TabIndex = 11
         Me.Zona1PictureBox.TabStop = False
         '
@@ -814,7 +814,7 @@ Partial Class AddDefect
         Me.DefectLocationComboBox.Location = New System.Drawing.Point(742, 44)
         Me.DefectLocationComboBox.Name = "DefectLocationComboBox"
         Me.DefectLocationComboBox.Size = New System.Drawing.Size(150, 25)
-        Me.DefectLocationComboBox.TabIndex = 10
+        Me.DefectLocationComboBox.TabIndex = 9
         Me.DefectLocationComboBox.Text = "Select"
         '
         'DefectLocationLabel
@@ -832,7 +832,7 @@ Partial Class AddDefect
         Me.DefectComboBox.Location = New System.Drawing.Point(461, 44)
         Me.DefectComboBox.Name = "DefectComboBox"
         Me.DefectComboBox.Size = New System.Drawing.Size(275, 25)
-        Me.DefectComboBox.TabIndex = 9
+        Me.DefectComboBox.TabIndex = 8
         Me.DefectComboBox.Text = "Select Option"
         '
         'DefectLabel
@@ -850,7 +850,7 @@ Partial Class AddDefect
         Me.DefectOriginComboBox.Location = New System.Drawing.Point(180, 44)
         Me.DefectOriginComboBox.Name = "DefectOriginComboBox"
         Me.DefectOriginComboBox.Size = New System.Drawing.Size(275, 25)
-        Me.DefectOriginComboBox.TabIndex = 8
+        Me.DefectOriginComboBox.TabIndex = 7
         Me.DefectOriginComboBox.Text = "Select Option"
         '
         'DefectOriginLabel
@@ -868,7 +868,7 @@ Partial Class AddDefect
         Me.ReworkTypeComboBox.Location = New System.Drawing.Point(20, 44)
         Me.ReworkTypeComboBox.Name = "ReworkTypeComboBox"
         Me.ReworkTypeComboBox.Size = New System.Drawing.Size(153, 25)
-        Me.ReworkTypeComboBox.TabIndex = 7
+        Me.ReworkTypeComboBox.TabIndex = 6
         Me.ReworkTypeComboBox.Text = "Select Option"
         '
         'ReworkTypeLabel
@@ -885,10 +885,10 @@ Partial Class AddDefect
         Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.OK_Button.Location = New System.Drawing.Point(756, 649)
+        Me.OK_Button.Location = New System.Drawing.Point(756, 628)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(184, 31)
-        Me.OK_Button.TabIndex = 13
+        Me.OK_Button.TabIndex = 20
         Me.OK_Button.Text = "Add Defect"
         Me.OK_Button.UseVisualStyleBackColor = True
         '
@@ -897,10 +897,10 @@ Partial Class AddDefect
         Me.Cancel_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Cancel_Button.Location = New System.Drawing.Point(958, 648)
+        Me.Cancel_Button.Location = New System.Drawing.Point(973, 628)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(167, 31)
-        Me.Cancel_Button.TabIndex = 14
+        Me.Cancel_Button.Size = New System.Drawing.Size(152, 31)
+        Me.Cancel_Button.TabIndex = 21
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
         '
@@ -908,54 +908,75 @@ Partial Class AddDefect
         '
         Me.CommentsGroupBox.Controls.Add(Me.CommentsRichTextBox)
         Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.CommentsGroupBox.Location = New System.Drawing.Point(665, 486)
+        Me.CommentsGroupBox.Location = New System.Drawing.Point(582, 465)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
-        Me.CommentsGroupBox.Size = New System.Drawing.Size(460, 150)
+        Me.CommentsGroupBox.Size = New System.Drawing.Size(543, 150)
         Me.CommentsGroupBox.TabIndex = 6
         Me.CommentsGroupBox.TabStop = False
         Me.CommentsGroupBox.Text = "Comments:"
         '
         'CommentsRichTextBox
         '
-        Me.CommentsRichTextBox.Location = New System.Drawing.Point(6, 17)
+        Me.CommentsRichTextBox.Location = New System.Drawing.Point(10, 16)
         Me.CommentsRichTextBox.Name = "CommentsRichTextBox"
-        Me.CommentsRichTextBox.Size = New System.Drawing.Size(439, 127)
+        Me.CommentsRichTextBox.Size = New System.Drawing.Size(527, 127)
         Me.CommentsRichTextBox.TabIndex = 11
         Me.CommentsRichTextBox.Text = ""
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.PictureBox1)
         Me.GroupBox3.Controls.Add(Me.PictureBox3)
+        Me.GroupBox3.Controls.Add(Me.PictureBox2)
         Me.GroupBox3.Controls.Add(Me.AddImageButton3)
         Me.GroupBox3.Controls.Add(Me.AddImageButton2)
         Me.GroupBox3.Controls.Add(Me.AddImageButton1)
-        Me.GroupBox3.Controls.Add(Me.PictureBox2)
-        Me.GroupBox3.Controls.Add(Me.PictureBox1)
         Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 485)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 464)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(647, 200)
+        Me.GroupBox3.Size = New System.Drawing.Size(564, 200)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Add Pictures"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.InitialImage = Nothing
+        Me.PictureBox1.Location = New System.Drawing.Point(6, 17)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(175, 140)
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
+        '
         'PictureBox3
         '
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox3.Location = New System.Drawing.Point(459, 18)
+        Me.PictureBox3.InitialImage = Nothing
+        Me.PictureBox3.Location = New System.Drawing.Point(380, 17)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(175, 140)
         Me.PictureBox3.TabIndex = 1
         Me.PictureBox3.TabStop = False
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox2.InitialImage = Nothing
+        Me.PictureBox2.Location = New System.Drawing.Point(196, 17)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(175, 140)
+        Me.PictureBox2.TabIndex = 1
+        Me.PictureBox2.TabStop = False
+        '
         'AddImageButton3
         '
         Me.AddImageButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.AddImageButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.AddImageButton3.Location = New System.Drawing.Point(495, 161)
+        Me.AddImageButton3.Location = New System.Drawing.Point(402, 159)
         Me.AddImageButton3.Name = "AddImageButton3"
         Me.AddImageButton3.Size = New System.Drawing.Size(110, 33)
-        Me.AddImageButton3.TabIndex = 2
+        Me.AddImageButton3.TabIndex = 16
         Me.AddImageButton3.Text = "Add Image"
         Me.AddImageButton3.UseVisualStyleBackColor = True
         '
@@ -963,10 +984,10 @@ Partial Class AddDefect
         '
         Me.AddImageButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.AddImageButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.AddImageButton2.Location = New System.Drawing.Point(311, 161)
+        Me.AddImageButton2.Location = New System.Drawing.Point(218, 159)
         Me.AddImageButton2.Name = "AddImageButton2"
         Me.AddImageButton2.Size = New System.Drawing.Size(110, 33)
-        Me.AddImageButton2.TabIndex = 2
+        Me.AddImageButton2.TabIndex = 15
         Me.AddImageButton2.Text = "Add Image"
         Me.AddImageButton2.UseVisualStyleBackColor = True
         '
@@ -974,36 +995,18 @@ Partial Class AddDefect
         '
         Me.AddImageButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.AddImageButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.AddImageButton1.Location = New System.Drawing.Point(126, 163)
+        Me.AddImageButton1.Location = New System.Drawing.Point(28, 159)
         Me.AddImageButton1.Name = "AddImageButton1"
         Me.AddImageButton1.Size = New System.Drawing.Size(110, 33)
-        Me.AddImageButton1.TabIndex = 2
+        Me.AddImageButton1.TabIndex = 14
         Me.AddImageButton1.Text = "Add Image"
         Me.AddImageButton1.UseVisualStyleBackColor = True
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox2.Location = New System.Drawing.Point(278, 18)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(175, 140)
-        Me.PictureBox2.TabIndex = 1
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(99, 18)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(175, 140)
-        Me.PictureBox1.TabIndex = 1
-        Me.PictureBox1.TabStop = False
         '
         'AddDefect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1134, 697)
+        Me.ClientSize = New System.Drawing.Size(1134, 668)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.CommentsGroupBox)
@@ -1021,9 +1024,9 @@ Partial Class AddDefect
         CType(Me.Zona1PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CommentsGroupBox.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1104,11 +1107,11 @@ Partial Class AddDefect
     Friend WithEvents PaintCodeTextBox As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
-    Friend WithEvents AddImageButton3 As Button
-    Friend WithEvents AddImageButton2 As Button
-    Friend WithEvents AddImageButton1 As Button
     Friend WithEvents ModelComboBox As ComboBox
+    Friend WithEvents AddImageButton1 As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents AddImageButton3 As Button
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents AddImageButton2 As Button
+    Friend WithEvents PictureBox2 As PictureBox
 End Class

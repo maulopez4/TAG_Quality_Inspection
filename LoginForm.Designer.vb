@@ -39,7 +39,6 @@ Partial Class LoginForm
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
         Me.ShowPasswordCheckBox = New System.Windows.Forms.CheckBox()
-        Me.RoleComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -115,16 +114,6 @@ Partial Class LoginForm
         Me.ShowPasswordCheckBox.Text = "Show Password"
         Me.ShowPasswordCheckBox.UseVisualStyleBackColor = True
         '
-        'RoleComboBox
-        '
-        Me.RoleComboBox.Enabled = False
-        Me.RoleComboBox.FormattingEnabled = True
-        Me.RoleComboBox.Location = New System.Drawing.Point(12, 180)
-        Me.RoleComboBox.Name = "RoleComboBox"
-        Me.RoleComboBox.Size = New System.Drawing.Size(223, 23)
-        Me.RoleComboBox.TabIndex = 7
-        Me.RoleComboBox.Visible = False
-        '
         'LoginForm
         '
         Me.AcceptButton = Me.OK
@@ -132,7 +121,6 @@ Partial Class LoginForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(493, 217)
-        Me.Controls.Add(Me.RoleComboBox)
         Me.Controls.Add(Me.ShowPasswordCheckBox)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
@@ -155,5 +143,4 @@ Partial Class LoginForm
     End Sub
 
     Friend WithEvents ShowPasswordCheckBox As CheckBox
-    Friend WithEvents RoleComboBox As ComboBox
 End Class

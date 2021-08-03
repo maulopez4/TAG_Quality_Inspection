@@ -22,329 +22,218 @@ Partial Class User_Main
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.MainToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AddDefectsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SearchDefectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveDefectReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrintDefectReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.AdvancedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.UserGroupBox = New System.Windows.Forms.GroupBox()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.AddNewDefectButton = New System.Windows.Forms.Button()
+        Me.SuperGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Button12 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button12 = New System.Windows.Forms.Button()
-        Me.Button13 = New System.Windows.Forms.Button()
-        Me.Button14 = New System.Windows.Forms.Button()
-        Me.Button15 = New System.Windows.Forms.Button()
-        Me.MenuStrip1.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.AdminGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.CurrentUserTextBox = New System.Windows.Forms.TextBox()
+        Me.UserGroupBox.SuspendLayout()
+        Me.SuperGroupBox.SuspendLayout()
+        Me.AdminGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
-        'MenuStrip1
+        'UserGroupBox
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MainToolStripMenuItem, Me.AboutToolStripMenuItem, Me.AdvancedToolStripMenuItem, Me.AboutToolStripMenuItem1})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1157, 24)
-        Me.MenuStrip1.TabIndex = 0
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'MainToolStripMenuItem
-        '
-        Me.MainToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddDefectsToolStripMenuItem, Me.SearchDefectToolStripMenuItem, Me.SaveDefectReportToolStripMenuItem, Me.PrintDefectReportToolStripMenuItem, Me.ExitToolStripMenuItem})
-        Me.MainToolStripMenuItem.Name = "MainToolStripMenuItem"
-        Me.MainToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
-        Me.MainToolStripMenuItem.Text = "Main"
-        '
-        'AddDefectsToolStripMenuItem
-        '
-        Me.AddDefectsToolStripMenuItem.Name = "AddDefectsToolStripMenuItem"
-        Me.AddDefectsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.AddDefectsToolStripMenuItem.Text = "Add Defect"
-        '
-        'SearchDefectToolStripMenuItem
-        '
-        Me.SearchDefectToolStripMenuItem.Name = "SearchDefectToolStripMenuItem"
-        Me.SearchDefectToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.SearchDefectToolStripMenuItem.Text = "Search Defect"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
-        Me.AboutToolStripMenuItem.Text = "Reporting"
-        '
-        'SaveDefectReportToolStripMenuItem
-        '
-        Me.SaveDefectReportToolStripMenuItem.Name = "SaveDefectReportToolStripMenuItem"
-        Me.SaveDefectReportToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.SaveDefectReportToolStripMenuItem.Text = "Save Defect Report"
-        '
-        'PrintDefectReportToolStripMenuItem
-        '
-        Me.PrintDefectReportToolStripMenuItem.Name = "PrintDefectReportToolStripMenuItem"
-        Me.PrintDefectReportToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PrintDefectReportToolStripMenuItem.Text = "Print Defect Report"
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Button5)
-        Me.GroupBox1.Controls.Add(Me.Button4)
-        Me.GroupBox1.Controls.Add(Me.Button3)
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Location = New System.Drawing.Point(9, 27)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1136, 168)
-        Me.GroupBox1.TabIndex = 1
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Main Operations"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(6, 22)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(171, 75)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.Button10)
-        Me.GroupBox2.Controls.Add(Me.Button7)
-        Me.GroupBox2.Controls.Add(Me.Button9)
-        Me.GroupBox2.Controls.Add(Me.Button6)
-        Me.GroupBox2.Controls.Add(Me.Button8)
-        Me.GroupBox2.Location = New System.Drawing.Point(9, 201)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1136, 168)
-        Me.GroupBox2.TabIndex = 1
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Supervisor Operations"
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Button15)
-        Me.GroupBox3.Controls.Add(Me.Button14)
-        Me.GroupBox3.Controls.Add(Me.Button11)
-        Me.GroupBox3.Controls.Add(Me.Button13)
-        Me.GroupBox3.Controls.Add(Me.Button12)
-        Me.GroupBox3.Location = New System.Drawing.Point(9, 375)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1136, 168)
-        Me.GroupBox3.TabIndex = 1
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Advanced Operations"
-        '
-        'AdvancedToolStripMenuItem
-        '
-        Me.AdvancedToolStripMenuItem.Name = "AdvancedToolStripMenuItem"
-        Me.AdvancedToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
-        Me.AdvancedToolStripMenuItem.Text = "Advanced"
-        '
-        'AboutToolStripMenuItem1
-        '
-        Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(52, 20)
-        Me.AboutToolStripMenuItem1.Text = "About"
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(183, 22)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(171, 75)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Button1"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(360, 22)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(171, 75)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Button1"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.UserGroupBox.Controls.Add(Me.Button4)
+        Me.UserGroupBox.Controls.Add(Me.Button3)
+        Me.UserGroupBox.Controls.Add(Me.Button2)
+        Me.UserGroupBox.Controls.Add(Me.AddNewDefectButton)
+        Me.UserGroupBox.Location = New System.Drawing.Point(6, 32)
+        Me.UserGroupBox.Name = "UserGroupBox"
+        Me.UserGroupBox.Size = New System.Drawing.Size(792, 162)
+        Me.UserGroupBox.TabIndex = 0
+        Me.UserGroupBox.TabStop = False
+        Me.UserGroupBox.Text = "User Options"
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(537, 22)
+        Me.Button4.Location = New System.Drawing.Point(516, 22)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(171, 75)
-        Me.Button4.TabIndex = 2
-        Me.Button4.Text = "Button1"
+        Me.Button4.Size = New System.Drawing.Size(162, 60)
+        Me.Button4.TabIndex = 0
+        Me.Button4.Text = "To be Defined"
         Me.Button4.UseVisualStyleBackColor = True
         '
-        'Button5
+        'Button3
         '
-        Me.Button5.Location = New System.Drawing.Point(714, 22)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(171, 75)
-        Me.Button5.TabIndex = 2
-        Me.Button5.Text = "Button1"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button3.Location = New System.Drawing.Point(348, 22)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(162, 60)
+        Me.Button3.TabIndex = 0
+        Me.Button3.Text = "To be Defined"
+        Me.Button3.UseVisualStyleBackColor = True
         '
-        'Button6
+        'Button2
         '
-        Me.Button6.Location = New System.Drawing.Point(6, 22)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(171, 75)
-        Me.Button6.TabIndex = 2
-        Me.Button6.Text = "Button1"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button2.Location = New System.Drawing.Point(180, 22)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(162, 60)
+        Me.Button2.TabIndex = 0
+        Me.Button2.Text = "To be Defined"
+        Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button7
+        'AddNewDefectButton
         '
-        Me.Button7.Location = New System.Drawing.Point(183, 22)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(171, 75)
-        Me.Button7.TabIndex = 2
-        Me.Button7.Text = "Button1"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.AddNewDefectButton.Location = New System.Drawing.Point(12, 22)
+        Me.AddNewDefectButton.Name = "AddNewDefectButton"
+        Me.AddNewDefectButton.Size = New System.Drawing.Size(162, 60)
+        Me.AddNewDefectButton.TabIndex = 0
+        Me.AddNewDefectButton.Text = "Add New Defect"
+        Me.AddNewDefectButton.UseVisualStyleBackColor = True
         '
-        'Button8
+        'SuperGroupBox
         '
-        Me.Button8.Location = New System.Drawing.Point(360, 22)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(171, 75)
-        Me.Button8.TabIndex = 2
-        Me.Button8.Text = "Button1"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.SuperGroupBox.Controls.Add(Me.Button12)
+        Me.SuperGroupBox.Controls.Add(Me.Button10)
+        Me.SuperGroupBox.Controls.Add(Me.Button11)
+        Me.SuperGroupBox.Controls.Add(Me.Button9)
+        Me.SuperGroupBox.Location = New System.Drawing.Point(6, 200)
+        Me.SuperGroupBox.Name = "SuperGroupBox"
+        Me.SuperGroupBox.Size = New System.Drawing.Size(792, 162)
+        Me.SuperGroupBox.TabIndex = 0
+        Me.SuperGroupBox.TabStop = False
+        Me.SuperGroupBox.Text = "Supervisor Options"
         '
-        'Button9
+        'Button12
         '
-        Me.Button9.Location = New System.Drawing.Point(537, 22)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(171, 75)
-        Me.Button9.TabIndex = 2
-        Me.Button9.Text = "Button1"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.Button12.Location = New System.Drawing.Point(516, 22)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(162, 60)
+        Me.Button12.TabIndex = 0
+        Me.Button12.Text = "To be Defined"
+        Me.Button12.UseVisualStyleBackColor = True
         '
         'Button10
         '
-        Me.Button10.Location = New System.Drawing.Point(714, 22)
+        Me.Button10.Location = New System.Drawing.Point(180, 22)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(171, 75)
-        Me.Button10.TabIndex = 2
-        Me.Button10.Text = "Button1"
+        Me.Button10.Size = New System.Drawing.Size(162, 60)
+        Me.Button10.TabIndex = 0
+        Me.Button10.Text = "To be Defined"
         Me.Button10.UseVisualStyleBackColor = True
         '
         'Button11
         '
-        Me.Button11.Location = New System.Drawing.Point(360, 22)
+        Me.Button11.Location = New System.Drawing.Point(348, 22)
         Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(171, 75)
-        Me.Button11.TabIndex = 2
-        Me.Button11.Text = "Button1"
+        Me.Button11.Size = New System.Drawing.Size(162, 60)
+        Me.Button11.TabIndex = 0
+        Me.Button11.Text = "To be Defined"
         Me.Button11.UseVisualStyleBackColor = True
         '
-        'Button12
+        'Button9
         '
-        Me.Button12.Location = New System.Drawing.Point(6, 22)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(171, 75)
-        Me.Button12.TabIndex = 2
-        Me.Button12.Text = "Button1"
-        Me.Button12.UseVisualStyleBackColor = True
+        Me.Button9.Location = New System.Drawing.Point(12, 22)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(162, 60)
+        Me.Button9.TabIndex = 0
+        Me.Button9.Text = "To be Defined"
+        Me.Button9.UseVisualStyleBackColor = True
         '
-        'Button13
+        'AdminGroupBox
         '
-        Me.Button13.Location = New System.Drawing.Point(537, 22)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(171, 75)
-        Me.Button13.TabIndex = 2
-        Me.Button13.Text = "Button1"
-        Me.Button13.UseVisualStyleBackColor = True
+        Me.AdminGroupBox.Controls.Add(Me.Button8)
+        Me.AdminGroupBox.Controls.Add(Me.Button7)
+        Me.AdminGroupBox.Controls.Add(Me.Button5)
+        Me.AdminGroupBox.Controls.Add(Me.Button6)
+        Me.AdminGroupBox.Location = New System.Drawing.Point(6, 368)
+        Me.AdminGroupBox.Name = "AdminGroupBox"
+        Me.AdminGroupBox.Size = New System.Drawing.Size(792, 162)
+        Me.AdminGroupBox.TabIndex = 0
+        Me.AdminGroupBox.TabStop = False
+        Me.AdminGroupBox.Text = "Admin Options"
         '
-        'Button14
+        'Button8
         '
-        Me.Button14.Location = New System.Drawing.Point(183, 22)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(171, 75)
-        Me.Button14.TabIndex = 2
-        Me.Button14.Text = "Button1"
-        Me.Button14.UseVisualStyleBackColor = True
+        Me.Button8.Location = New System.Drawing.Point(516, 22)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(162, 60)
+        Me.Button8.TabIndex = 0
+        Me.Button8.Text = "Add Defect Definition"
+        Me.Button8.UseVisualStyleBackColor = True
         '
-        'Button15
+        'Button7
         '
-        Me.Button15.Location = New System.Drawing.Point(714, 22)
-        Me.Button15.Name = "Button15"
-        Me.Button15.Size = New System.Drawing.Size(171, 75)
-        Me.Button15.TabIndex = 2
-        Me.Button15.Text = "Button1"
-        Me.Button15.UseVisualStyleBackColor = True
+        Me.Button7.Location = New System.Drawing.Point(348, 22)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(162, 60)
+        Me.Button7.TabIndex = 0
+        Me.Button7.Text = "Add Model"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(12, 22)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(162, 60)
+        Me.Button5.TabIndex = 0
+        Me.Button5.Text = "Add User"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(180, 22)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(162, 60)
+        Me.Button6.TabIndex = 0
+        Me.Button6.Text = "Edit User"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'CurrentUserTextBox
+        '
+        Me.CurrentUserTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.CurrentUserTextBox.Cursor = System.Windows.Forms.Cursors.No
+        Me.CurrentUserTextBox.Enabled = False
+        Me.CurrentUserTextBox.Location = New System.Drawing.Point(545, 12)
+        Me.CurrentUserTextBox.Name = "CurrentUserTextBox"
+        Me.CurrentUserTextBox.Size = New System.Drawing.Size(243, 16)
+        Me.CurrentUserTextBox.TabIndex = 1
+        Me.CurrentUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'User_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1157, 550)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.MenuStrip1)
-        Me.MainMenuStrip = Me.MenuStrip1
+        Me.ClientSize = New System.Drawing.Size(800, 548)
+        Me.Controls.Add(Me.CurrentUserTextBox)
+        Me.Controls.Add(Me.AdminGroupBox)
+        Me.Controls.Add(Me.SuperGroupBox)
+        Me.Controls.Add(Me.UserGroupBox)
         Me.Name = "User_Main"
-        Me.Text = "User_Main"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox3.ResumeLayout(False)
+        Me.Text = "HEY TU"
+        Me.UserGroupBox.ResumeLayout(False)
+        Me.SuperGroupBox.ResumeLayout(False)
+        Me.AdminGroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents MainToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AddDefectsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SearchDefectToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaveDefectReportToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PrintDefectReportToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AdvancedToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AboutToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button5 As Button
+    Friend WithEvents UserGroupBox As GroupBox
     Friend WithEvents Button4 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Button10 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button9 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button8 As Button
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents Button15 As Button
-    Friend WithEvents Button14 As Button
-    Friend WithEvents Button11 As Button
-    Friend WithEvents Button13 As Button
+    Friend WithEvents AddNewDefectButton As Button
+    Friend WithEvents SuperGroupBox As GroupBox
     Friend WithEvents Button12 As Button
+    Friend WithEvents Button10 As Button
+    Friend WithEvents Button11 As Button
+    Friend WithEvents Button9 As Button
+    Friend WithEvents AdminGroupBox As GroupBox
+    Friend WithEvents Button8 As Button
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents CurrentUserTextBox As TextBox
 End Class
