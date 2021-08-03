@@ -3,8 +3,8 @@ Imports System.Configuration
 Public Class LoginForm
     Friend Shared login_role As String
     Friend Shared login_user As String
-    Dim connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
-    Dim connection As New MySqlConnection(connection_string)
+    Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
+    Private ReadOnly connection As New MySqlConnection(connection_string)
     'Public Property rol As String
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click

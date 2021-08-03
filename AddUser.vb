@@ -1,9 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Configuration
-Public Class AddUserForm
+Public Class AddUser
 
-    Dim connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
-    Dim connection As New MySqlConnection(connection_string)
+    Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
+    Private ReadOnly connection As New MySqlConnection(connection_string)
     Private Sub AddUser_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddUser_Button.Click
 
         Dim command As New MySqlCommand("INSERT INTO `users`(`real_name`, `user_name`, `password`,`role`, `workstation`) VALUES (@real_name,@user_name,@password,@role,@workstation)", connection)
