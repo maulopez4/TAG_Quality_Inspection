@@ -121,23 +121,26 @@ Public Class AddDefect
         FileSize3 = mstream3.Length
         mstream3.Close()
 
-        If AdditionalDefectsCheckBox.Text IsNot "YES" Then
+        If AdditionalDefectsCheckBox.Checked <> True Then
             If command.ExecuteNonQuery() = 1 Then
                 MessageBox.Show("Data Inserted")
             Else
                 MessageBox.Show("ERROR")
             End If
-            connection.Close()
+            Close()
         Else
             If command.ExecuteNonQuery() = 1 Then
-                'PictureBox1.Image = Nothing
-                'CommentsRichTextBox.Clear()
+                AdditionalDefectsCheckBox.Checked = False
+                PictureBox1.Image = Nothing
+                PictureBox2.Image = Nothing
+                PictureBox3.Image = Nothing
+                CommentsRichTextBox.Clear()
                 MessageBox.Show("Data Inserted")
             Else
                 MessageBox.Show("ERROR")
             End If
         End If
-        Close()
+        connection.Close()
     End Sub
     Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged
         WorkOrderValue = WorkOrderTextBox.Text
@@ -307,7 +310,6 @@ Public Class AddDefect
     Private Sub LinkLabel39_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel39.LinkClicked
         DefectLocationComboBox.SelectedValue = LinkLabel39.Text
     End Sub
-
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         'Dim ImageName1 As String = GetWorkOrder()
         'Dim newForm As New AddPicture()
