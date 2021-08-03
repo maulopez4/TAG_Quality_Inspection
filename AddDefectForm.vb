@@ -5,7 +5,7 @@ Public Class AddDefect
     Dim connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Dim connection As New MySqlConnection(connection_string)
 
-    Public IPath As String = AddPicture.GetImagePath
+    Public ImagePath As String = AddPicture.GetImagePath
     'Load images variables
     Dim imgpath1 As String
     Dim arrImage1() As Byte
@@ -146,25 +146,30 @@ Public Class AddDefect
         WorkOrderValue = WorkOrderTextBox.Text
     End Sub
     Private Sub AddImageButton1_Click(sender As Object, e As EventArgs) Handles AddImageButton1.Click
-        'Dim ImageName1 As String = GetWorkOrder()
-        'Dim newForm As New AddPicture()
-        'newForm.Show()
+        Dim ImageName1 As String = GetWorkOrder()
+        Dim newForm As New AddPicture()
+        newForm.Show()
+        While newForm.Visible = True
 
-        'imgpath1 = AddPicture.SavedImagePath
-        'PictureBox1.ImageLocation = imgpath1
+            PictureBox1.Image = PictureBox1.InitialImage
+
+        End While
+        imgpath1 = AddPicture.GetImagePath
+        PictureBox1.ImageLocation = imgpath1
+        PictureBox1.Image = Image.FromFile(imgpath1)
 
         '------------------------------------------------------------------------------------------------------
-        Try
-            Dim OFD As FileDialog = New OpenFileDialog()
-            OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
-            If OFD.ShowDialog() = DialogResult.OK Then
-                imgpath1 = OFD.FileName
-                PictureBox1.ImageLocation = imgpath1
-            End If
-            OFD = Nothing
-        Catch ex As Exception
-            MessageBox.Show(ex.Message.ToString())
-        End Try
+        'Try
+        '    Dim OFD As FileDialog = New OpenFileDialog()
+        '    OFD.Filter = “Image File (*.jpg;*)|*.jpg;*”
+        '    If OFD.ShowDialog() = DialogResult.OK Then
+        '        imgpath1 = OFD.FileName
+        '        PictureBox1.ImageLocation = imgpath1
+        '    End If
+        '    OFD = Nothing
+        'Catch ex As Exception
+        '    MessageBox.Show(ex.Message.ToString())
+        'End Try
         '------------------------------------------------------------------------------------------------------
     End Sub
     Private Sub AddImageButton2_Click(sender As Object, e As EventArgs) Handles AddImageButton2.Click

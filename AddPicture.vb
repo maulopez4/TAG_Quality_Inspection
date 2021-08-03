@@ -7,7 +7,7 @@ Public Class AddPicture
     Dim CAMARA As VideoCaptureDevice
     Dim BMP As Bitmap
     Dim Cap As String = "Capture"
-    Public Shared Property SavedImagePath As Object
+    Public Shared Property ImagePath As Object
     Private Sub AddPicture_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Try
             CAMARA.SignalToStop()
@@ -18,7 +18,7 @@ Public Class AddPicture
         End Try
     End Sub
     Private Sub AddPicture_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        PictureName.Text = AddDefect.GetWorkOrder()
+        ImagePathText.Text = AddDefect.GetWorkOrder()
         cmdno.Visible = False
         cmdok.Visible = False
         Dim CAMARAS As VideoCaptureDeviceForm = New VideoCaptureDeviceForm()
@@ -72,17 +72,18 @@ Public Class AddPicture
         SD.FileName = $"{WorkOrderNumber}-{Now.ToString("MMddyyHHmmss")}"
         SD.SupportMultiDottedExtensions = True
         SD.AddExtension = True
-        SD.Filter = "PNG File|*.png"
+        SD.Filter = "JPG File|*.jpg"
         If SD.ShowDialog() = DialogResult.OK Then
             Try
-                pbcaptureimage.Image.Save(SD.FileName, Imaging.ImageFormat.Png)
+                pbcaptureimage.Image.Save(SD.FileName, Imaging.ImageFormat.Jpeg)
                 Dim CAMARAS As VideoCaptureDeviceForm = New VideoCaptureDeviceForm()
                 CAMARA.Start()
                 cmdno.Visible = False
                 cmdok.Visible = False
                 pbcapture.Visible = True
                 Cap = "Capture"
-                SavedImagePath = SD.InitialDirectory & SD.FileName & ".png"
+                ImagePath = SD.FileName
+                ImagePathText.Text = GetImagePath()
             Catch ex As Exception
 
             End Try
@@ -96,6 +97,6 @@ Public Class AddPicture
         End If
     End Sub
     Friend Shared Function GetImagePath()
-        Return SavedImagePath
+        Return ImagePath
     End Function
 End Class
