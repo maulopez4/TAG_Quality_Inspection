@@ -116,9 +116,9 @@ Public Class AddEntry
             PictureBox3.Image = My.Resources.leer_logo
         End If
 
-        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `reported_by`, `workorder_workstation`, `workorder_number`, `workorder_model`, `workorder_consecutive`, `workorder_serial`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments`, `additional_error`, `Image1`, `Image2`, `Image3`) 
+        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `reported_by`, `workorder_workstation`, `workorder_number`, `workorder_model`, `workorder_consecutive`, `workorder_serial`, `workorder_accepted`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments`, `additional_error`, `Image1`, `Image2`, `Image3`) 
                                         VALUES 
-                                        (@workorder_date,@workorder_time,@reported_by,@workorder_workstation,@workorder_number,@workorder_model,@workorder_consecutive,@workorder_serial,@workorder_rework,@workorder_defect_origin,@workorder_defect,@workorder_defect_location,@workorder_comments,@additional_error,@Image1,@Image2,@Image3)", connection)
+                                        (@workorder_date,@workorder_time,@reported_by,@workorder_workstation,@workorder_number,@workorder_model,@workorder_consecutive,@workorder_serial,@workorder_accepted,@workorder_rework,@workorder_defect_origin,@workorder_defect,@workorder_defect_location,@workorder_comments,@additional_error,@Image1,@Image2,@Image3)", connection)
         ' add Parameters to the command
         command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
         command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
@@ -127,6 +127,7 @@ Public Class AddEntry
         command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
         command.Parameters.Add("@workorder_model", MySqlDbType.VarChar).Value = ModelComboBox.SelectedValue
         command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = ConsecutiveTextBox.Text
+        command.Parameters.Add("@workorder_accepted", MySqlDbType.VarChar).Value = workorder_accepted
         command.Parameters.Add("@workorder_serial", MySqlDbType.VarChar).Value = SerialNumberTextBox.Text
         command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkTypeComboBox.SelectedValue
         command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = DefectOriginComboBox.SelectedValue
@@ -363,7 +364,7 @@ Public Class AddEntry
     Private Sub ApprovedRadio_CheckedChanged(sender As Object, e As EventArgs) Handles ApprovedRadio.CheckedChanged
         ARPictureBox.Image = My.Resources.Ok_icon
         ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
-        workorder_accepted = 1
+        workorder_accepted = True
         DefectDataGroupBox.Visible = False
         AddPicturesGroupBox.Visible = False
     End Sub
@@ -371,7 +372,7 @@ Public Class AddEntry
     Private Sub RejectedRadio_CheckedChanged(sender As Object, e As EventArgs) Handles RejectedRadio.CheckedChanged
         ARPictureBox.Image = My.Resources.Actions_edit_delete_icon
         ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
-        workorder_accepted = 0
+        workorder_accepted = False
         DefectDataGroupBox.Visible = True
         AddPicturesGroupBox.Visible = True
     End Sub
