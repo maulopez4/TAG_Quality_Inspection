@@ -26,21 +26,21 @@ Partial Class AddUser
         Me.User_NameTextBox = New System.Windows.Forms.TextBox()
         Me.Real_NameTextBox = New System.Windows.Forms.TextBox()
         Me.Real_NameLabel = New System.Windows.Forms.Label()
-        Me.WorkstationLabel = New System.Windows.Forms.Label()
         Me.PasswordTextBox = New System.Windows.Forms.TextBox()
         Me.PasswordLabel = New System.Windows.Forms.Label()
         Me.AddUser_Button = New System.Windows.Forms.Button()
-        Me.WorkstationComboBox = New System.Windows.Forms.ComboBox()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.RoleLabel = New System.Windows.Forms.Label()
         Me.RoleComboBox = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ConfirmTextBox = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'User_NameLabel
         '
         Me.User_NameLabel.AutoSize = True
         Me.User_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.User_NameLabel.Location = New System.Drawing.Point(12, 59)
+        Me.User_NameLabel.Location = New System.Drawing.Point(12, 57)
         Me.User_NameLabel.Name = "User_NameLabel"
         Me.User_NameLabel.Size = New System.Drawing.Size(81, 19)
         Me.User_NameLabel.TabIndex = 0
@@ -48,7 +48,7 @@ Partial Class AddUser
         '
         'User_NameTextBox
         '
-        Me.User_NameTextBox.Location = New System.Drawing.Point(12, 81)
+        Me.User_NameTextBox.Location = New System.Drawing.Point(12, 79)
         Me.User_NameTextBox.Name = "User_NameTextBox"
         Me.User_NameTextBox.Size = New System.Drawing.Size(250, 23)
         Me.User_NameTextBox.TabIndex = 2
@@ -70,28 +70,20 @@ Partial Class AddUser
         Me.Real_NameLabel.TabIndex = 2
         Me.Real_NameLabel.Text = "Real Name:"
         '
-        'WorkstationLabel
-        '
-        Me.WorkstationLabel.AutoSize = True
-        Me.WorkstationLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.WorkstationLabel.Location = New System.Drawing.Point(12, 209)
-        Me.WorkstationLabel.Name = "WorkstationLabel"
-        Me.WorkstationLabel.Size = New System.Drawing.Size(89, 19)
-        Me.WorkstationLabel.TabIndex = 6
-        Me.WorkstationLabel.Text = "Workstation:"
-        '
         'PasswordTextBox
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(12, 131)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(12, 127)
         Me.PasswordTextBox.Name = "PasswordTextBox"
+        Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(250, 23)
         Me.PasswordTextBox.TabIndex = 3
+        Me.PasswordTextBox.UseSystemPasswordChar = True
         '
         'PasswordLabel
         '
         Me.PasswordLabel.AutoSize = True
         Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.PasswordLabel.Location = New System.Drawing.Point(12, 109)
+        Me.PasswordLabel.Location = New System.Drawing.Point(12, 105)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(71, 19)
         Me.PasswordLabel.TabIndex = 4
@@ -100,25 +92,17 @@ Partial Class AddUser
         'AddUser_Button
         '
         Me.AddUser_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.AddUser_Button.Location = New System.Drawing.Point(12, 284)
+        Me.AddUser_Button.Location = New System.Drawing.Point(12, 305)
         Me.AddUser_Button.Name = "AddUser_Button"
         Me.AddUser_Button.Size = New System.Drawing.Size(114, 29)
         Me.AddUser_Button.TabIndex = 6
         Me.AddUser_Button.Text = "Add User"
         Me.AddUser_Button.UseVisualStyleBackColor = True
         '
-        'WorkstationComboBox
-        '
-        Me.WorkstationComboBox.FormattingEnabled = True
-        Me.WorkstationComboBox.Location = New System.Drawing.Point(12, 231)
-        Me.WorkstationComboBox.Name = "WorkstationComboBox"
-        Me.WorkstationComboBox.Size = New System.Drawing.Size(250, 23)
-        Me.WorkstationComboBox.TabIndex = 5
-        '
         'Cancel_Button
         '
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Cancel_Button.Location = New System.Drawing.Point(146, 284)
+        Me.Cancel_Button.Location = New System.Drawing.Point(146, 305)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(114, 29)
         Me.Cancel_Button.TabIndex = 7
@@ -129,7 +113,7 @@ Partial Class AddUser
         '
         Me.RoleLabel.AutoSize = True
         Me.RoleLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.RoleLabel.Location = New System.Drawing.Point(12, 159)
+        Me.RoleLabel.Location = New System.Drawing.Point(12, 201)
         Me.RoleLabel.Name = "RoleLabel"
         Me.RoleLabel.Size = New System.Drawing.Size(40, 19)
         Me.RoleLabel.TabIndex = 6
@@ -138,29 +122,48 @@ Partial Class AddUser
         'RoleComboBox
         '
         Me.RoleComboBox.FormattingEnabled = True
-        Me.RoleComboBox.Location = New System.Drawing.Point(12, 181)
+        Me.RoleComboBox.Location = New System.Drawing.Point(12, 223)
         Me.RoleComboBox.Name = "RoleComboBox"
         Me.RoleComboBox.Size = New System.Drawing.Size(250, 23)
-        Me.RoleComboBox.TabIndex = 4
+        Me.RoleComboBox.TabIndex = 5
         '
-        'AddUserForm
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(12, 153)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(126, 19)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Confirm Password:"
+        '
+        'ConfirmTextBox
+        '
+        Me.ConfirmTextBox.Location = New System.Drawing.Point(12, 175)
+        Me.ConfirmTextBox.Name = "ConfirmTextBox"
+        Me.ConfirmTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.ConfirmTextBox.Size = New System.Drawing.Size(250, 23)
+        Me.ConfirmTextBox.TabIndex = 4
+        Me.ConfirmTextBox.UseSystemPasswordChar = True
+        '
+        'AddUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(272, 323)
+        Me.ClientSize = New System.Drawing.Size(272, 346)
         Me.Controls.Add(Me.RoleComboBox)
-        Me.Controls.Add(Me.WorkstationComboBox)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.AddUser_Button)
         Me.Controls.Add(Me.RoleLabel)
-        Me.Controls.Add(Me.WorkstationLabel)
+        Me.Controls.Add(Me.ConfirmTextBox)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PasswordTextBox)
         Me.Controls.Add(Me.PasswordLabel)
         Me.Controls.Add(Me.Real_NameTextBox)
         Me.Controls.Add(Me.Real_NameLabel)
         Me.Controls.Add(Me.User_NameTextBox)
         Me.Controls.Add(Me.User_NameLabel)
-        Me.Name = "AddUserForm"
+        Me.Name = "AddUser"
         Me.Text = "Add New User"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -171,13 +174,13 @@ Partial Class AddUser
     Friend WithEvents User_NameTextBox As TextBox
     Friend WithEvents Real_NameTextBox As TextBox
     Friend WithEvents Real_NameLabel As Label
-    Friend WithEvents WorkstationLabel As Label
     Friend WithEvents PasswordTextBox As TextBox
     Friend WithEvents PasswordLabel As Label
     Friend WithEvents AddUser_Button As Button
     Friend WithEvents Cancel As Button
-    Friend WithEvents WorkstationComboBox As ComboBox
     Friend WithEvents Cancel_Button As Button
     Friend WithEvents RoleLabel As Label
     Friend WithEvents RoleComboBox As ComboBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ConfirmTextBox As TextBox
 End Class

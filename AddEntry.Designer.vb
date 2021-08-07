@@ -286,7 +286,6 @@ Partial Class AddEntry
         Me.MoldSerialLabel.Size = New System.Drawing.Size(84, 19)
         Me.MoldSerialLabel.TabIndex = 2
         Me.MoldSerialLabel.Text = "Mold Serial:"
-        Me.MoldSerialLabel.Visible = False
         '
         'MoldModelLabel
         '
