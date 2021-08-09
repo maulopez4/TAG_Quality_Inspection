@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TAG_Quality_Inspection</RootNamespace>
-    <StartupObject>TAG_Quality_Inspection.AddUser</StartupObject>
+    <StartupObject>TAG_Quality_Inspection.AddEditUser</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>My Documents.ico</ApplicationIcon>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
