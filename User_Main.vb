@@ -28,8 +28,8 @@
         login_user = LoginForm.login_user
         CurrentUserTextBox.Text = "USER/ROLE: " & login_user.ToUpper & "/" & login_role.ToUpper
     End Sub
-    Private Sub AddUserButton_Click(sender As Object, e As EventArgs) Handles AddUserButton.Click
-        Dim newForm As New AddUser()
+    Private Sub AddUserButton_Click(sender As Object, e As EventArgs) Handles AddEditUserButton.Click, Button1.Click
+        Dim newForm As New AddEditUser()
         newForm.Show()
     End Sub
 End Class

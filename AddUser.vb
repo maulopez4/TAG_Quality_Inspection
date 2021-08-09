@@ -27,7 +27,7 @@ Public Class AddUser
                         connection.Open()
 
                         If command.ExecuteNonQuery() = 1 Then
-                            MessageBox.Show("Data Inserted")
+                            MessageBox.Show("New User Created")
                         Else
                             MessageBox.Show("ERROR")
                         End If
@@ -59,8 +59,8 @@ Public Class AddUser
     End Sub
     Private Sub User_NameTextBox_TextChanged(sender As Object, e As EventArgs) Handles User_NameTextBox.TextChanged
         Dim user_name As String
-        Dim command As New MySqlCommand("SELECT `user_name` FROM `users` WHERE `user_name` = @username", connection)
-        command.Parameters.Add("@username", MySqlDbType.VarChar).Value = User_NameTextBox.Text
+        Dim command As New MySqlCommand("SELECT `user_name` FROM `users` WHERE `user_name` = @user_name", connection)
+        command.Parameters.Add("@user_name", MySqlDbType.VarChar).Value = User_NameTextBox.Text
 
         Dim adapter As New MySqlDataAdapter(command)
         Dim table As New DataTable()
@@ -85,17 +85,15 @@ Public Class AddUser
         End If
     End Sub
     Function ValidatePassword(ByVal pwd As String,
-        Optional ByVal minLength As Integer = 4,
+        Optional ByVal minLength As Integer = 6,
         Optional ByVal numUpper As Integer = 1,
         Optional ByVal numLower As Integer = 1,
         Optional ByVal numNumbers As Integer = 1,
         Optional ByVal numSpecial As Integer = 1) As Boolean
 
-        ' Replace [A-Z] with \p{Lu}, to allow for Unicode uppercase letters.
         Dim upper As New System.Text.RegularExpressions.Regex("[A-Z]")
         Dim lower As New System.Text.RegularExpressions.Regex("[a-z]")
         Dim number As New System.Text.RegularExpressions.Regex("[0-9]")
-        ' Special is "none of the above".
         Dim special As New System.Text.RegularExpressions.Regex("[^a-zA-Z0-9]")
 
         ' Check the length.
@@ -110,7 +108,7 @@ Public Class AddUser
         Return True
     End Function
 
-    Private Sub ConfirmTextBox_TextChanged(sender As Object, e As EventArgs) Handles ConfirmTextBox.TextChanged
+    Private Sub ConfirmTextBox_LostFocus(sender As Object, e As EventArgs) Handles ConfirmTextBox.LostFocus
         If String.Compare(PasswordTextBox.Text, ConfirmTextBox.Text) = 0 Then
 
         Else
@@ -119,11 +117,11 @@ Public Class AddUser
     End Sub
     Private Sub PasswordTextBox_LostFocus(sender As Object, e As EventArgs) Handles PasswordTextBox.LostFocus
         Dim strPwd As String
-        strPwd = PasswordTextBox.Text 'textbox containing password
+        strPwd = PasswordTextBox.Text
         If ValidatePassword(strPwd) = True Then
             PasswordTextBox.Text = PasswordTextBox.Text
         Else
-            MessageBox.Show("Password is invalid." & vbCrLf & "Must be at least 4 Characters long." & vbCrLf & "Must contain at least 1 Uppercase Character." & vbCrLf & "Must contain at least 1 Lowercase Character." & vbCrLf & "Must contain at least 1 Number Character." & vbCrLf & "Please try again.")
+            MessageBox.Show("Password is invalid." & vbCrLf & "Must be at least 6 Characters long." & vbCrLf & "Must contain at least 1 Uppercase Character." & vbCrLf & "Must contain at least 1 Lowercase Character." & vbCrLf & "Must contain at least 1 Number Character." & vbCrLf & "Please try again.")
             PasswordTextBox.Clear()
             PasswordTextBox.TabIndex = 3
         End If
