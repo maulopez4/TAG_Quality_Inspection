@@ -37,4 +37,9 @@
         Dim newForm As New AddModel()
         newForm.Show()
     End Sub
+
+    Private Sub Admin_AddColorButton_Click(sender As Object, e As EventArgs) Handles Super_AddModelButton.Click, Admin_AddColorButton.Click
+        Dim newForm As New AddPaintcode()
+        newForm.Show()
+    End Sub
 End Class
