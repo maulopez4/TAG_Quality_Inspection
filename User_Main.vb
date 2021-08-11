@@ -1,5 +1,5 @@
 ﻿Public Class User_Main
-    Private Sub AddNewDefectButton_Click(sender As Object, e As EventArgs) Handles AddNewDefectButton.Click
+    Private Sub AddNewDefectButton_Click(sender As Object, e As EventArgs) Handles User_AddNewEntryButton.Click
         Dim newForm As New AddEntry()
         newForm.Show()
     End Sub
@@ -28,12 +28,12 @@
         login_user = LoginForm.login_user
         CurrentUserTextBox.Text = "USER/ROLE: " & login_user.ToUpper & "/" & login_role.ToUpper
     End Sub
-    Private Sub AddUserButton_Click(sender As Object, e As EventArgs) Handles AddEditUserButton.Click, Button1.Click
+    Private Sub AddUserButton_Click(sender As Object, e As EventArgs) Handles Admin_AddEditUserButton.Click, Super_AddEditUserButton.Click
         Dim newForm As New AddEditUser()
         newForm.Show()
     End Sub
 
-    Private Sub AddModelButton_Click(sender As Object, e As EventArgs) Handles AddModelButton1.Click, AddModelButton2.Click
+    Private Sub AddModelButton_Click(sender As Object, e As EventArgs) Handles Super_AddModelButton.Click, Admin_AddModelButton.Click
         Dim newForm As New AddModel()
         newForm.Show()
     End Sub
