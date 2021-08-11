@@ -19,35 +19,35 @@ Public Class AddModel
         ChangeSelected_MoldButton.Enabled = False
         DeleteSelected_MoldButton.Enabled = False
         Try
-            Using MLcommand As New MySqlCommand("SELECT `model_id`, `model_brand`, `model_mold`, `model_serial`,`model_color`,`model_description`,`model_status` FROM `models`", connection)
+            Using MLcommand As New MySqlCommand("SELECT `models_id`, `models_brand`, `models_mold`, `models_serial`,`models_color`,`models_description`,`models_status` FROM `models`", connection)
                 Dim MLadapter As New MySqlDataAdapter(MLcommand)
                 Dim MLtable As New DataTable()
                 Dim ML = MLadapter.Fill(MLtable)
                 MLDataGrid.DataSource = MLtable
             End Using
-            Using CBcommand As New MySqlCommand("SELECT DISTINCT model_brand FROM models", connection)
+            Using CBcommand As New MySqlCommand("SELECT DISTINCT models_brand FROM models", connection)
                 Dim CBadapter As New MySqlDataAdapter(CBcommand)
                 Dim CBtable As New DataTable()
                 CBadapter.Fill(CBtable)
                 Model_BrandComboBox.DataSource = CBtable
-                Model_BrandComboBox.ValueMember = "model_brand"
-                Model_BrandComboBox.DisplayMember = "model_brand"
+                Model_BrandComboBox.ValueMember = "models_brand"
+                Model_BrandComboBox.DisplayMember = "models_brand"
             End Using
-            Using MCcommand As New MySqlCommand("SELECT DISTINCT model_color FROM models", connection)
+            Using MCcommand As New MySqlCommand("SELECT DISTINCT models_color FROM models", connection)
                 Dim MCadapter As New MySqlDataAdapter(MCcommand)
                 Dim MCtable As New DataTable()
                 MCadapter.Fill(MCtable)
                 Model_ColorComboBox.DataSource = MCtable
-                Model_ColorComboBox.ValueMember = "model_color"
-                Model_ColorComboBox.DisplayMember = "model_color"
+                Model_ColorComboBox.ValueMember = "models_color"
+                Model_ColorComboBox.DisplayMember = "models_color"
             End Using
-            Using MScommand As New MySqlCommand("SELECT DISTINCT model_status FROM models", connection)
+            Using MScommand As New MySqlCommand("SELECT DISTINCT models_status FROM models", connection)
                 Dim MSadapter As New MySqlDataAdapter(MScommand)
                 Dim MStable As New DataTable()
                 MSadapter.Fill(MStable)
                 Model_StatusComboBox.DataSource = MStable
-                Model_StatusComboBox.ValueMember = "model_status"
-                Model_StatusComboBox.DisplayMember = "model_status"
+                Model_StatusComboBox.ValueMember = "models_status"
+                Model_StatusComboBox.DisplayMember = "models_status"
             End Using
         Catch myerror As MySqlException
             MessageBox.Show("Error: " & myerror.Message)
@@ -61,13 +61,13 @@ Public Class AddModel
         ChangeSelected_MoldButton.Enabled = True
         DeleteSelected_MoldButton.Enabled = True
         If MLDataGrid.SelectedRows.Count > 0 Then
-            Model_IdTextBox.Text = MLDataGrid.Item("model_id", MLDataGrid.SelectedRows(0).Index).Value
-            Model_BrandComboBox.SelectedValue = MLDataGrid.Item("model_brand", MLDataGrid.SelectedRows(0).Index).Value
-            Model_MoldTextBox.Text = MLDataGrid.Item("model_mold", MLDataGrid.SelectedRows(0).Index).Value
-            Model_SerialTextBox.Text = MLDataGrid.Item("model_serial", MLDataGrid.SelectedRows(0).Index).Value
-            Model_DescriptionTextBox.Text = MLDataGrid.Item("model_description", MLDataGrid.SelectedRows(0).Index).Value
-            Model_ColorComboBox.SelectedValue = MLDataGrid.Item("model_color", MLDataGrid.SelectedRows(0).Index).Value
-            Model_StatusComboBox.SelectedValue = MLDataGrid.Item("model_status", MLDataGrid.SelectedRows(0).Index).Value
+            Model_IdTextBox.Text = MLDataGrid.Item("models_id", MLDataGrid.SelectedRows(0).Index).Value
+            Model_BrandComboBox.SelectedValue = MLDataGrid.Item("models_brand", MLDataGrid.SelectedRows(0).Index).Value
+            Model_MoldTextBox.Text = MLDataGrid.Item("models_mold", MLDataGrid.SelectedRows(0).Index).Value
+            Model_SerialTextBox.Text = MLDataGrid.Item("models_serial", MLDataGrid.SelectedRows(0).Index).Value
+            Model_DescriptionTextBox.Text = MLDataGrid.Item("models_description", MLDataGrid.SelectedRows(0).Index).Value
+            Model_ColorComboBox.SelectedValue = MLDataGrid.Item("models_color", MLDataGrid.SelectedRows(0).Index).Value
+            Model_StatusComboBox.SelectedValue = MLDataGrid.Item("models_status", MLDataGrid.SelectedRows(0).Index).Value
         End If
     End Sub
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
@@ -85,8 +85,8 @@ Public Class AddModel
         DeleteSelected_MoldButton.Enabled = False
     End Sub
     Private Sub DeleteSelected_MoldButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteSelected_MoldButton.Click
-        Dim command As New MySqlCommand("DELETE FROM `models` WHERE `model_id` = @model_id", connection)
-        command.Parameters.Add("@model_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
+        Dim command As New MySqlCommand("DELETE FROM `models` WHERE `models_id` = @models_id", connection)
+        command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
         connection.Open()
         If command.ExecuteNonQuery() = 1 Then
             MessageBox.Show("Model Deleted")
@@ -97,14 +97,14 @@ Public Class AddModel
         AddModel_Load(sender, e)
     End Sub
     Private Sub ChangeSelected_MoldButton_Click(sender As Object, e As EventArgs) Handles ChangeSelected_MoldButton.Click
-        Dim command As New MySqlCommand("UPDATE `models` SET `model_brand` = @model_brand, `model_mold` = @model_mold, `model_serial` = @model_serial, `model_color` = @model_color, `model_description` = @model_description,  `model_status` = @model_status WHERE `model_id` = @model_id", connection)
-        command.Parameters.Add("@model_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
-        command.Parameters.Add("@model_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
-        command.Parameters.Add("@model_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
-        command.Parameters.Add("@model_serial", MySqlDbType.VarChar).Value = Model_SerialTextBox.Text
-        command.Parameters.Add("@model_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
-        command.Parameters.Add("@model_description", MySqlDbType.VarChar).Value = Model_DescriptionTextBox.Text
-        command.Parameters.Add("@model_status", MySqlDbType.VarChar).Value = Convert.ToInt32(Model_StatusComboBox.SelectedValue.GetHashCode())
+        Dim command As New MySqlCommand("UPDATE `models` SET `models_brand` = @models_brand, `models_mold` = @models_mold, `models_serial` = @models_serial, `models_color` = @models_color, `modesl_description` = @models_description,  `models_status` = @models_status WHERE `models_id` = @models_id", connection)
+        command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
+        command.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
+        command.Parameters.Add("@models_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
+        command.Parameters.Add("@models_serial", MySqlDbType.VarChar).Value = Model_SerialTextBox.Text
+        command.Parameters.Add("@models_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
+        command.Parameters.Add("@models_description", MySqlDbType.VarChar).Value = Model_DescriptionTextBox.Text
+        command.Parameters.Add("@models_status", MySqlDbType.VarChar).Value = Convert.ToInt32(Model_StatusComboBox.SelectedValue.GetHashCode())
         connection.Open()
         If command.ExecuteNonQuery() = 1 Then
             MessageBox.Show("Model Updated")
@@ -115,14 +115,14 @@ Public Class AddModel
         AddModel_Load(sender, e)
     End Sub
     Private Sub AddNew_MoldButton_Click(sender As Object, e As EventArgs) Handles AddNew_MoldButton.Click
-        Dim command As New MySqlCommand("INSERT INTO `models` (`model_brand`,`model_mold`,`model_serial`,`model_color`,`model_description`,`model_status`) VALUES (@model_brand,@model_mold,@model_serial,@model_color,@model_description,@model_status)", connection)
-        command.Parameters.Add("@model_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
-        command.Parameters.Add("@model_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
-        command.Parameters.Add("@model_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
-        command.Parameters.Add("@model_serial", MySqlDbType.VarChar).Value = Model_SerialTextBox.Text
-        command.Parameters.Add("@model_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
-        command.Parameters.Add("@model_description", MySqlDbType.VarChar).Value = Model_DescriptionTextBox.Text
-        command.Parameters.Add("@model_status", MySqlDbType.VarChar).Value = Convert.ToInt32(Model_StatusComboBox.SelectedValue.GetHashCode())
+        Dim command As New MySqlCommand("INSERT INTO `models` (`models_brand`,`models_mold`,`models_serial`,`models_color`,`models_description`,`models_status`) VALUES (@models_brand,@models_mold,@models_serial,@models_color,@models_description,@models_status)", connection)
+        command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
+        command.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
+        command.Parameters.Add("@models_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
+        command.Parameters.Add("@models_serial", MySqlDbType.VarChar).Value = Model_SerialTextBox.Text
+        command.Parameters.Add("@models_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
+        command.Parameters.Add("@models_description", MySqlDbType.VarChar).Value = Model_DescriptionTextBox.Text
+        command.Parameters.Add("@models_status", MySqlDbType.VarChar).Value = Convert.ToInt32(Model_StatusComboBox.SelectedValue.GetHashCode())
         connection.Open()
         If command.ExecuteNonQuery() = 1 Then
             MessageBox.Show("Model Added")

@@ -25,10 +25,12 @@ Partial Class User_Main
         Me.UserGroupBox = New System.Windows.Forms.GroupBox()
         Me.AddNewDefectButton = New System.Windows.Forms.Button()
         Me.SuperGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.AddColorButton1 = New System.Windows.Forms.Button()
+        Me.AddModelButton1 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.AdminGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.AddColorButton2 = New System.Windows.Forms.Button()
+        Me.AddModelButton2 = New System.Windows.Forms.Button()
         Me.AddEditUserButton = New System.Windows.Forms.Button()
         Me.CurrentUserTextBox = New System.Windows.Forms.TextBox()
         Me.UserGroupBox.SuspendLayout()
@@ -57,7 +59,8 @@ Partial Class User_Main
         '
         'SuperGroupBox
         '
-        Me.SuperGroupBox.Controls.Add(Me.Button2)
+        Me.SuperGroupBox.Controls.Add(Me.AddColorButton1)
+        Me.SuperGroupBox.Controls.Add(Me.AddModelButton1)
         Me.SuperGroupBox.Controls.Add(Me.Button1)
         Me.SuperGroupBox.Location = New System.Drawing.Point(6, 132)
         Me.SuperGroupBox.Name = "SuperGroupBox"
@@ -66,14 +69,23 @@ Partial Class User_Main
         Me.SuperGroupBox.TabStop = False
         Me.SuperGroupBox.Text = "Supervisor Options"
         '
-        'Button2
+        'AddColorButton1
         '
-        Me.Button2.Location = New System.Drawing.Point(180, 22)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(162, 60)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "Add Model"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.AddColorButton1.Location = New System.Drawing.Point(342, 22)
+        Me.AddColorButton1.Name = "AddColorButton1"
+        Me.AddColorButton1.Size = New System.Drawing.Size(162, 60)
+        Me.AddColorButton1.TabIndex = 0
+        Me.AddColorButton1.Text = "Add/Edit Color"
+        Me.AddColorButton1.UseVisualStyleBackColor = True
+        '
+        'AddModelButton1
+        '
+        Me.AddModelButton1.Location = New System.Drawing.Point(174, 22)
+        Me.AddModelButton1.Name = "AddModelButton1"
+        Me.AddModelButton1.Size = New System.Drawing.Size(162, 60)
+        Me.AddModelButton1.TabIndex = 0
+        Me.AddModelButton1.Text = "Add/Edit Mold Model"
+        Me.AddModelButton1.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -86,7 +98,8 @@ Partial Class User_Main
         '
         'AdminGroupBox
         '
-        Me.AdminGroupBox.Controls.Add(Me.Button7)
+        Me.AdminGroupBox.Controls.Add(Me.AddColorButton2)
+        Me.AdminGroupBox.Controls.Add(Me.AddModelButton2)
         Me.AdminGroupBox.Controls.Add(Me.AddEditUserButton)
         Me.AdminGroupBox.Location = New System.Drawing.Point(6, 230)
         Me.AdminGroupBox.Name = "AdminGroupBox"
@@ -95,14 +108,23 @@ Partial Class User_Main
         Me.AdminGroupBox.TabStop = False
         Me.AdminGroupBox.Text = "Admin Options"
         '
-        'Button7
+        'AddColorButton2
         '
-        Me.Button7.Location = New System.Drawing.Point(174, 22)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(162, 60)
-        Me.Button7.TabIndex = 0
-        Me.Button7.Text = "Add Model"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.AddColorButton2.Location = New System.Drawing.Point(342, 22)
+        Me.AddColorButton2.Name = "AddColorButton2"
+        Me.AddColorButton2.Size = New System.Drawing.Size(162, 60)
+        Me.AddColorButton2.TabIndex = 0
+        Me.AddColorButton2.Text = "Add/Edit Color"
+        Me.AddColorButton2.UseVisualStyleBackColor = True
+        '
+        'AddModelButton2
+        '
+        Me.AddModelButton2.Location = New System.Drawing.Point(174, 22)
+        Me.AddModelButton2.Name = "AddModelButton2"
+        Me.AddModelButton2.Size = New System.Drawing.Size(162, 60)
+        Me.AddModelButton2.TabIndex = 0
+        Me.AddModelButton2.Text = "Add/Edit Mold Model"
+        Me.AddModelButton2.UseVisualStyleBackColor = True
         '
         'AddEditUserButton
         '
@@ -147,9 +169,11 @@ Partial Class User_Main
     Friend WithEvents AddNewDefectButton As Button
     Friend WithEvents SuperGroupBox As GroupBox
     Friend WithEvents AdminGroupBox As GroupBox
-    Friend WithEvents Button7 As Button
+    Friend WithEvents AddModelButton2 As Button
     Friend WithEvents AddEditUserButton As Button
     Friend WithEvents CurrentUserTextBox As TextBox
-    Friend WithEvents Button2 As Button
+    Friend WithEvents AddModelButton1 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents AddColorButton1 As Button
+    Friend WithEvents AddColorButton2 As Button
 End Class

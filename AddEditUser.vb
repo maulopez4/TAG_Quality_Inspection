@@ -13,19 +13,19 @@ Public Class AddEditUser
         ChangeUser_Button.Enabled = False
         DeleteUserButton.Enabled = False
         Try
-            Using AUcommand As New MySqlCommand("SELECT `user_id`, `real_name`, `user_name`, `password`,`role` FROM `users`", connection)
+            Using AUcommand As New MySqlCommand("SELECT `users_id`, `users_realname`, `users_username`, `users_password`,`users_role` FROM `users`", connection)
                 Dim AUadapter As New MySqlDataAdapter(AUcommand)
                 Dim AUtable As New DataTable()
                 Dim AU = AUadapter.Fill(AUtable)
                 AUDataGrid.DataSource = AUtable
             End Using
-            Using RLcommand As New MySqlCommand("SELECT `role_name`, `role_description` FROM `roles`", connection)
+            Using RLcommand As New MySqlCommand("SELECT `roles_name`, `roles_description` FROM `roles`", connection)
                 Dim RLadapter As New MySqlDataAdapter(RLcommand)
                 Dim RLtable As New DataTable()
                 RLadapter.Fill(RLtable)
                 RoleComboBox.DataSource = RLtable
-                RoleComboBox.ValueMember = "role_name"
-                RoleComboBox.DisplayMember = "role_description"
+                RoleComboBox.ValueMember = "roles_name"
+                RoleComboBox.DisplayMember = "roles_description"
             End Using
         Catch myerror As MySqlException
             MessageBox.Show("Error: " & myerror.Message)
@@ -39,12 +39,12 @@ Public Class AddEditUser
         ChangeUser_Button.Enabled = True
         DeleteUserButton.Enabled = True
         If AUDataGrid.SelectedRows.Count > 0 Then
-            User_IdTextBox.Text = AUDataGrid.Item("user_id", AUDataGrid.SelectedRows(0).Index).Value
-            Real_NameTextBox.Text = AUDataGrid.Item("real_name", AUDataGrid.SelectedRows(0).Index).Value
-            User_NameTextBox.Text = AUDataGrid.Item("user_name", AUDataGrid.SelectedRows(0).Index).Value
-            PasswordTextBox.Text = AUDataGrid.Item("password", AUDataGrid.SelectedRows(0).Index).Value
-            ConfirmTextBox.Text = AUDataGrid.Item("password", AUDataGrid.SelectedRows(0).Index).Value
-            RoleComboBox.SelectedValue = AUDataGrid.Item("role", AUDataGrid.SelectedRows(0).Index).Value
+            User_IdTextBox.Text = AUDataGrid.Item("users_id", AUDataGrid.SelectedRows(0).Index).Value
+            Real_NameTextBox.Text = AUDataGrid.Item("users_realname", AUDataGrid.SelectedRows(0).Index).Value
+            User_NameTextBox.Text = AUDataGrid.Item("users_username", AUDataGrid.SelectedRows(0).Index).Value
+            PasswordTextBox.Text = AUDataGrid.Item("users_password", AUDataGrid.SelectedRows(0).Index).Value
+            ConfirmTextBox.Text = AUDataGrid.Item("users_password", AUDataGrid.SelectedRows(0).Index).Value
+            RoleComboBox.SelectedValue = AUDataGrid.Item("users_role", AUDataGrid.SelectedRows(0).Index).Value
         End If
     End Sub
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
@@ -52,12 +52,8 @@ Public Class AddEditUser
         Me.Close()
     End Sub
     Private Sub DeleteUserButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteUserButton.Click
-        Dim command As New MySqlCommand("DELETE FROM `users` WHERE `user_id` = @user_id", connection)
-        command.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = User_IdTextBox.Text
-        command.Parameters.Add("@real_name", MySqlDbType.VarChar).Value = Real_NameTextBox.Text
-        command.Parameters.Add("@user_name", MySqlDbType.VarChar).Value = User_NameTextBox.Text
-        command.Parameters.Add("@password", MySqlDbType.VarChar).Value = PasswordTextBox.Text
-        command.Parameters.Add("@role", MySqlDbType.VarChar).Value = RoleComboBox.SelectedValue
+        Dim command As New MySqlCommand("DELETE FROM `users` WHERE `users_id` = @users_id", connection)
+        command.Parameters.Add("@users_id", MySqlDbType.VarChar).Value = User_IdTextBox.Text
         connection.Open()
         If command.ExecuteNonQuery() = 1 Then
             MessageBox.Show("User Updated")
@@ -80,12 +76,12 @@ Public Class AddEditUser
                     If IsNothing(PasswordTextBox.Text) Then
                         MessageBox.Show("Password can not be Empty, Please Enter Password")
                     Else
-                        Dim command As New MySqlCommand("UPDATE `users` SET `real_name` = @real_name, `user_name` = @user_name, `password` = @password, `role` = @role WHERE `user_id` = @user_id", connection)
-                        command.Parameters.Add("@user_id", MySqlDbType.VarChar).Value = User_IdTextBox.Text
-                        command.Parameters.Add("@real_name", MySqlDbType.VarChar).Value = Real_NameTextBox.Text
-                        command.Parameters.Add("@user_name", MySqlDbType.VarChar).Value = User_NameTextBox.Text
-                        command.Parameters.Add("@password", MySqlDbType.VarChar).Value = PasswordTextBox.Text
-                        command.Parameters.Add("@role", MySqlDbType.VarChar).Value = RoleComboBox.SelectedValue
+                        Dim command As New MySqlCommand("UPDATE `users` SET `users_realname` = @users_realname, `users_username` = @users_username, `users_password` = @users_password, `users_role` = @users_role WHERE `users_id` = @users_id", connection)
+                        command.Parameters.Add("@users_id", MySqlDbType.VarChar).Value = User_IdTextBox.Text
+                        command.Parameters.Add("@users_realname", MySqlDbType.VarChar).Value = Real_NameTextBox.Text
+                        command.Parameters.Add("@users_username", MySqlDbType.VarChar).Value = User_NameTextBox.Text
+                        command.Parameters.Add("@users_password", MySqlDbType.VarChar).Value = PasswordTextBox.Text
+                        command.Parameters.Add("@users_role", MySqlDbType.VarChar).Value = RoleComboBox.SelectedValue
                         connection.Open()
                         If command.ExecuteNonQuery() = 1 Then
                             MessageBox.Show("User Updated")
@@ -112,11 +108,11 @@ Public Class AddEditUser
                     If IsNothing(PasswordTextBox.Text) Then
                         MessageBox.Show("Password can not be Empty, Please Enter Password")
                     Else
-                        Dim command As New MySqlCommand("INSERT INTO `users`(`real_name`, `user_name`, `password`,`role`) VALUES (@real_name,@user_name,@password,@role)", connection)
-                        command.Parameters.Add("@real_name", MySqlDbType.VarChar).Value = Real_NameTextBox.Text
-                        command.Parameters.Add("@user_name", MySqlDbType.VarChar).Value = User_NameTextBox.Text
-                        command.Parameters.Add("@password", MySqlDbType.VarChar).Value = PasswordTextBox.Text
-                        command.Parameters.Add("@role", MySqlDbType.VarChar).Value = RoleComboBox.SelectedValue
+                        Dim command As New MySqlCommand("INSERT INTO `users`(`users_realname`, `users_username`, `users_password`,`users_role`) VALUES (@users_realname,@users_username,@users_password,@users_role)", connection)
+                        command.Parameters.Add("@users_realname", MySqlDbType.VarChar).Value = Real_NameTextBox.Text
+                        command.Parameters.Add("@users_username", MySqlDbType.VarChar).Value = User_NameTextBox.Text
+                        command.Parameters.Add("@users_password", MySqlDbType.VarChar).Value = PasswordTextBox.Text
+                        command.Parameters.Add("@users_role", MySqlDbType.VarChar).Value = RoleComboBox.SelectedValue
 
                         connection.Open()
 
@@ -134,15 +130,15 @@ Public Class AddEditUser
     End Sub
     Private Sub User_NameTextBox_LostFocus(sender As Object, e As EventArgs) Handles User_NameTextBox.LostFocus
         Dim user_name As String
-        Dim command As New MySqlCommand("SELECT `user_name` FROM `users` WHERE `user_name` = @user_name", connection)
-        command.Parameters.Add("@user_name", MySqlDbType.VarChar).Value = User_NameTextBox.Text
+        Dim command As New MySqlCommand("SELECT `users_username` FROM `users` WHERE `users_username` = @users_username", connection)
+        command.Parameters.Add("@users_username", MySqlDbType.VarChar).Value = User_NameTextBox.Text
 
         Dim adapter As New MySqlDataAdapter(command)
         Dim table As New DataTable()
         adapter.Fill(table)
 
         For Each row In table.AsEnumerable
-            user_name = (String.Format("{0}", row("user_name")))
+            user_name = (String.Format("{0}", row("users_username")))
         Next
 
         If table.Rows.Count = 0 Then

@@ -12,7 +12,10 @@ Public Class AddEntry
     Dim arrImage2() As Byte
     Dim arrImage3() As Byte
     Dim workorder_accepted As Boolean
+    Dim additional_defects As Boolean
     Private Sub AddDefect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DefectDataGroupBox.Visible = False
+        AddPicturesGroupBox.Visible = False
         Dim t As String = Date.Now.ToString("HH:mm:ss")
         TimeTextBox.Text = t
         Using WScommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
@@ -23,29 +26,29 @@ Public Class AddEntry
             WorkStationComboBox.ValueMember = "workstation_code"
             WorkStationComboBox.DisplayMember = "workstation_description"
         End Using
-        Using MBcommand As New MySqlCommand("SELECT DISTINCT `model_brand` FROM `models`", connection)
+        Using MBcommand As New MySqlCommand("SELECT DISTINCT `models_brand` FROM `models`", connection)
             Dim MBadapter As New MySqlDataAdapter(MBcommand)
             Dim MBtable As New DataTable()
             Dim MB = MBadapter.Fill(MBtable)
-            BrandComboBox.DataSource = MBtable
-            BrandComboBox.ValueMember = "model_brand"
-            BrandComboBox.DisplayMember = "model_brand"
+            MoldBrandComboBox.DataSource = MBtable
+            MoldBrandComboBox.ValueMember = "models_brand"
+            MoldBrandComboBox.DisplayMember = "models_brand"
         End Using
         Using RWcommand As New MySqlCommand("SELECT `rework_code`, `rework_description` FROM `rework`", connection)
             Dim RWadapter As New MySqlDataAdapter(RWcommand)
             Dim RWtable As New DataTable()
             Dim RW = RWadapter.Fill(RWtable)
-            ReworkTypeComboBox.DataSource = RWtable
-            ReworkTypeComboBox.ValueMember = "rework_code"
-            ReworkTypeComboBox.DisplayMember = "rework_description"
+            ReworkComboBox.DataSource = RWtable
+            ReworkComboBox.ValueMember = "rework_code"
+            ReworkComboBox.DisplayMember = "rework_description"
         End Using
-        Using DLcommand As New MySqlCommand("SELECT `location_code`, `location_description` FROM `locations`", connection)
+        Using DLcommand As New MySqlCommand("SELECT `locations_code`, `locations_description` FROM `locations`", connection)
             Dim DLadapter As New MySqlDataAdapter(DLcommand)
             Dim DLtable As New DataTable()
             Dim DL = DLadapter.Fill(DLtable)
             DefectLocationComboBox.DataSource = DLtable
-            DefectLocationComboBox.ValueMember = "location_code"
-            DefectLocationComboBox.DisplayMember = "location_description"
+            DefectLocationComboBox.ValueMember = "locations_code"
+            DefectLocationComboBox.DisplayMember = "locations_description"
         End Using
         Using WOcommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
             Dim WOadapter As New MySqlDataAdapter(WOcommand)
@@ -54,6 +57,14 @@ Public Class AddEntry
             DefectOriginComboBox.DataSource = WOtable
             DefectOriginComboBox.ValueMember = "workstation_code"
             DefectOriginComboBox.DisplayMember = "workstation_description"
+        End Using
+        Using PCcommand As New MySqlCommand("SELECT `paintcode_code` FROM `paintcode`", connection)
+            Dim PCadapter As New MySqlDataAdapter(PCcommand)
+            Dim PCtable As New DataTable()
+            Dim PC = PCadapter.Fill(PCtable)
+            PaintCodeComboBox.DataSource = PCtable
+            PaintCodeComboBox.ValueMember = "paintcode_code"
+            PaintCodeComboBox.DisplayMember = "paintcode_code"
         End Using
         ARPictureBox.Image = My.Resources.leer_logo
         ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
@@ -69,15 +80,15 @@ Public Class AddEntry
         Dim toString As String = DefectOriginComboBox.Text.ToString
         Defect_Origin = toString
         With DefectComboBox
-            Using DFcommand As New MySqlCommand("SELECT `defect_code`, `defect_description` FROM `defects` WHERE `defect_workstation` = @Defect_Origin", connection)
-                DFcommand.Parameters.Add("@Defect_Origin", MySqlDbType.String).Value = Defect_Origin
+            Using DFcommand As New MySqlCommand("SELECT `defects_code`, `defects_description` FROM `defects` WHERE `defects_workstation` = @defects_origin", connection)
+                DFcommand.Parameters.Add("@defects_origin", MySqlDbType.String).Value = Defect_Origin
                 Dim DFadapter As New MySqlDataAdapter(DFcommand)
                 Dim DFtable As New DataTable()
                 DFadapter.Fill(DFtable)
 
                 DefectComboBox.DataSource = DFtable
-                DefectComboBox.ValueMember = "defect_code"
-                DefectComboBox.DisplayMember = "defect_description"
+                DefectComboBox.ValueMember = "defects_code"
+                DefectComboBox.DisplayMember = "defects_description"
             End Using
         End With
     End Sub
@@ -116,50 +127,116 @@ Public Class AddEntry
             PictureBox3.Image = My.Resources.leer_logo
         End If
 
-        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `reported_by`, `workorder_workstation`, `workorder_number`, `workorder_model`, `workorder_consecutive`, `workorder_serial`, `workorder_accepted`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments`, `additional_error`, `Image1`, `Image2`, `Image3`) 
-                                        VALUES 
-                                        (@workorder_date,@workorder_time,@reported_by,@workorder_workstation,@workorder_number,@workorder_model,@workorder_consecutive,@workorder_serial,@workorder_accepted,@workorder_rework,@workorder_defect_origin,@workorder_defect,@workorder_defect_location,@workorder_comments,@additional_error,@Image1,@Image2,@Image3)", connection)
-        ' add Parameters to the command
+        Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, 
+                                                                `workorder_time`,
+                                                                `workorder_reportedby`,
+                                                                `workorder_workstation`,
+                                                                `workorder_number`,
+                                                                `workorder_serial`,
+                                                                `workorder_consecutive`,
+                                                                `workorder_moldbrand`,
+                                                                `workorder_moldmodel`,
+                                                                `workorder_moldserial`,
+                                                                `workorder_paintcode`,
+                                                                `workorder_accepted`,
+                                                                `workorder_rework`,
+                                                                `workorder_defect_origin`,
+                                                                `workorder_defect`,
+                                                                `workorder_defect_location`,
+                                                                `workorder_additionalerror`,
+                                                                `workorder_image1`,
+                                                                `workorder_image2`,
+                                                                `workorder_image3`,
+                                                                `workorder_comments`)
+                                                                VALUES(@workorder_date,
+                                                                @workorder_time,
+                                                                @workorder_reportedby,
+                                                                @workorder_workstation,
+                                                                @workorder_number,
+                                                                @workorder_serial,
+                                                                @workorder_consecutive,
+                                                                @workorder_moldbrand,
+                                                                @workorder_moldmodel,
+                                                                @workorder_moldserial,
+                                                                @workorder_paintcode,
+                                                                @workorder_accepted,
+                                                                @workorder_rework,
+                                                                @workorder_defect_origin,
+                                                                @workorder_defect,
+                                                                @workorder_defect_location,
+                                                                @workorder_additionalerror,
+                                                                @workorder_image1,
+                                                                @workorder_image2,
+                                                                @workorder_image3,
+                                                                @workorder_comments)", connection)
         command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
         command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
-        command.Parameters.Add("@reported_by", MySqlDbType.VarChar).Value = LoginForm.login_user
+        command.Parameters.Add("@workorder_reportedby", MySqlDbType.VarChar).Value = LoginForm.login_user
         command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
         command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
-        command.Parameters.Add("@workorder_model", MySqlDbType.VarChar).Value = ModelComboBox.SelectedValue
-        command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = ConsecutiveTextBox.Text
-        command.Parameters.Add("@workorder_accepted", MySqlDbType.VarChar).Value = workorder_accepted
         command.Parameters.Add("@workorder_serial", MySqlDbType.VarChar).Value = SerialNumberTextBox.Text
-        command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkTypeComboBox.SelectedValue
+        command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = ConsecutiveTextBox.Text
+        command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = MoldBrandComboBox.SelectedValue
+        command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = MoldModelComboBox.SelectedValue
+        command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = MoldSerialComboBox.SelectedValue
+        command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = PaintCodeComboBox.SelectedValue
+        command.Parameters.Add("@workorder_accepted", MySqlDbType.Bit).Value = workorder_accepted
+        command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkComboBox.SelectedValue
         command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = DefectOriginComboBox.SelectedValue
         command.Parameters.Add("@workorder_defect", MySqlDbType.VarChar).Value = DefectComboBox.SelectedValue
         command.Parameters.Add("@workorder_defect_location", MySqlDbType.VarChar).Value = DefectLocationComboBox.SelectedValue
+        command.Parameters.Add("@workorder_additionalerror", MySqlDbType.Bit).Value = additional_defects
+        command.Parameters.Add("@workorder_image1", MySqlDbType.LongBlob).Value = arrImage1
+        command.Parameters.Add("@workorder_image2", MySqlDbType.LongBlob).Value = arrImage2
+        command.Parameters.Add("@workorder_image3", MySqlDbType.LongBlob).Value = arrImage3
         command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = CommentsRichTextBox.Text
-        command.Parameters.Add("@additional_error", MySqlDbType.VarChar).Value = AdditionalDefectsCheckBox.Text
-        command.Parameters.Add("@Image1", MySqlDbType.LongBlob).Value = arrImage1
-        command.Parameters.Add("@Image2", MySqlDbType.LongBlob).Value = arrImage2
-        command.Parameters.Add("@Image3", MySqlDbType.LongBlob).Value = arrImage3
         connection.Open()
 
-        'If AdditionalDefectsCheckBox.Checked <> True Then
-        If command.ExecuteNonQuery() = 1 Then
-            MessageBox.Show("Defect Data Entered")
+        Dim Entrylist As New List(Of String) From {LoginForm.login_user,
+                                                   WorkStationComboBox.SelectedValue,
+                                                   WorkOrderTextBox.Text,
+                                                   SerialNumberTextBox.Text,
+                                                   ConsecutiveTextBox.Text,
+                                                   MoldBrandComboBox.SelectedValue,
+                                                   MoldModelComboBox.SelectedValue,
+                                                   MoldSerialComboBox.SelectedValue,
+                                                   PaintCodeComboBox.SelectedValue}
+
+        'Dim Msg As String = ""
+
+        'For Each S As String In Entrylist
+        '    Msg &= S & " "
+        'Next
+        'MessageBox.Show(Msg)
+
+        If additional_defects = False Then
+            If command.ExecuteNonQuery() = 1 Then
+                MessageBox.Show("Data Entered")
+            Else
+                MessageBox.Show("ERROR")
+            End If
+            Close()
         Else
-            MessageBox.Show("ERROR")
+            If command.ExecuteNonQuery() = 1 Then
+                MessageBox.Show("Data Entered, Please enter next defect Data")
+                Controls.Clear() 'removes all the controls on the form
+                InitializeComponent() 'load all the controls again
+                AddDefect_Load(e, e)
+                WorkStationComboBox.SelectedValue = (Entrylist(1)).ToString
+                WorkOrderTextBox.Text = (Entrylist(2)).ToString
+                SerialNumberTextBox.Text = (Entrylist(3)).ToString
+                ConsecutiveTextBox.Text = (Entrylist(4)).ToString
+                MoldBrandComboBox.SelectedValue = (Entrylist(5)).ToString
+                MoldModelComboBox.SelectedValue = (Entrylist(6)).ToString
+                MoldSerialComboBox.SelectedValue = (Entrylist(7)).ToString
+                PaintCodeComboBox.SelectedValue = (Entrylist(8)).ToString
+            Else
+                MessageBox.Show("ERROR")
+            End If
         End If
-        Close()
-        'Else
-        '    If command.ExecuteNonQuery() = 1 Then
-        '        MessageBox.Show("Defect Data Entered, Please enter next defect Data")
-        '        Controls.Clear()
-        '        InitializeComponent()
-        '        AddDefect_Load(e, e)
-        '    Else
-        '        MessageBox.Show("ERROR")
-        '    End If
-        'End If
         connection.Close()
     End Sub
-    Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged
+    Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged, PaintCodeDescriptionTextBox.TextChanged
         WorkOrderValue = WorkOrderTextBox.Text
     End Sub
     Private Sub PictureButton1_Click(sender As Object, e As EventArgs) Handles PictureButton1.Click
@@ -360,7 +437,6 @@ Public Class AddEntry
     Private Sub LinkLabel39_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel39.LinkClicked
         DefectLocationComboBox.SelectedValue = LinkLabel39.Text
     End Sub
-
     Private Sub ApprovedRadio_CheckedChanged(sender As Object, e As EventArgs) Handles ApprovedRadio.CheckedChanged
         ARPictureBox.Image = My.Resources.Ok_icon
         ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
@@ -376,38 +452,60 @@ Public Class AddEntry
         DefectDataGroupBox.Visible = True
         AddPicturesGroupBox.Visible = True
     End Sub
-    Private Sub BrandComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BrandComboBox.SelectedIndexChanged
-        Dim model_brand As String
-        Dim toString As String = BrandComboBox.Text.ToString
-        model_brand = toString
-        With ModelComboBox
-            Using Bcommand As New MySqlCommand("SELECT DISTINCT `model_mold` FROM `models` WHERE `model_brand` = @model_brand", connection)
-                Bcommand.Parameters.Add("@model_brand", MySqlDbType.String).Value = model_brand
+    Private Sub BrandComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldBrandComboBox.SelectedIndexChanged
+        Dim models_brand As String
+        Dim toString As String = MoldBrandComboBox.Text.ToString
+        models_brand = toString
+        With MoldModelComboBox
+            Using Bcommand As New MySqlCommand("SELECT DISTINCT `models_mold` FROM `models` WHERE `models_brand` = @models_brand", connection)
+                Bcommand.Parameters.Add("@models_brand", MySqlDbType.String).Value = models_brand
                 Dim Badapter As New MySqlDataAdapter(Bcommand)
                 Dim Btable As New DataTable()
                 Badapter.Fill(Btable)
 
-                ModelComboBox.DataSource = Btable
-                ModelComboBox.ValueMember = "model_mold"
-                ModelComboBox.DisplayMember = "model_mold"
+                MoldModelComboBox.DataSource = Btable
+                MoldModelComboBox.ValueMember = "models_mold"
+                MoldModelComboBox.DisplayMember = "models_mold"
             End Using
         End With
     End Sub
-    Private Sub ModelComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ModelComboBox.SelectedIndexChanged
-        Dim model_molde As String
-        Dim toString As String = ModelComboBox.Text.ToString
-        model_molde = toString
-        With SerialComboBox
-            Using Mcommand As New MySqlCommand("SELECT `model_serial` FROM `models` WHERE `model_mold` = @model_molde", connection)
-                Mcommand.Parameters.Add("@model_molde", MySqlDbType.String).Value = model_molde
+    Private Sub ModelComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldModelComboBox.SelectedIndexChanged
+        Dim models_molde As String
+        Dim toString As String = MoldModelComboBox.Text.ToString
+        models_molde = toString
+        With MoldSerialComboBox
+            Using Mcommand As New MySqlCommand("SELECT `models_serial` FROM `models` WHERE `models_mold` = @models_molde", connection)
+                Mcommand.Parameters.Add("@models_molde", MySqlDbType.String).Value = models_molde
                 Dim Madapter As New MySqlDataAdapter(Mcommand)
                 Dim Mtable As New DataTable()
                 Madapter.Fill(Mtable)
 
-                SerialComboBox.DataSource = Mtable
-                SerialComboBox.ValueMember = "model_serial"
-                SerialComboBox.DisplayMember = "model_serial"
+                MoldSerialComboBox.DataSource = Mtable
+                MoldSerialComboBox.ValueMember = "models_serial"
+                MoldSerialComboBox.DisplayMember = "models_serial"
             End Using
         End With
+    End Sub
+    'Private Sub PaintCodeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PaintCodeComboBox.SelectedIndexChanged
+    '    Dim paintcode_code As String
+    '    Dim toString = PaintCodeComboBox.SelectedText.ToString
+    '    paintcode_code = toString
+    '    With PaintCodeComboBox
+    '        Using PDcommand As New MySqlCommand("SELECT `paintcode_brandname`, `paintcode_description` FROM `paintcode` WHERE `paintcode_code` = @paintcode_code", connection)
+    '            PDcommand.Parameters.Add("@paintcode_code", MySqlDbType.String).Value = paintcode_code
+    '            Dim PDadapter As New MySqlDataAdapter(PDcommand)
+    '            Dim PDtable As New DataTable()
+    '            PDadapter.Fill(PDtable)
+
+    '            Dim paintcode_description As Object = PDtable.Rows.Item(0).Item("paintcode_description")
+    '            PaintCodeDescriptionTextBox.Text = paintcode_description
+    '        End Using
+    '    End With
+    'End Sub
+    Private Sub AdditionalDefectYESRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AdditionalDefectYESRadioButton.CheckedChanged
+        additional_defects = True
+    End Sub
+    Private Sub AdditionalDefectNORadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AdditionalDefectNORadioButton.CheckedChanged
+        additional_defects = False
     End Sub
 End Class

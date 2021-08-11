@@ -32,4 +32,9 @@
         Dim newForm As New AddEditUser()
         newForm.Show()
     End Sub
+
+    Private Sub AddModelButton_Click(sender As Object, e As EventArgs) Handles AddModelButton1.Click, AddModelButton2.Click
+        Dim newForm As New AddModel()
+        newForm.Show()
+    End Sub
 End Class
