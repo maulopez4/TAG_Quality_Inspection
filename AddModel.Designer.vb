@@ -143,6 +143,7 @@ Partial Class AddModel
         '
         'Model_BrandComboBox
         '
+        Me.Model_BrandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Model_BrandComboBox.FormattingEnabled = True
         Me.Model_BrandComboBox.Location = New System.Drawing.Point(6, 85)
         Me.Model_BrandComboBox.Name = "Model_BrandComboBox"
@@ -207,6 +208,7 @@ Partial Class AddModel
         '
         'Model_StatusComboBox
         '
+        Me.Model_StatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Model_StatusComboBox.FormattingEnabled = True
         Me.Model_StatusComboBox.Location = New System.Drawing.Point(6, 311)
         Me.Model_StatusComboBox.Name = "Model_StatusComboBox"
@@ -215,6 +217,7 @@ Partial Class AddModel
         '
         'Model_ColorComboBox
         '
+        Me.Model_ColorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Model_ColorComboBox.FormattingEnabled = True
         Me.Model_ColorComboBox.Location = New System.Drawing.Point(6, 265)
         Me.Model_ColorComboBox.Name = "Model_ColorComboBox"

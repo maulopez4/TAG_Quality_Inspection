@@ -62,6 +62,7 @@ Partial Class AddEditUser
         '
         'User_RoleComboBox
         '
+        Me.User_RoleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.User_RoleComboBox.FormattingEnabled = True
         Me.User_RoleComboBox.Location = New System.Drawing.Point(6, 265)
         Me.User_RoleComboBox.Name = "User_RoleComboBox"
