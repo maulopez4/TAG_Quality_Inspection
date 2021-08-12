@@ -23,6 +23,7 @@ Partial Class AddEntry
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
         Me.ARPictureBox = New System.Windows.Forms.PictureBox()
         Me.RejectedRadio = New System.Windows.Forms.RadioButton()
@@ -103,6 +104,7 @@ Partial Class AddEntry
         Me.DefectOriginLabel = New System.Windows.Forms.Label()
         Me.ReworkComboBox = New System.Windows.Forms.ComboBox()
         Me.ReworkTypeLabel = New System.Windows.Forms.Label()
+        Me.RejectedDataGridView = New System.Windows.Forms.DataGridView()
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.CommentsGroupBox = New System.Windows.Forms.GroupBox()
@@ -117,17 +119,20 @@ Partial Class AddEntry
         Me.AddImageButton3 = New System.Windows.Forms.Button()
         Me.AddImageButton2 = New System.Windows.Forms.Button()
         Me.AddImageButton1 = New System.Windows.Forms.Button()
+        Me.RejectedDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.WorkOrderInfoGroupBox.SuspendLayout()
         CType(Me.ARPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.DefectDataGroupBox.SuspendLayout()
         CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Zona32PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Zona1PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CommentsGroupBox.SuspendLayout()
         Me.AddPicturesGroupBox.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RejectedDataGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'WorkOrderInfoGroupBox
@@ -980,15 +985,34 @@ Partial Class AddEntry
         Me.ReworkTypeLabel.TabIndex = 1
         Me.ReworkTypeLabel.Text = "&Rework Type:"
         '
+        'RejectedDataGridView
+        '
+        Me.RejectedDataGridView.AllowUserToAddRows = False
+        Me.RejectedDataGridView.AllowUserToDeleteRows = False
+        Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.RejectedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.RejectedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.RejectedDataGridView.Location = New System.Drawing.Point(6, 18)
+        Me.RejectedDataGridView.Name = "RejectedDataGridView"
+        Me.RejectedDataGridView.ReadOnly = True
+        Me.RejectedDataGridView.RowHeadersWidth = 30
+        Me.RejectedDataGridView.RowTemplate.Height = 25
+        Me.RejectedDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.RejectedDataGridView.Size = New System.Drawing.Size(1103, 300)
+        Me.RejectedDataGridView.TabIndex = 21
+        '
         'OK_Button
         '
         Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.OK_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.OK_Button.Location = New System.Drawing.Point(735, 602)
+        Me.OK_Button.Location = New System.Drawing.Point(750, 602)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(180, 60)
+        Me.OK_Button.Size = New System.Drawing.Size(165, 60)
         Me.OK_Button.TabIndex = 19
         Me.OK_Button.Text = "Add Entry"
         Me.OK_Button.UseVisualStyleBackColor = True
@@ -999,9 +1023,9 @@ Partial Class AddEntry
         Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Cancel_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Cancel_Button.Location = New System.Drawing.Point(945, 602)
+        Me.Cancel_Button.Location = New System.Drawing.Point(960, 602)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(180, 60)
+        Me.Cancel_Button.Size = New System.Drawing.Size(165, 60)
         Me.Cancel_Button.TabIndex = 20
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
@@ -1010,9 +1034,9 @@ Partial Class AddEntry
         '
         Me.CommentsGroupBox.Controls.Add(Me.CommentsRichTextBox)
         Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.CommentsGroupBox.Location = New System.Drawing.Point(735, 465)
+        Me.CommentsGroupBox.Location = New System.Drawing.Point(750, 465)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
-        Me.CommentsGroupBox.Size = New System.Drawing.Size(390, 131)
+        Me.CommentsGroupBox.Size = New System.Drawing.Size(375, 131)
         Me.CommentsGroupBox.TabIndex = 6
         Me.CommentsGroupBox.TabStop = False
         Me.CommentsGroupBox.Text = "Comments:"
@@ -1039,7 +1063,7 @@ Partial Class AddEntry
         Me.AddPicturesGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.AddPicturesGroupBox.Location = New System.Drawing.Point(12, 465)
         Me.AddPicturesGroupBox.Name = "AddPicturesGroupBox"
-        Me.AddPicturesGroupBox.Size = New System.Drawing.Size(717, 200)
+        Me.AddPicturesGroupBox.Size = New System.Drawing.Size(734, 200)
         Me.AddPicturesGroupBox.TabIndex = 7
         Me.AddPicturesGroupBox.TabStop = False
         Me.AddPicturesGroupBox.Text = "Add Pictures"
@@ -1140,17 +1164,29 @@ Partial Class AddEntry
         Me.AddImageButton1.Text = "Add Image"
         Me.AddImageButton1.UseVisualStyleBackColor = True
         '
+        'RejectedDataGroupBox
+        '
+        Me.RejectedDataGroupBox.Controls.Add(Me.RejectedDataGridView)
+        Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.RejectedDataGroupBox.Location = New System.Drawing.Point(10, 130)
+        Me.RejectedDataGroupBox.Name = "RejectedDataGroupBox"
+        Me.RejectedDataGroupBox.Size = New System.Drawing.Size(1115, 329)
+        Me.RejectedDataGroupBox.TabIndex = 21
+        Me.RejectedDataGroupBox.TabStop = False
+        Me.RejectedDataGroupBox.Text = "On-Hold WorkOrders"
+        '
         'AddEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1134, 668)
-        Me.Controls.Add(Me.AddPicturesGroupBox)
+        Me.ClientSize = New System.Drawing.Size(1254, 669)
         Me.Controls.Add(Me.CommentsGroupBox)
-        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.OK_Button)
+        Me.Controls.Add(Me.AddPicturesGroupBox)
+        Me.Controls.Add(Me.RejectedDataGroupBox)
+        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)
@@ -1161,11 +1197,13 @@ Partial Class AddEntry
         CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Zona32PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Zona1PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CommentsGroupBox.ResumeLayout(False)
         Me.AddPicturesGroupBox.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.RejectedDataGroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1264,4 +1302,6 @@ Partial Class AddEntry
     Friend WithEvents PaintCodeDescriptionLabel As Label
     Friend WithEvents AdditionalDefectNORadioButton As RadioButton
     Friend WithEvents AdditionalDefectYESRadioButton As RadioButton
+    Friend WithEvents RejectedDataGridView As DataGridView
+    Friend WithEvents RejectedDataGroupBox As GroupBox
 End Class
