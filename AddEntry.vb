@@ -116,7 +116,6 @@ Public Class AddEntry
         End With
     End Sub
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
-        '***Add images***************************************************************************
         If PictureBox1.ImageLocation IsNot Nothing Then
             Dim mstream1 As New System.IO.MemoryStream()
             PictureBox1.Image.Save(mstream1, Imaging.ImageFormat.Jpeg)
@@ -175,23 +174,7 @@ Public Class AddEntry
         command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = CommentsRichTextBox.Text
         connection.Open()
 
-        Dim Entrylist As New List(Of String) From {LoginForm.login_user,
-                                                   WorkStationComboBox.SelectedValue,
-                                                   WorkOrderTextBox.Text,
-                                                   SerialNumberTextBox.Text,
-                                                   ConsecutiveTextBox.Text,
-                                                   MoldBrandComboBox.SelectedValue,
-                                                   MoldModelComboBox.SelectedValue,
-                                                   MoldSerialComboBox.SelectedValue,
-                                                   PaintCodeComboBox.SelectedValue}
-
-        'Dim Msg As String = ""
-
-        'For Each S As String In Entrylist
-        '    Msg &= S & " "
-        'Next
-        'MessageBox.Show(Msg)
-
+        Dim Entrylist As New List(Of String) From {LoginForm.login_user, WorkStationComboBox.SelectedValue, WorkOrderTextBox.Text, SerialNumberTextBox.Text, ConsecutiveTextBox.Text, MoldBrandComboBox.SelectedValue, MoldModelComboBox.SelectedValue, MoldSerialComboBox.SelectedValue, PaintCodeComboBox.SelectedValue}
         If additional_defects = False Then
             If command.ExecuteNonQuery() = 1 Then
                 MessageBox.Show("Data Entered")
@@ -239,7 +222,7 @@ Public Class AddEntry
             Dim imgpath1 As String
             Dim OFD As FileDialog = New OpenFileDialog With {
             .InitialDirectory = Environment.SpecialFolder.UserProfile.MyPictures,
-            .FileName = $"{WorkOrderValue}-*",
+            .FileName = $"*",
             .SupportMultiDottedExtensions = True,
             .AddExtension = True,
             .Filter = "JPG File|*.jpg"
@@ -262,7 +245,7 @@ Public Class AddEntry
             Dim imgpath2 As String
             Dim OFD As FileDialog = New OpenFileDialog With {
             .InitialDirectory = Environment.SpecialFolder.UserProfile.MyPictures,
-            .FileName = $"{WorkOrderValue}-*",
+            .FileName = $"*",
             .SupportMultiDottedExtensions = True,
             .AddExtension = True,
             .Filter = "JPG File|*.jpg"
@@ -281,11 +264,12 @@ Public Class AddEntry
         End Try
     End Sub
     Private Sub AddImageButton3_Click(sender As Object, e As EventArgs) Handles AddImageButton3.Click
+        '.FileName = $"{WorkOrderValue}-*",
         Try
             Dim imgpath3 As String
             Dim OFD As FileDialog = New OpenFileDialog With {
             .InitialDirectory = Environment.SpecialFolder.UserProfile.MyPictures,
-            .FileName = $"{WorkOrderValue}-*",
+            .FileName = $"*",
             .SupportMultiDottedExtensions = True,
             .AddExtension = True,
             .Filter = "JPG File|*.jpg"
