@@ -207,6 +207,7 @@ Partial Class AddEntry
         '
         'MoldSerialComboBox
         '
+        Me.MoldSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldSerialComboBox.FormattingEnabled = True
         Me.MoldSerialComboBox.Location = New System.Drawing.Point(489, 94)
         Me.MoldSerialComboBox.Name = "MoldSerialComboBox"
@@ -215,6 +216,7 @@ Partial Class AddEntry
         '
         'PaintCodeComboBox
         '
+        Me.PaintCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PaintCodeComboBox.FormattingEnabled = True
         Me.PaintCodeComboBox.Location = New System.Drawing.Point(645, 94)
         Me.PaintCodeComboBox.Name = "PaintCodeComboBox"
@@ -223,6 +225,7 @@ Partial Class AddEntry
         '
         'MoldBrandComboBox
         '
+        Me.MoldBrandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldBrandComboBox.FormattingEnabled = True
         Me.MoldBrandComboBox.Location = New System.Drawing.Point(176, 94)
         Me.MoldBrandComboBox.Name = "MoldBrandComboBox"
@@ -231,6 +234,7 @@ Partial Class AddEntry
         '
         'MoldModelComboBox
         '
+        Me.MoldModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldModelComboBox.FormattingEnabled = True
         Me.MoldModelComboBox.Location = New System.Drawing.Point(332, 94)
         Me.MoldModelComboBox.Name = "MoldModelComboBox"
@@ -239,12 +243,12 @@ Partial Class AddEntry
         '
         'WorkStationComboBox
         '
+        Me.WorkStationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.WorkStationComboBox.FormattingEnabled = True
         Me.WorkStationComboBox.Location = New System.Drawing.Point(176, 40)
         Me.WorkStationComboBox.Name = "WorkStationComboBox"
         Me.WorkStationComboBox.Size = New System.Drawing.Size(150, 25)
         Me.WorkStationComboBox.TabIndex = 2
-        Me.WorkStationComboBox.Text = "Select Workstation"
         '
         'ConsecutiveTextBox
         '
