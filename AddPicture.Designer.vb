@@ -27,7 +27,7 @@ Partial Class AddPicture
         Me.cmdok = New System.Windows.Forms.Button()
         Me.cmdno = New System.Windows.Forms.Button()
         Me.pbcapture = New System.Windows.Forms.Button()
-        Me.ImagePathText = New System.Windows.Forms.TextBox()
+        Me.Cancel_Button = New System.Windows.Forms.Button()
         CType(Me.pbcaptureimage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,18 +42,18 @@ Partial Class AddPicture
         'cmdok
         '
         Me.cmdok.Image = CType(resources.GetObject("cmdok.Image"), System.Drawing.Image)
-        Me.cmdok.Location = New System.Drawing.Point(268, 507)
+        Me.cmdok.Location = New System.Drawing.Point(266, 493)
         Me.cmdok.Name = "cmdok"
-        Me.cmdok.Size = New System.Drawing.Size(28, 23)
+        Me.cmdok.Size = New System.Drawing.Size(52, 50)
         Me.cmdok.TabIndex = 1
         Me.cmdok.UseVisualStyleBackColor = True
         '
         'cmdno
         '
         Me.cmdno.Image = CType(resources.GetObject("cmdno.Image"), System.Drawing.Image)
-        Me.cmdno.Location = New System.Drawing.Point(357, 507)
+        Me.cmdno.Location = New System.Drawing.Point(334, 493)
         Me.cmdno.Name = "cmdno"
-        Me.cmdno.Size = New System.Drawing.Size(28, 23)
+        Me.cmdno.Size = New System.Drawing.Size(52, 50)
         Me.cmdno.TabIndex = 1
         Me.cmdno.UseVisualStyleBackColor = True
         '
@@ -66,28 +66,29 @@ Partial Class AddPicture
         Me.pbcapture.TabIndex = 1
         Me.pbcapture.UseVisualStyleBackColor = True
         '
-        'ImagePathText
+        'Cancel_Button
         '
-        Me.ImagePathText.Location = New System.Drawing.Point(420, 503)
-        Me.ImagePathText.Name = "ImagePathText"
-        Me.ImagePathText.Size = New System.Drawing.Size(204, 23)
-        Me.ImagePathText.TabIndex = 2
+        Me.Cancel_Button.Location = New System.Drawing.Point(392, 493)
+        Me.Cancel_Button.Name = "Cancel_Button"
+        Me.Cancel_Button.Size = New System.Drawing.Size(120, 50)
+        Me.Cancel_Button.TabIndex = 2
+        Me.Cancel_Button.Text = "Cancel"
+        Me.Cancel_Button.UseVisualStyleBackColor = True
         '
         'AddPicture
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(652, 552)
-        Me.Controls.Add(Me.ImagePathText)
-        Me.Controls.Add(Me.pbcapture)
+        Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.cmdno)
         Me.Controls.Add(Me.cmdok)
         Me.Controls.Add(Me.pbcaptureimage)
+        Me.Controls.Add(Me.pbcapture)
         Me.Name = "AddPicture"
         Me.Text = "Add Picture"
         CType(Me.pbcaptureimage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -95,5 +96,5 @@ Partial Class AddPicture
     Friend WithEvents cmdok As Button
     Friend WithEvents cmdno As Button
     Friend WithEvents pbcapture As Button
-    Friend WithEvents ImagePathText As TextBox
+    Friend WithEvents Cancel_Button As Button
 End Class

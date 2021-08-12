@@ -7,6 +7,7 @@ Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "TAG_Quality_Inspection", "T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3EE37A7-EBAD-4178-9009-03DD851C1A6A}"
 	ProjectSection(SolutionItems) = preProject
+		AddPaintcode.vb = AddPaintcode.vb
 		Image1.jpg = Image1.jpg
 	EndProjectSection
 EndProject
