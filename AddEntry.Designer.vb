@@ -1183,14 +1183,14 @@ Partial Class AddEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1254, 669)
+        Me.ClientSize = New System.Drawing.Size(1134, 666)
         Me.Controls.Add(Me.CommentsGroupBox)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.OK_Button)
         Me.Controls.Add(Me.AddPicturesGroupBox)
-        Me.Controls.Add(Me.RejectedDataGroupBox)
         Me.Controls.Add(Me.DefectDataGroupBox)
+        Me.Controls.Add(Me.RejectedDataGroupBox)
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)

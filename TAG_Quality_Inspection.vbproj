@@ -4,10 +4,11 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TAG_Quality_Inspection</RootNamespace>
-    <StartupObject>TAG_Quality_Inspection.AddEntry</StartupObject>
+    <StartupObject>TAG_Quality_Inspection.SearchEntry</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>My Documents.ico</ApplicationIcon>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <AssemblyName>TBU</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
