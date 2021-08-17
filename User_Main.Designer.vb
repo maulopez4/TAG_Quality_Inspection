@@ -33,6 +33,7 @@ Partial Class User_Main
         Me.Admin_AddModelButton = New System.Windows.Forms.Button()
         Me.Admin_AddEditUserButton = New System.Windows.Forms.Button()
         Me.CurrentUserTextBox = New System.Windows.Forms.TextBox()
+        Me.SearchButton = New System.Windows.Forms.Button()
         Me.UserGroupBox.SuspendLayout()
         Me.SuperGroupBox.SuspendLayout()
         Me.AdminGroupBox.SuspendLayout()
@@ -40,6 +41,7 @@ Partial Class User_Main
         '
         'UserGroupBox
         '
+        Me.UserGroupBox.Controls.Add(Me.SearchButton)
         Me.UserGroupBox.Controls.Add(Me.User_AddNewEntryButton)
         Me.UserGroupBox.Location = New System.Drawing.Point(6, 32)
         Me.UserGroupBox.Name = "UserGroupBox"
@@ -146,6 +148,15 @@ Partial Class User_Main
         Me.CurrentUserTextBox.TabIndex = 1
         Me.CurrentUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'SearchButton
+        '
+        Me.SearchButton.Location = New System.Drawing.Point(174, 28)
+        Me.SearchButton.Name = "SearchButton"
+        Me.SearchButton.Size = New System.Drawing.Size(162, 60)
+        Me.SearchButton.TabIndex = 0
+        Me.SearchButton.Text = "Search Entry"
+        Me.SearchButton.UseVisualStyleBackColor = True
+        '
         'User_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -176,4 +187,5 @@ Partial Class User_Main
     Friend WithEvents Super_AddEditUserButton As Button
     Friend WithEvents Super_AddColorButton As Button
     Friend WithEvents Admin_AddColorButton As Button
+    Friend WithEvents SearchButton As Button
 End Class

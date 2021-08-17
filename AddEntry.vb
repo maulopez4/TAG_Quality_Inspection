@@ -157,11 +157,23 @@ Public Class AddEntry
         command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
         command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
         command.Parameters.Add("@workorder_serial", MySqlDbType.VarChar).Value = SerialNumberTextBox.Text
-        command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = ConsecutiveTextBox.Text
+        If ConsecutiveTextBox.Text Is Nothing Then
+            command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = "Not Available"
+        Else
+            command.Parameters.Add("@workorder_consecutive", MySqlDbType.VarChar).Value = ConsecutiveTextBox.Text
+        End If
         command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = MoldBrandComboBox.SelectedValue
         command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = MoldModelComboBox.SelectedValue
-        command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = MoldSerialComboBox.SelectedValue
-        command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = PaintCodeComboBox.SelectedValue
+        If MoldSerialComboBox.SelectedValue Is Nothing Then
+            command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "Not Available"
+        Else
+            command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = MoldSerialComboBox.SelectedValue
+        End If
+        If PaintCodeComboBox.SelectedValue Is Nothing Then
+            command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = "No Avalaible"
+        Else
+            command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = PaintCodeComboBox.SelectedValue
+        End If
         command.Parameters.Add("@workorder_accepted", MySqlDbType.Bit).Value = workorder_accepted
         command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkComboBox.SelectedValue
         command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = DefectOriginComboBox.SelectedValue
@@ -457,6 +469,8 @@ Public Class AddEntry
     End Sub
     Private Sub RejectedDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles RejectedDataGridView.SelectionChanged
         If RejectedDataGridView.SelectedRows.Count > 0 Then
+            ApprovedRadio.Checked = False
+            RejectedRadio.Checked = False
             WorkStationComboBox.SelectedValue = RejectedDataGridView.Item("workorder_workstation", RejectedDataGridView.SelectedRows(0).Index).Value
             WorkOrderTextBox.Text = RejectedDataGridView.Item("workorder_number", RejectedDataGridView.SelectedRows(0).Index).Value
             SerialNumberTextBox.Text = RejectedDataGridView.Item("workorder_serial", RejectedDataGridView.SelectedRows(0).Index).Value
