@@ -35,8 +35,10 @@ Partial Class SearchEntry
         Me.SearchResultsDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.SearchResultsDataGrid = New System.Windows.Forms.DataGridView()
         Me.EntryReport_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Results_PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.Results_PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Results_PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Search_WorkOrderIDTextBox = New System.Windows.Forms.TextBox()
         Me.Results_ConsecutiveTextBox = New System.Windows.Forms.TextBox()
         Me.WorkStationLabel = New System.Windows.Forms.Label()
         Me.ConsecutiveLabel = New System.Windows.Forms.Label()
@@ -71,10 +73,14 @@ Partial Class SearchEntry
         Me.Results_ReworkTextBox = New System.Windows.Forms.TextBox()
         Me.CommentsGroupBox = New System.Windows.Forms.GroupBox()
         Me.Results_CommentsRichTextBox = New System.Windows.Forms.RichTextBox()
+        Me.Search_WorkOrderIDTextBox = New System.Windows.Forms.TextBox()
         Me.Search_WorkOrderInfoGroupBox.SuspendLayout()
         Me.SearchResultsDataGroupBox.SuspendLayout()
         CType(Me.SearchResultsDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EntryReport_GroupBox.SuspendLayout()
+        CType(Me.Results_PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Results_PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Results_PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.WorkOrderInfoGroupBox.SuspendLayout()
         Me.Results_DefectDataGroupBox.SuspendLayout()
         Me.CommentsGroupBox.SuspendLayout()
@@ -209,6 +215,9 @@ Partial Class SearchEntry
         '
         'EntryReport_GroupBox
         '
+        Me.EntryReport_GroupBox.Controls.Add(Me.Results_PictureBox3)
+        Me.EntryReport_GroupBox.Controls.Add(Me.Results_PictureBox2)
+        Me.EntryReport_GroupBox.Controls.Add(Me.Results_PictureBox1)
         Me.EntryReport_GroupBox.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.EntryReport_GroupBox.Controls.Add(Me.Results_DefectDataGroupBox)
         Me.EntryReport_GroupBox.Controls.Add(Me.CommentsGroupBox)
@@ -218,6 +227,30 @@ Partial Class SearchEntry
         Me.EntryReport_GroupBox.TabIndex = 27
         Me.EntryReport_GroupBox.TabStop = False
         Me.EntryReport_GroupBox.Text = "Entry Report"
+        '
+        'Results_PictureBox3
+        '
+        Me.Results_PictureBox3.Location = New System.Drawing.Point(964, 199)
+        Me.Results_PictureBox3.Name = "Results_PictureBox3"
+        Me.Results_PictureBox3.Size = New System.Drawing.Size(141, 128)
+        Me.Results_PictureBox3.TabIndex = 31
+        Me.Results_PictureBox3.TabStop = False
+        '
+        'Results_PictureBox2
+        '
+        Me.Results_PictureBox2.Location = New System.Drawing.Point(779, 200)
+        Me.Results_PictureBox2.Name = "Results_PictureBox2"
+        Me.Results_PictureBox2.Size = New System.Drawing.Size(141, 128)
+        Me.Results_PictureBox2.TabIndex = 31
+        Me.Results_PictureBox2.TabStop = False
+        '
+        'Results_PictureBox1
+        '
+        Me.Results_PictureBox1.Location = New System.Drawing.Point(578, 199)
+        Me.Results_PictureBox1.Name = "Results_PictureBox1"
+        Me.Results_PictureBox1.Size = New System.Drawing.Size(141, 128)
+        Me.Results_PictureBox1.TabIndex = 31
+        Me.Results_PictureBox1.TabStop = False
         '
         'WorkOrderInfoGroupBox
         '
@@ -248,15 +281,6 @@ Partial Class SearchEntry
         Me.WorkOrderInfoGroupBox.TabIndex = 28
         Me.WorkOrderInfoGroupBox.TabStop = False
         Me.WorkOrderInfoGroupBox.Text = "Work Order Info:"
-        '
-        'Search_WorkOrderIDTextBox
-        '
-        Me.Search_WorkOrderIDTextBox.Enabled = False
-        Me.Search_WorkOrderIDTextBox.Location = New System.Drawing.Point(1058, 41)
-        Me.Search_WorkOrderIDTextBox.Name = "Search_WorkOrderIDTextBox"
-        Me.Search_WorkOrderIDTextBox.Size = New System.Drawing.Size(69, 23)
-        Me.Search_WorkOrderIDTextBox.TabIndex = 3
-        Me.Search_WorkOrderIDTextBox.Visible = False
         '
         'Results_ConsecutiveTextBox
         '
@@ -566,7 +590,7 @@ Partial Class SearchEntry
         Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.CommentsGroupBox.Location = New System.Drawing.Point(571, 25)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
-        Me.CommentsGroupBox.Size = New System.Drawing.Size(366, 168)
+        Me.CommentsGroupBox.Size = New System.Drawing.Size(534, 168)
         Me.CommentsGroupBox.TabIndex = 29
         Me.CommentsGroupBox.TabStop = False
         Me.CommentsGroupBox.Text = "Comments:"
@@ -576,9 +600,18 @@ Partial Class SearchEntry
         Me.Results_CommentsRichTextBox.Enabled = False
         Me.Results_CommentsRichTextBox.Location = New System.Drawing.Point(6, 24)
         Me.Results_CommentsRichTextBox.Name = "Results_CommentsRichTextBox"
-        Me.Results_CommentsRichTextBox.Size = New System.Drawing.Size(355, 136)
+        Me.Results_CommentsRichTextBox.Size = New System.Drawing.Size(522, 136)
         Me.Results_CommentsRichTextBox.TabIndex = 18
         Me.Results_CommentsRichTextBox.Text = ""
+        '
+        'Search_WorkOrderIDTextBox
+        '
+        Me.Search_WorkOrderIDTextBox.Enabled = False
+        Me.Search_WorkOrderIDTextBox.Location = New System.Drawing.Point(1058, 41)
+        Me.Search_WorkOrderIDTextBox.Name = "Search_WorkOrderIDTextBox"
+        Me.Search_WorkOrderIDTextBox.Size = New System.Drawing.Size(69, 23)
+        Me.Search_WorkOrderIDTextBox.TabIndex = 3
+        Me.Search_WorkOrderIDTextBox.Visible = False
         '
         'SearchEntry
         '
@@ -596,6 +629,9 @@ Partial Class SearchEntry
         Me.SearchResultsDataGroupBox.ResumeLayout(False)
         CType(Me.SearchResultsDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.EntryReport_GroupBox.ResumeLayout(False)
+        CType(Me.Results_PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Results_PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Results_PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)
         Me.WorkOrderInfoGroupBox.PerformLayout()
         Me.Results_DefectDataGroupBox.ResumeLayout(False)
@@ -652,4 +688,7 @@ Partial Class SearchEntry
     Friend WithEvents Results_MoldBrandTextBox As TextBox
     Friend WithEvents Results_WorkstationTextBox As TextBox
     Friend WithEvents Search_WorkOrderIDTextBox As TextBox
+    Friend WithEvents Results_PictureBox3 As PictureBox
+    Friend WithEvents Results_PictureBox2 As PictureBox
+    Friend WithEvents Results_PictureBox1 As PictureBox
 End Class
