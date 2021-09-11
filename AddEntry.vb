@@ -4,6 +4,7 @@ Imports AForge
 Imports AForge.Video
 Imports AForge.Video.DirectShow
 Imports System.IO
+Imports Spire.Xls
 Public Class AddEntry
     Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Private ReadOnly connection As New MySqlConnection(connection_string)
@@ -67,7 +68,8 @@ Public Class AddEntry
             PaintCodeComboBox.ValueMember = "paintcode_code"
             PaintCodeComboBox.DisplayMember = "paintcode_code"
         End Using
-        Using RJcommand As New MySqlCommand("SELECT `workorder_date`, `workorder_workstation`, `workorder_number`, `workorder_serial`, `workorder_consecutive`, `workorder_paintcode`, `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`,  `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments` FROM `workorder` WHERE `workorder_accepted` = 0 AND `workorder_rework` != 'RW08'", connection)
+        Using RJcommand As New MySqlCommand("SELECT `workorder_date`, `workorder_workstation`, `workorder_number`, `workorder_serial`, `workorder_consecutive`, `workorder_paintcode`, `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`,  `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments` FROM `workorder` WHERE `workorder_workstation` = @workorder_workstation AND `workorder_rework` != 'RW08'", connection)
+            RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
             Dim RJadapter As New MySqlDataAdapter(RJcommand)
             Dim RJtable As New DataTable()
             Dim RJ = RJadapter.Fill(RJtable)
@@ -214,7 +216,7 @@ Public Class AddEntry
         End If
         connection.Close()
     End Sub
-    Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged, PaintCodeDescriptionTextBox.TextChanged
+    Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged
         WorkOrderValue = WorkOrderTextBox.Text
     End Sub
     Private Sub PictureButton1_Click(sender As Object, e As EventArgs) Handles PictureButton1.Click
@@ -486,5 +488,52 @@ Public Class AddEntry
     End Sub
     Private Sub AdditionalDefectNORadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AdditionalDefectNORadioButton.CheckedChanged
         additional_defects = False
+    End Sub
+
+    Private Sub Export_Button_Click(sender As Object, e As EventArgs) Handles Export_Button.Click
+        Dim newForm As New Export_Data()
+        newForm.Show()
+    End Sub
+    'Public Class ExportExcelToCSV
+    '    Sub Export(ByVal fileName As String)
+    '        Dim excelApp As Excel.Application
+    '        Dim xlBook As Excel.Workbook
+    '        Dim xlSheet As Excel.Worksheet
+    '        excelApp = CreateObject("Excel.Application")
+    '        excelApp.DisplayAlerts = False
+    '        xlBook = excelApp.Workbooks.Open(fileName)
+    '        xlSheet = xlBook.Worksheets("Order")
+
+    '        Dim sName As String = Replace(xlBook.FullName, ".xlsx", ".csv")
+    '        xlSheet.SaveAs(sName, Excel.XlFileFormat.xlCSV)
+    '        xlBook.Close()
+    '        excelApp.Quit()
+    '    End Sub
+    'End Class
+
+    Private Sub WorkStationComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles WorkStationComboBox.SelectedIndexChanged
+        Using RJcommand As New MySqlCommand("SELECT `workorder_date`, `workorder_workstation`, `workorder_number`, `workorder_serial`, `workorder_consecutive`, `workorder_paintcode`, `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`,  `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_comments` FROM `workorder` WHERE `workorder_workstation` = @workorder_workstation AND `workorder_rework` != 'RW08'", connection)
+            RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
+            Dim RJadapter As New MySqlDataAdapter(RJcommand)
+            Dim RJtable As New DataTable()
+            Dim RJ = RJadapter.Fill(RJtable)
+            RejectedDataGridView.DataSource = RJtable
+            With RejectedDataGridView
+                .RowHeadersVisible = True
+                .Columns(0).HeaderCell.Value = "Date"
+                .Columns(1).HeaderCell.Value = "Workstation"
+                .Columns(2).HeaderCell.Value = "Work Order"
+                .Columns(3).HeaderCell.Value = "Serial Number"
+                .Columns(4).HeaderCell.Value = "Consecutive Number"
+                .Columns(5).HeaderCell.Value = "Paint Code"
+                .Columns(6).HeaderCell.Value = "Mold Brand"
+                .Columns(7).HeaderCell.Value = "Mold Model"
+                .Columns(8).HeaderCell.Value = "Mold Serial"
+                .Columns(9).HeaderCell.Value = "Defect Origin"
+                .Columns(10).HeaderCell.Value = "Defect Description"
+                .Columns(11).HeaderCell.Value = "Defect Location"
+                .Columns(12).HeaderCell.Value = "Comments"
+            End With
+        End Using
     End Sub
 End Class

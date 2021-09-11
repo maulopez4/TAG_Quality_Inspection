@@ -42,4 +42,9 @@
         Dim newForm As New SearchEntry()
         newForm.Show()
     End Sub
+
+    Private Sub Export_Button_Click(sender As Object, e As EventArgs) Handles Export_Button.Click
+        Dim newForm As New Export_Data()
+        newForm.Show()
+    End Sub
 End Class

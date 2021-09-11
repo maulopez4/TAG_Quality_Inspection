@@ -72,7 +72,7 @@ Partial Class AddEditUser
         'User_RoleLabel
         '
         Me.User_RoleLabel.AutoSize = True
-        Me.User_RoleLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.User_RoleLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.User_RoleLabel.Location = New System.Drawing.Point(6, 245)
         Me.User_RoleLabel.Name = "User_RoleLabel"
         Me.User_RoleLabel.Size = New System.Drawing.Size(40, 19)
@@ -90,7 +90,7 @@ Partial Class AddEditUser
         'User_PasswordLabel
         '
         Me.User_PasswordLabel.AutoSize = True
-        Me.User_PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.User_PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.User_PasswordLabel.Location = New System.Drawing.Point(6, 155)
         Me.User_PasswordLabel.Name = "User_PasswordLabel"
         Me.User_PasswordLabel.Size = New System.Drawing.Size(71, 19)
@@ -107,7 +107,7 @@ Partial Class AddEditUser
         'User_RealNameLabel
         '
         Me.User_RealNameLabel.AutoSize = True
-        Me.User_RealNameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.User_RealNameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.User_RealNameLabel.Location = New System.Drawing.Point(5, 65)
         Me.User_RealNameLabel.Name = "User_RealNameLabel"
         Me.User_RealNameLabel.Size = New System.Drawing.Size(80, 19)
@@ -124,7 +124,7 @@ Partial Class AddEditUser
         'User_NameLabel
         '
         Me.User_NameLabel.AutoSize = True
-        Me.User_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.User_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.User_NameLabel.Location = New System.Drawing.Point(6, 110)
         Me.User_NameLabel.Name = "User_NameLabel"
         Me.User_NameLabel.Size = New System.Drawing.Size(81, 19)
@@ -156,7 +156,7 @@ Partial Class AddEditUser
         'ShowPassCheckBox
         '
         Me.ShowPassCheckBox.AutoSize = True
-        Me.ShowPassCheckBox.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ShowPassCheckBox.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.GraphicsUnit.Point)
         Me.ShowPassCheckBox.Location = New System.Drawing.Point(164, 200)
         Me.ShowPassCheckBox.Name = "ShowPassCheckBox"
         Me.ShowPassCheckBox.Size = New System.Drawing.Size(92, 16)
@@ -183,7 +183,7 @@ Partial Class AddEditUser
         'User_ConfirmLabel
         '
         Me.User_ConfirmLabel.AutoSize = True
-        Me.User_ConfirmLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.User_ConfirmLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.User_ConfirmLabel.Location = New System.Drawing.Point(6, 200)
         Me.User_ConfirmLabel.Name = "User_ConfirmLabel"
         Me.User_ConfirmLabel.Size = New System.Drawing.Size(126, 19)
@@ -193,7 +193,7 @@ Partial Class AddEditUser
         'User_IdLabel
         '
         Me.User_IdLabel.AutoSize = True
-        Me.User_IdLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.User_IdLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.User_IdLabel.Location = New System.Drawing.Point(6, 20)
         Me.User_IdLabel.Name = "User_IdLabel"
         Me.User_IdLabel.Size = New System.Drawing.Size(55, 19)

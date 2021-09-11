@@ -91,7 +91,7 @@ Partial Class SearchEntry
         Me.Cancel_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Cancel_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Cancel_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Cancel_Button.Location = New System.Drawing.Point(458, 19)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(100, 25)
@@ -107,7 +107,7 @@ Partial Class SearchEntry
         Me.Search_WorkOrderInfoGroupBox.Controls.Add(Me.Cancel_Button)
         Me.Search_WorkOrderInfoGroupBox.Controls.Add(Me.Search_WorkOrderLabel)
         Me.Search_WorkOrderInfoGroupBox.Controls.Add(Me.Search_Button)
-        Me.Search_WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Search_WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Search_WorkOrderInfoGroupBox.Location = New System.Drawing.Point(12, 12)
         Me.Search_WorkOrderInfoGroupBox.Name = "Search_WorkOrderInfoGroupBox"
         Me.Search_WorkOrderInfoGroupBox.Size = New System.Drawing.Size(775, 52)
@@ -136,7 +136,7 @@ Partial Class SearchEntry
         'Print_Button
         '
         Me.Print_Button.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Print_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Print_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
         Me.Print_Button.Location = New System.Drawing.Point(564, 19)
         Me.Print_Button.Name = "Print_Button"
         Me.Print_Button.Size = New System.Drawing.Size(100, 25)
@@ -159,7 +159,7 @@ Partial Class SearchEntry
         Me.Search_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Search_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.Search_Button.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Search_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Search_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Search_Button.Location = New System.Drawing.Point(352, 19)
         Me.Search_Button.Name = "Search_Button"
         Me.Search_Button.Size = New System.Drawing.Size(100, 25)
@@ -170,7 +170,7 @@ Partial Class SearchEntry
         'SearchResultsDataGroupBox
         '
         Me.SearchResultsDataGroupBox.Controls.Add(Me.SearchResultsDataGrid)
-        Me.SearchResultsDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.SearchResultsDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.SearchResultsDataGroupBox.Location = New System.Drawing.Point(12, 70)
         Me.SearchResultsDataGroupBox.Name = "SearchResultsDataGroupBox"
         Me.SearchResultsDataGroupBox.Size = New System.Drawing.Size(1115, 244)
@@ -184,13 +184,13 @@ Partial Class SearchEntry
         Me.SearchResultsDataGrid.AllowUserToDeleteRows = False
         Me.SearchResultsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.SearchResultsDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.SearchResultsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -201,7 +201,7 @@ Partial Class SearchEntry
         Me.SearchResultsDataGrid.ReadOnly = True
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -274,7 +274,7 @@ Partial Class SearchEntry
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.TimeLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DateLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.Results_DatePicker)
-        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.WorkOrderInfoGroupBox.Location = New System.Drawing.Point(6, 22)
         Me.WorkOrderInfoGroupBox.Name = "WorkOrderInfoGroupBox"
         Me.WorkOrderInfoGroupBox.Size = New System.Drawing.Size(354, 306)
@@ -470,7 +470,7 @@ Partial Class SearchEntry
         Me.Results_DefectDataGroupBox.Controls.Add(Me.Results_DefectTextBox)
         Me.Results_DefectDataGroupBox.Controls.Add(Me.Results_Defect_OriginTextBox)
         Me.Results_DefectDataGroupBox.Controls.Add(Me.Results_ReworkTextBox)
-        Me.Results_DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Results_DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.Results_DefectDataGroupBox.Location = New System.Drawing.Point(366, 22)
         Me.Results_DefectDataGroupBox.Name = "Results_DefectDataGroupBox"
         Me.Results_DefectDataGroupBox.Size = New System.Drawing.Size(199, 306)
@@ -507,7 +507,7 @@ Partial Class SearchEntry
         'AdditionalDefectsLabel
         '
         Me.AdditionalDefectsLabel.AutoSize = True
-        Me.AdditionalDefectsLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.AdditionalDefectsLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
         Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(925, 18)
         Me.AdditionalDefectsLabel.Name = "AdditionalDefectsLabel"
         Me.AdditionalDefectsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -587,7 +587,7 @@ Partial Class SearchEntry
         'CommentsGroupBox
         '
         Me.CommentsGroupBox.Controls.Add(Me.Results_CommentsRichTextBox)
-        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.CommentsGroupBox.Location = New System.Drawing.Point(571, 25)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
         Me.CommentsGroupBox.Size = New System.Drawing.Size(534, 168)

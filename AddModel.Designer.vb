@@ -199,7 +199,7 @@ Partial Class AddModel
         'Mold_DescriptionLabel
         '
         Me.Mold_DescriptionLabel.AutoSize = True
-        Me.Mold_DescriptionLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Mold_DescriptionLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Mold_DescriptionLabel.Location = New System.Drawing.Point(6, 200)
         Me.Mold_DescriptionLabel.Name = "Mold_DescriptionLabel"
         Me.Mold_DescriptionLabel.Size = New System.Drawing.Size(118, 19)
@@ -227,7 +227,7 @@ Partial Class AddModel
         'Mold_StatusLabel
         '
         Me.Mold_StatusLabel.AutoSize = True
-        Me.Mold_StatusLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Mold_StatusLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Mold_StatusLabel.Location = New System.Drawing.Point(6, 291)
         Me.Mold_StatusLabel.Name = "Mold_StatusLabel"
         Me.Mold_StatusLabel.Size = New System.Drawing.Size(85, 19)
@@ -237,7 +237,7 @@ Partial Class AddModel
         'Model_IdLabel
         '
         Me.Model_IdLabel.AutoSize = True
-        Me.Model_IdLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Model_IdLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Model_IdLabel.Location = New System.Drawing.Point(6, 20)
         Me.Model_IdLabel.Name = "Model_IdLabel"
         Me.Model_IdLabel.Size = New System.Drawing.Size(67, 19)
@@ -247,7 +247,7 @@ Partial Class AddModel
         'Mold_ColorLabel
         '
         Me.Mold_ColorLabel.AutoSize = True
-        Me.Mold_ColorLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Mold_ColorLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Mold_ColorLabel.Location = New System.Drawing.Point(6, 245)
         Me.Mold_ColorLabel.Name = "Mold_ColorLabel"
         Me.Mold_ColorLabel.Size = New System.Drawing.Size(80, 19)
@@ -257,7 +257,7 @@ Partial Class AddModel
         'Model_BrandLabel
         '
         Me.Model_BrandLabel.AutoSize = True
-        Me.Model_BrandLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Model_BrandLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Model_BrandLabel.Location = New System.Drawing.Point(5, 65)
         Me.Model_BrandLabel.Name = "Model_BrandLabel"
         Me.Model_BrandLabel.Size = New System.Drawing.Size(92, 19)
@@ -281,7 +281,7 @@ Partial Class AddModel
         'Model_SerialLabel
         '
         Me.Model_SerialLabel.AutoSize = True
-        Me.Model_SerialLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Model_SerialLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Model_SerialLabel.Location = New System.Drawing.Point(6, 155)
         Me.Model_SerialLabel.Name = "Model_SerialLabel"
         Me.Model_SerialLabel.Size = New System.Drawing.Size(91, 19)
@@ -291,7 +291,7 @@ Partial Class AddModel
         'Model_MoldLabel
         '
         Me.Model_MoldLabel.AutoSize = True
-        Me.Model_MoldLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Model_MoldLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Model_MoldLabel.Location = New System.Drawing.Point(6, 110)
         Me.Model_MoldLabel.Name = "Model_MoldLabel"
         Me.Model_MoldLabel.Size = New System.Drawing.Size(89, 19)

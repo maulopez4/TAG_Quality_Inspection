@@ -25,6 +25,7 @@ Partial Class AddEntry
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Export_Button = New System.Windows.Forms.Button()
         Me.ARPictureBox = New System.Windows.Forms.PictureBox()
         Me.RejectedRadio = New System.Windows.Forms.RadioButton()
         Me.ApprovedRadio = New System.Windows.Forms.RadioButton()
@@ -46,9 +47,7 @@ Partial Class AddEntry
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TimeTextBox = New System.Windows.Forms.TextBox()
         Me.TimeLabel = New System.Windows.Forms.Label()
-        Me.PaintCodeDescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.DateLabel = New System.Windows.Forms.Label()
-        Me.PaintCodeDescriptionLabel = New System.Windows.Forms.Label()
         Me.DatePicker = New System.Windows.Forms.DateTimePicker()
         Me.DefectDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.AdditionalDefectNORadioButton = New System.Windows.Forms.RadioButton()
@@ -137,6 +136,7 @@ Partial Class AddEntry
         '
         'WorkOrderInfoGroupBox
         '
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.Export_Button)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.ARPictureBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.RejectedRadio)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.ApprovedRadio)
@@ -158,17 +158,24 @@ Partial Class AddEntry
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.Label2)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.TimeTextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.TimeLabel)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintCodeDescriptionTextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DateLabel)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintCodeDescriptionLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DatePicker)
-        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.WorkOrderInfoGroupBox.Location = New System.Drawing.Point(10, 5)
         Me.WorkOrderInfoGroupBox.Name = "WorkOrderInfoGroupBox"
         Me.WorkOrderInfoGroupBox.Size = New System.Drawing.Size(1115, 125)
         Me.WorkOrderInfoGroupBox.TabIndex = 0
         Me.WorkOrderInfoGroupBox.TabStop = False
         Me.WorkOrderInfoGroupBox.Text = "Work Order Info:"
+        '
+        'Export_Button
+        '
+        Me.Export_Button.Location = New System.Drawing.Point(851, 94)
+        Me.Export_Button.Name = "Export_Button"
+        Me.Export_Button.Size = New System.Drawing.Size(150, 25)
+        Me.Export_Button.TabIndex = 18
+        Me.Export_Button.Text = "Export Data to Excel"
+        Me.Export_Button.UseVisualStyleBackColor = True
         '
         'ARPictureBox
         '
@@ -361,15 +368,6 @@ Partial Class AddEntry
         Me.TimeLabel.TabIndex = 2
         Me.TimeLabel.Text = "&Time:"
         '
-        'PaintCodeDescriptionTextBox
-        '
-        Me.PaintCodeDescriptionTextBox.Enabled = False
-        Me.PaintCodeDescriptionTextBox.Location = New System.Drawing.Point(803, 94)
-        Me.PaintCodeDescriptionTextBox.Name = "PaintCodeDescriptionTextBox"
-        Me.PaintCodeDescriptionTextBox.Size = New System.Drawing.Size(198, 25)
-        Me.PaintCodeDescriptionTextBox.TabIndex = 3
-        Me.PaintCodeDescriptionTextBox.Visible = False
-        '
         'DateLabel
         '
         Me.DateLabel.AutoSize = True
@@ -378,16 +376,6 @@ Partial Class AddEntry
         Me.DateLabel.Size = New System.Drawing.Size(41, 19)
         Me.DateLabel.TabIndex = 1
         Me.DateLabel.Text = "&Date:"
-        '
-        'PaintCodeDescriptionLabel
-        '
-        Me.PaintCodeDescriptionLabel.AutoSize = True
-        Me.PaintCodeDescriptionLabel.Location = New System.Drawing.Point(801, 72)
-        Me.PaintCodeDescriptionLabel.Name = "PaintCodeDescriptionLabel"
-        Me.PaintCodeDescriptionLabel.Size = New System.Drawing.Size(156, 19)
-        Me.PaintCodeDescriptionLabel.TabIndex = 2
-        Me.PaintCodeDescriptionLabel.Text = "Paint Code Description:"
-        Me.PaintCodeDescriptionLabel.Visible = False
         '
         'DatePicker
         '
@@ -455,7 +443,7 @@ Partial Class AddEntry
         Me.DefectDataGroupBox.Controls.Add(Me.DefectOriginLabel)
         Me.DefectDataGroupBox.Controls.Add(Me.ReworkComboBox)
         Me.DefectDataGroupBox.Controls.Add(Me.ReworkTypeLabel)
-        Me.DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.DefectDataGroupBox.Location = New System.Drawing.Point(10, 130)
         Me.DefectDataGroupBox.Name = "DefectDataGroupBox"
         Me.DefectDataGroupBox.Size = New System.Drawing.Size(1115, 331)
@@ -528,7 +516,7 @@ Partial Class AddEntry
         'AdditionalDefectsLabel
         '
         Me.AdditionalDefectsLabel.AutoSize = True
-        Me.AdditionalDefectsLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.AdditionalDefectsLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
         Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(925, 18)
         Me.AdditionalDefectsLabel.Name = "AdditionalDefectsLabel"
         Me.AdditionalDefectsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -995,7 +983,7 @@ Partial Class AddEntry
         Me.RejectedDataGridView.AllowUserToDeleteRows = False
         Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.RejectedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.RejectedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1013,7 +1001,7 @@ Partial Class AddEntry
         Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.OK_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.OK_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.GraphicsUnit.Point)
         Me.OK_Button.Location = New System.Drawing.Point(750, 602)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(165, 60)
@@ -1026,7 +1014,7 @@ Partial Class AddEntry
         Me.Cancel_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Cancel_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Cancel_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.GraphicsUnit.Point)
         Me.Cancel_Button.Location = New System.Drawing.Point(960, 602)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(165, 60)
@@ -1037,7 +1025,7 @@ Partial Class AddEntry
         'CommentsGroupBox
         '
         Me.CommentsGroupBox.Controls.Add(Me.CommentsRichTextBox)
-        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.CommentsGroupBox.Location = New System.Drawing.Point(750, 465)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
         Me.CommentsGroupBox.Size = New System.Drawing.Size(375, 131)
@@ -1064,7 +1052,7 @@ Partial Class AddEntry
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton3)
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton2)
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton1)
-        Me.AddPicturesGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.AddPicturesGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
         Me.AddPicturesGroupBox.Location = New System.Drawing.Point(12, 465)
         Me.AddPicturesGroupBox.Name = "AddPicturesGroupBox"
         Me.AddPicturesGroupBox.Size = New System.Drawing.Size(734, 200)
@@ -1171,7 +1159,7 @@ Partial Class AddEntry
         'RejectedDataGroupBox
         '
         Me.RejectedDataGroupBox.Controls.Add(Me.RejectedDataGridView)
-        Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.RejectedDataGroupBox.Location = New System.Drawing.Point(10, 130)
         Me.RejectedDataGroupBox.Name = "RejectedDataGroupBox"
         Me.RejectedDataGroupBox.Size = New System.Drawing.Size(1115, 329)
@@ -1189,8 +1177,8 @@ Partial Class AddEntry
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.OK_Button)
         Me.Controls.Add(Me.AddPicturesGroupBox)
-        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Controls.Add(Me.RejectedDataGroupBox)
+        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)
@@ -1302,10 +1290,9 @@ Partial Class AddEntry
     Friend WithEvents MoldSerialComboBox As ComboBox
     Friend WithEvents MoldBrandComboBox As ComboBox
     Friend WithEvents PaintCodeComboBox As ComboBox
-    Friend WithEvents PaintCodeDescriptionTextBox As TextBox
-    Friend WithEvents PaintCodeDescriptionLabel As Label
     Friend WithEvents AdditionalDefectNORadioButton As RadioButton
     Friend WithEvents AdditionalDefectYESRadioButton As RadioButton
     Friend WithEvents RejectedDataGridView As DataGridView
     Friend WithEvents RejectedDataGroupBox As GroupBox
+    Friend WithEvents Export_Button As Button
 End Class

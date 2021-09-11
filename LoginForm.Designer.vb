@@ -53,7 +53,7 @@ Partial Class LoginForm
         '
         'UsernameLabel
         '
-        Me.UsernameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.UsernameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
         Me.UsernameLabel.Location = New System.Drawing.Point(253, 26)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
@@ -63,7 +63,7 @@ Partial Class LoginForm
         '
         'PasswordLabel
         '
-        Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
         Me.PasswordLabel.Location = New System.Drawing.Point(252, 78)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
@@ -106,7 +106,7 @@ Partial Class LoginForm
         'Login_ShowPasswordCheckBox
         '
         Me.Login_ShowPasswordCheckBox.AutoSize = True
-        Me.Login_ShowPasswordCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Login_ShowPasswordCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
         Me.Login_ShowPasswordCheckBox.Location = New System.Drawing.Point(253, 133)
         Me.Login_ShowPasswordCheckBox.Name = "Login_ShowPasswordCheckBox"
         Me.Login_ShowPasswordCheckBox.Size = New System.Drawing.Size(122, 21)

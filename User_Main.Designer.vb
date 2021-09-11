@@ -23,6 +23,7 @@ Partial Class User_Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.UserGroupBox = New System.Windows.Forms.GroupBox()
+        Me.SearchButton = New System.Windows.Forms.Button()
         Me.User_AddNewEntryButton = New System.Windows.Forms.Button()
         Me.SuperGroupBox = New System.Windows.Forms.GroupBox()
         Me.Super_AddColorButton = New System.Windows.Forms.Button()
@@ -33,7 +34,7 @@ Partial Class User_Main
         Me.Admin_AddModelButton = New System.Windows.Forms.Button()
         Me.Admin_AddEditUserButton = New System.Windows.Forms.Button()
         Me.CurrentUserTextBox = New System.Windows.Forms.TextBox()
-        Me.SearchButton = New System.Windows.Forms.Button()
+        Me.Export_Button = New System.Windows.Forms.Button()
         Me.UserGroupBox.SuspendLayout()
         Me.SuperGroupBox.SuspendLayout()
         Me.AdminGroupBox.SuspendLayout()
@@ -50,6 +51,15 @@ Partial Class User_Main
         Me.UserGroupBox.TabStop = False
         Me.UserGroupBox.Text = "User Options"
         '
+        'SearchButton
+        '
+        Me.SearchButton.Location = New System.Drawing.Point(174, 28)
+        Me.SearchButton.Name = "SearchButton"
+        Me.SearchButton.Size = New System.Drawing.Size(162, 60)
+        Me.SearchButton.TabIndex = 0
+        Me.SearchButton.Text = "Search Entry"
+        Me.SearchButton.UseVisualStyleBackColor = True
+        '
         'User_AddNewEntryButton
         '
         Me.User_AddNewEntryButton.Location = New System.Drawing.Point(6, 28)
@@ -61,6 +71,7 @@ Partial Class User_Main
         '
         'SuperGroupBox
         '
+        Me.SuperGroupBox.Controls.Add(Me.Export_Button)
         Me.SuperGroupBox.Controls.Add(Me.Super_AddColorButton)
         Me.SuperGroupBox.Controls.Add(Me.Super_AddModelButton)
         Me.SuperGroupBox.Controls.Add(Me.Super_AddEditUserButton)
@@ -148,14 +159,14 @@ Partial Class User_Main
         Me.CurrentUserTextBox.TabIndex = 1
         Me.CurrentUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'SearchButton
+        'Export_Button
         '
-        Me.SearchButton.Location = New System.Drawing.Point(174, 28)
-        Me.SearchButton.Name = "SearchButton"
-        Me.SearchButton.Size = New System.Drawing.Size(162, 60)
-        Me.SearchButton.TabIndex = 0
-        Me.SearchButton.Text = "Search Entry"
-        Me.SearchButton.UseVisualStyleBackColor = True
+        Me.Export_Button.Location = New System.Drawing.Point(510, 22)
+        Me.Export_Button.Name = "Export_Button"
+        Me.Export_Button.Size = New System.Drawing.Size(162, 60)
+        Me.Export_Button.TabIndex = 0
+        Me.Export_Button.Text = "Export Data"
+        Me.Export_Button.UseVisualStyleBackColor = True
         '
         'User_Main
         '
@@ -188,4 +199,5 @@ Partial Class User_Main
     Friend WithEvents Super_AddColorButton As Button
     Friend WithEvents Admin_AddColorButton As Button
     Friend WithEvents SearchButton As Button
+    Friend WithEvents Export_Button As Button
 End Class

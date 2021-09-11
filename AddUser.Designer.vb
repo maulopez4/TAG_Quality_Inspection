@@ -39,7 +39,7 @@ Partial Class AddUser
         'User_NameLabel
         '
         Me.User_NameLabel.AutoSize = True
-        Me.User_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.User_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.User_NameLabel.Location = New System.Drawing.Point(12, 57)
         Me.User_NameLabel.Name = "User_NameLabel"
         Me.User_NameLabel.Size = New System.Drawing.Size(81, 19)
@@ -63,7 +63,7 @@ Partial Class AddUser
         'Real_NameLabel
         '
         Me.Real_NameLabel.AutoSize = True
-        Me.Real_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Real_NameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Real_NameLabel.Location = New System.Drawing.Point(12, 9)
         Me.Real_NameLabel.Name = "Real_NameLabel"
         Me.Real_NameLabel.Size = New System.Drawing.Size(80, 19)
@@ -82,7 +82,7 @@ Partial Class AddUser
         'PasswordLabel
         '
         Me.PasswordLabel.AutoSize = True
-        Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.PasswordLabel.Location = New System.Drawing.Point(12, 105)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(71, 19)
@@ -112,7 +112,7 @@ Partial Class AddUser
         'RoleLabel
         '
         Me.RoleLabel.AutoSize = True
-        Me.RoleLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.RoleLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.RoleLabel.Location = New System.Drawing.Point(12, 201)
         Me.RoleLabel.Name = "RoleLabel"
         Me.RoleLabel.Size = New System.Drawing.Size(40, 19)
@@ -130,7 +130,7 @@ Partial Class AddUser
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Label1.Location = New System.Drawing.Point(12, 153)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(126, 19)
