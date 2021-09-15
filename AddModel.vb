@@ -97,7 +97,7 @@ Public Class AddModel
         AddModel_Load(sender, e)
     End Sub
     Private Sub ChangeSelected_MoldButton_Click(sender As Object, e As EventArgs) Handles ChangeSelected_MoldButton.Click
-        Dim command As New MySqlCommand("UPDATE `models` SET `models_brand` = @models_brand, `models_mold` = @models_mold, `models_serial` = @models_serial, `models_color` = @models_color, `modesl_description` = @models_description,  `models_status` = @models_status WHERE `models_id` = @models_id", connection)
+        Dim command As New MySqlCommand("UPDATE `models` SET `models_brand` = @models_brand, `models_mold` = @models_mold, `models_serial` = @models_serial, `models_color` = @models_color, `models_description` = @models_description,  `models_status` = @models_status WHERE `models_id` = @models_id", connection)
         command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
         command.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
         command.Parameters.Add("@models_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text

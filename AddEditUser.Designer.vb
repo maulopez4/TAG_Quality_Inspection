@@ -254,7 +254,7 @@ Partial Class AddEditUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(519, 627)
+        Me.ClientSize = New System.Drawing.Size(519, 621)
         Me.Controls.Add(Me.User_NewUserButton)
         Me.Controls.Add(Me.User_AddUserButton)
         Me.Controls.Add(Me.User_DeleteUserButton)
