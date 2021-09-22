@@ -22,7 +22,7 @@ Partial Class Export_Data
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.RejectedDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.RejectedDataGridView = New System.Windows.Forms.DataGridView()
         Me.From_DateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -47,10 +47,10 @@ Partial Class Export_Data
         'RejectedDataGroupBox
         '
         Me.RejectedDataGroupBox.Controls.Add(Me.RejectedDataGridView)
-        Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0, System.Drawing.GraphicsUnit.Point)
+        Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.RejectedDataGroupBox.Location = New System.Drawing.Point(12, 183)
         Me.RejectedDataGroupBox.Name = "RejectedDataGroupBox"
-        Me.RejectedDataGroupBox.Size = New System.Drawing.Size(1029, 382)
+        Me.RejectedDataGroupBox.Size = New System.Drawing.Size(1299, 382)
         Me.RejectedDataGroupBox.TabIndex = 22
         Me.RejectedDataGroupBox.TabStop = False
         Me.RejectedDataGroupBox.Text = "On-Hold WorkOrders"
@@ -60,10 +60,10 @@ Partial Class Export_Data
         Me.RejectedDataGridView.AllowUserToAddRows = False
         Me.RejectedDataGridView.AllowUserToDeleteRows = False
         Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.RejectedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.RejectedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.RejectedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.RejectedDataGridView.Location = New System.Drawing.Point(6, 22)
         Me.RejectedDataGridView.Name = "RejectedDataGridView"
@@ -71,7 +71,7 @@ Partial Class Export_Data
         Me.RejectedDataGridView.RowHeadersWidth = 30
         Me.RejectedDataGridView.RowTemplate.Height = 25
         Me.RejectedDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.RejectedDataGridView.Size = New System.Drawing.Size(1017, 354)
+        Me.RejectedDataGridView.Size = New System.Drawing.Size(1287, 354)
         Me.RejectedDataGridView.TabIndex = 21
         '
         'From_DateTimePicker
@@ -102,7 +102,7 @@ Partial Class Export_Data
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_Label.AutoSize = True
-        Me.From_Label.Font = New System.Drawing.Font("Segoe UI", 12.0, System.Drawing.GraphicsUnit.Point)
+        Me.From_Label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.GraphicsUnit.Point)
         Me.From_Label.Location = New System.Drawing.Point(6, 46)
         Me.From_Label.Name = "From_Label"
         Me.From_Label.Size = New System.Drawing.Size(50, 21)
@@ -115,7 +115,7 @@ Partial Class Export_Data
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Till_Label.AutoSize = True
-        Me.Till_Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0, System.Drawing.GraphicsUnit.Point)
+        Me.Till_Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.GraphicsUnit.Point)
         Me.Till_Label.Location = New System.Drawing.Point(187, 47)
         Me.Till_Label.Name = "Till_Label"
         Me.Till_Label.Size = New System.Drawing.Size(31, 20)
@@ -176,7 +176,7 @@ Partial Class Export_Data
         '
         'Select_ListBox
         '
-        Me.Select_ListBox.Font = New System.Drawing.Font("Segoe UI", 9.0, System.Drawing.GraphicsUnit.Point)
+        Me.Select_ListBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.Select_ListBox.FormattingEnabled = True
         Me.Select_ListBox.ItemHeight = 15
         Me.Select_ListBox.Items.AddRange(New Object() {"CP1", "CP2", "CP3", "CP4", "CP5", "CP6", "CP7"})
@@ -216,15 +216,15 @@ Partial Class Export_Data
         Me.Date_GroupBox.TabStop = False
         Me.Date_GroupBox.Text = "Select Dates:"
         '
-        'ExportData
+        'Export_Data
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1053, 577)
+        Me.ClientSize = New System.Drawing.Size(1323, 577)
         Me.Controls.Add(Me.Date_GroupBox)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.RejectedDataGroupBox)
-        Me.Name = "ExportData"
+        Me.Name = "Export_Data"
         Me.Text = "Export Data"
         Me.RejectedDataGroupBox.ResumeLayout(False)
         CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
