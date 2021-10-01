@@ -47,4 +47,9 @@
         Dim newForm As New Export_Data()
         newForm.Show()
     End Sub
+
+    Private Sub Super_AddColorButton_Click(sender As Object, e As EventArgs) Handles Super_AddColorButton.Click, Admin_AddColorButton.Click
+        Dim newForm As New AddPaintcode()
+        newForm.Show()
+    End Sub
 End Class

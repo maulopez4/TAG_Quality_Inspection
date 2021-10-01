@@ -26,6 +26,7 @@ Partial Class User_Main
         Me.SearchButton = New System.Windows.Forms.Button()
         Me.User_AddNewEntryButton = New System.Windows.Forms.Button()
         Me.SuperGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Export_Button = New System.Windows.Forms.Button()
         Me.Super_AddColorButton = New System.Windows.Forms.Button()
         Me.Super_AddModelButton = New System.Windows.Forms.Button()
         Me.Super_AddEditUserButton = New System.Windows.Forms.Button()
@@ -34,7 +35,6 @@ Partial Class User_Main
         Me.Admin_AddModelButton = New System.Windows.Forms.Button()
         Me.Admin_AddEditUserButton = New System.Windows.Forms.Button()
         Me.CurrentUserTextBox = New System.Windows.Forms.TextBox()
-        Me.Export_Button = New System.Windows.Forms.Button()
         Me.UserGroupBox.SuspendLayout()
         Me.SuperGroupBox.SuspendLayout()
         Me.AdminGroupBox.SuspendLayout()
@@ -81,6 +81,15 @@ Partial Class User_Main
         Me.SuperGroupBox.TabIndex = 0
         Me.SuperGroupBox.TabStop = False
         Me.SuperGroupBox.Text = "Supervisor Options"
+        '
+        'Export_Button
+        '
+        Me.Export_Button.Location = New System.Drawing.Point(510, 22)
+        Me.Export_Button.Name = "Export_Button"
+        Me.Export_Button.Size = New System.Drawing.Size(162, 60)
+        Me.Export_Button.TabIndex = 0
+        Me.Export_Button.Text = "Export Data"
+        Me.Export_Button.UseVisualStyleBackColor = True
         '
         'Super_AddColorButton
         '
@@ -158,15 +167,6 @@ Partial Class User_Main
         Me.CurrentUserTextBox.Size = New System.Drawing.Size(243, 16)
         Me.CurrentUserTextBox.TabIndex = 1
         Me.CurrentUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Export_Button
-        '
-        Me.Export_Button.Location = New System.Drawing.Point(510, 22)
-        Me.Export_Button.Name = "Export_Button"
-        Me.Export_Button.Size = New System.Drawing.Size(162, 60)
-        Me.Export_Button.TabIndex = 0
-        Me.Export_Button.Text = "Export Data"
-        Me.Export_Button.UseVisualStyleBackColor = True
         '
         'User_Main
         '

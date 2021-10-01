@@ -16,15 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="AddPaintcode.Designer.vb" />
-    <Compile Remove="AddPaintcode.vb" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="AddPaintcode.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Image1.jpg" />
   </ItemGroup>
 

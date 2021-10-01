@@ -92,8 +92,7 @@ Public Class AddEntry
                 .Columns(0).HeaderCell.Value = "Date"
                 .Columns(1).HeaderCell.Value = "Time"
                 .Columns(2).HeaderCell.Value = "Workstation Code"
-                .Columns(2).Visible = False
-                .Columns(3).HeaderCell.Value = "Workstation"
+                .Columns(3).HeaderCell.Value = "Workstation Name"
                 .Columns(4).HeaderCell.Value = "Work Order"
                 .Columns(5).HeaderCell.Value = "Mold Brand"
                 .Columns(6).HeaderCell.Value = "Mold Model"
@@ -563,8 +562,7 @@ Public Class AddEntry
                 .Columns(0).HeaderCell.Value = "Date"
                 .Columns(1).HeaderCell.Value = "Time"
                 .Columns(2).HeaderCell.Value = "Workstation Code"
-                .Columns(2).Visible = False
-                .Columns(3).HeaderCell.Value = "Workstation"
+                .Columns(3).HeaderCell.Value = "Workstation Name"
                 .Columns(4).HeaderCell.Value = "Work Order"
                 .Columns(5).HeaderCell.Value = "Mold Brand"
                 .Columns(6).HeaderCell.Value = "Mold Model"
