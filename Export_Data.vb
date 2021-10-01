@@ -35,7 +35,28 @@ Public Class Export_Data
         Dim SList As String = String.Join("','", array)
         Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
-        Dim sql As String = "SELECT DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_workstation`, `workorder_number`, `workorder_serial`, `workorder_consecutive`, `workorder_paintcode`, `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`,  `workorder_defect_origin`, `workorder_defect`, `defects_description`, `workorder_defect_location`, `workorder_comments` FROM `workorder` INNER JOIN `defects` WHERE `defects_code` = `workorder_defect` AND `workorder_workstation` IN (" & "'" & SList & "'" & ") AND `workorder_date` >= CAST('" & From & "' AS DATE) AND `workorder_date` <= CAST('" & Till & "' AS DATE) AND `workorder_rework` != 'RW08'"
+        Dim sql As String = "SELECT 
+DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), 
+`workorder_time`, 
+`workorder_workstation`,
+`workorder_number`,
+`rework_description`,
+`workorder_consecutive`,
+`workorder_paintcode`,
+`workorder_moldbrand`,
+`workorder_moldmodel`,
+`workorder_moldserial`,
+`workorder_defect_origin`,
+`workorder_defect`,
+`defects_description`,
+`workorder_defect_location`,
+`workorder_comments` FROM `workorder`
+INNER JOIN `defects` ON `defects_code` = `workorder_defect`
+INNER JOIN `rework` ON `rework_code` = `workorder_rework` 
+AND `workorder_workstation` IN (" & "'" & SList & "'" & ") 
+AND `workorder_date` >= CAST('" & From & "' AS DATE) 
+AND `workorder_date` <= CAST('" & Till & "' AS DATE) 
+AND `workorder_rework` != 'RW08'"
         Using RJcommand As New MySqlCommand(sql, connection)
             Dim RJadapter As New MySqlDataAdapter(RJcommand)
             Dim RJtable As New DataTable()
@@ -47,7 +68,7 @@ Public Class Export_Data
                 .Columns(1).HeaderCell.Value = "Time"
                 .Columns(2).HeaderCell.Value = "Workstation"
                 .Columns(3).HeaderCell.Value = "Work Order"
-                .Columns(4).HeaderCell.Value = "Serial Number"
+                .Columns(4).HeaderCell.Value = "Status"
                 .Columns(5).HeaderCell.Value = "Consecutive Number"
                 .Columns(6).HeaderCell.Value = "Paint Code"
                 .Columns(7).HeaderCell.Value = "Mold Brand"

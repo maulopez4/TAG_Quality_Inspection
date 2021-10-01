@@ -7,7 +7,8 @@ Imports System.IO
 Public Class AddModel
     Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Private ReadOnly connection As New MySqlConnection(connection_string)
-    'Dim arrImage1() As Byte
+    Dim arrImage1() As Byte
+    Dim arrImage() As Byte
     Private Sub AddModel_Load(sender As Object, e As EventArgs) Handles Me.Load
         Model_IdTextBox.Clear()
         Model_MoldTextBox.Clear()
@@ -19,7 +20,7 @@ Public Class AddModel
         ChangeSelected_MoldButton.Enabled = False
         DeleteSelected_MoldButton.Enabled = False
         Try
-            Using MLcommand As New MySqlCommand("SELECT `models_id`, `models_brand`, `models_mold`, `models_serial`,`models_color`,`models_description`,`models_status` FROM `models`", connection)
+            Using MLcommand As New MySqlCommand("SELECT `models_id`, `models_brand`, `models_mold`, `models_serial`,`models_color`,`models_description`,`models_status`, `models_image1` FROM `models`", connection)
                 Dim MLadapter As New MySqlDataAdapter(MLcommand)
                 Dim MLtable As New DataTable()
                 Dim ML = MLadapter.Fill(MLtable)
@@ -68,6 +69,15 @@ Public Class AddModel
             Model_DescriptionTextBox.Text = MLDataGrid.Item("models_description", MLDataGrid.SelectedRows(0).Index).Value
             Model_ColorComboBox.SelectedValue = MLDataGrid.Item("models_color", MLDataGrid.SelectedRows(0).Index).Value
             Model_StatusComboBox.SelectedValue = MLDataGrid.Item("models_status", MLDataGrid.SelectedRows(0).Index).Value
+
+            If IsDBNull(MLDataGrid.Item("models_image1", MLDataGrid.SelectedRows(0).Index).Value) Then
+                PictureBox1.Image = My.Resources.leer_logo
+                PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            Else
+                arrImage = MLDataGrid.Item("models_image1", MLDataGrid.SelectedRows(0).Index).Value
+                Dim mstream As New System.IO.MemoryStream(arrImage)
+                PictureBox1.Image = Image.FromStream(mstream)
+            End If
         End If
     End Sub
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
@@ -97,7 +107,19 @@ Public Class AddModel
         AddModel_Load(sender, e)
     End Sub
     Private Sub ChangeSelected_MoldButton_Click(sender As Object, e As EventArgs) Handles ChangeSelected_MoldButton.Click
-        Dim command As New MySqlCommand("UPDATE `models` SET `models_brand` = @models_brand, `models_mold` = @models_mold, `models_serial` = @models_serial, `models_color` = @models_color, `models_description` = @models_description,  `models_status` = @models_status WHERE `models_id` = @models_id", connection)
+        If PictureBox1.ImageLocation IsNot Nothing Then
+            Dim mstream1 As New System.IO.MemoryStream()
+            PictureBox1.Image.Save(mstream1, Imaging.ImageFormat.Jpeg)
+            PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            arrImage1 = mstream1.GetBuffer()
+            Dim FileSize1 As UInt32
+            FileSize1 = mstream1.Length
+            mstream1.Close()
+        Else
+            PictureBox1.Image = My.Resources.leer_logo
+            PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        End If
+        Dim command As New MySqlCommand("UPDATE `models` SET `models_brand` = @models_brand, `models_mold` = @models_mold, `models_serial` = @models_serial, `models_color` = @models_color, `models_description` = @models_description,  `models_status` = @models_status,  `models_image1` = @models_image1 WHERE `models_id` = @models_id", connection)
         command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
         command.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
         command.Parameters.Add("@models_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
@@ -105,6 +127,7 @@ Public Class AddModel
         command.Parameters.Add("@models_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
         command.Parameters.Add("@models_description", MySqlDbType.VarChar).Value = Model_DescriptionTextBox.Text
         command.Parameters.Add("@models_status", MySqlDbType.VarChar).Value = Convert.ToInt32(Model_StatusComboBox.SelectedValue.GetHashCode())
+        command.Parameters.Add("@models_image1", MySqlDbType.LongBlob).Value = arrImage1
         connection.Open()
         If command.ExecuteNonQuery() = 1 Then
             MessageBox.Show("Model Updated")
@@ -115,7 +138,19 @@ Public Class AddModel
         AddModel_Load(sender, e)
     End Sub
     Private Sub AddNew_MoldButton_Click(sender As Object, e As EventArgs) Handles AddNew_MoldButton.Click
-        Dim command As New MySqlCommand("INSERT INTO `models` (`models_brand`,`models_mold`,`models_serial`,`models_color`,`models_description`,`models_status`) VALUES (@models_brand,@models_mold,@models_serial,@models_color,@models_description,@models_status)", connection)
+        If PictureBox1.ImageLocation IsNot Nothing Then
+            Dim mstream1 As New System.IO.MemoryStream()
+            PictureBox1.Image.Save(mstream1, Imaging.ImageFormat.Jpeg)
+            PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            arrImage1 = mstream1.GetBuffer()
+            Dim FileSize1 As UInt32
+            FileSize1 = mstream1.Length
+            mstream1.Close()
+        Else
+            PictureBox1.Image = My.Resources.leer_logo
+            PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        End If
+        Dim command As New MySqlCommand("INSERT INTO `models` (`models_brand`,`models_mold`,`models_serial`,`models_color`,`models_description`,`models_status`,`models_image1`) VALUES (@models_brand,@models_mold,@models_serial,@models_color,@models_description,@models_status,@models_image1)", connection)
         command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
         command.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
         command.Parameters.Add("@models_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
@@ -123,6 +158,7 @@ Public Class AddModel
         command.Parameters.Add("@models_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
         command.Parameters.Add("@models_description", MySqlDbType.VarChar).Value = Model_DescriptionTextBox.Text
         command.Parameters.Add("@models_status", MySqlDbType.VarChar).Value = Convert.ToInt32(Model_StatusComboBox.SelectedValue.GetHashCode())
+        command.Parameters.Add("@models_image1", MySqlDbType.LongBlob).Value = arrImage1
         connection.Open()
         If command.ExecuteNonQuery() = 1 Then
             MessageBox.Show("Model Added")
@@ -131,5 +167,32 @@ Public Class AddModel
         End If
         connection.Close()
         AddModel_Load(sender, e)
+    End Sub
+    Private Sub PictureButton1_Click(sender As Object, e As EventArgs) Handles PictureButton1.Click
+        Dim newForm As New AddPicture()
+        newForm.Show()
+    End Sub
+    Private Sub AddImageButton1_Click(sender As Object, e As EventArgs) Handles AddImageButton1.Click
+        Try
+            Dim imgpath1 As String
+            Dim OFD As FileDialog = New OpenFileDialog With {
+            .InitialDirectory = Environment.SpecialFolder.UserProfile.MyPictures,
+            .FileName = $"*",
+            .SupportMultiDottedExtensions = True,
+            .AddExtension = True,
+            .Filter = "JPG File|*.jpg"
+            }
+            If OFD.ShowDialog() = DialogResult.OK Then
+                imgpath1 = OFD.FileName
+                PictureBox1.ImageLocation = imgpath1
+                PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            Else
+                PictureBox1.Image = My.Resources.leer_logo
+                PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            End If
+            OFD = Nothing
+        Catch ex As Exception
+            MessageBox.Show(ex.Message.ToString())
+        End Try
     End Sub
 End Class

@@ -25,21 +25,24 @@ Partial Class AddEntry
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
+        Me.ShowDefects_Button = New System.Windows.Forms.Button()
+        Me.ShowDataGrid_Button = New System.Windows.Forms.Button()
+        Me.CancelEdit_Button = New System.Windows.Forms.Button()
+        Me.EditSelected_Button = New System.Windows.Forms.Button()
+        Me.NewEntry_Button = New System.Windows.Forms.Button()
         Me.Export_Button = New System.Windows.Forms.Button()
         Me.ARPictureBox = New System.Windows.Forms.PictureBox()
         Me.RejectedRadio = New System.Windows.Forms.RadioButton()
         Me.ApprovedRadio = New System.Windows.Forms.RadioButton()
         Me.MoldSerialComboBox = New System.Windows.Forms.ComboBox()
+        Me.PaintcodeDescription_ComboBox = New System.Windows.Forms.ComboBox()
         Me.PaintCodeComboBox = New System.Windows.Forms.ComboBox()
         Me.MoldBrandComboBox = New System.Windows.Forms.ComboBox()
         Me.MoldModelComboBox = New System.Windows.Forms.ComboBox()
         Me.WorkStationComboBox = New System.Windows.Forms.ComboBox()
-        Me.ConsecutiveTextBox = New System.Windows.Forms.TextBox()
+        Me.PaintcodeDescription_Label = New System.Windows.Forms.Label()
         Me.WorkStationLabel = New System.Windows.Forms.Label()
-        Me.ConsecutiveLabel = New System.Windows.Forms.Label()
-        Me.SerialNumberTextBox = New System.Windows.Forms.TextBox()
         Me.ModelBrandLabel = New System.Windows.Forms.Label()
-        Me.SerialNumberLabel = New System.Windows.Forms.Label()
         Me.MoldSerialLabel = New System.Windows.Forms.Label()
         Me.MoldModelLabel = New System.Windows.Forms.Label()
         Me.WorkOrderTextBox = New System.Windows.Forms.TextBox()
@@ -136,21 +139,24 @@ Partial Class AddEntry
         '
         'WorkOrderInfoGroupBox
         '
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.ShowDefects_Button)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.ShowDataGrid_Button)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.CancelEdit_Button)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.EditSelected_Button)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.NewEntry_Button)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.Export_Button)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.ARPictureBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.RejectedRadio)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.ApprovedRadio)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldSerialComboBox)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintcodeDescription_ComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintCodeComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldBrandComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldModelComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkStationComboBox)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.ConsecutiveTextBox)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintcodeDescription_Label)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkStationLabel)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.ConsecutiveLabel)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.SerialNumberTextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.ModelBrandLabel)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.SerialNumberLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldSerialLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldModelLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkOrderTextBox)
@@ -160,7 +166,7 @@ Partial Class AddEntry
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.TimeLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DateLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DatePicker)
-        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
+        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.WorkOrderInfoGroupBox.Location = New System.Drawing.Point(10, 5)
         Me.WorkOrderInfoGroupBox.Name = "WorkOrderInfoGroupBox"
         Me.WorkOrderInfoGroupBox.Size = New System.Drawing.Size(1115, 125)
@@ -168,9 +174,64 @@ Partial Class AddEntry
         Me.WorkOrderInfoGroupBox.TabStop = False
         Me.WorkOrderInfoGroupBox.Text = "Work Order Info:"
         '
+        'ShowDefects_Button
+        '
+        Me.ShowDefects_Button.Enabled = False
+        Me.ShowDefects_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.ShowDefects_Button.Location = New System.Drawing.Point(700, 40)
+        Me.ShowDefects_Button.Name = "ShowDefects_Button"
+        Me.ShowDefects_Button.Size = New System.Drawing.Size(100, 25)
+        Me.ShowDefects_Button.TabIndex = 19
+        Me.ShowDefects_Button.Text = "Show Defects"
+        Me.ShowDefects_Button.UseVisualStyleBackColor = True
+        Me.ShowDefects_Button.Visible = False
+        '
+        'ShowDataGrid_Button
+        '
+        Me.ShowDataGrid_Button.Enabled = False
+        Me.ShowDataGrid_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.ShowDataGrid_Button.Location = New System.Drawing.Point(700, 13)
+        Me.ShowDataGrid_Button.Name = "ShowDataGrid_Button"
+        Me.ShowDataGrid_Button.Size = New System.Drawing.Size(100, 25)
+        Me.ShowDataGrid_Button.TabIndex = 19
+        Me.ShowDataGrid_Button.Text = "Show Data Grid"
+        Me.ShowDataGrid_Button.UseVisualStyleBackColor = True
+        Me.ShowDataGrid_Button.Visible = False
+        '
+        'CancelEdit_Button
+        '
+        Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.CancelEdit_Button.Location = New System.Drawing.Point(594, 40)
+        Me.CancelEdit_Button.Name = "CancelEdit_Button"
+        Me.CancelEdit_Button.Size = New System.Drawing.Size(100, 25)
+        Me.CancelEdit_Button.TabIndex = 19
+        Me.CancelEdit_Button.Text = "Cancel Edit"
+        Me.CancelEdit_Button.UseVisualStyleBackColor = True
+        '
+        'EditSelected_Button
+        '
+        Me.EditSelected_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.EditSelected_Button.Location = New System.Drawing.Point(490, 40)
+        Me.EditSelected_Button.Name = "EditSelected_Button"
+        Me.EditSelected_Button.Size = New System.Drawing.Size(100, 25)
+        Me.EditSelected_Button.TabIndex = 19
+        Me.EditSelected_Button.Text = "Edit Selected"
+        Me.EditSelected_Button.UseVisualStyleBackColor = True
+        '
+        'NewEntry_Button
+        '
+        Me.NewEntry_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.NewEntry_Button.Location = New System.Drawing.Point(385, 40)
+        Me.NewEntry_Button.Name = "NewEntry_Button"
+        Me.NewEntry_Button.Size = New System.Drawing.Size(100, 25)
+        Me.NewEntry_Button.TabIndex = 19
+        Me.NewEntry_Button.Text = "New Entry"
+        Me.NewEntry_Button.UseVisualStyleBackColor = True
+        '
         'Export_Button
         '
-        Me.Export_Button.Location = New System.Drawing.Point(851, 94)
+        Me.Export_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Export_Button.Location = New System.Drawing.Point(805, 40)
         Me.Export_Button.Name = "Export_Button"
         Me.Export_Button.Size = New System.Drawing.Size(150, 25)
         Me.Export_Button.TabIndex = 18
@@ -180,9 +241,9 @@ Partial Class AddEntry
         'ARPictureBox
         '
         Me.ARPictureBox.InitialImage = Nothing
-        Me.ARPictureBox.Location = New System.Drawing.Point(1007, 15)
+        Me.ARPictureBox.Location = New System.Drawing.Point(997, 12)
         Me.ARPictureBox.Name = "ARPictureBox"
-        Me.ARPictureBox.Size = New System.Drawing.Size(93, 104)
+        Me.ARPictureBox.Size = New System.Drawing.Size(50, 50)
         Me.ARPictureBox.TabIndex = 17
         Me.ARPictureBox.TabStop = False
         '
@@ -190,9 +251,9 @@ Partial Class AddEntry
         '
         Me.RejectedRadio.AutoSize = True
         Me.RejectedRadio.Image = CType(resources.GetObject("RejectedRadio.Image"), System.Drawing.Image)
-        Me.RejectedRadio.Location = New System.Drawing.Point(899, 44)
+        Me.RejectedRadio.Location = New System.Drawing.Point(965, 94)
         Me.RejectedRadio.Name = "RejectedRadio"
-        Me.RejectedRadio.Size = New System.Drawing.Size(103, 23)
+        Me.RejectedRadio.Size = New System.Drawing.Size(91, 19)
         Me.RejectedRadio.TabIndex = 11
         Me.RejectedRadio.TabStop = True
         Me.RejectedRadio.Text = "Rejected?"
@@ -203,9 +264,9 @@ Partial Class AddEntry
         '
         Me.ApprovedRadio.AutoSize = True
         Me.ApprovedRadio.Image = CType(resources.GetObject("ApprovedRadio.Image"), System.Drawing.Image)
-        Me.ApprovedRadio.Location = New System.Drawing.Point(899, 15)
+        Me.ApprovedRadio.Location = New System.Drawing.Point(965, 68)
         Me.ApprovedRadio.Name = "ApprovedRadio"
-        Me.ApprovedRadio.Size = New System.Drawing.Size(109, 23)
+        Me.ApprovedRadio.Size = New System.Drawing.Size(98, 19)
         Me.ApprovedRadio.TabIndex = 10
         Me.ApprovedRadio.TabStop = True
         Me.ApprovedRadio.Text = "Approved?"
@@ -214,166 +275,161 @@ Partial Class AddEntry
         '
         'MoldSerialComboBox
         '
+        Me.MoldSerialComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.MoldSerialComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldSerialComboBox.FormattingEnabled = True
-        Me.MoldSerialComboBox.Location = New System.Drawing.Point(489, 94)
+        Me.MoldSerialComboBox.Location = New System.Drawing.Point(485, 95)
         Me.MoldSerialComboBox.Name = "MoldSerialComboBox"
-        Me.MoldSerialComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.MoldSerialComboBox.Size = New System.Drawing.Size(150, 23)
         Me.MoldSerialComboBox.TabIndex = 8
+        '
+        'PaintcodeDescription_ComboBox
+        '
+        Me.PaintcodeDescription_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
+        Me.PaintcodeDescription_ComboBox.Enabled = False
+        Me.PaintcodeDescription_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.PaintcodeDescription_ComboBox.FormattingEnabled = True
+        Me.PaintcodeDescription_ComboBox.Location = New System.Drawing.Point(795, 95)
+        Me.PaintcodeDescription_ComboBox.Name = "PaintcodeDescription_ComboBox"
+        Me.PaintcodeDescription_ComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.PaintcodeDescription_ComboBox.TabIndex = 9
         '
         'PaintCodeComboBox
         '
+        Me.PaintCodeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.PaintCodeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.PaintCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PaintCodeComboBox.FormattingEnabled = True
-        Me.PaintCodeComboBox.Location = New System.Drawing.Point(645, 94)
+        Me.PaintCodeComboBox.Location = New System.Drawing.Point(640, 95)
         Me.PaintCodeComboBox.Name = "PaintCodeComboBox"
-        Me.PaintCodeComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.PaintCodeComboBox.Size = New System.Drawing.Size(150, 23)
+        Me.PaintCodeComboBox.Sorted = True
         Me.PaintCodeComboBox.TabIndex = 9
         '
         'MoldBrandComboBox
         '
         Me.MoldBrandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldBrandComboBox.FormattingEnabled = True
-        Me.MoldBrandComboBox.Location = New System.Drawing.Point(176, 94)
+        Me.MoldBrandComboBox.Location = New System.Drawing.Point(175, 95)
         Me.MoldBrandComboBox.Name = "MoldBrandComboBox"
-        Me.MoldBrandComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.MoldBrandComboBox.Size = New System.Drawing.Size(150, 23)
         Me.MoldBrandComboBox.TabIndex = 6
         '
         'MoldModelComboBox
         '
+        Me.MoldModelComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.MoldModelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldModelComboBox.FormattingEnabled = True
-        Me.MoldModelComboBox.Location = New System.Drawing.Point(332, 94)
+        Me.MoldModelComboBox.Location = New System.Drawing.Point(330, 95)
         Me.MoldModelComboBox.Name = "MoldModelComboBox"
-        Me.MoldModelComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.MoldModelComboBox.Size = New System.Drawing.Size(150, 23)
         Me.MoldModelComboBox.TabIndex = 7
         '
         'WorkStationComboBox
         '
         Me.WorkStationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.WorkStationComboBox.FormattingEnabled = True
-        Me.WorkStationComboBox.Location = New System.Drawing.Point(176, 40)
+        Me.WorkStationComboBox.Location = New System.Drawing.Point(230, 40)
         Me.WorkStationComboBox.Name = "WorkStationComboBox"
-        Me.WorkStationComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.WorkStationComboBox.Size = New System.Drawing.Size(150, 23)
         Me.WorkStationComboBox.TabIndex = 2
         '
-        'ConsecutiveTextBox
+        'PaintcodeDescription_Label
         '
-        Me.ConsecutiveTextBox.Location = New System.Drawing.Point(693, 40)
-        Me.ConsecutiveTextBox.Name = "ConsecutiveTextBox"
-        Me.ConsecutiveTextBox.Size = New System.Drawing.Size(150, 25)
-        Me.ConsecutiveTextBox.TabIndex = 5
+        Me.PaintcodeDescription_Label.AutoSize = True
+        Me.PaintcodeDescription_Label.Location = New System.Drawing.Point(795, 73)
+        Me.PaintcodeDescription_Label.Name = "PaintcodeDescription_Label"
+        Me.PaintcodeDescription_Label.Size = New System.Drawing.Size(131, 15)
+        Me.PaintcodeDescription_Label.TabIndex = 2
+        Me.PaintcodeDescription_Label.Text = "Paint Code Description:"
         '
         'WorkStationLabel
         '
         Me.WorkStationLabel.AutoSize = True
-        Me.WorkStationLabel.Location = New System.Drawing.Point(176, 15)
+        Me.WorkStationLabel.Location = New System.Drawing.Point(230, 18)
         Me.WorkStationLabel.Name = "WorkStationLabel"
-        Me.WorkStationLabel.Size = New System.Drawing.Size(95, 19)
+        Me.WorkStationLabel.Size = New System.Drawing.Size(80, 15)
         Me.WorkStationLabel.TabIndex = 1
         Me.WorkStationLabel.Text = "&Work Station:"
-        '
-        'ConsecutiveLabel
-        '
-        Me.ConsecutiveLabel.AutoSize = True
-        Me.ConsecutiveLabel.Location = New System.Drawing.Point(693, 15)
-        Me.ConsecutiveLabel.Name = "ConsecutiveLabel"
-        Me.ConsecutiveLabel.Size = New System.Drawing.Size(144, 19)
-        Me.ConsecutiveLabel.TabIndex = 2
-        Me.ConsecutiveLabel.Text = "&Consecutive Number:"
-        '
-        'SerialNumberTextBox
-        '
-        Me.SerialNumberTextBox.Location = New System.Drawing.Point(536, 40)
-        Me.SerialNumberTextBox.Name = "SerialNumberTextBox"
-        Me.SerialNumberTextBox.Size = New System.Drawing.Size(150, 25)
-        Me.SerialNumberTextBox.TabIndex = 4
         '
         'ModelBrandLabel
         '
         Me.ModelBrandLabel.AutoSize = True
-        Me.ModelBrandLabel.Location = New System.Drawing.Point(176, 72)
+        Me.ModelBrandLabel.Location = New System.Drawing.Point(175, 73)
         Me.ModelBrandLabel.Name = "ModelBrandLabel"
-        Me.ModelBrandLabel.Size = New System.Drawing.Size(85, 19)
+        Me.ModelBrandLabel.Size = New System.Drawing.Size(72, 15)
         Me.ModelBrandLabel.TabIndex = 2
         Me.ModelBrandLabel.Text = "Mold Brand:"
-        '
-        'SerialNumberLabel
-        '
-        Me.SerialNumberLabel.AutoSize = True
-        Me.SerialNumberLabel.Location = New System.Drawing.Point(536, 15)
-        Me.SerialNumberLabel.Name = "SerialNumberLabel"
-        Me.SerialNumberLabel.Size = New System.Drawing.Size(103, 19)
-        Me.SerialNumberLabel.TabIndex = 2
-        Me.SerialNumberLabel.Text = "&Serial Number:"
         '
         'MoldSerialLabel
         '
         Me.MoldSerialLabel.AutoSize = True
-        Me.MoldSerialLabel.Location = New System.Drawing.Point(489, 72)
+        Me.MoldSerialLabel.Location = New System.Drawing.Point(485, 73)
         Me.MoldSerialLabel.Name = "MoldSerialLabel"
-        Me.MoldSerialLabel.Size = New System.Drawing.Size(84, 19)
+        Me.MoldSerialLabel.Size = New System.Drawing.Size(70, 15)
         Me.MoldSerialLabel.TabIndex = 2
         Me.MoldSerialLabel.Text = "Mold Serial:"
         '
         'MoldModelLabel
         '
         Me.MoldModelLabel.AutoSize = True
-        Me.MoldModelLabel.Location = New System.Drawing.Point(332, 72)
+        Me.MoldModelLabel.Location = New System.Drawing.Point(330, 73)
         Me.MoldModelLabel.Name = "MoldModelLabel"
-        Me.MoldModelLabel.Size = New System.Drawing.Size(86, 19)
+        Me.MoldModelLabel.Size = New System.Drawing.Size(72, 15)
         Me.MoldModelLabel.TabIndex = 2
         Me.MoldModelLabel.Text = "&Mold Model"
         '
         'WorkOrderTextBox
         '
-        Me.WorkOrderTextBox.Location = New System.Drawing.Point(332, 40)
+        Me.WorkOrderTextBox.Location = New System.Drawing.Point(20, 95)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
-        Me.WorkOrderTextBox.Size = New System.Drawing.Size(198, 25)
+        Me.WorkOrderTextBox.Size = New System.Drawing.Size(150, 23)
         Me.WorkOrderTextBox.TabIndex = 3
         '
         'WorkOrderLabel
         '
         Me.WorkOrderLabel.AutoSize = True
-        Me.WorkOrderLabel.Location = New System.Drawing.Point(332, 15)
+        Me.WorkOrderLabel.Location = New System.Drawing.Point(20, 73)
         Me.WorkOrderLabel.Name = "WorkOrderLabel"
-        Me.WorkOrderLabel.Size = New System.Drawing.Size(142, 19)
+        Me.WorkOrderLabel.Size = New System.Drawing.Size(119, 15)
         Me.WorkOrderLabel.TabIndex = 2
         Me.WorkOrderLabel.Text = "W&ork Order Number:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(645, 72)
+        Me.Label2.Location = New System.Drawing.Point(640, 73)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(80, 19)
+        Me.Label2.Size = New System.Drawing.Size(67, 15)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "&Paint Code:"
         '
         'TimeTextBox
         '
         Me.TimeTextBox.Enabled = False
-        Me.TimeTextBox.Location = New System.Drawing.Point(20, 94)
+        Me.TimeTextBox.Location = New System.Drawing.Point(125, 40)
         Me.TimeTextBox.Name = "TimeTextBox"
-        Me.TimeTextBox.Size = New System.Drawing.Size(150, 25)
+        Me.TimeTextBox.Size = New System.Drawing.Size(100, 23)
         Me.TimeTextBox.TabIndex = 0
         Me.TimeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TimeLabel
         '
         Me.TimeLabel.AutoSize = True
-        Me.TimeLabel.Location = New System.Drawing.Point(20, 72)
+        Me.TimeLabel.Location = New System.Drawing.Point(125, 18)
         Me.TimeLabel.Name = "TimeLabel"
-        Me.TimeLabel.Size = New System.Drawing.Size(43, 19)
+        Me.TimeLabel.Size = New System.Drawing.Size(37, 15)
         Me.TimeLabel.TabIndex = 2
         Me.TimeLabel.Text = "&Time:"
         '
         'DateLabel
         '
         Me.DateLabel.AutoSize = True
-        Me.DateLabel.Location = New System.Drawing.Point(20, 15)
+        Me.DateLabel.Location = New System.Drawing.Point(20, 18)
         Me.DateLabel.Name = "DateLabel"
-        Me.DateLabel.Size = New System.Drawing.Size(41, 19)
+        Me.DateLabel.Size = New System.Drawing.Size(35, 15)
         Me.DateLabel.TabIndex = 1
         Me.DateLabel.Text = "&Date:"
         '
@@ -385,7 +441,7 @@ Partial Class AddEntry
         Me.DatePicker.MaxDate = New Date(2100, 12, 31, 0, 0, 0, 0)
         Me.DatePicker.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DatePicker.Name = "DatePicker"
-        Me.DatePicker.Size = New System.Drawing.Size(150, 25)
+        Me.DatePicker.Size = New System.Drawing.Size(100, 23)
         Me.DatePicker.TabIndex = 1
         '
         'DefectDataGroupBox
@@ -454,7 +510,7 @@ Partial Class AddEntry
         'AdditionalDefectNORadioButton
         '
         Me.AdditionalDefectNORadioButton.AutoSize = True
-        Me.AdditionalDefectNORadioButton.Location = New System.Drawing.Point(992, 46)
+        Me.AdditionalDefectNORadioButton.Location = New System.Drawing.Point(924, 43)
         Me.AdditionalDefectNORadioButton.Name = "AdditionalDefectNORadioButton"
         Me.AdditionalDefectNORadioButton.Size = New System.Drawing.Size(46, 23)
         Me.AdditionalDefectNORadioButton.TabIndex = 17
@@ -465,7 +521,7 @@ Partial Class AddEntry
         'AdditionalDefectYESRadioButton
         '
         Me.AdditionalDefectYESRadioButton.AutoSize = True
-        Me.AdditionalDefectYESRadioButton.Location = New System.Drawing.Point(939, 46)
+        Me.AdditionalDefectYESRadioButton.Location = New System.Drawing.Point(871, 43)
         Me.AdditionalDefectYESRadioButton.Name = "AdditionalDefectYESRadioButton"
         Me.AdditionalDefectYESRadioButton.Size = New System.Drawing.Size(47, 23)
         Me.AdditionalDefectYESRadioButton.TabIndex = 16
@@ -517,7 +573,7 @@ Partial Class AddEntry
         '
         Me.AdditionalDefectsLabel.AutoSize = True
         Me.AdditionalDefectsLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
-        Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(925, 18)
+        Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(843, 17)
         Me.AdditionalDefectsLabel.Name = "AdditionalDefectsLabel"
         Me.AdditionalDefectsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.AdditionalDefectsLabel.Size = New System.Drawing.Size(127, 17)
@@ -908,16 +964,16 @@ Partial Class AddEntry
         'DefectLocationComboBox
         '
         Me.DefectLocationComboBox.FormattingEnabled = True
-        Me.DefectLocationComboBox.Location = New System.Drawing.Point(742, 44)
+        Me.DefectLocationComboBox.Location = New System.Drawing.Point(432, 43)
         Me.DefectLocationComboBox.Name = "DefectLocationComboBox"
-        Me.DefectLocationComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.DefectLocationComboBox.Size = New System.Drawing.Size(200, 25)
         Me.DefectLocationComboBox.TabIndex = 15
         Me.DefectLocationComboBox.Text = "Select"
         '
         'DefectLocationLabel
         '
         Me.DefectLocationLabel.AutoSize = True
-        Me.DefectLocationLabel.Location = New System.Drawing.Point(740, 18)
+        Me.DefectLocationLabel.Location = New System.Drawing.Point(430, 17)
         Me.DefectLocationLabel.Name = "DefectLocationLabel"
         Me.DefectLocationLabel.Size = New System.Drawing.Size(111, 19)
         Me.DefectLocationLabel.TabIndex = 1
@@ -926,16 +982,16 @@ Partial Class AddEntry
         'DefectComboBox
         '
         Me.DefectComboBox.FormattingEnabled = True
-        Me.DefectComboBox.Location = New System.Drawing.Point(461, 44)
+        Me.DefectComboBox.Location = New System.Drawing.Point(226, 43)
         Me.DefectComboBox.Name = "DefectComboBox"
-        Me.DefectComboBox.Size = New System.Drawing.Size(275, 25)
+        Me.DefectComboBox.Size = New System.Drawing.Size(200, 25)
         Me.DefectComboBox.TabIndex = 14
         Me.DefectComboBox.Text = "Select Option"
         '
         'DefectLabel
         '
         Me.DefectLabel.AutoSize = True
-        Me.DefectLabel.Location = New System.Drawing.Point(461, 18)
+        Me.DefectLabel.Location = New System.Drawing.Point(226, 17)
         Me.DefectLabel.Name = "DefectLabel"
         Me.DefectLabel.Size = New System.Drawing.Size(53, 19)
         Me.DefectLabel.TabIndex = 1
@@ -944,16 +1000,16 @@ Partial Class AddEntry
         'DefectOriginComboBox
         '
         Me.DefectOriginComboBox.FormattingEnabled = True
-        Me.DefectOriginComboBox.Location = New System.Drawing.Point(180, 44)
+        Me.DefectOriginComboBox.Location = New System.Drawing.Point(20, 43)
         Me.DefectOriginComboBox.Name = "DefectOriginComboBox"
-        Me.DefectOriginComboBox.Size = New System.Drawing.Size(275, 25)
+        Me.DefectOriginComboBox.Size = New System.Drawing.Size(200, 25)
         Me.DefectOriginComboBox.TabIndex = 13
         Me.DefectOriginComboBox.Text = "Select Option"
         '
         'DefectOriginLabel
         '
         Me.DefectOriginLabel.AutoSize = True
-        Me.DefectOriginLabel.Location = New System.Drawing.Point(180, 20)
+        Me.DefectOriginLabel.Location = New System.Drawing.Point(20, 19)
         Me.DefectOriginLabel.Name = "DefectOriginLabel"
         Me.DefectOriginLabel.Size = New System.Drawing.Size(97, 19)
         Me.DefectOriginLabel.TabIndex = 1
@@ -962,26 +1018,26 @@ Partial Class AddEntry
         'ReworkComboBox
         '
         Me.ReworkComboBox.FormattingEnabled = True
-        Me.ReworkComboBox.Location = New System.Drawing.Point(20, 44)
+        Me.ReworkComboBox.Location = New System.Drawing.Point(637, 43)
         Me.ReworkComboBox.Name = "ReworkComboBox"
-        Me.ReworkComboBox.Size = New System.Drawing.Size(153, 25)
+        Me.ReworkComboBox.Size = New System.Drawing.Size(200, 25)
         Me.ReworkComboBox.TabIndex = 12
         Me.ReworkComboBox.Text = "Select Option"
         '
         'ReworkTypeLabel
         '
         Me.ReworkTypeLabel.AutoSize = True
-        Me.ReworkTypeLabel.Location = New System.Drawing.Point(20, 20)
+        Me.ReworkTypeLabel.Location = New System.Drawing.Point(637, 17)
         Me.ReworkTypeLabel.Name = "ReworkTypeLabel"
-        Me.ReworkTypeLabel.Size = New System.Drawing.Size(92, 19)
+        Me.ReworkTypeLabel.Size = New System.Drawing.Size(169, 19)
         Me.ReworkTypeLabel.TabIndex = 1
-        Me.ReworkTypeLabel.Text = "&Rework Type:"
+        Me.ReworkTypeLabel.Text = "&Rework Type/Disposition:"
         '
         'RejectedDataGridView
         '
         Me.RejectedDataGridView.AllowUserToAddRows = False
         Me.RejectedDataGridView.AllowUserToDeleteRows = False
-        Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
@@ -1000,24 +1056,22 @@ Partial Class AddEntry
         '
         Me.OK_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.OK_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.OK_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.GraphicsUnit.Point)
-        Me.OK_Button.Location = New System.Drawing.Point(750, 602)
+        Me.OK_Button.Location = New System.Drawing.Point(750, 618)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(165, 60)
+        Me.OK_Button.Size = New System.Drawing.Size(150, 41)
         Me.OK_Button.TabIndex = 19
-        Me.OK_Button.Text = "Add Entry"
+        Me.OK_Button.Text = "OK"
         Me.OK_Button.UseVisualStyleBackColor = True
         '
         'Cancel_Button
         '
         Me.Cancel_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Cancel_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 20.25!, System.Drawing.GraphicsUnit.Point)
-        Me.Cancel_Button.Location = New System.Drawing.Point(960, 602)
+        Me.Cancel_Button.Location = New System.Drawing.Point(975, 618)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(165, 60)
+        Me.Cancel_Button.Size = New System.Drawing.Size(150, 41)
         Me.Cancel_Button.TabIndex = 20
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
@@ -1028,7 +1082,7 @@ Partial Class AddEntry
         Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.CommentsGroupBox.Location = New System.Drawing.Point(750, 465)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
-        Me.CommentsGroupBox.Size = New System.Drawing.Size(375, 131)
+        Me.CommentsGroupBox.Size = New System.Drawing.Size(375, 153)
         Me.CommentsGroupBox.TabIndex = 6
         Me.CommentsGroupBox.TabStop = False
         Me.CommentsGroupBox.Text = "Comments:"
@@ -1037,7 +1091,7 @@ Partial Class AddEntry
         '
         Me.CommentsRichTextBox.Location = New System.Drawing.Point(6, 16)
         Me.CommentsRichTextBox.Name = "CommentsRichTextBox"
-        Me.CommentsRichTextBox.Size = New System.Drawing.Size(369, 109)
+        Me.CommentsRichTextBox.Size = New System.Drawing.Size(369, 131)
         Me.CommentsRichTextBox.TabIndex = 18
         Me.CommentsRichTextBox.Text = ""
         '
@@ -1206,8 +1260,6 @@ Partial Class AddEntry
     Friend WithEvents DateLabel As Label
     Friend WithEvents DatePicker As DateTimePicker
     Friend WithEvents DefectDataGroupBox As GroupBox
-    Friend WithEvents ConsecutiveTextBox As TextBox
-    Friend WithEvents ConsecutiveLabel As Label
     Friend WithEvents MoldModelLabel As Label
     Friend WithEvents WorkOrderTextBox As TextBox
     Friend WithEvents WorkOrderLabel As Label
@@ -1284,9 +1336,7 @@ Partial Class AddEntry
     Friend WithEvents RejectedRadio As RadioButton
     Friend WithEvents ApprovedRadio As RadioButton
     Friend WithEvents ARPictureBox As PictureBox
-    Friend WithEvents SerialNumberTextBox As TextBox
     Friend WithEvents ModelBrandLabel As Label
-    Friend WithEvents SerialNumberLabel As Label
     Friend WithEvents MoldSerialComboBox As ComboBox
     Friend WithEvents MoldBrandComboBox As ComboBox
     Friend WithEvents PaintCodeComboBox As ComboBox
@@ -1295,4 +1345,11 @@ Partial Class AddEntry
     Friend WithEvents RejectedDataGridView As DataGridView
     Friend WithEvents RejectedDataGroupBox As GroupBox
     Friend WithEvents Export_Button As Button
+    Friend WithEvents PaintcodeDescription_Label As Label
+    Friend WithEvents PaintcodeDescription_ComboBox As ComboBox
+    Friend WithEvents NewEntry_Button As Button
+    Friend WithEvents ShowDataGrid_Button As Button
+    Friend WithEvents EditSelected_Button As Button
+    Friend WithEvents ShowDefects_Button As Button
+    Friend WithEvents CancelEdit_Button As Button
 End Class

@@ -18,11 +18,11 @@ Public Class AddPaintcode
         ChangeSelected_PaintcolorButton.Enabled = False
         DeleteSelected_PaintcolorButton.Enabled = False
         Try
-            Using PCBcommand As New MySqlCommand("SELECT `models_id`, `models_brand`, `models_mold`, `models_serial`,`models_color`,`models_description`,`models_status` FROM `models`", connection)
-                Dim MLadapter As New MySqlDataAdapter(MLcommand)
-                Dim MLtable As New DataTable()
-                Dim ML = MLadapter.Fill(MLtable)
-                PCDataGrid.DataSource = MLtable
+            Using PCcommand As New MySqlCommand("SELECT `models_id`, `models_brand`, `models_mold`, `models_serial`,`models_color`,`models_description`,`models_status` FROM `models`", connection)
+                Dim PCadapter As New MySqlDataAdapter(PCcommand)
+                Dim PCtable As New DataTable()
+                Dim PC = PCadapter.Fill(PCtable)
+                PCDataGrid.DataSource = PCtable
             End Using
             Using CBcommand As New MySqlCommand("SELECT DISTINCT models_brand FROM models", connection)
                 Dim CBadapter As New MySqlDataAdapter(CBcommand)

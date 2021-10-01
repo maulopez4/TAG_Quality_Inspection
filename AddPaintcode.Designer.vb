@@ -95,7 +95,7 @@ Partial Class AddPaintcode
         '
         Me.Take_PictureButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Take_PictureButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Take_PictureButton.Location = New System.Drawing.Point(330, 251)
+        Me.Take_PictureButton.Location = New System.Drawing.Point(262, 251)
         Me.Take_PictureButton.Name = "Take_PictureButton"
         Me.Take_PictureButton.Size = New System.Drawing.Size(90, 30)
         Me.Take_PictureButton.TabIndex = 23
@@ -140,7 +140,7 @@ Partial Class AddPaintcode
         'Paintcolor_DescriptionLabel
         '
         Me.Paintcolor_DescriptionLabel.AutoSize = True
-        Me.Paintcolor_DescriptionLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Paintcolor_DescriptionLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Paintcolor_DescriptionLabel.Location = New System.Drawing.Point(6, 156)
         Me.Paintcolor_DescriptionLabel.Name = "Paintcolor_DescriptionLabel"
         Me.Paintcolor_DescriptionLabel.Size = New System.Drawing.Size(155, 19)
@@ -158,7 +158,7 @@ Partial Class AddPaintcode
         'Paintcolor_StatusLabel
         '
         Me.Paintcolor_StatusLabel.AutoSize = True
-        Me.Paintcolor_StatusLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Paintcolor_StatusLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Paintcolor_StatusLabel.Location = New System.Drawing.Point(6, 202)
         Me.Paintcolor_StatusLabel.Name = "Paintcolor_StatusLabel"
         Me.Paintcolor_StatusLabel.Size = New System.Drawing.Size(125, 19)
@@ -168,7 +168,7 @@ Partial Class AddPaintcode
         'Paintcolor_IDLabel
         '
         Me.Paintcolor_IDLabel.AutoSize = True
-        Me.Paintcolor_IDLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Paintcolor_IDLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Paintcolor_IDLabel.Location = New System.Drawing.Point(6, 20)
         Me.Paintcolor_IDLabel.Name = "Paintcolor_IDLabel"
         Me.Paintcolor_IDLabel.Size = New System.Drawing.Size(97, 19)
@@ -178,7 +178,7 @@ Partial Class AddPaintcode
         'Paintcolor_BrandLabel
         '
         Me.Paintcolor_BrandLabel.AutoSize = True
-        Me.Paintcolor_BrandLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Paintcolor_BrandLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Paintcolor_BrandLabel.Location = New System.Drawing.Point(5, 65)
         Me.Paintcolor_BrandLabel.Name = "Paintcolor_BrandLabel"
         Me.Paintcolor_BrandLabel.Size = New System.Drawing.Size(122, 19)
@@ -195,7 +195,7 @@ Partial Class AddPaintcode
         'Paintcode_CodeLabel
         '
         Me.Paintcode_CodeLabel.AutoSize = True
-        Me.Paintcode_CodeLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Paintcode_CodeLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Paintcode_CodeLabel.Location = New System.Drawing.Point(6, 110)
         Me.Paintcode_CodeLabel.Name = "Paintcode_CodeLabel"
         Me.Paintcode_CodeLabel.Size = New System.Drawing.Size(118, 19)

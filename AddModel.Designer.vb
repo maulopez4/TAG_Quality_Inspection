@@ -30,9 +30,9 @@ Partial Class AddModel
         Me.MLDataGrid = New System.Windows.Forms.DataGridView()
         Me.ModelDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.Model_BrandComboBox = New System.Windows.Forms.ComboBox()
-        Me.Take_PictureButton = New System.Windows.Forms.Button()
-        Me.MoldPictureBox = New System.Windows.Forms.PictureBox()
-        Me.Add_ImageButton = New System.Windows.Forms.Button()
+        Me.PictureButton1 = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.AddImageButton1 = New System.Windows.Forms.Button()
         Me.Model_DescriptionTextBox = New System.Windows.Forms.TextBox()
         Me.Model_IdTextBox = New System.Windows.Forms.TextBox()
         Me.Mold_DescriptionLabel = New System.Windows.Forms.Label()
@@ -48,7 +48,7 @@ Partial Class AddModel
         Me.Model_MoldLabel = New System.Windows.Forms.Label()
         CType(Me.MLDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ModelDataGroupBox.SuspendLayout()
-        CType(Me.MoldPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CreateNew_MoldButton
@@ -118,9 +118,9 @@ Partial Class AddModel
         'ModelDataGroupBox
         '
         Me.ModelDataGroupBox.Controls.Add(Me.Model_BrandComboBox)
-        Me.ModelDataGroupBox.Controls.Add(Me.Take_PictureButton)
-        Me.ModelDataGroupBox.Controls.Add(Me.MoldPictureBox)
-        Me.ModelDataGroupBox.Controls.Add(Me.Add_ImageButton)
+        Me.ModelDataGroupBox.Controls.Add(Me.PictureButton1)
+        Me.ModelDataGroupBox.Controls.Add(Me.PictureBox1)
+        Me.ModelDataGroupBox.Controls.Add(Me.AddImageButton1)
         Me.ModelDataGroupBox.Controls.Add(Me.Model_DescriptionTextBox)
         Me.ModelDataGroupBox.Controls.Add(Me.Model_IdTextBox)
         Me.ModelDataGroupBox.Controls.Add(Me.Mold_DescriptionLabel)
@@ -150,35 +150,35 @@ Partial Class AddModel
         Me.Model_BrandComboBox.Size = New System.Drawing.Size(249, 23)
         Me.Model_BrandComboBox.TabIndex = 25
         '
-        'Take_PictureButton
+        'PictureButton1
         '
-        Me.Take_PictureButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Take_PictureButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Take_PictureButton.Location = New System.Drawing.Point(301, 304)
-        Me.Take_PictureButton.Name = "Take_PictureButton"
-        Me.Take_PictureButton.Size = New System.Drawing.Size(90, 30)
-        Me.Take_PictureButton.TabIndex = 23
-        Me.Take_PictureButton.Text = "Take Picture"
-        Me.Take_PictureButton.UseVisualStyleBackColor = True
+        Me.PictureButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.PictureButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.PictureButton1.Location = New System.Drawing.Point(301, 304)
+        Me.PictureButton1.Name = "PictureButton1"
+        Me.PictureButton1.Size = New System.Drawing.Size(90, 30)
+        Me.PictureButton1.TabIndex = 23
+        Me.PictureButton1.Text = "Take Picture"
+        Me.PictureButton1.UseVisualStyleBackColor = True
         '
-        'MoldPictureBox
+        'PictureBox1
         '
-        Me.MoldPictureBox.Location = New System.Drawing.Point(262, 22)
-        Me.MoldPictureBox.Name = "MoldPictureBox"
-        Me.MoldPictureBox.Size = New System.Drawing.Size(269, 276)
-        Me.MoldPictureBox.TabIndex = 21
-        Me.MoldPictureBox.TabStop = False
+        Me.PictureBox1.Location = New System.Drawing.Point(262, 22)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(269, 276)
+        Me.PictureBox1.TabIndex = 21
+        Me.PictureBox1.TabStop = False
         '
-        'Add_ImageButton
+        'AddImageButton1
         '
-        Me.Add_ImageButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
-        Me.Add_ImageButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Add_ImageButton.Location = New System.Drawing.Point(412, 304)
-        Me.Add_ImageButton.Name = "Add_ImageButton"
-        Me.Add_ImageButton.Size = New System.Drawing.Size(90, 30)
-        Me.Add_ImageButton.TabIndex = 24
-        Me.Add_ImageButton.Text = "Add Image"
-        Me.Add_ImageButton.UseVisualStyleBackColor = True
+        Me.AddImageButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.AddImageButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.AddImageButton1.Location = New System.Drawing.Point(412, 304)
+        Me.AddImageButton1.Name = "AddImageButton1"
+        Me.AddImageButton1.Size = New System.Drawing.Size(90, 30)
+        Me.AddImageButton1.TabIndex = 24
+        Me.AddImageButton1.Text = "Add Image"
+        Me.AddImageButton1.UseVisualStyleBackColor = True
         '
         'Model_DescriptionTextBox
         '
@@ -315,7 +315,7 @@ Partial Class AddModel
         CType(Me.MLDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ModelDataGroupBox.ResumeLayout(False)
         Me.ModelDataGroupBox.PerformLayout()
-        CType(Me.MoldPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -340,8 +340,8 @@ Partial Class AddModel
     Friend WithEvents Model_MoldLabel As Label
     Friend WithEvents Model_StatusComboBox As ComboBox
     Friend WithEvents Mold_StatusLabel As Label
-    Friend WithEvents MoldPictureBox As PictureBox
-    Friend WithEvents Take_PictureButton As Button
-    Friend WithEvents Add_ImageButton As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureButton1 As Button
+    Friend WithEvents AddImageButton1 As Button
     Friend WithEvents Model_BrandComboBox As ComboBox
 End Class
