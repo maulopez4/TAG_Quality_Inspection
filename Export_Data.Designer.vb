@@ -24,29 +24,26 @@ Partial Class Export_Data
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.RejectedDataGroupBox = New System.Windows.Forms.GroupBox()
-        Me.RejectedDataGridView = New System.Windows.Forms.DataGridView()
+        Me.ExportDataGridView = New System.Windows.Forms.DataGridView()
         Me.From_DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Till_DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.From_Label = New System.Windows.Forms.Label()
         Me.Till_Label = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.Close_Button = New System.Windows.Forms.Button()
         Me.Export_Button = New System.Windows.Forms.Button()
         Me.GetData_Button = New System.Windows.Forms.Button()
-        Me.Selected_ListBox = New System.Windows.Forms.ListBox()
-        Me.Select_ListBox = New System.Windows.Forms.ListBox()
-        Me.Remove_Button = New System.Windows.Forms.Button()
-        Me.Add_Button = New System.Windows.Forms.Button()
         Me.Date_GroupBox = New System.Windows.Forms.GroupBox()
         Me.RejectedDataGroupBox.SuspendLayout()
-        CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ExportDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.Date_GroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'RejectedDataGroupBox
         '
-        Me.RejectedDataGroupBox.Controls.Add(Me.RejectedDataGridView)
+        Me.RejectedDataGroupBox.Controls.Add(Me.ExportDataGridView)
         Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.RejectedDataGroupBox.Location = New System.Drawing.Point(12, 183)
         Me.RejectedDataGroupBox.Name = "RejectedDataGroupBox"
@@ -55,24 +52,24 @@ Partial Class Export_Data
         Me.RejectedDataGroupBox.TabStop = False
         Me.RejectedDataGroupBox.Text = "On-Hold WorkOrders"
         '
-        'RejectedDataGridView
+        'ExportDataGridView
         '
-        Me.RejectedDataGridView.AllowUserToAddRows = False
-        Me.RejectedDataGridView.AllowUserToDeleteRows = False
-        Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.ExportDataGridView.AllowUserToAddRows = False
+        Me.ExportDataGridView.AllowUserToDeleteRows = False
+        Me.ExportDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.RejectedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.RejectedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.RejectedDataGridView.Location = New System.Drawing.Point(6, 22)
-        Me.RejectedDataGridView.Name = "RejectedDataGridView"
-        Me.RejectedDataGridView.ReadOnly = True
-        Me.RejectedDataGridView.RowHeadersWidth = 30
-        Me.RejectedDataGridView.RowTemplate.Height = 25
-        Me.RejectedDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.RejectedDataGridView.Size = New System.Drawing.Size(1287, 354)
-        Me.RejectedDataGridView.TabIndex = 21
+        Me.ExportDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.ExportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ExportDataGridView.Location = New System.Drawing.Point(6, 22)
+        Me.ExportDataGridView.Name = "ExportDataGridView"
+        Me.ExportDataGridView.ReadOnly = True
+        Me.ExportDataGridView.RowHeadersWidth = 30
+        Me.ExportDataGridView.RowTemplate.Height = 25
+        Me.ExportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.ExportDataGridView.Size = New System.Drawing.Size(1287, 354)
+        Me.ExportDataGridView.TabIndex = 21
         '
         'From_DateTimePicker
         '
@@ -124,23 +121,29 @@ Partial Class Export_Data
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.CheckedListBox1)
         Me.GroupBox2.Controls.Add(Me.Close_Button)
         Me.GroupBox2.Controls.Add(Me.Export_Button)
         Me.GroupBox2.Controls.Add(Me.GetData_Button)
-        Me.GroupBox2.Controls.Add(Me.Selected_ListBox)
-        Me.GroupBox2.Controls.Add(Me.Select_ListBox)
-        Me.GroupBox2.Controls.Add(Me.Remove_Button)
-        Me.GroupBox2.Controls.Add(Me.Add_Button)
         Me.GroupBox2.Location = New System.Drawing.Point(357, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(561, 166)
+        Me.GroupBox2.Size = New System.Drawing.Size(469, 166)
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Select Check Points:"
         '
+        'CheckedListBox1
+        '
+        Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.Location = New System.Drawing.Point(7, 22)
+        Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.ScrollAlwaysVisible = True
+        Me.CheckedListBox1.Size = New System.Drawing.Size(290, 130)
+        Me.CheckedListBox1.TabIndex = 2
+        '
         'Close_Button
         '
-        Me.Close_Button.Location = New System.Drawing.Point(401, 130)
+        Me.Close_Button.Location = New System.Drawing.Point(303, 130)
         Me.Close_Button.Name = "Close_Button"
         Me.Close_Button.Size = New System.Drawing.Size(150, 30)
         Me.Close_Button.TabIndex = 1
@@ -149,7 +152,7 @@ Partial Class Export_Data
         '
         'Export_Button
         '
-        Me.Export_Button.Location = New System.Drawing.Point(401, 76)
+        Me.Export_Button.Location = New System.Drawing.Point(303, 76)
         Me.Export_Button.Name = "Export_Button"
         Me.Export_Button.Size = New System.Drawing.Size(150, 30)
         Me.Export_Button.TabIndex = 1
@@ -158,50 +161,12 @@ Partial Class Export_Data
         '
         'GetData_Button
         '
-        Me.GetData_Button.Location = New System.Drawing.Point(401, 22)
+        Me.GetData_Button.Location = New System.Drawing.Point(303, 22)
         Me.GetData_Button.Name = "GetData_Button"
         Me.GetData_Button.Size = New System.Drawing.Size(150, 30)
         Me.GetData_Button.TabIndex = 1
         Me.GetData_Button.Text = "1) Get Data"
         Me.GetData_Button.UseVisualStyleBackColor = True
-        '
-        'Selected_ListBox
-        '
-        Me.Selected_ListBox.FormattingEnabled = True
-        Me.Selected_ListBox.ItemHeight = 15
-        Me.Selected_ListBox.Location = New System.Drawing.Point(244, 22)
-        Me.Selected_ListBox.Name = "Selected_ListBox"
-        Me.Selected_ListBox.Size = New System.Drawing.Size(151, 139)
-        Me.Selected_ListBox.TabIndex = 29
-        '
-        'Select_ListBox
-        '
-        Me.Select_ListBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.Select_ListBox.FormattingEnabled = True
-        Me.Select_ListBox.ItemHeight = 15
-        Me.Select_ListBox.Items.AddRange(New Object() {"CP1", "CP2", "CP3", "CP4", "CP5", "CP6", "CP7"})
-        Me.Select_ListBox.Location = New System.Drawing.Point(6, 22)
-        Me.Select_ListBox.Name = "Select_ListBox"
-        Me.Select_ListBox.Size = New System.Drawing.Size(151, 139)
-        Me.Select_ListBox.TabIndex = 29
-        '
-        'Remove_Button
-        '
-        Me.Remove_Button.Location = New System.Drawing.Point(163, 101)
-        Me.Remove_Button.Name = "Remove_Button"
-        Me.Remove_Button.Size = New System.Drawing.Size(75, 23)
-        Me.Remove_Button.TabIndex = 1
-        Me.Remove_Button.Text = "<< Remove"
-        Me.Remove_Button.UseVisualStyleBackColor = True
-        '
-        'Add_Button
-        '
-        Me.Add_Button.Location = New System.Drawing.Point(163, 47)
-        Me.Add_Button.Name = "Add_Button"
-        Me.Add_Button.Size = New System.Drawing.Size(75, 23)
-        Me.Add_Button.TabIndex = 1
-        Me.Add_Button.Text = ">>"
-        Me.Add_Button.UseVisualStyleBackColor = True
         '
         'Date_GroupBox
         '
@@ -227,7 +192,7 @@ Partial Class Export_Data
         Me.Name = "Export_Data"
         Me.Text = "Export Data"
         Me.RejectedDataGroupBox.ResumeLayout(False)
-        CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExportDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.Date_GroupBox.ResumeLayout(False)
         Me.Date_GroupBox.PerformLayout()
@@ -236,18 +201,15 @@ Partial Class Export_Data
     End Sub
 
     Friend WithEvents RejectedDataGroupBox As GroupBox
-    Friend WithEvents RejectedDataGridView As DataGridView
+    Friend WithEvents ExportDataGridView As DataGridView
     Friend WithEvents From_DateTimePicker As DateTimePicker
     Friend WithEvents Till_DateTimePicker As DateTimePicker
     Friend WithEvents From_Label As Label
     Friend WithEvents Till_Label As Label
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GetData_Button As Button
-    Friend WithEvents Remove_Button As Button
-    Friend WithEvents Add_Button As Button
     Friend WithEvents Date_GroupBox As GroupBox
-    Friend WithEvents Select_ListBox As ListBox
-    Friend WithEvents Selected_ListBox As ListBox
     Friend WithEvents Close_Button As Button
     Friend WithEvents Export_Button As Button
+    Friend WithEvents CheckedListBox1 As CheckedListBox
 End Class

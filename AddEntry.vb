@@ -18,7 +18,7 @@ Public Class AddEntry
     Private Sub AddDefect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RejectedDataGroupBox.Visible = True
         DefectDataGroupBox.Visible = False
-        AddPicturesGroupBox.Visible = True
+        AddPicturesGroupBox.Visible = False
 
         Dim t As String = Date.Now.ToString("HH:mm:ss")
         TimeTextBox.Text = t
@@ -70,15 +70,15 @@ Public Class AddEntry
             PaintCodeComboBox.DataSource = PCtable
             PaintCodeComboBox.ValueMember = "paintcode_code"
             PaintCodeComboBox.DisplayMember = "paintcode_code"
-            'PaintCodeComboBox.SelectedIndex = -1
+
         End Using
         Using RJcommand As New MySqlCommand("SELECT `workorder_date`, `workorder_time`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
                                                     `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
-                                                    `workorder_rework`, `workorder_status`, `workorder_comments` 
-                                                    FROM `workorder` 
+                                                    `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
                                                     INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
-                                                    INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code` 
+                                                    INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
+                                                    INNER JOIN `rework` ON `workorder_rework` = `rework_code`
                                                     WHERE `workorder_workstation` = @workorder_workstation 
                                                     AND `workorder_rework` != 'RW08' 
                                                     ORDER BY `workorder_date` ASC, `workorder_time` asc", connection)
@@ -92,6 +92,7 @@ Public Class AddEntry
                 .Columns(0).HeaderCell.Value = "Date"
                 .Columns(1).HeaderCell.Value = "Time"
                 .Columns(2).HeaderCell.Value = "Workstation Code"
+                .Columns(2).Visible = False
                 .Columns(3).HeaderCell.Value = "Workstation Name"
                 .Columns(4).HeaderCell.Value = "Work Order"
                 .Columns(5).HeaderCell.Value = "Mold Brand"
@@ -105,9 +106,17 @@ Public Class AddEntry
                 .Columns(11).Visible = False
                 .Columns(12).HeaderCell.Value = "Defect Description"
                 .Columns(13).HeaderCell.Value = "Defect Location"
-                .Columns(14).HeaderCell.Value = "Rework Type"
-                .Columns(15).HeaderCell.Value = "Work Order Status"
-                .Columns(16).HeaderCell.Value = "Comments"
+                .Columns(14).HeaderCell.Value = "Rework Code"
+                .Columns(14).Visible = False
+                .Columns(15).HeaderCell.Value = "Rework Description"
+                .Columns(16).HeaderCell.Value = "Work Order Status"
+                .Columns(17).HeaderCell.Value = "Comments"
+                '.Columns(18).HeaderCell.Value = "Image1"
+                '.Columns(18).Visible = False
+                '.Columns(19).HeaderCell.Value = "Image2"
+                '.Columns(19).Visible = False
+                '.Columns(20).HeaderCell.Value = "Image3"
+                '.Columns(20).Visible = False
             End With
         End Using
 
@@ -118,7 +127,7 @@ Public Class AddEntry
         DefectOriginComboBox.Enabled = False
         DefectComboBox.Enabled = False
         DefectLocationComboBox.Enabled = False
-        PaintCodeComboBox.Enabled = False
+        PaintCodeComboBox.Enabled = True
         ApprovedRadio.Enabled = False
         RejectedRadio.Enabled = False
 
@@ -192,12 +201,12 @@ Public Class AddEntry
         command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = MoldBrandComboBox.SelectedValue
         command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = MoldModelComboBox.SelectedValue
         If MoldSerialComboBox.SelectedValue Is Nothing Then
-            command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "Not Available"
+            command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "NONE"
         Else
             command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = MoldSerialComboBox.SelectedValue
         End If
         If PaintCodeComboBox.SelectedValue Is Nothing Then
-            command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = "No Avalaible"
+            command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = "NONE"
         Else
             command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = PaintCodeComboBox.SelectedValue
         End If
@@ -225,15 +234,15 @@ Public Class AddEntry
         Else
             If command.ExecuteNonQuery() = 1 Then
                 MessageBox.Show("Data Entered, Please enter next defect Data")
-                Controls.Clear() 'removes all the controls on the form
-                InitializeComponent() 'load all the controls again
-                AddDefect_Load(e, e)
+                'Controls.Clear() 'removes all the controls on the form
+                'InitializeComponent() 'load all the controls again
+                AddDefect_Load(sender, e)
                 WorkStationComboBox.SelectedValue = (Entrylist(1)).ToString
                 WorkOrderTextBox.Text = (Entrylist(2)).ToString
                 MoldBrandComboBox.SelectedValue = (Entrylist(3)).ToString
                 MoldModelComboBox.SelectedValue = (Entrylist(4)).ToString
                 MoldSerialComboBox.SelectedValue = (Entrylist(5)).ToString
-                PaintCodeComboBox.SelectedValue = (Entrylist(7)).ToString
+                PaintCodeComboBox.SelectedValue = (Entrylist(6)).ToString
             Else
                 MessageBox.Show("ERROR")
             End If
@@ -452,7 +461,6 @@ Public Class AddEntry
         AddPicturesGroupBox.Visible = True
         RejectedDataGroupBox.Visible = False
     End Sub
-
     Private Sub RejectedRadio_CheckedChanged(sender As Object, e As EventArgs) Handles RejectedRadio.CheckedChanged
         ARPictureBox.Image = My.Resources.Actions_edit_delete_icon
         ARPictureBox.SizeMode = PictureBoxSizeMode.Zoom
@@ -517,6 +525,7 @@ Public Class AddEntry
         If RejectedDataGridView.SelectedRows.Count = 1 Then
             ApprovedRadio.Checked = False
             RejectedRadio.Checked = False
+
             WorkStationComboBox.SelectedValue = RejectedDataGridView.Item("workorder_workstation", RejectedDataGridView.SelectedRows(0).Index).Value
             WorkOrderTextBox.Text = RejectedDataGridView.Item("workorder_number", RejectedDataGridView.SelectedRows(0).Index).Value
             MoldBrandComboBox.SelectedValue = RejectedDataGridView.Item("workorder_moldbrand", RejectedDataGridView.SelectedRows(0).Index).Value
@@ -525,8 +534,33 @@ Public Class AddEntry
             PaintCodeComboBox.SelectedValue = RejectedDataGridView.Item("workorder_paintcode", RejectedDataGridView.SelectedRows(0).Index).Value
             ReworkComboBox.SelectedValue = RejectedDataGridView.Item("workorder_rework", RejectedDataGridView.SelectedRows(0).Index).Value
             DefectComboBox.SelectedValue = RejectedDataGridView.Item("workorder_defect", RejectedDataGridView.SelectedRows(0).Index).Value
-            'DefectOriginComboBox.SelectedValue = RejectedDataGridView.Item("workorder_defect_origin", RejectedDataGridView.SelectedRows(0).Index).Value
+            DefectOriginComboBox.SelectedValue = RejectedDataGridView.Item("workorder_defect_origin", RejectedDataGridView.SelectedRows(0).Index).Value
             DefectLocationComboBox.SelectedValue = RejectedDataGridView.Item("workorder_defect_location", RejectedDataGridView.SelectedRows(0).Index).Value
+
+            'If IsDBNull(RejectedDataGridView.Item("workorder_image1", RejectedDataGridView.SelectedRows(0).Index).Value) Then
+            '    PictureBox1.Image = My.Resources.leer_logo
+            '    PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+            'Else
+            '    arrImage1 = RejectedDataGridView.Item("workorder_image1", RejectedDataGridView.SelectedRows(0).Index).Value
+            '    Dim mstream1 As New System.IO.MemoryStream(arrImage1)
+            '    PictureBox1.Image = Image.FromStream(mstream1)
+            'End If
+            'If IsDBNull(RejectedDataGridView.Item("workorder_image2", RejectedDataGridView.SelectedRows(0).Index).Value) Then
+            '    PictureBox2.Image = My.Resources.leer_logo
+            '    PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
+            'Else
+            '    arrImage2 = RejectedDataGridView.Item("workorder_image2", RejectedDataGridView.SelectedRows(0).Index).Value
+            '    Dim mstream2 As New System.IO.MemoryStream(arrImage2)
+            '    PictureBox2.Image = Image.FromStream(mstream2)
+            'End If
+            'If IsDBNull(RejectedDataGridView.Item("workorder_image3", RejectedDataGridView.SelectedRows(0).Index).Value) Then
+            '    PictureBox3.Image = My.Resources.leer_logo
+            '    PictureBox3.SizeMode = PictureBoxSizeMode.Zoom
+            'Else
+            '    arrImage3 = RejectedDataGridView.Item("workorder_image3", RejectedDataGridView.SelectedRows(0).Index).Value
+            '    Dim mstream3 As New System.IO.MemoryStream(arrImage3)
+            '    PictureBox3.Image = Image.FromStream(mstream3)
+            'End If
         End If
     End Sub
     Private Sub AdditionalDefectYESRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AdditionalDefectYESRadioButton.CheckedChanged
@@ -545,10 +579,10 @@ Public Class AddEntry
         Using RJcommand As New MySqlCommand("SELECT `workorder_date`, `workorder_time`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
                                                     `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
-                                                    `workorder_rework`, `workorder_status`, `workorder_comments` 
-                                                    FROM `workorder` 
+                                                    `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
                                                     INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
-                                                    INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code` 
+                                                    INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
+                                                    INNER JOIN `rework` ON `workorder_rework` = `rework_code`
                                                     WHERE `workorder_workstation` = @workorder_workstation 
                                                     AND `workorder_rework` != 'RW08' 
                                                     ORDER BY `workorder_date` ASC, `workorder_time` asc", connection)
@@ -562,6 +596,7 @@ Public Class AddEntry
                 .Columns(0).HeaderCell.Value = "Date"
                 .Columns(1).HeaderCell.Value = "Time"
                 .Columns(2).HeaderCell.Value = "Workstation Code"
+                .Columns(2).Visible = False
                 .Columns(3).HeaderCell.Value = "Workstation Name"
                 .Columns(4).HeaderCell.Value = "Work Order"
                 .Columns(5).HeaderCell.Value = "Mold Brand"
@@ -575,49 +610,66 @@ Public Class AddEntry
                 .Columns(11).Visible = False
                 .Columns(12).HeaderCell.Value = "Defect Description"
                 .Columns(13).HeaderCell.Value = "Defect Location"
-                .Columns(14).HeaderCell.Value = "Rework Type"
-                .Columns(15).HeaderCell.Value = "Work Order Status"
-                .Columns(16).HeaderCell.Value = "Comments"
+                .Columns(14).HeaderCell.Value = "Rework Code"
+                .Columns(14).Visible = False
+                .Columns(15).HeaderCell.Value = "Rework Description"
+                .Columns(16).HeaderCell.Value = "Work Order Status"
+                .Columns(17).HeaderCell.Value = "Comments"
+                '.Columns(18).HeaderCell.Value = "Image1"
+                '.Columns(18).Visible = False
+                '.Columns(19).HeaderCell.Value = "Image2"
+                '.Columns(19).Visible = False
+                '.Columns(20).HeaderCell.Value = "Image3"
+                '.Columns(20).Visible = False
             End With
         End Using
     End Sub
     Private Sub NewEntry_Button_Click(sender As Object, e As EventArgs) Handles NewEntry_Button.Click
         RejectedDataGroupBox.Visible = False
         DefectDataGroupBox.Visible = False
+        AddPicturesGroupBox.Visible = True
         WorkOrderTextBox.Enabled = True
         MoldBrandComboBox.Enabled = True
         MoldModelComboBox.Enabled = True
         MoldSerialComboBox.Enabled = True
-        DefectOriginComboBox.Enabled = True
-        DefectComboBox.Enabled = True
-        DefectLocationComboBox.Enabled = True
         PaintCodeComboBox.Enabled = True
         ApprovedRadio.Enabled = True
         RejectedRadio.Enabled = True
+        ReworkComboBox.Enabled = True
+        DefectOriginComboBox.Enabled = True
+        DefectComboBox.Enabled = True
+        DefectLocationComboBox.Enabled = True
+
         WorkOrderTextBox.Clear()
-        MoldBrandComboBox.SelectedIndex = -1
-        MoldModelComboBox.SelectedIndex = -1
-        MoldSerialComboBox.SelectedIndex = -1
-        PaintCodeComboBox.SelectedIndex = -1
-        PaintcodeDescription_ComboBox.ResetText()
-        ReworkComboBox.SelectedIndex = -1
-        DefectOriginComboBox.SelectedIndex = -1
+
+        MoldBrandComboBox.SelectedItem = Nothing
+        MoldModelComboBox.SelectedItem = Nothing
+        MoldSerialComboBox.SelectedItem = Nothing
+        PaintCodeComboBox.SelectedItem = Nothing
+        PaintcodeDescription_ComboBox.SelectedItem = Nothing
+
+        ReworkComboBox.ResetText()
+        DefectOriginComboBox.ResetText()
         DefectComboBox.ResetText()
-        DefectLocationComboBox.SelectedIndex = -1
+        DefectLocationComboBox.ResetText()
+
     End Sub
     Private Sub EditSelected_Button_Click(sender As Object, e As EventArgs) Handles EditSelected_Button.Click, RejectedDataGridView.CellDoubleClick
         RejectedDataGroupBox.Visible = False
         DefectDataGroupBox.Visible = True
+        AddPicturesGroupBox.Visible = True
         WorkOrderTextBox.Enabled = False
+        WorkOrderTextBox.Enabled = True
         MoldBrandComboBox.Enabled = True
         MoldModelComboBox.Enabled = True
         MoldSerialComboBox.Enabled = True
-        DefectOriginComboBox.Enabled = True
-        DefectComboBox.Enabled = True
-        DefectLocationComboBox.Enabled = True
         PaintCodeComboBox.Enabled = True
         ApprovedRadio.Enabled = True
         RejectedRadio.Enabled = True
+        ReworkComboBox.Enabled = True
+        DefectOriginComboBox.Enabled = True
+        DefectComboBox.Enabled = True
+        DefectLocationComboBox.Enabled = True
     End Sub
     'Private Sub ShowDataGrid_Button_Click(sender As Object, e As EventArgs) Handles ShowDataGrid_Button.Click
     '    RejectedDataGroupBox.Visible = True
@@ -645,5 +697,8 @@ Public Class AddEntry
     'End Sub
     Private Sub CancelEdit_Button_Click(sender As Object, e As EventArgs) Handles CancelEdit_Button.Click
         AddDefect_Load(sender, e)
+        RejectedDataGroupBox.Visible = True
+        DefectDataGroupBox.Visible = False
+        AddPicturesGroupBox.Visible = False
     End Sub
 End Class
