@@ -23,20 +23,17 @@ Partial Class User_Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.UserGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.AddNewDefectButton = New System.Windows.Forms.Button()
+        Me.SearchButton = New System.Windows.Forms.Button()
+        Me.User_AddNewEntryButton = New System.Windows.Forms.Button()
         Me.SuperGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button12 = New System.Windows.Forms.Button()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Export_Button = New System.Windows.Forms.Button()
+        Me.Super_AddColorButton = New System.Windows.Forms.Button()
+        Me.Super_AddModelButton = New System.Windows.Forms.Button()
+        Me.Super_AddEditUserButton = New System.Windows.Forms.Button()
         Me.AdminGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.AddUserButton = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Admin_AddColorButton = New System.Windows.Forms.Button()
+        Me.Admin_AddModelButton = New System.Windows.Forms.Button()
+        Me.Admin_AddEditUserButton = New System.Windows.Forms.Button()
         Me.CurrentUserTextBox = New System.Windows.Forms.TextBox()
         Me.UserGroupBox.SuspendLayout()
         Me.SuperGroupBox.SuspendLayout()
@@ -45,150 +42,120 @@ Partial Class User_Main
         '
         'UserGroupBox
         '
-        Me.UserGroupBox.Controls.Add(Me.Button4)
-        Me.UserGroupBox.Controls.Add(Me.Button3)
-        Me.UserGroupBox.Controls.Add(Me.Button2)
-        Me.UserGroupBox.Controls.Add(Me.AddNewDefectButton)
+        Me.UserGroupBox.Controls.Add(Me.SearchButton)
+        Me.UserGroupBox.Controls.Add(Me.User_AddNewEntryButton)
         Me.UserGroupBox.Location = New System.Drawing.Point(6, 32)
         Me.UserGroupBox.Name = "UserGroupBox"
-        Me.UserGroupBox.Size = New System.Drawing.Size(792, 162)
+        Me.UserGroupBox.Size = New System.Drawing.Size(792, 94)
         Me.UserGroupBox.TabIndex = 0
         Me.UserGroupBox.TabStop = False
         Me.UserGroupBox.Text = "User Options"
         '
-        'Button4
+        'SearchButton
         '
-        Me.Button4.Location = New System.Drawing.Point(516, 22)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(162, 60)
-        Me.Button4.TabIndex = 0
-        Me.Button4.Text = "To be Defined"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.SearchButton.Location = New System.Drawing.Point(174, 28)
+        Me.SearchButton.Name = "SearchButton"
+        Me.SearchButton.Size = New System.Drawing.Size(162, 60)
+        Me.SearchButton.TabIndex = 0
+        Me.SearchButton.Text = "Search Entry"
+        Me.SearchButton.UseVisualStyleBackColor = True
         '
-        'Button3
+        'User_AddNewEntryButton
         '
-        Me.Button3.Location = New System.Drawing.Point(348, 22)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(162, 60)
-        Me.Button3.TabIndex = 0
-        Me.Button3.Text = "To be Defined"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(180, 22)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(162, 60)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "To be Defined"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'AddNewDefectButton
-        '
-        Me.AddNewDefectButton.Location = New System.Drawing.Point(12, 22)
-        Me.AddNewDefectButton.Name = "AddNewDefectButton"
-        Me.AddNewDefectButton.Size = New System.Drawing.Size(162, 60)
-        Me.AddNewDefectButton.TabIndex = 0
-        Me.AddNewDefectButton.Text = "Add New Defect"
-        Me.AddNewDefectButton.UseVisualStyleBackColor = True
+        Me.User_AddNewEntryButton.Location = New System.Drawing.Point(6, 28)
+        Me.User_AddNewEntryButton.Name = "User_AddNewEntryButton"
+        Me.User_AddNewEntryButton.Size = New System.Drawing.Size(162, 60)
+        Me.User_AddNewEntryButton.TabIndex = 0
+        Me.User_AddNewEntryButton.Text = "New Entry"
+        Me.User_AddNewEntryButton.UseVisualStyleBackColor = True
         '
         'SuperGroupBox
         '
-        Me.SuperGroupBox.Controls.Add(Me.Button12)
-        Me.SuperGroupBox.Controls.Add(Me.Button10)
-        Me.SuperGroupBox.Controls.Add(Me.Button11)
-        Me.SuperGroupBox.Controls.Add(Me.Button9)
-        Me.SuperGroupBox.Location = New System.Drawing.Point(6, 200)
+        Me.SuperGroupBox.Controls.Add(Me.Export_Button)
+        Me.SuperGroupBox.Controls.Add(Me.Super_AddColorButton)
+        Me.SuperGroupBox.Controls.Add(Me.Super_AddModelButton)
+        Me.SuperGroupBox.Controls.Add(Me.Super_AddEditUserButton)
+        Me.SuperGroupBox.Location = New System.Drawing.Point(6, 132)
         Me.SuperGroupBox.Name = "SuperGroupBox"
-        Me.SuperGroupBox.Size = New System.Drawing.Size(792, 162)
+        Me.SuperGroupBox.Size = New System.Drawing.Size(792, 92)
         Me.SuperGroupBox.TabIndex = 0
         Me.SuperGroupBox.TabStop = False
         Me.SuperGroupBox.Text = "Supervisor Options"
         '
-        'Button12
+        'Export_Button
         '
-        Me.Button12.Location = New System.Drawing.Point(516, 22)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(162, 60)
-        Me.Button12.TabIndex = 0
-        Me.Button12.Text = "To be Defined"
-        Me.Button12.UseVisualStyleBackColor = True
+        Me.Export_Button.Location = New System.Drawing.Point(510, 22)
+        Me.Export_Button.Name = "Export_Button"
+        Me.Export_Button.Size = New System.Drawing.Size(162, 60)
+        Me.Export_Button.TabIndex = 0
+        Me.Export_Button.Text = "Export Data"
+        Me.Export_Button.UseVisualStyleBackColor = True
         '
-        'Button10
+        'Super_AddColorButton
         '
-        Me.Button10.Location = New System.Drawing.Point(180, 22)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(162, 60)
-        Me.Button10.TabIndex = 0
-        Me.Button10.Text = "To be Defined"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.Super_AddColorButton.Location = New System.Drawing.Point(342, 22)
+        Me.Super_AddColorButton.Name = "Super_AddColorButton"
+        Me.Super_AddColorButton.Size = New System.Drawing.Size(162, 60)
+        Me.Super_AddColorButton.TabIndex = 0
+        Me.Super_AddColorButton.Text = "Add/Edit Color"
+        Me.Super_AddColorButton.UseVisualStyleBackColor = True
         '
-        'Button11
+        'Super_AddModelButton
         '
-        Me.Button11.Location = New System.Drawing.Point(348, 22)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(162, 60)
-        Me.Button11.TabIndex = 0
-        Me.Button11.Text = "To be Defined"
-        Me.Button11.UseVisualStyleBackColor = True
+        Me.Super_AddModelButton.Location = New System.Drawing.Point(174, 22)
+        Me.Super_AddModelButton.Name = "Super_AddModelButton"
+        Me.Super_AddModelButton.Size = New System.Drawing.Size(162, 60)
+        Me.Super_AddModelButton.TabIndex = 0
+        Me.Super_AddModelButton.Text = "Add/Edit Mold Model"
+        Me.Super_AddModelButton.UseVisualStyleBackColor = True
         '
-        'Button9
+        'Super_AddEditUserButton
         '
-        Me.Button9.Location = New System.Drawing.Point(12, 22)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(162, 60)
-        Me.Button9.TabIndex = 0
-        Me.Button9.Text = "To be Defined"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.Super_AddEditUserButton.Location = New System.Drawing.Point(6, 22)
+        Me.Super_AddEditUserButton.Name = "Super_AddEditUserButton"
+        Me.Super_AddEditUserButton.Size = New System.Drawing.Size(162, 60)
+        Me.Super_AddEditUserButton.TabIndex = 0
+        Me.Super_AddEditUserButton.Text = "Add/Edit User"
+        Me.Super_AddEditUserButton.UseVisualStyleBackColor = True
         '
         'AdminGroupBox
         '
-        Me.AdminGroupBox.Controls.Add(Me.Button8)
-        Me.AdminGroupBox.Controls.Add(Me.Button7)
-        Me.AdminGroupBox.Controls.Add(Me.AddUserButton)
-        Me.AdminGroupBox.Controls.Add(Me.Button6)
-        Me.AdminGroupBox.Location = New System.Drawing.Point(6, 368)
+        Me.AdminGroupBox.Controls.Add(Me.Admin_AddColorButton)
+        Me.AdminGroupBox.Controls.Add(Me.Admin_AddModelButton)
+        Me.AdminGroupBox.Controls.Add(Me.Admin_AddEditUserButton)
+        Me.AdminGroupBox.Location = New System.Drawing.Point(6, 230)
         Me.AdminGroupBox.Name = "AdminGroupBox"
-        Me.AdminGroupBox.Size = New System.Drawing.Size(792, 162)
+        Me.AdminGroupBox.Size = New System.Drawing.Size(792, 94)
         Me.AdminGroupBox.TabIndex = 0
         Me.AdminGroupBox.TabStop = False
         Me.AdminGroupBox.Text = "Admin Options"
         '
-        'Button8
+        'Admin_AddColorButton
         '
-        Me.Button8.Location = New System.Drawing.Point(516, 22)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(162, 60)
-        Me.Button8.TabIndex = 0
-        Me.Button8.Text = "Add Defect Definition"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.Admin_AddColorButton.Location = New System.Drawing.Point(342, 22)
+        Me.Admin_AddColorButton.Name = "Admin_AddColorButton"
+        Me.Admin_AddColorButton.Size = New System.Drawing.Size(162, 60)
+        Me.Admin_AddColorButton.TabIndex = 0
+        Me.Admin_AddColorButton.Text = "Add/Edit Color"
+        Me.Admin_AddColorButton.UseVisualStyleBackColor = True
         '
-        'Button7
+        'Admin_AddModelButton
         '
-        Me.Button7.Location = New System.Drawing.Point(348, 22)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(162, 60)
-        Me.Button7.TabIndex = 0
-        Me.Button7.Text = "Add Model"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.Admin_AddModelButton.Location = New System.Drawing.Point(174, 22)
+        Me.Admin_AddModelButton.Name = "Admin_AddModelButton"
+        Me.Admin_AddModelButton.Size = New System.Drawing.Size(162, 60)
+        Me.Admin_AddModelButton.TabIndex = 0
+        Me.Admin_AddModelButton.Text = "Add/Edit Mold Model"
+        Me.Admin_AddModelButton.UseVisualStyleBackColor = True
         '
-        'AddUserButton
+        'Admin_AddEditUserButton
         '
-        Me.AddUserButton.Location = New System.Drawing.Point(12, 22)
-        Me.AddUserButton.Name = "AddUserButton"
-        Me.AddUserButton.Size = New System.Drawing.Size(162, 60)
-        Me.AddUserButton.TabIndex = 0
-        Me.AddUserButton.Text = "Add User"
-        Me.AddUserButton.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(180, 22)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(162, 60)
-        Me.Button6.TabIndex = 0
-        Me.Button6.Text = "Edit User"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Admin_AddEditUserButton.Location = New System.Drawing.Point(6, 22)
+        Me.Admin_AddEditUserButton.Name = "Admin_AddEditUserButton"
+        Me.Admin_AddEditUserButton.Size = New System.Drawing.Size(162, 60)
+        Me.Admin_AddEditUserButton.TabIndex = 0
+        Me.Admin_AddEditUserButton.Text = "Add/Edit User"
+        Me.Admin_AddEditUserButton.UseVisualStyleBackColor = True
         '
         'CurrentUserTextBox
         '
@@ -211,7 +178,7 @@ Partial Class User_Main
         Me.Controls.Add(Me.SuperGroupBox)
         Me.Controls.Add(Me.UserGroupBox)
         Me.Name = "User_Main"
-        Me.Text = "HEY TU"
+        Me.Text = "Workorder Entry"
         Me.UserGroupBox.ResumeLayout(False)
         Me.SuperGroupBox.ResumeLayout(False)
         Me.AdminGroupBox.ResumeLayout(False)
@@ -221,19 +188,16 @@ Partial Class User_Main
     End Sub
 
     Friend WithEvents UserGroupBox As GroupBox
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents AddNewDefectButton As Button
+    Friend WithEvents User_AddNewEntryButton As Button
     Friend WithEvents SuperGroupBox As GroupBox
-    Friend WithEvents Button12 As Button
-    Friend WithEvents Button10 As Button
-    Friend WithEvents Button11 As Button
-    Friend WithEvents Button9 As Button
     Friend WithEvents AdminGroupBox As GroupBox
-    Friend WithEvents Button8 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents AddUserButton As Button
-    Friend WithEvents Button6 As Button
+    Friend WithEvents Admin_AddModelButton As Button
+    Friend WithEvents Admin_AddEditUserButton As Button
     Friend WithEvents CurrentUserTextBox As TextBox
+    Friend WithEvents Super_AddModelButton As Button
+    Friend WithEvents Super_AddEditUserButton As Button
+    Friend WithEvents Super_AddColorButton As Button
+    Friend WithEvents Admin_AddColorButton As Button
+    Friend WithEvents SearchButton As Button
+    Friend WithEvents Export_Button As Button
 End Class

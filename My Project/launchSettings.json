@@ -2,6 +2,7 @@
   "profiles": {
     "TAG_Quality_Inspection": {
       "commandName": "Project",
+      "sqlDebugging": true,
       "nativeDebugging": true
     }
   }
