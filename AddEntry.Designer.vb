@@ -251,7 +251,7 @@ Partial Class AddEntry
         '
         Me.RejectedRadio.AutoSize = True
         Me.RejectedRadio.Image = CType(resources.GetObject("RejectedRadio.Image"), System.Drawing.Image)
-        Me.RejectedRadio.Location = New System.Drawing.Point(965, 94)
+        Me.RejectedRadio.Location = New System.Drawing.Point(965, 99)
         Me.RejectedRadio.Name = "RejectedRadio"
         Me.RejectedRadio.Size = New System.Drawing.Size(91, 19)
         Me.RejectedRadio.TabIndex = 11
@@ -264,7 +264,7 @@ Partial Class AddEntry
         '
         Me.ApprovedRadio.AutoSize = True
         Me.ApprovedRadio.Image = CType(resources.GetObject("ApprovedRadio.Image"), System.Drawing.Image)
-        Me.ApprovedRadio.Location = New System.Drawing.Point(965, 68)
+        Me.ApprovedRadio.Location = New System.Drawing.Point(965, 71)
         Me.ApprovedRadio.Name = "ApprovedRadio"
         Me.ApprovedRadio.Size = New System.Drawing.Size(98, 19)
         Me.ApprovedRadio.TabIndex = 10
@@ -281,18 +281,20 @@ Partial Class AddEntry
         Me.MoldSerialComboBox.FormattingEnabled = True
         Me.MoldSerialComboBox.Location = New System.Drawing.Point(485, 95)
         Me.MoldSerialComboBox.Name = "MoldSerialComboBox"
-        Me.MoldSerialComboBox.Size = New System.Drawing.Size(150, 23)
+        Me.MoldSerialComboBox.Size = New System.Drawing.Size(105, 23)
         Me.MoldSerialComboBox.TabIndex = 8
         '
         'PaintcodeDescription_ComboBox
         '
-        Me.PaintcodeDescription_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
+        Me.PaintcodeDescription_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.PaintcodeDescription_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.PaintcodeDescription_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.PaintcodeDescription_ComboBox.DropDownWidth = 1
         Me.PaintcodeDescription_ComboBox.Enabled = False
-        Me.PaintcodeDescription_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.PaintcodeDescription_ComboBox.FormattingEnabled = True
-        Me.PaintcodeDescription_ComboBox.Location = New System.Drawing.Point(795, 95)
+        Me.PaintcodeDescription_ComboBox.Location = New System.Drawing.Point(752, 95)
         Me.PaintcodeDescription_ComboBox.Name = "PaintcodeDescription_ComboBox"
-        Me.PaintcodeDescription_ComboBox.Size = New System.Drawing.Size(150, 25)
+        Me.PaintcodeDescription_ComboBox.Size = New System.Drawing.Size(203, 23)
         Me.PaintcodeDescription_ComboBox.TabIndex = 9
         '
         'PaintCodeComboBox
@@ -301,10 +303,9 @@ Partial Class AddEntry
         Me.PaintCodeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.PaintCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PaintCodeComboBox.FormattingEnabled = True
-        Me.PaintCodeComboBox.Location = New System.Drawing.Point(640, 95)
+        Me.PaintCodeComboBox.Location = New System.Drawing.Point(596, 95)
         Me.PaintCodeComboBox.Name = "PaintCodeComboBox"
         Me.PaintCodeComboBox.Size = New System.Drawing.Size(150, 23)
-        Me.PaintCodeComboBox.Sorted = True
         Me.PaintCodeComboBox.TabIndex = 9
         '
         'MoldBrandComboBox
@@ -339,7 +340,7 @@ Partial Class AddEntry
         'PaintcodeDescription_Label
         '
         Me.PaintcodeDescription_Label.AutoSize = True
-        Me.PaintcodeDescription_Label.Location = New System.Drawing.Point(795, 73)
+        Me.PaintcodeDescription_Label.Location = New System.Drawing.Point(752, 73)
         Me.PaintcodeDescription_Label.Name = "PaintcodeDescription_Label"
         Me.PaintcodeDescription_Label.Size = New System.Drawing.Size(131, 15)
         Me.PaintcodeDescription_Label.TabIndex = 2
@@ -400,7 +401,7 @@ Partial Class AddEntry
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(640, 73)
+        Me.Label2.Location = New System.Drawing.Point(596, 73)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(67, 15)
         Me.Label2.TabIndex = 2
