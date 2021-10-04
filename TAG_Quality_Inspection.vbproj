@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Import Include="AForge" />
+    <Import Include="AForge.Video" />
+    <Import Include="AForge.Video.DirectShow" />
     <Import Include="MySql.Data" />
     <Import Include="MySql.Data.common" />
     <Import Include="MySql.Data.MySqlClient" />
@@ -28,6 +31,8 @@
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
+    <Import Include="zExcel" />
+    <Import Include="zExcel.Zomp" />
   </ItemGroup>
 
   <ItemGroup>
