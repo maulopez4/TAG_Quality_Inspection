@@ -11,16 +11,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Image1.jpg = Image1.jpg
 	EndProjectSection
 EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "Setup_TBU", "..\TBU_Setup\Setup_TBU\Setup_TBU.aiproj", "{CA53F921-EBE6-4565-BD5E-D3B693390A4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		DefaultBuild|Any CPU = DefaultBuild|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{85F3403F-5C8E-48B5-91E2-128444AF9360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85F3403F-5C8E-48B5-91E2-128444AF9360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85F3403F-5C8E-48B5-91E2-128444AF9360}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{85F3403F-5C8E-48B5-91E2-128444AF9360}.All|Any CPU.Build.0 = Release|Any CPU
+		{85F3403F-5C8E-48B5-91E2-128444AF9360}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{85F3403F-5C8E-48B5-91E2-128444AF9360}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{85F3403F-5C8E-48B5-91E2-128444AF9360}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{85F3403F-5C8E-48B5-91E2-128444AF9360}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
 		{85F3403F-5C8E-48B5-91E2-128444AF9360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85F3403F-5C8E-48B5-91E2-128444AF9360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA53F921-EBE6-4565-BD5E-D3B693390A4A}.All|Any CPU.ActiveCfg = DefaultBuild
+		{CA53F921-EBE6-4565-BD5E-D3B693390A4A}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{CA53F921-EBE6-4565-BD5E-D3B693390A4A}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
+		{CA53F921-EBE6-4565-BD5E-D3B693390A4A}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{CA53F921-EBE6-4565-BD5E-D3B693390A4A}.Release|Any CPU.Build.0 = DefaultBuild
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -33,11 +33,8 @@ Partial Class Export_Data
         Me.Close_Button = New System.Windows.Forms.Button()
         Me.Export_Button = New System.Windows.Forms.Button()
         Me.GetData_Button = New System.Windows.Forms.Button()
-        Me.Selected_ListBox = New System.Windows.Forms.ListBox()
-        Me.Select_ListBox = New System.Windows.Forms.ListBox()
-        Me.Remove_Button = New System.Windows.Forms.Button()
-        Me.Add_Button = New System.Windows.Forms.Button()
         Me.Date_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Selection_ListBox = New System.Windows.Forms.CheckedListBox()
         Me.RejectedDataGroupBox.SuspendLayout()
         CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -124,23 +121,20 @@ Partial Class Export_Data
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Selection_ListBox)
         Me.GroupBox2.Controls.Add(Me.Close_Button)
         Me.GroupBox2.Controls.Add(Me.Export_Button)
         Me.GroupBox2.Controls.Add(Me.GetData_Button)
-        Me.GroupBox2.Controls.Add(Me.Selected_ListBox)
-        Me.GroupBox2.Controls.Add(Me.Select_ListBox)
-        Me.GroupBox2.Controls.Add(Me.Remove_Button)
-        Me.GroupBox2.Controls.Add(Me.Add_Button)
         Me.GroupBox2.Location = New System.Drawing.Point(357, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(561, 166)
+        Me.GroupBox2.Size = New System.Drawing.Size(541, 166)
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Select Check Points:"
         '
         'Close_Button
         '
-        Me.Close_Button.Location = New System.Drawing.Point(401, 130)
+        Me.Close_Button.Location = New System.Drawing.Point(385, 130)
         Me.Close_Button.Name = "Close_Button"
         Me.Close_Button.Size = New System.Drawing.Size(150, 30)
         Me.Close_Button.TabIndex = 1
@@ -149,7 +143,7 @@ Partial Class Export_Data
         '
         'Export_Button
         '
-        Me.Export_Button.Location = New System.Drawing.Point(401, 76)
+        Me.Export_Button.Location = New System.Drawing.Point(385, 76)
         Me.Export_Button.Name = "Export_Button"
         Me.Export_Button.Size = New System.Drawing.Size(150, 30)
         Me.Export_Button.TabIndex = 1
@@ -158,50 +152,12 @@ Partial Class Export_Data
         '
         'GetData_Button
         '
-        Me.GetData_Button.Location = New System.Drawing.Point(401, 22)
+        Me.GetData_Button.Location = New System.Drawing.Point(385, 22)
         Me.GetData_Button.Name = "GetData_Button"
         Me.GetData_Button.Size = New System.Drawing.Size(150, 30)
         Me.GetData_Button.TabIndex = 1
         Me.GetData_Button.Text = "1) Get Data"
         Me.GetData_Button.UseVisualStyleBackColor = True
-        '
-        'Selected_ListBox
-        '
-        Me.Selected_ListBox.FormattingEnabled = True
-        Me.Selected_ListBox.ItemHeight = 15
-        Me.Selected_ListBox.Location = New System.Drawing.Point(244, 22)
-        Me.Selected_ListBox.Name = "Selected_ListBox"
-        Me.Selected_ListBox.Size = New System.Drawing.Size(151, 139)
-        Me.Selected_ListBox.TabIndex = 29
-        '
-        'Select_ListBox
-        '
-        Me.Select_ListBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.Select_ListBox.FormattingEnabled = True
-        Me.Select_ListBox.ItemHeight = 15
-        Me.Select_ListBox.Items.AddRange(New Object() {"CP1", "CP2", "CP3", "CP4", "CP5", "CP6", "CP7"})
-        Me.Select_ListBox.Location = New System.Drawing.Point(6, 22)
-        Me.Select_ListBox.Name = "Select_ListBox"
-        Me.Select_ListBox.Size = New System.Drawing.Size(151, 139)
-        Me.Select_ListBox.TabIndex = 29
-        '
-        'Remove_Button
-        '
-        Me.Remove_Button.Location = New System.Drawing.Point(163, 101)
-        Me.Remove_Button.Name = "Remove_Button"
-        Me.Remove_Button.Size = New System.Drawing.Size(75, 23)
-        Me.Remove_Button.TabIndex = 1
-        Me.Remove_Button.Text = "<< Remove"
-        Me.Remove_Button.UseVisualStyleBackColor = True
-        '
-        'Add_Button
-        '
-        Me.Add_Button.Location = New System.Drawing.Point(163, 47)
-        Me.Add_Button.Name = "Add_Button"
-        Me.Add_Button.Size = New System.Drawing.Size(75, 23)
-        Me.Add_Button.TabIndex = 1
-        Me.Add_Button.Text = ">>"
-        Me.Add_Button.UseVisualStyleBackColor = True
         '
         'Date_GroupBox
         '
@@ -215,6 +171,14 @@ Partial Class Export_Data
         Me.Date_GroupBox.TabIndex = 28
         Me.Date_GroupBox.TabStop = False
         Me.Date_GroupBox.Text = "Select Dates:"
+        '
+        'Selection_ListBox
+        '
+        Me.Selection_ListBox.FormattingEnabled = True
+        Me.Selection_ListBox.Location = New System.Drawing.Point(7, 22)
+        Me.Selection_ListBox.Name = "Selection_ListBox"
+        Me.Selection_ListBox.Size = New System.Drawing.Size(214, 130)
+        Me.Selection_ListBox.TabIndex = 2
         '
         'Export_Data
         '
@@ -243,11 +207,8 @@ Partial Class Export_Data
     Friend WithEvents Till_Label As Label
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GetData_Button As Button
-    Friend WithEvents Remove_Button As Button
-    Friend WithEvents Add_Button As Button
     Friend WithEvents Date_GroupBox As GroupBox
-    Friend WithEvents Select_ListBox As ListBox
-    Friend WithEvents Selected_ListBox As ListBox
     Friend WithEvents Close_Button As Button
     Friend WithEvents Export_Button As Button
+    Friend WithEvents Selection_ListBox As CheckedListBox
 End Class

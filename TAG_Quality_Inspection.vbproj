@@ -9,6 +9,7 @@
     <ApplicationIcon>My Documents.ico</ApplicationIcon>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <AssemblyName>TBU</AssemblyName>
+    <Version>1.09.04</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
