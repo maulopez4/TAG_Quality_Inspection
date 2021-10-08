@@ -81,7 +81,7 @@ Public Class AddEntry
                                                     INNER JOIN `rework` ON `workorder_rework` = `rework_code`
                                                     WHERE `workorder_workstation` = @workorder_workstation 
                                                     AND `workorder_rework` != 'RW08' 
-                                                    ORDER BY `workorder_date` ASC, `workorder_time` asc", connection)
+                                                    ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
             RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
             Dim RJadapter As New MySqlDataAdapter(RJcommand)
             Dim RJtable As New DataTable()
@@ -191,6 +191,16 @@ Public Class AddEntry
             PictureBox3.Image = My.Resources.leer_logo
         End If
 
+        Dim Notchecked As Boolean
+        If (ApprovedRadio.Checked = False) And (RejectedRadio.Checked = False) Then
+            Notchecked = True
+        Else Notchecked = False
+        End If
+        If Notchecked = True Then
+            MessageBox.Show("Please select WorkOrder Status: " & Environment.NewLine & "Approved Or Rejected?", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
         Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workorder_number`, `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_accepted`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_additionalerror`, `workorder_status`, `workorder_image1`, `workorder_image2`, `workorder_image3`, `workorder_comments`) 
                                         VALUES (@workorder_date, @workorder_time, @workorder_reportedby, @workorder_workstation, @workorder_number,  @workorder_moldbrand, @workorder_moldmodel, @workorder_moldserial, @workorder_paintcode, @workorder_accepted, @workorder_rework, @workorder_defect_origin, @workorder_defect, @workorder_defect_location, @workorder_additionalerror, @workorder_status, @workorder_image1, @workorder_image2, @workorder_image3, @workorder_comments)", connection)
         command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
@@ -236,13 +246,36 @@ Public Class AddEntry
                 MessageBox.Show("Data Entered, Please enter next defect Data")
                 'Controls.Clear() 'removes all the controls on the form
                 'InitializeComponent() 'load all the controls again
-                AddDefect_Load(sender, e)
+                'AddDefect_Load(e, e)
+                RejectedDataGroupBox.Visible = False
+                DefectDataGroupBox.Visible = True
+                AddPicturesGroupBox.Visible = True
+                WorkOrderTextBox.Enabled = False
+                MoldBrandComboBox.Enabled = False
+                MoldModelComboBox.Enabled = False
+                MoldSerialComboBox.Enabled = False
+                PaintCodeComboBox.Enabled = False
+                ApprovedRadio.Enabled = False
+                ApprovedRadio.Checked = False
+                RejectedRadio.Enabled = False
+                RejectedRadio.Checked = True
+                ReworkComboBox.Enabled = True
+                DefectOriginComboBox.Enabled = True
+                DefectComboBox.Enabled = True
+                DefectLocationComboBox.Enabled = True
+
                 WorkStationComboBox.SelectedValue = (Entrylist(1)).ToString
                 WorkOrderTextBox.Text = (Entrylist(2)).ToString
                 MoldBrandComboBox.SelectedValue = (Entrylist(3)).ToString
                 MoldModelComboBox.SelectedValue = (Entrylist(4)).ToString
                 MoldSerialComboBox.SelectedValue = (Entrylist(5)).ToString
                 PaintCodeComboBox.SelectedValue = (Entrylist(6)).ToString
+
+                ReworkComboBox.ResetText()
+                DefectOriginComboBox.ResetText()
+                DefectComboBox.ResetText()
+                DefectLocationComboBox.ResetText()
+                AdditionalDefect_CheckBox.CheckState = False
             Else
                 MessageBox.Show("ERROR")
             End If
@@ -563,12 +596,6 @@ Public Class AddEntry
             'End If
         End If
     End Sub
-    Private Sub AdditionalDefectYESRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AdditionalDefectYESRadioButton.CheckedChanged
-        additional_defects = True
-    End Sub
-    Private Sub AdditionalDefectNORadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AdditionalDefectNORadioButton.CheckedChanged
-        additional_defects = False
-    End Sub
 
     Private Sub Export_Button_Click(sender As Object, e As EventArgs) Handles Export_Button.Click
         Dim newForm As New Export_Data()
@@ -700,5 +727,12 @@ Public Class AddEntry
         RejectedDataGroupBox.Visible = True
         DefectDataGroupBox.Visible = False
         AddPicturesGroupBox.Visible = False
+    End Sub
+    Private Sub AdditionalDefect_CheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles AdditionalDefect_CheckBox.CheckedChanged
+        If AdditionalDefect_CheckBox.Checked = True Then
+            additional_defects = True
+        ElseIf AdditionalDefect_CheckBox.Checked = False Then
+            additional_defects = False
+        End If
     End Sub
 End Class

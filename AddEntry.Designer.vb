@@ -53,13 +53,11 @@ Partial Class AddEntry
         Me.DateLabel = New System.Windows.Forms.Label()
         Me.DatePicker = New System.Windows.Forms.DateTimePicker()
         Me.DefectDataGroupBox = New System.Windows.Forms.GroupBox()
-        Me.AdditionalDefectNORadioButton = New System.Windows.Forms.RadioButton()
-        Me.AdditionalDefectYESRadioButton = New System.Windows.Forms.RadioButton()
+        Me.AdditionalDefect_CheckBox = New System.Windows.Forms.CheckBox()
         Me.LinkLabel14 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel39 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel38 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel37 = New System.Windows.Forms.LinkLabel()
-        Me.AdditionalDefectsLabel = New System.Windows.Forms.Label()
         Me.LinkLabel36 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel35 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel34 = New System.Windows.Forms.LinkLabel()
@@ -447,13 +445,11 @@ Partial Class AddEntry
         '
         'DefectDataGroupBox
         '
-        Me.DefectDataGroupBox.Controls.Add(Me.AdditionalDefectNORadioButton)
-        Me.DefectDataGroupBox.Controls.Add(Me.AdditionalDefectYESRadioButton)
+        Me.DefectDataGroupBox.Controls.Add(Me.AdditionalDefect_CheckBox)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel14)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel39)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel38)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel37)
-        Me.DefectDataGroupBox.Controls.Add(Me.AdditionalDefectsLabel)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel36)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel35)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel34)
@@ -508,27 +504,18 @@ Partial Class AddEntry
         Me.DefectDataGroupBox.TabStop = False
         Me.DefectDataGroupBox.Text = "Defect Data:"
         '
-        'AdditionalDefectNORadioButton
+        'AdditionalDefect_CheckBox
         '
-        Me.AdditionalDefectNORadioButton.AutoSize = True
-        Me.AdditionalDefectNORadioButton.Location = New System.Drawing.Point(924, 43)
-        Me.AdditionalDefectNORadioButton.Name = "AdditionalDefectNORadioButton"
-        Me.AdditionalDefectNORadioButton.Size = New System.Drawing.Size(46, 23)
-        Me.AdditionalDefectNORadioButton.TabIndex = 17
-        Me.AdditionalDefectNORadioButton.TabStop = True
-        Me.AdditionalDefectNORadioButton.Text = "No"
-        Me.AdditionalDefectNORadioButton.UseVisualStyleBackColor = True
-        '
-        'AdditionalDefectYESRadioButton
-        '
-        Me.AdditionalDefectYESRadioButton.AutoSize = True
-        Me.AdditionalDefectYESRadioButton.Location = New System.Drawing.Point(871, 43)
-        Me.AdditionalDefectYESRadioButton.Name = "AdditionalDefectYESRadioButton"
-        Me.AdditionalDefectYESRadioButton.Size = New System.Drawing.Size(47, 23)
-        Me.AdditionalDefectYESRadioButton.TabIndex = 16
-        Me.AdditionalDefectYESRadioButton.TabStop = True
-        Me.AdditionalDefectYESRadioButton.Text = "Yes"
-        Me.AdditionalDefectYESRadioButton.UseVisualStyleBackColor = True
+        Me.AdditionalDefect_CheckBox.AutoSize = True
+        Me.AdditionalDefect_CheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.AdditionalDefect_CheckBox.Location = New System.Drawing.Point(843, 43)
+        Me.AdditionalDefect_CheckBox.Name = "AdditionalDefect_CheckBox"
+        Me.AdditionalDefect_CheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.AdditionalDefect_CheckBox.Size = New System.Drawing.Size(142, 23)
+        Me.AdditionalDefect_CheckBox.TabIndex = 16
+        Me.AdditionalDefect_CheckBox.Text = "Aditional Defects?"
+        Me.AdditionalDefect_CheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.AdditionalDefect_CheckBox.UseVisualStyleBackColor = True
         '
         'LinkLabel14
         '
@@ -569,17 +556,6 @@ Partial Class AddEntry
         Me.LinkLabel37.TabIndex = 0
         Me.LinkLabel37.TabStop = True
         Me.LinkLabel37.Text = "B37"
-        '
-        'AdditionalDefectsLabel
-        '
-        Me.AdditionalDefectsLabel.AutoSize = True
-        Me.AdditionalDefectsLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
-        Me.AdditionalDefectsLabel.Location = New System.Drawing.Point(843, 17)
-        Me.AdditionalDefectsLabel.Name = "AdditionalDefectsLabel"
-        Me.AdditionalDefectsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.AdditionalDefectsLabel.Size = New System.Drawing.Size(127, 17)
-        Me.AdditionalDefectsLabel.TabIndex = 1
-        Me.AdditionalDefectsLabel.Text = "&Additional Defects?:"
         '
         'LinkLabel36
         '
@@ -1232,8 +1208,8 @@ Partial Class AddEntry
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.OK_Button)
         Me.Controls.Add(Me.AddPicturesGroupBox)
-        Me.Controls.Add(Me.RejectedDataGroupBox)
         Me.Controls.Add(Me.DefectDataGroupBox)
+        Me.Controls.Add(Me.RejectedDataGroupBox)
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)
@@ -1276,7 +1252,6 @@ Partial Class AddEntry
     Friend WithEvents ReworkTypeLabel As Label
     Friend WithEvents OK_Button As Button
     Friend WithEvents Cancel_Button As Button
-    Friend WithEvents AdditionalDefectsLabel As Label
     Friend WithEvents Zona1PictureBox As PictureBox
     Friend WithEvents Zona42PictureBox As PictureBox
     Friend WithEvents Zona32PictureBox As PictureBox
@@ -1341,8 +1316,6 @@ Partial Class AddEntry
     Friend WithEvents MoldSerialComboBox As ComboBox
     Friend WithEvents MoldBrandComboBox As ComboBox
     Friend WithEvents PaintCodeComboBox As ComboBox
-    Friend WithEvents AdditionalDefectNORadioButton As RadioButton
-    Friend WithEvents AdditionalDefectYESRadioButton As RadioButton
     Friend WithEvents RejectedDataGridView As DataGridView
     Friend WithEvents RejectedDataGroupBox As GroupBox
     Friend WithEvents Export_Button As Button
@@ -1353,4 +1326,5 @@ Partial Class AddEntry
     Friend WithEvents EditSelected_Button As Button
     Friend WithEvents ShowDefects_Button As Button
     Friend WithEvents CancelEdit_Button As Button
+    Friend WithEvents AdditionalDefect_CheckBox As CheckBox
 End Class
