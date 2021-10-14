@@ -30,10 +30,10 @@ Public Class Export_Data
 
         Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
-        Dim sql As String = "SELECT DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
+        Dim sql As String = "SELECT DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
                                                     `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
-                                                    `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
+                                                    `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder`  
                                                     INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
                                                     INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
                                                     INNER JOIN `rework` ON `workorder_rework` = `rework_code` 
@@ -50,26 +50,27 @@ Public Class Export_Data
                 .RowHeadersVisible = True
                 .Columns(0).HeaderCell.Value = "Date"
                 .Columns(1).HeaderCell.Value = "Time"
-                .Columns(2).HeaderCell.Value = "Workstation Code"
-                .Columns(2).Visible = False
-                .Columns(3).HeaderCell.Value = "Workstation Name"
-                .Columns(4).HeaderCell.Value = "Work Order"
-                .Columns(5).HeaderCell.Value = "Mold Brand"
-                .Columns(6).HeaderCell.Value = "Mold Model"
-                .Columns(7).HeaderCell.Value = "Mold Serial"
-                .Columns(8).HeaderCell.Value = "Paint Code"
-                .Columns(9).HeaderCell.Value = "Defect Origin Code"
-                .Columns(9).Visible = False
-                .Columns(10).HeaderCell.Value = "Defect Origin"
-                .Columns(11).HeaderCell.Value = "Defect Code"
-                .Columns(11).Visible = False
-                .Columns(12).HeaderCell.Value = "Defect Description"
-                .Columns(13).HeaderCell.Value = "Defect Location"
-                .Columns(14).HeaderCell.Value = "Rework Code"
-                .Columns(14).Visible = False
-                .Columns(15).HeaderCell.Value = "Rework Description"
-                .Columns(16).HeaderCell.Value = "Work Order Status"
-                .Columns(17).HeaderCell.Value = "Comments"
+                .Columns(2).HeaderCell.Value = "Reported By"
+                .Columns(3).HeaderCell.Value = "Workstation Code"
+                .Columns(3).Visible = False
+                .Columns(4).HeaderCell.Value = "Workstation Name"
+                .Columns(5).HeaderCell.Value = "Work Order"
+                .Columns(6).HeaderCell.Value = "Mold Brand"
+                .Columns(7).HeaderCell.Value = "Mold Model"
+                .Columns(8).HeaderCell.Value = "Mold Serial"
+                .Columns(9).HeaderCell.Value = "Paint Code"
+                .Columns(10).HeaderCell.Value = "Defect Origin Code"
+                .Columns(10).Visible = False
+                .Columns(11).HeaderCell.Value = "Defect Origin"
+                .Columns(12).HeaderCell.Value = "Defect Code"
+                .Columns(12).Visible = False
+                .Columns(13).HeaderCell.Value = "Defect Description"
+                .Columns(14).HeaderCell.Value = "Defect Location"
+                .Columns(15).HeaderCell.Value = "Rework Code"
+                .Columns(15).Visible = False
+                .Columns(16).HeaderCell.Value = "Rework Description"
+                .Columns(17).HeaderCell.Value = "Work Order Status"
+                .Columns(18).HeaderCell.Value = "Comments"
                 '.Columns(18).HeaderCell.Value = "Image1"
                 '.Columns(18).Visible = False
                 '.Columns(19).HeaderCell.Value = "Image2"
