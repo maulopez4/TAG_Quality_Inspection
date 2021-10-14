@@ -34,7 +34,7 @@
     End Sub
 
     Private Sub AddModelButton_Click(sender As Object, e As EventArgs) Handles Super_AddModelButton.Click, Admin_AddModelButton.Click
-        Dim newForm As New AddModel()
+        Dim newForm As New AddEditModel()
         newForm.Show()
     End Sub
 

@@ -4,7 +4,7 @@ Imports AForge
 Imports AForge.Video
 Imports AForge.Video.DirectShow
 Imports System.IO
-Public Class AddModel
+Public Class AddEditModel
     Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Private ReadOnly connection As New MySqlConnection(connection_string)
     Dim arrImage1() As Byte
@@ -20,20 +20,28 @@ Public Class AddModel
         ChangeSelected_MoldButton.Enabled = False
         DeleteSelected_MoldButton.Enabled = False
         Try
-            Using MLcommand As New MySqlCommand("SELECT `models_id`, `models_brand`, `models_mold`, `models_serial`,`models_color`,`models_description`,`models_status`, `models_image1` FROM `models`", connection)
+            Using MLcommand As New MySqlCommand("SELECT `models_id`, `models_brand`, `models_prefix`, `models_mold`, `models_serial`,`models_color`,`models_description`,`models_status`, `models_image1` FROM `models` ORDER BY models_mold ASC", connection)
                 Dim MLadapter As New MySqlDataAdapter(MLcommand)
                 Dim MLtable As New DataTable()
                 Dim ML = MLadapter.Fill(MLtable)
                 MLDataGrid.DataSource = MLtable
             End Using
-            Using CBcommand As New MySqlCommand("SELECT DISTINCT models_brand FROM models", connection)
-                Dim CBadapter As New MySqlDataAdapter(CBcommand)
-                Dim CBtable As New DataTable()
-                CBadapter.Fill(CBtable)
-                Model_BrandComboBox.DataSource = CBtable
-                Model_BrandComboBox.ValueMember = "models_brand"
-                Model_BrandComboBox.DisplayMember = "models_brand"
+            Using MBcommand As New MySqlCommand("SELECT DISTINCT brands_name FROM brands", connection)
+                Dim MBadapter As New MySqlDataAdapter(MBcommand)
+                Dim MBtable As New DataTable()
+                MBadapter.Fill(MBtable)
+                Model_BrandComboBox.DataSource = MBtable
+                Model_BrandComboBox.ValueMember = "brands_name"
+                Model_BrandComboBox.DisplayMember = "brands_name"
             End Using
+            'Using MPcommand As New MySqlCommand("SELECT DISTINCT brands_prefix FROM brands", connection)
+            '    Dim MPadapter As New MySqlDataAdapter(MPcommand)
+            '    Dim MPtable As New DataTable()
+            '    MPadapter.Fill(MPtable)
+            '    Model_PrefixComboBox.DataSource = MPtable
+            '    Model_PrefixComboBox.ValueMember = "brands_prefix"
+            '    Model_PrefixComboBox.DisplayMember = "brands_prefix"
+            'End Using
             Using MCcommand As New MySqlCommand("SELECT DISTINCT models_color FROM models", connection)
                 Dim MCadapter As New MySqlDataAdapter(MCcommand)
                 Dim MCtable As New DataTable()
@@ -56,7 +64,7 @@ Public Class AddModel
             connection.Close()
         End Try
     End Sub
-    Private Sub MLDataGrid_SelectionChanged(sender As Object, e As EventArgs) Handles MLDataGrid.SelectionChanged
+    Private Sub MLDataGrid_CellContentDoubleClick(sender As Object, e As EventArgs) Handles MLDataGrid.CellContentDoubleClick
         CreateNew_MoldButton.Enabled = True
         AddNew_MoldButton.Enabled = False
         ChangeSelected_MoldButton.Enabled = True
@@ -64,6 +72,7 @@ Public Class AddModel
         If MLDataGrid.SelectedRows.Count > 0 Then
             Model_IdTextBox.Text = MLDataGrid.Item("models_id", MLDataGrid.SelectedRows(0).Index).Value
             Model_BrandComboBox.SelectedValue = MLDataGrid.Item("models_brand", MLDataGrid.SelectedRows(0).Index).Value
+            Model_PrefixComboBox.SelectedValue = MLDataGrid.Item("models_prefix", MLDataGrid.SelectedRows(0).Index).Value
             Model_MoldTextBox.Text = MLDataGrid.Item("models_mold", MLDataGrid.SelectedRows(0).Index).Value
             Model_SerialTextBox.Text = MLDataGrid.Item("models_serial", MLDataGrid.SelectedRows(0).Index).Value
             Model_DescriptionTextBox.Text = MLDataGrid.Item("models_description", MLDataGrid.SelectedRows(0).Index).Value
@@ -119,9 +128,10 @@ Public Class AddModel
             PictureBox1.Image = My.Resources.leer_logo
             PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         End If
-        Dim command As New MySqlCommand("UPDATE `models` SET `models_brand` = @models_brand, `models_mold` = @models_mold, `models_serial` = @models_serial, `models_color` = @models_color, `models_description` = @models_description,  `models_status` = @models_status,  `models_image1` = @models_image1 WHERE `models_id` = @models_id", connection)
+        Dim command As New MySqlCommand("UPDATE `models` SET `models_brand` = @models_brand, `models_prefix` = @models_prefix, `models_mold` = @models_mold, `models_serial` = @models_serial, `models_color` = @models_color, `models_description` = @models_description,  `models_status` = @models_status,  `models_image1` = @models_image1 WHERE `models_id` = @models_id", connection)
         command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
         command.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
+        command.Parameters.Add("@models_prefix", MySqlDbType.VarChar).Value = Model_PrefixComboBox.SelectedValue
         command.Parameters.Add("@models_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
         command.Parameters.Add("@models_serial", MySqlDbType.VarChar).Value = Model_SerialTextBox.Text
         command.Parameters.Add("@models_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
@@ -150,9 +160,10 @@ Public Class AddModel
             PictureBox1.Image = My.Resources.leer_logo
             PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
         End If
-        Dim command As New MySqlCommand("INSERT INTO `models` (`models_brand`,`models_mold`,`models_serial`,`models_color`,`models_description`,`models_status`,`models_image1`) VALUES (@models_brand,@models_mold,@models_serial,@models_color,@models_description,@models_status,@models_image1)", connection)
+        Dim command As New MySqlCommand("INSERT INTO `models` (`models_brand`,`models_prefix`, `models_mold`,`models_serial`,`models_color`,`models_description`,`models_status`,`models_image1`) VALUES (@models_brand,@models_prefix,@models_mold,@models_serial,@models_color,@models_description,@models_status,@models_image1)", connection)
         command.Parameters.Add("@models_id", MySqlDbType.VarChar).Value = Model_IdTextBox.Text
         command.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
+        command.Parameters.Add("@models_prefix", MySqlDbType.VarChar).Value = Model_PrefixComboBox.SelectedValue
         command.Parameters.Add("@models_mold", MySqlDbType.VarChar).Value = Model_MoldTextBox.Text
         command.Parameters.Add("@models_serial", MySqlDbType.VarChar).Value = Model_SerialTextBox.Text
         command.Parameters.Add("@models_color", MySqlDbType.VarChar).Value = Model_ColorComboBox.SelectedValue
@@ -194,5 +205,17 @@ Public Class AddModel
         Catch ex As Exception
             MessageBox.Show(ex.Message.ToString())
         End Try
+    End Sub
+
+    Private Sub Model_BrandComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Model_BrandComboBox.SelectedIndexChanged
+        Using MPcommand As New MySqlCommand("SELECT DISTINCT brands_prefix FROM brands WHERE brands_name = @models_brand", connection)
+            MPcommand.Parameters.Add("@models_brand", MySqlDbType.VarChar).Value = Model_BrandComboBox.SelectedValue
+            Dim MPadapter As New MySqlDataAdapter(MPcommand)
+            Dim MPtable As New DataTable()
+            MPadapter.Fill(MPtable)
+            Model_PrefixComboBox.DataSource = MPtable
+            Model_PrefixComboBox.ValueMember = "brands_prefix"
+            Model_PrefixComboBox.DisplayMember = "brands_prefix"
+        End Using
     End Sub
 End Class

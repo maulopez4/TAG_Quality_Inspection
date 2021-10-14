@@ -30,11 +30,11 @@ Partial Class Export_Data
         Me.From_Label = New System.Windows.Forms.Label()
         Me.Till_Label = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Selection_ListBox = New System.Windows.Forms.CheckedListBox()
         Me.Close_Button = New System.Windows.Forms.Button()
         Me.Export_Button = New System.Windows.Forms.Button()
         Me.GetData_Button = New System.Windows.Forms.Button()
         Me.Date_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Selection_ListBox = New System.Windows.Forms.CheckedListBox()
         Me.RejectedDataGroupBox.SuspendLayout()
         CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -56,7 +56,8 @@ Partial Class Export_Data
         '
         Me.RejectedDataGridView.AllowUserToAddRows = False
         Me.RejectedDataGridView.AllowUserToDeleteRows = False
-        Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.RejectedDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
@@ -132,6 +133,14 @@ Partial Class Export_Data
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Select Check Points:"
         '
+        'Selection_ListBox
+        '
+        Me.Selection_ListBox.FormattingEnabled = True
+        Me.Selection_ListBox.Location = New System.Drawing.Point(7, 22)
+        Me.Selection_ListBox.Name = "Selection_ListBox"
+        Me.Selection_ListBox.Size = New System.Drawing.Size(214, 130)
+        Me.Selection_ListBox.TabIndex = 2
+        '
         'Close_Button
         '
         Me.Close_Button.Location = New System.Drawing.Point(385, 130)
@@ -171,14 +180,6 @@ Partial Class Export_Data
         Me.Date_GroupBox.TabIndex = 28
         Me.Date_GroupBox.TabStop = False
         Me.Date_GroupBox.Text = "Select Dates:"
-        '
-        'Selection_ListBox
-        '
-        Me.Selection_ListBox.FormattingEnabled = True
-        Me.Selection_ListBox.Location = New System.Drawing.Point(7, 22)
-        Me.Selection_ListBox.Name = "Selection_ListBox"
-        Me.Selection_ListBox.Size = New System.Drawing.Size(214, 130)
-        Me.Selection_ListBox.TabIndex = 2
         '
         'Export_Data
         '
