@@ -22,9 +22,11 @@ Partial Class AddEntry
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
+        Me.AddMold_Button = New System.Windows.Forms.Button()
         Me.WorkOrderId_TextBox = New System.Windows.Forms.TextBox()
         Me.CancelEdit_Button = New System.Windows.Forms.Button()
         Me.EditSelected_Button = New System.Windows.Forms.Button()
@@ -128,6 +130,8 @@ Partial Class AddEntry
         Me.Status_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Status_Label = New System.Windows.Forms.Label()
         Me.Status_PictureBox = New System.Windows.Forms.PictureBox()
+        Me.AddMold_ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.WorkOrderInfoGroupBox.SuspendLayout()
         Me.DefectDataGroupBox.SuspendLayout()
         CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,6 +151,8 @@ Partial Class AddEntry
         '
         'WorkOrderInfoGroupBox
         '
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.Button1)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.AddMold_Button)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkOrderId_TextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.CancelEdit_Button)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.EditSelected_Button)
@@ -172,13 +178,25 @@ Partial Class AddEntry
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.TimeLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DateLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DatePicker)
-        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.WorkOrderInfoGroupBox.Location = New System.Drawing.Point(10, 5)
         Me.WorkOrderInfoGroupBox.Name = "WorkOrderInfoGroupBox"
         Me.WorkOrderInfoGroupBox.Size = New System.Drawing.Size(864, 125)
         Me.WorkOrderInfoGroupBox.TabIndex = 0
         Me.WorkOrderInfoGroupBox.TabStop = False
         Me.WorkOrderInfoGroupBox.Text = "Work Order Info:"
+        '
+        'AddMold_Button
+        '
+        Me.AddMold_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.AddMold_Button.Image = CType(resources.GetObject("AddMold_Button.Image"), System.Drawing.Image)
+        Me.AddMold_Button.Location = New System.Drawing.Point(399, 67)
+        Me.AddMold_Button.Name = "AddMold_Button"
+        Me.AddMold_Button.Size = New System.Drawing.Size(25, 23)
+        Me.AddMold_Button.TabIndex = 21
+        Me.AddMold_Button.Text = "+"
+        Me.AddMold_Button.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.AddMold_Button.UseVisualStyleBackColor = True
         '
         'WorkOrderId_TextBox
         '
@@ -191,7 +209,7 @@ Partial Class AddEntry
         '
         'CancelEdit_Button
         '
-        Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.CancelEdit_Button.Location = New System.Drawing.Point(598, 38)
         Me.CancelEdit_Button.Name = "CancelEdit_Button"
         Me.CancelEdit_Button.Size = New System.Drawing.Size(100, 25)
@@ -201,7 +219,7 @@ Partial Class AddEntry
         '
         'EditSelected_Button
         '
-        Me.EditSelected_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.EditSelected_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.EditSelected_Button.Location = New System.Drawing.Point(492, 38)
         Me.EditSelected_Button.Name = "EditSelected_Button"
         Me.EditSelected_Button.Size = New System.Drawing.Size(100, 25)
@@ -211,7 +229,7 @@ Partial Class AddEntry
         '
         'NewEntry_Button
         '
-        Me.NewEntry_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.NewEntry_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.NewEntry_Button.Location = New System.Drawing.Point(386, 38)
         Me.NewEntry_Button.Name = "NewEntry_Button"
         Me.NewEntry_Button.Size = New System.Drawing.Size(100, 25)
@@ -221,7 +239,7 @@ Partial Class AddEntry
         '
         'Export_Button
         '
-        Me.Export_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Export_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Export_Button.Location = New System.Drawing.Point(704, 38)
         Me.Export_Button.Name = "Export_Button"
         Me.Export_Button.Size = New System.Drawing.Size(150, 25)
@@ -235,7 +253,7 @@ Partial Class AddEntry
         Me.MoldSerialComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldSerialComboBox.FormattingEnabled = True
-        Me.MoldSerialComboBox.Location = New System.Drawing.Point(494, 95)
+        Me.MoldSerialComboBox.Location = New System.Drawing.Point(463, 95)
         Me.MoldSerialComboBox.Name = "MoldSerialComboBox"
         Me.MoldSerialComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldSerialComboBox.TabIndex = 8
@@ -268,7 +286,7 @@ Partial Class AddEntry
         '
         Me.MoldBrandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldBrandComboBox.FormattingEnabled = True
-        Me.MoldBrandComboBox.Location = New System.Drawing.Point(176, 95)
+        Me.MoldBrandComboBox.Location = New System.Drawing.Point(144, 95)
         Me.MoldBrandComboBox.Name = "MoldBrandComboBox"
         Me.MoldBrandComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldBrandComboBox.TabIndex = 6
@@ -279,7 +297,7 @@ Partial Class AddEntry
         Me.MoldPrefixComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldPrefixComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldPrefixComboBox.FormattingEnabled = True
-        Me.MoldPrefixComboBox.Location = New System.Drawing.Point(282, 95)
+        Me.MoldPrefixComboBox.Location = New System.Drawing.Point(251, 95)
         Me.MoldPrefixComboBox.Name = "MoldPrefixComboBox"
         Me.MoldPrefixComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldPrefixComboBox.TabIndex = 7
@@ -290,7 +308,7 @@ Partial Class AddEntry
         Me.MoldModelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldModelComboBox.FormattingEnabled = True
-        Me.MoldModelComboBox.Location = New System.Drawing.Point(388, 95)
+        Me.MoldModelComboBox.Location = New System.Drawing.Point(357, 95)
         Me.MoldModelComboBox.Name = "MoldModelComboBox"
         Me.MoldModelComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldModelComboBox.TabIndex = 7
@@ -325,7 +343,7 @@ Partial Class AddEntry
         'ModelBrandLabel
         '
         Me.ModelBrandLabel.AutoSize = True
-        Me.ModelBrandLabel.Location = New System.Drawing.Point(175, 73)
+        Me.ModelBrandLabel.Location = New System.Drawing.Point(144, 72)
         Me.ModelBrandLabel.Name = "ModelBrandLabel"
         Me.ModelBrandLabel.Size = New System.Drawing.Size(72, 15)
         Me.ModelBrandLabel.TabIndex = 2
@@ -334,7 +352,7 @@ Partial Class AddEntry
         'Mold_Prefix
         '
         Me.Mold_Prefix.AutoSize = True
-        Me.Mold_Prefix.Location = New System.Drawing.Point(280, 73)
+        Me.Mold_Prefix.Location = New System.Drawing.Point(249, 72)
         Me.Mold_Prefix.Name = "Mold_Prefix"
         Me.Mold_Prefix.Size = New System.Drawing.Size(68, 15)
         Me.Mold_Prefix.TabIndex = 2
@@ -343,7 +361,7 @@ Partial Class AddEntry
         'MoldSerialLabel
         '
         Me.MoldSerialLabel.AutoSize = True
-        Me.MoldSerialLabel.Location = New System.Drawing.Point(492, 73)
+        Me.MoldSerialLabel.Location = New System.Drawing.Point(461, 73)
         Me.MoldSerialLabel.Name = "MoldSerialLabel"
         Me.MoldSerialLabel.Size = New System.Drawing.Size(39, 15)
         Me.MoldSerialLabel.TabIndex = 2
@@ -352,17 +370,17 @@ Partial Class AddEntry
         'MoldModelLabel
         '
         Me.MoldModelLabel.AutoSize = True
-        Me.MoldModelLabel.Location = New System.Drawing.Point(386, 73)
+        Me.MoldModelLabel.Location = New System.Drawing.Point(355, 72)
         Me.MoldModelLabel.Name = "MoldModelLabel"
-        Me.MoldModelLabel.Size = New System.Drawing.Size(35, 15)
+        Me.MoldModelLabel.Size = New System.Drawing.Size(38, 15)
         Me.MoldModelLabel.TabIndex = 2
-        Me.MoldModelLabel.Text = "&Mold"
+        Me.MoldModelLabel.Text = "&Mold:"
         '
         'WorkOrderTextBox
         '
         Me.WorkOrderTextBox.Location = New System.Drawing.Point(20, 95)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
-        Me.WorkOrderTextBox.Size = New System.Drawing.Size(150, 23)
+        Me.WorkOrderTextBox.Size = New System.Drawing.Size(119, 23)
         Me.WorkOrderTextBox.TabIndex = 3
         '
         'WorkOrderLabel
@@ -475,7 +493,7 @@ Partial Class AddEntry
         Me.DefectDataGroupBox.Controls.Add(Me.DefectOriginLabel)
         Me.DefectDataGroupBox.Controls.Add(Me.ReworkComboBox)
         Me.DefectDataGroupBox.Controls.Add(Me.ReworkTypeLabel)
-        Me.DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
+        Me.DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.DefectDataGroupBox.Location = New System.Drawing.Point(10, 130)
         Me.DefectDataGroupBox.Name = "DefectDataGroupBox"
         Me.DefectDataGroupBox.Size = New System.Drawing.Size(1115, 331)
@@ -485,7 +503,7 @@ Partial Class AddEntry
         '
         'Repaired_Button
         '
-        Me.Repaired_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Repaired_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Repaired_Button.Location = New System.Drawing.Point(973, 15)
         Me.Repaired_Button.Name = "Repaired_Button"
         Me.Repaired_Button.Size = New System.Drawing.Size(125, 25)
@@ -495,7 +513,7 @@ Partial Class AddEntry
         '
         'SubmitDefect_Button
         '
-        Me.SubmitDefect_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
+        Me.SubmitDefect_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.SubmitDefect_Button.Location = New System.Drawing.Point(973, 42)
         Me.SubmitDefect_Button.Name = "SubmitDefect_Button"
         Me.SubmitDefect_Button.Size = New System.Drawing.Size(125, 25)
@@ -1001,10 +1019,10 @@ Partial Class AddEntry
         Me.ReportedDataGridView.AllowUserToAddRows = False
         Me.ReportedDataGridView.AllowUserToDeleteRows = False
         Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ReportedDataGridView.Location = New System.Drawing.Point(6, 43)
         Me.ReportedDataGridView.Name = "ReportedDataGridView"
@@ -1029,7 +1047,7 @@ Partial Class AddEntry
         'CommentsGroupBox
         '
         Me.CommentsGroupBox.Controls.Add(Me.CommentsRichTextBox)
-        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.CommentsGroupBox.Location = New System.Drawing.Point(756, 465)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
         Me.CommentsGroupBox.Size = New System.Drawing.Size(369, 200)
@@ -1056,7 +1074,7 @@ Partial Class AddEntry
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton3)
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton2)
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton1)
-        Me.AddPicturesGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
+        Me.AddPicturesGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.AddPicturesGroupBox.Location = New System.Drawing.Point(12, 465)
         Me.AddPicturesGroupBox.Name = "AddPicturesGroupBox"
         Me.AddPicturesGroupBox.Size = New System.Drawing.Size(738, 200)
@@ -1167,7 +1185,7 @@ Partial Class AddEntry
         Me.ReportedDataGroupBox.Controls.Add(Me.SearchWO_TextBox)
         Me.ReportedDataGroupBox.Controls.Add(Me.ReportedDataGridView)
         Me.ReportedDataGroupBox.Controls.Add(Me.SearchWO_Label)
-        Me.ReportedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.ReportedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ReportedDataGroupBox.Location = New System.Drawing.Point(10, 130)
         Me.ReportedDataGroupBox.Name = "ReportedDataGroupBox"
         Me.ReportedDataGroupBox.Size = New System.Drawing.Size(1115, 331)
@@ -1215,7 +1233,7 @@ Partial Class AddEntry
         Me.Actions_GroupBox.Controls.Add(Me.Cancel_Button)
         Me.Actions_GroupBox.Controls.Add(Me.Approved_Button)
         Me.Actions_GroupBox.Cursor = System.Windows.Forms.Cursors.PanWest
-        Me.Actions_GroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
+        Me.Actions_GroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Actions_GroupBox.Location = New System.Drawing.Point(973, 5)
         Me.Actions_GroupBox.Name = "Actions_GroupBox"
         Me.Actions_GroupBox.Size = New System.Drawing.Size(150, 125)
@@ -1268,6 +1286,18 @@ Partial Class AddEntry
         Me.Status_PictureBox.Size = New System.Drawing.Size(73, 58)
         Me.Status_PictureBox.TabIndex = 0
         Me.Status_PictureBox.TabStop = False
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(323, 67)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(25, 23)
+        Me.Button1.TabIndex = 21
+        Me.Button1.Text = "+"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'AddEntry
         '
@@ -1410,4 +1440,7 @@ Partial Class AddEntry
     Friend WithEvents Status_GroupBox As GroupBox
     Friend WithEvents Status_PictureBox As PictureBox
     Friend WithEvents Status_Label As Label
+    Friend WithEvents AddMold_Button As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents AddMold_ToolTip As ToolTip
 End Class

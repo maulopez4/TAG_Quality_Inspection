@@ -820,6 +820,11 @@ Public Class AddEntry
         End With
     End Sub
 
+    Private Sub AddMold_Button_Click(sender As Object, e As EventArgs) Handles AddMold_Button.Click, Button1.Click
+        Dim newForm As New AddEditModel()
+        newForm.Show()
+    End Sub
+
     'Private Sub SearchWO_TextBox_Validated(sender As System.Object, e As System.EventArgs) Handles SearchWO_TextBox.Validated
     '    'If SearchWO_TextBox.Text = String.Empty Then
     '    '    RejectedDataGridView.RemoveFilter()
