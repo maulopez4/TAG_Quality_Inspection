@@ -30,13 +30,13 @@ Public Class Export_Data
 
         Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
-        Dim sql As String = "SELECT DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
-                                                    `workorder_moldbrand`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
+        Dim sql As String = "SELECT `workorder_id`, DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
+                                                    `workorder_moldbrand`, `workorder_moldprefix`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
-                                                    `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder`  
+                                                    `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
                                                     INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
                                                     INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
-                                                    INNER JOIN `rework` ON `workorder_rework` = `rework_code` 
+                                                    INNER JOIN `rework` ON `workorder_rework` = `rework_code`
                                                     AND `workorder_workstation` IN ('" & SList & "') 
                                                     AND `workorder_date` >= CAST('" & From & "' AS DATE) 
                                                     AND `workorder_date` <= CAST('" & Till & "' AS DATE) 
@@ -45,43 +45,40 @@ Public Class Export_Data
             Dim RJadapter As New MySqlDataAdapter(RJcommand)
             Dim RJtable As New DataTable()
             Dim RJ = RJadapter.Fill(RJtable)
-            RejectedDataGridView.DataSource = RJtable
-            With RejectedDataGridView
+            ReportedDataGridView.DataSource = RJtable
+            With ReportedDataGridView
                 .RowHeadersVisible = True
-                .Columns(0).HeaderCell.Value = "Date"
-                .Columns(1).HeaderCell.Value = "Time"
-                .Columns(2).HeaderCell.Value = "Reported By"
-                .Columns(3).HeaderCell.Value = "Workstation Code"
-                .Columns(3).Visible = False
-                .Columns(4).HeaderCell.Value = "Workstation Name"
-                .Columns(5).HeaderCell.Value = "Work Order"
-                .Columns(6).HeaderCell.Value = "Mold Brand"
-                .Columns(7).HeaderCell.Value = "Mold Model"
-                .Columns(8).HeaderCell.Value = "Mold Serial"
-                .Columns(9).HeaderCell.Value = "Paint Code"
-                .Columns(10).HeaderCell.Value = "Defect Origin Code"
-                .Columns(10).Visible = False
-                .Columns(11).HeaderCell.Value = "Defect Origin"
-                .Columns(12).HeaderCell.Value = "Defect Code"
+                .Columns(0).HeaderCell.Value = "ID"
+                .Columns(0).Visible = False
+                .Columns(1).HeaderCell.Value = "Date"
+                .Columns(2).HeaderCell.Value = "Time"
+                .Columns(3).HeaderCell.Value = "Reported By"
+                .Columns(4).HeaderCell.Value = "Workstation Code"
+                .Columns(4).Visible = False
+                .Columns(5).HeaderCell.Value = "Workstation Name"
+                .Columns(6).HeaderCell.Value = "Work Order"
+                .Columns(7).HeaderCell.Value = "Mold Brand"
+                .Columns(8).HeaderCell.Value = "Mold Prefix"
+                .Columns(9).HeaderCell.Value = "Mold Model"
+                .Columns(10).HeaderCell.Value = "Mold Serial"
+                .Columns(11).HeaderCell.Value = "Paint Code"
+                .Columns(12).HeaderCell.Value = "Defect Origin Code"
                 .Columns(12).Visible = False
-                .Columns(13).HeaderCell.Value = "Defect Description"
-                .Columns(14).HeaderCell.Value = "Defect Location"
-                .Columns(15).HeaderCell.Value = "Rework Code"
-                .Columns(15).Visible = False
-                .Columns(16).HeaderCell.Value = "Rework Description"
-                .Columns(17).HeaderCell.Value = "Work Order Status"
-                .Columns(18).HeaderCell.Value = "Comments"
-                '.Columns(18).HeaderCell.Value = "Image1"
-                '.Columns(18).Visible = False
-                '.Columns(19).HeaderCell.Value = "Image2"
-                '.Columns(19).Visible = False
-                '.Columns(20).HeaderCell.Value = "Image3"
-                '.Columns(20).Visible = False
+                .Columns(13).HeaderCell.Value = "Defect Origin"
+                .Columns(14).HeaderCell.Value = "Defect Code"
+                .Columns(14).Visible = False
+                .Columns(15).HeaderCell.Value = "Defect Description"
+                .Columns(16).HeaderCell.Value = "Defect Location"
+                .Columns(17).HeaderCell.Value = "Rework Code"
+                .Columns(17).Visible = False
+                .Columns(18).HeaderCell.Value = "Rework Description"
+                .Columns(19).HeaderCell.Value = "Work Order Status"
+                .Columns(20).HeaderCell.Value = "Comments"
             End With
         End Using
     End Sub
     Private Sub Export_Button_Click(sender As Object, e As EventArgs) Handles Export_Button.Click
-        DataGridToCSV(RejectedDataGridView)
+        DataGridToCSV(ReportedDataGridView)
     End Sub
     Private Sub DataGridToCSV(ByRef dt As DataGridView)
         Dim NL As New List(Of String)
@@ -91,7 +88,7 @@ Public Class Export_Data
         Next
         Dim NList As String = String.Join("_", NL).ToString
         Dim fileName As String = ("DataDump-" & NList & "-" & System.DateTime.Now.ToString("yyyyMMdd"))
-        Dim TB As DataGridView = RejectedDataGridView
+        Dim TB As DataGridView = ReportedDataGridView
 
         Try
             If TB.RowCount < 1 Then

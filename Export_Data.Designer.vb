@@ -22,9 +22,9 @@ Partial Class Export_Data
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.RejectedDataGroupBox = New System.Windows.Forms.GroupBox()
-        Me.RejectedDataGridView = New System.Windows.Forms.DataGridView()
+        Me.ReportedDataGridView = New System.Windows.Forms.DataGridView()
         Me.From_DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.Till_DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.From_Label = New System.Windows.Forms.Label()
@@ -36,14 +36,14 @@ Partial Class Export_Data
         Me.GetData_Button = New System.Windows.Forms.Button()
         Me.Date_GroupBox = New System.Windows.Forms.GroupBox()
         Me.RejectedDataGroupBox.SuspendLayout()
-        CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReportedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.Date_GroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'RejectedDataGroupBox
         '
-        Me.RejectedDataGroupBox.Controls.Add(Me.RejectedDataGridView)
+        Me.RejectedDataGroupBox.Controls.Add(Me.ReportedDataGridView)
         Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.RejectedDataGroupBox.Location = New System.Drawing.Point(12, 183)
         Me.RejectedDataGroupBox.Name = "RejectedDataGroupBox"
@@ -52,25 +52,25 @@ Partial Class Export_Data
         Me.RejectedDataGroupBox.TabStop = False
         Me.RejectedDataGroupBox.Text = "On-Hold WorkOrders"
         '
-        'RejectedDataGridView
+        'ReportedDataGridView
         '
-        Me.RejectedDataGridView.AllowUserToAddRows = False
-        Me.RejectedDataGridView.AllowUserToDeleteRows = False
-        Me.RejectedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.RejectedDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.RejectedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.RejectedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.RejectedDataGridView.Location = New System.Drawing.Point(6, 22)
-        Me.RejectedDataGridView.Name = "RejectedDataGridView"
-        Me.RejectedDataGridView.ReadOnly = True
-        Me.RejectedDataGridView.RowHeadersWidth = 30
-        Me.RejectedDataGridView.RowTemplate.Height = 25
-        Me.RejectedDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.RejectedDataGridView.Size = New System.Drawing.Size(1287, 354)
-        Me.RejectedDataGridView.TabIndex = 21
+        Me.ReportedDataGridView.AllowUserToAddRows = False
+        Me.ReportedDataGridView.AllowUserToDeleteRows = False
+        Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.ReportedDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ReportedDataGridView.Location = New System.Drawing.Point(6, 22)
+        Me.ReportedDataGridView.Name = "ReportedDataGridView"
+        Me.ReportedDataGridView.ReadOnly = True
+        Me.ReportedDataGridView.RowHeadersWidth = 30
+        Me.ReportedDataGridView.RowTemplate.Height = 25
+        Me.ReportedDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.ReportedDataGridView.Size = New System.Drawing.Size(1287, 354)
+        Me.ReportedDataGridView.TabIndex = 21
         '
         'From_DateTimePicker
         '
@@ -192,7 +192,7 @@ Partial Class Export_Data
         Me.Name = "Export_Data"
         Me.Text = "Export Data"
         Me.RejectedDataGroupBox.ResumeLayout(False)
-        CType(Me.RejectedDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReportedDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.Date_GroupBox.ResumeLayout(False)
         Me.Date_GroupBox.PerformLayout()
@@ -201,7 +201,7 @@ Partial Class Export_Data
     End Sub
 
     Friend WithEvents RejectedDataGroupBox As GroupBox
-    Friend WithEvents RejectedDataGridView As DataGridView
+    Friend WithEvents ReportedDataGridView As DataGridView
     Friend WithEvents From_DateTimePicker As DateTimePicker
     Friend WithEvents Till_DateTimePicker As DateTimePicker
     Friend WithEvents From_Label As Label
