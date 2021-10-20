@@ -80,7 +80,6 @@ Public Class AddEntry
         DefectOriginComboBox.Enabled = False
         DefectComboBox.Enabled = False
         DefectLocationComboBox.Enabled = False
-        PaintCodeComboBox.Enabled = True
     End Sub
     Friend Shared Function GetWorkOrder()
         Return WorkOrderValue
@@ -819,11 +818,15 @@ Public Class AddEntry
             .Columns(20).HeaderCell.Value = "Comments"
         End With
     End Sub
+    'Private Sub AddMold_Button_Click(sender As Object, e As EventArgs) Handles AddMold_Button.Click
+    '    Dim newForm As New AddPaintcode()
+    '    newForm.Show()
+    'End Sub
 
-    Private Sub AddMold_Button_Click(sender As Object, e As EventArgs) Handles AddMold_Button.Click, Button1.Click
-        Dim newForm As New AddEditModel()
-        newForm.Show()
-    End Sub
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    '    Dim newForm As New AddEditModel()
+    '    newForm.Show()
+    'End Sub
 
     'Private Sub SearchWO_TextBox_Validated(sender As System.Object, e As System.EventArgs) Handles SearchWO_TextBox.Validated
     '    'If SearchWO_TextBox.Text = String.Empty Then
