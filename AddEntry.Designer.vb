@@ -22,7 +22,6 @@ Partial Class AddEntry
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
@@ -56,6 +55,7 @@ Partial Class AddEntry
         Me.DatePicker = New System.Windows.Forms.DateTimePicker()
         Me.DefectDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.Repaired_Button = New System.Windows.Forms.Button()
+        Me.CancelDefect_Button = New System.Windows.Forms.Button()
         Me.SubmitDefect_Button = New System.Windows.Forms.Button()
         Me.LinkLabel14 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel39 = New System.Windows.Forms.LinkLabel()
@@ -122,6 +122,8 @@ Partial Class AddEntry
         Me.AddImageButton2 = New System.Windows.Forms.Button()
         Me.AddImageButton1 = New System.Windows.Forms.Button()
         Me.ReportedDataGroupBox = New System.Windows.Forms.GroupBox()
+        Me.FilterView_Label = New System.Windows.Forms.Label()
+        Me.Filter_ComboBox = New System.Windows.Forms.ComboBox()
         Me.ClearSearchWO_Button = New System.Windows.Forms.Button()
         Me.SearchWO_Button = New System.Windows.Forms.Button()
         Me.SearchWO_TextBox = New System.Windows.Forms.TextBox()
@@ -132,7 +134,6 @@ Partial Class AddEntry
         Me.Status_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Status_Label = New System.Windows.Forms.Label()
         Me.Status_PictureBox = New System.Windows.Forms.PictureBox()
-        Me.AddMold_ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.WorkOrderInfoGroupBox.SuspendLayout()
         Me.DefectDataGroupBox.SuspendLayout()
         CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -183,7 +184,7 @@ Partial Class AddEntry
         Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.WorkOrderInfoGroupBox.Location = New System.Drawing.Point(10, 5)
         Me.WorkOrderInfoGroupBox.Name = "WorkOrderInfoGroupBox"
-        Me.WorkOrderInfoGroupBox.Size = New System.Drawing.Size(864, 125)
+        Me.WorkOrderInfoGroupBox.Size = New System.Drawing.Size(902, 125)
         Me.WorkOrderInfoGroupBox.TabIndex = 0
         Me.WorkOrderInfoGroupBox.TabStop = False
         Me.WorkOrderInfoGroupBox.Text = "Work Order Info:"
@@ -193,7 +194,7 @@ Partial Class AddEntry
         Me.Button1.Enabled = False
         Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(355, 66)
+        Me.Button1.Location = New System.Drawing.Point(662, 10)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(25, 23)
         Me.Button1.TabIndex = 21
@@ -207,7 +208,7 @@ Partial Class AddEntry
         Me.Button2.Enabled = False
         Me.Button2.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(675, 66)
+        Me.Button2.Location = New System.Drawing.Point(693, 12)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(25, 23)
         Me.Button2.TabIndex = 21
@@ -221,7 +222,7 @@ Partial Class AddEntry
         Me.AddMold_Button.Enabled = False
         Me.AddMold_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.AddMold_Button.Image = CType(resources.GetObject("AddMold_Button.Image"), System.Drawing.Image)
-        Me.AddMold_Button.Location = New System.Drawing.Point(461, 66)
+        Me.AddMold_Button.Location = New System.Drawing.Point(724, 12)
         Me.AddMold_Button.Name = "AddMold_Button"
         Me.AddMold_Button.Size = New System.Drawing.Size(25, 23)
         Me.AddMold_Button.TabIndex = 21
@@ -285,7 +286,7 @@ Partial Class AddEntry
         Me.MoldSerialComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldSerialComboBox.FormattingEnabled = True
-        Me.MoldSerialComboBox.Location = New System.Drawing.Point(492, 95)
+        Me.MoldSerialComboBox.Location = New System.Drawing.Point(494, 95)
         Me.MoldSerialComboBox.Name = "MoldSerialComboBox"
         Me.MoldSerialComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldSerialComboBox.TabIndex = 8
@@ -300,7 +301,7 @@ Partial Class AddEntry
         Me.PaintcodeDescription_ComboBox.FormattingEnabled = True
         Me.PaintcodeDescription_ComboBox.Location = New System.Drawing.Point(706, 95)
         Me.PaintcodeDescription_ComboBox.Name = "PaintcodeDescription_ComboBox"
-        Me.PaintcodeDescription_ComboBox.Size = New System.Drawing.Size(148, 23)
+        Me.PaintcodeDescription_ComboBox.Size = New System.Drawing.Size(175, 23)
         Me.PaintcodeDescription_ComboBox.TabIndex = 9
         '
         'PaintCodeComboBox
@@ -318,7 +319,7 @@ Partial Class AddEntry
         '
         Me.MoldBrandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldBrandComboBox.FormattingEnabled = True
-        Me.MoldBrandComboBox.Location = New System.Drawing.Point(144, 95)
+        Me.MoldBrandComboBox.Location = New System.Drawing.Point(151, 95)
         Me.MoldBrandComboBox.Name = "MoldBrandComboBox"
         Me.MoldBrandComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldBrandComboBox.TabIndex = 6
@@ -329,9 +330,9 @@ Partial Class AddEntry
         Me.MoldPrefixComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldPrefixComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldPrefixComboBox.FormattingEnabled = True
-        Me.MoldPrefixComboBox.Location = New System.Drawing.Point(251, 95)
+        Me.MoldPrefixComboBox.Location = New System.Drawing.Point(257, 95)
         Me.MoldPrefixComboBox.Name = "MoldPrefixComboBox"
-        Me.MoldPrefixComboBox.Size = New System.Drawing.Size(129, 23)
+        Me.MoldPrefixComboBox.Size = New System.Drawing.Size(125, 23)
         Me.MoldPrefixComboBox.TabIndex = 7
         '
         'MoldModelComboBox
@@ -340,7 +341,7 @@ Partial Class AddEntry
         Me.MoldModelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldModelComboBox.FormattingEnabled = True
-        Me.MoldModelComboBox.Location = New System.Drawing.Point(386, 95)
+        Me.MoldModelComboBox.Location = New System.Drawing.Point(388, 95)
         Me.MoldModelComboBox.Name = "MoldModelComboBox"
         Me.MoldModelComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldModelComboBox.TabIndex = 7
@@ -357,7 +358,7 @@ Partial Class AddEntry
         'PaintcodeDescription_Label
         '
         Me.PaintcodeDescription_Label.AutoSize = True
-        Me.PaintcodeDescription_Label.Location = New System.Drawing.Point(704, 73)
+        Me.PaintcodeDescription_Label.Location = New System.Drawing.Point(706, 77)
         Me.PaintcodeDescription_Label.Name = "PaintcodeDescription_Label"
         Me.PaintcodeDescription_Label.Size = New System.Drawing.Size(131, 15)
         Me.PaintcodeDescription_Label.TabIndex = 2
@@ -366,7 +367,7 @@ Partial Class AddEntry
         'WorkStationLabel
         '
         Me.WorkStationLabel.AutoSize = True
-        Me.WorkStationLabel.Location = New System.Drawing.Point(230, 18)
+        Me.WorkStationLabel.Location = New System.Drawing.Point(230, 22)
         Me.WorkStationLabel.Name = "WorkStationLabel"
         Me.WorkStationLabel.Size = New System.Drawing.Size(80, 15)
         Me.WorkStationLabel.TabIndex = 1
@@ -375,7 +376,7 @@ Partial Class AddEntry
         'ModelBrandLabel
         '
         Me.ModelBrandLabel.AutoSize = True
-        Me.ModelBrandLabel.Location = New System.Drawing.Point(144, 72)
+        Me.ModelBrandLabel.Location = New System.Drawing.Point(151, 77)
         Me.ModelBrandLabel.Name = "ModelBrandLabel"
         Me.ModelBrandLabel.Size = New System.Drawing.Size(72, 15)
         Me.ModelBrandLabel.TabIndex = 2
@@ -384,7 +385,7 @@ Partial Class AddEntry
         'Mold_Prefix
         '
         Me.Mold_Prefix.AutoSize = True
-        Me.Mold_Prefix.Location = New System.Drawing.Point(249, 72)
+        Me.Mold_Prefix.Location = New System.Drawing.Point(257, 77)
         Me.Mold_Prefix.Name = "Mold_Prefix"
         Me.Mold_Prefix.Size = New System.Drawing.Size(71, 15)
         Me.Mold_Prefix.TabIndex = 2
@@ -393,7 +394,7 @@ Partial Class AddEntry
         'MoldSerialLabel
         '
         Me.MoldSerialLabel.AutoSize = True
-        Me.MoldSerialLabel.Location = New System.Drawing.Point(490, 73)
+        Me.MoldSerialLabel.Location = New System.Drawing.Point(494, 77)
         Me.MoldSerialLabel.Name = "MoldSerialLabel"
         Me.MoldSerialLabel.Size = New System.Drawing.Size(39, 15)
         Me.MoldSerialLabel.TabIndex = 2
@@ -402,7 +403,7 @@ Partial Class AddEntry
         'MoldModelLabel
         '
         Me.MoldModelLabel.AutoSize = True
-        Me.MoldModelLabel.Location = New System.Drawing.Point(384, 72)
+        Me.MoldModelLabel.Location = New System.Drawing.Point(388, 77)
         Me.MoldModelLabel.Name = "MoldModelLabel"
         Me.MoldModelLabel.Size = New System.Drawing.Size(38, 15)
         Me.MoldModelLabel.TabIndex = 2
@@ -412,13 +413,13 @@ Partial Class AddEntry
         '
         Me.WorkOrderTextBox.Location = New System.Drawing.Point(20, 95)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
-        Me.WorkOrderTextBox.Size = New System.Drawing.Size(118, 23)
+        Me.WorkOrderTextBox.Size = New System.Drawing.Size(125, 23)
         Me.WorkOrderTextBox.TabIndex = 3
         '
         'WorkOrderLabel
         '
         Me.WorkOrderLabel.AutoSize = True
-        Me.WorkOrderLabel.Location = New System.Drawing.Point(20, 73)
+        Me.WorkOrderLabel.Location = New System.Drawing.Point(20, 77)
         Me.WorkOrderLabel.Name = "WorkOrderLabel"
         Me.WorkOrderLabel.Size = New System.Drawing.Size(119, 15)
         Me.WorkOrderLabel.TabIndex = 2
@@ -427,7 +428,7 @@ Partial Class AddEntry
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(598, 73)
+        Me.Label2.Location = New System.Drawing.Point(600, 77)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(67, 15)
         Me.Label2.TabIndex = 2
@@ -445,7 +446,7 @@ Partial Class AddEntry
         'TimeLabel
         '
         Me.TimeLabel.AutoSize = True
-        Me.TimeLabel.Location = New System.Drawing.Point(125, 18)
+        Me.TimeLabel.Location = New System.Drawing.Point(125, 22)
         Me.TimeLabel.Name = "TimeLabel"
         Me.TimeLabel.Size = New System.Drawing.Size(37, 15)
         Me.TimeLabel.TabIndex = 2
@@ -454,7 +455,7 @@ Partial Class AddEntry
         'DateLabel
         '
         Me.DateLabel.AutoSize = True
-        Me.DateLabel.Location = New System.Drawing.Point(20, 18)
+        Me.DateLabel.Location = New System.Drawing.Point(20, 22)
         Me.DateLabel.Name = "DateLabel"
         Me.DateLabel.Size = New System.Drawing.Size(35, 15)
         Me.DateLabel.TabIndex = 1
@@ -474,6 +475,7 @@ Partial Class AddEntry
         'DefectDataGroupBox
         '
         Me.DefectDataGroupBox.Controls.Add(Me.Repaired_Button)
+        Me.DefectDataGroupBox.Controls.Add(Me.CancelDefect_Button)
         Me.DefectDataGroupBox.Controls.Add(Me.SubmitDefect_Button)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel14)
         Me.DefectDataGroupBox.Controls.Add(Me.LinkLabel39)
@@ -536,21 +538,32 @@ Partial Class AddEntry
         'Repaired_Button
         '
         Me.Repaired_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
-        Me.Repaired_Button.Location = New System.Drawing.Point(973, 15)
+        Me.Repaired_Button.Location = New System.Drawing.Point(1009, 12)
         Me.Repaired_Button.Name = "Repaired_Button"
-        Me.Repaired_Button.Size = New System.Drawing.Size(125, 25)
+        Me.Repaired_Button.Size = New System.Drawing.Size(100, 25)
         Me.Repaired_Button.TabIndex = 17
-        Me.Repaired_Button.Text = "Defect Repaired"
+        Me.Repaired_Button.Text = "Repaired"
         Me.Repaired_Button.UseVisualStyleBackColor = True
+        '
+        'CancelDefect_Button
+        '
+        Me.CancelDefect_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
+        Me.CancelDefect_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
+        Me.CancelDefect_Button.Location = New System.Drawing.Point(1009, 42)
+        Me.CancelDefect_Button.Name = "CancelDefect_Button"
+        Me.CancelDefect_Button.Size = New System.Drawing.Size(100, 25)
+        Me.CancelDefect_Button.TabIndex = 20
+        Me.CancelDefect_Button.Text = "Cancel"
+        Me.CancelDefect_Button.UseVisualStyleBackColor = True
         '
         'SubmitDefect_Button
         '
         Me.SubmitDefect_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
-        Me.SubmitDefect_Button.Location = New System.Drawing.Point(973, 42)
+        Me.SubmitDefect_Button.Location = New System.Drawing.Point(911, 13)
         Me.SubmitDefect_Button.Name = "SubmitDefect_Button"
-        Me.SubmitDefect_Button.Size = New System.Drawing.Size(125, 25)
+        Me.SubmitDefect_Button.Size = New System.Drawing.Size(92, 25)
         Me.SubmitDefect_Button.TabIndex = 17
-        Me.SubmitDefect_Button.Text = "Submit Defect"
+        Me.SubmitDefect_Button.Text = "Submit"
         Me.SubmitDefect_Button.UseVisualStyleBackColor = True
         '
         'LinkLabel14
@@ -1033,7 +1046,7 @@ Partial Class AddEntry
         Me.ReworkComboBox.FormattingEnabled = True
         Me.ReworkComboBox.Location = New System.Drawing.Point(637, 43)
         Me.ReworkComboBox.Name = "ReworkComboBox"
-        Me.ReworkComboBox.Size = New System.Drawing.Size(238, 25)
+        Me.ReworkComboBox.Size = New System.Drawing.Size(265, 25)
         Me.ReworkComboBox.TabIndex = 12
         Me.ReworkComboBox.Text = "Select Option"
         '
@@ -1069,9 +1082,9 @@ Partial Class AddEntry
         '
         Me.Cancel_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.Cancel_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray
-        Me.Cancel_Button.Location = New System.Drawing.Point(10, 92)
+        Me.Cancel_Button.Location = New System.Drawing.Point(4, 94)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(125, 25)
+        Me.Cancel_Button.Size = New System.Drawing.Size(100, 25)
         Me.Cancel_Button.TabIndex = 20
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = True
@@ -1212,6 +1225,8 @@ Partial Class AddEntry
         '
         'ReportedDataGroupBox
         '
+        Me.ReportedDataGroupBox.Controls.Add(Me.FilterView_Label)
+        Me.ReportedDataGroupBox.Controls.Add(Me.Filter_ComboBox)
         Me.ReportedDataGroupBox.Controls.Add(Me.ClearSearchWO_Button)
         Me.ReportedDataGroupBox.Controls.Add(Me.SearchWO_Button)
         Me.ReportedDataGroupBox.Controls.Add(Me.SearchWO_TextBox)
@@ -1225,29 +1240,51 @@ Partial Class AddEntry
         Me.ReportedDataGroupBox.TabStop = False
         Me.ReportedDataGroupBox.Text = "Reported WorkOrders"
         '
+        'FilterView_Label
+        '
+        Me.FilterView_Label.AutoSize = True
+        Me.FilterView_Label.Enabled = False
+        Me.FilterView_Label.Location = New System.Drawing.Point(918, 18)
+        Me.FilterView_Label.Name = "FilterView_Label"
+        Me.FilterView_Label.Size = New System.Drawing.Size(64, 15)
+        Me.FilterView_Label.TabIndex = 25
+        Me.FilterView_Label.Text = "Filter View:"
+        Me.FilterView_Label.Visible = False
+        '
+        'Filter_ComboBox
+        '
+        Me.Filter_ComboBox.Enabled = False
+        Me.Filter_ComboBox.FormattingEnabled = True
+        Me.Filter_ComboBox.Items.AddRange(New Object() {"All", "Reported Only", "Repaired Only", "Approved Only"})
+        Me.Filter_ComboBox.Location = New System.Drawing.Point(988, 13)
+        Me.Filter_ComboBox.Name = "Filter_ComboBox"
+        Me.Filter_ComboBox.Size = New System.Drawing.Size(121, 23)
+        Me.Filter_ComboBox.TabIndex = 24
+        Me.Filter_ComboBox.Visible = False
+        '
         'ClearSearchWO_Button
         '
-        Me.ClearSearchWO_Button.Location = New System.Drawing.Point(336, 11)
+        Me.ClearSearchWO_Button.Location = New System.Drawing.Point(356, 14)
         Me.ClearSearchWO_Button.Name = "ClearSearchWO_Button"
-        Me.ClearSearchWO_Button.Size = New System.Drawing.Size(61, 23)
+        Me.ClearSearchWO_Button.Size = New System.Drawing.Size(50, 23)
         Me.ClearSearchWO_Button.TabIndex = 23
         Me.ClearSearchWO_Button.Text = "Clear"
         Me.ClearSearchWO_Button.UseVisualStyleBackColor = True
         '
         'SearchWO_Button
         '
-        Me.SearchWO_Button.Location = New System.Drawing.Point(269, 11)
+        Me.SearchWO_Button.Location = New System.Drawing.Point(300, 14)
         Me.SearchWO_Button.Name = "SearchWO_Button"
-        Me.SearchWO_Button.Size = New System.Drawing.Size(61, 23)
+        Me.SearchWO_Button.Size = New System.Drawing.Size(50, 23)
         Me.SearchWO_Button.TabIndex = 23
         Me.SearchWO_Button.Text = "Search"
         Me.SearchWO_Button.UseVisualStyleBackColor = True
         '
         'SearchWO_TextBox
         '
-        Me.SearchWO_TextBox.Location = New System.Drawing.Point(168, 11)
+        Me.SearchWO_TextBox.Location = New System.Drawing.Point(169, 13)
         Me.SearchWO_TextBox.Name = "SearchWO_TextBox"
-        Me.SearchWO_TextBox.Size = New System.Drawing.Size(95, 23)
+        Me.SearchWO_TextBox.Size = New System.Drawing.Size(125, 23)
         Me.SearchWO_TextBox.TabIndex = 22
         '
         'SearchWO_Label
@@ -1266,27 +1303,27 @@ Partial Class AddEntry
         Me.Actions_GroupBox.Controls.Add(Me.Approved_Button)
         Me.Actions_GroupBox.Cursor = System.Windows.Forms.Cursors.PanWest
         Me.Actions_GroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
-        Me.Actions_GroupBox.Location = New System.Drawing.Point(973, 5)
+        Me.Actions_GroupBox.Location = New System.Drawing.Point(1015, 5)
         Me.Actions_GroupBox.Name = "Actions_GroupBox"
-        Me.Actions_GroupBox.Size = New System.Drawing.Size(150, 125)
+        Me.Actions_GroupBox.Size = New System.Drawing.Size(110, 125)
         Me.Actions_GroupBox.TabIndex = 22
         Me.Actions_GroupBox.TabStop = False
         Me.Actions_GroupBox.Text = "Actions"
         '
         'ReportDefect_Button
         '
-        Me.ReportDefect_Button.Location = New System.Drawing.Point(10, 61)
+        Me.ReportDefect_Button.Location = New System.Drawing.Point(4, 63)
         Me.ReportDefect_Button.Name = "ReportDefect_Button"
-        Me.ReportDefect_Button.Size = New System.Drawing.Size(125, 25)
+        Me.ReportDefect_Button.Size = New System.Drawing.Size(100, 25)
         Me.ReportDefect_Button.TabIndex = 0
         Me.ReportDefect_Button.Text = "Report Defect"
         Me.ReportDefect_Button.UseVisualStyleBackColor = True
         '
         'Approved_Button
         '
-        Me.Approved_Button.Location = New System.Drawing.Point(10, 30)
+        Me.Approved_Button.Location = New System.Drawing.Point(4, 32)
         Me.Approved_Button.Name = "Approved_Button"
-        Me.Approved_Button.Size = New System.Drawing.Size(125, 25)
+        Me.Approved_Button.Size = New System.Drawing.Size(100, 25)
         Me.Approved_Button.TabIndex = 0
         Me.Approved_Button.Text = "Approved"
         Me.Approved_Button.UseVisualStyleBackColor = True
@@ -1295,9 +1332,9 @@ Partial Class AddEntry
         '
         Me.Status_GroupBox.Controls.Add(Me.Status_Label)
         Me.Status_GroupBox.Controls.Add(Me.Status_PictureBox)
-        Me.Status_GroupBox.Location = New System.Drawing.Point(881, 5)
+        Me.Status_GroupBox.Location = New System.Drawing.Point(918, 5)
         Me.Status_GroupBox.Name = "Status_GroupBox"
-        Me.Status_GroupBox.Size = New System.Drawing.Size(86, 125)
+        Me.Status_GroupBox.Size = New System.Drawing.Size(95, 125)
         Me.Status_GroupBox.TabIndex = 23
         Me.Status_GroupBox.TabStop = False
         Me.Status_GroupBox.Text = "Status"
@@ -1313,9 +1350,9 @@ Partial Class AddEntry
         'Status_PictureBox
         '
         Me.Status_PictureBox.InitialImage = Nothing
-        Me.Status_PictureBox.Location = New System.Drawing.Point(7, 18)
+        Me.Status_PictureBox.Location = New System.Drawing.Point(14, 18)
         Me.Status_PictureBox.Name = "Status_PictureBox"
-        Me.Status_PictureBox.Size = New System.Drawing.Size(73, 58)
+        Me.Status_PictureBox.Size = New System.Drawing.Size(75, 75)
         Me.Status_PictureBox.TabIndex = 0
         Me.Status_PictureBox.TabStop = False
         '
@@ -1329,8 +1366,8 @@ Partial Class AddEntry
         Me.Controls.Add(Me.CommentsGroupBox)
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.AddPicturesGroupBox)
-        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Controls.Add(Me.ReportedDataGroupBox)
+        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)
@@ -1462,6 +1499,8 @@ Partial Class AddEntry
     Friend WithEvents Status_Label As Label
     Friend WithEvents AddMold_Button As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents AddMold_ToolTip As ToolTip
     Friend WithEvents Button2 As Button
+    Friend WithEvents CancelDefect_Button As Button
+    Public WithEvents FilterView_Label As Label
+    Friend WithEvents Filter_ComboBox As ComboBox
 End Class
