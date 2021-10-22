@@ -31,7 +31,7 @@ Public Class Export_Data
         Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim sql As String = "SELECT `workorder_id`, DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
-                                                    `workorder_moldbrand`, `workorder_moldprefix`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
+                                                    `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
                                                     `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
                                                     INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
@@ -40,7 +40,8 @@ Public Class Export_Data
                                                     AND `workorder_workstation` IN ('" & SList & "') 
                                                     AND `workorder_date` >= CAST('" & From & "' AS DATE) 
                                                     AND `workorder_date` <= CAST('" & Till & "' AS DATE) 
-                                                    AND `workorder_rework` != 'RW08'"
+                                                    AND `workorder_rework` != 'RW08'
+                                                    ORDER BY `workorder_date` desc, `workorder_time` desc"
         Using RJcommand As New MySqlCommand(sql, connection)
             Dim RJadapter As New MySqlDataAdapter(RJcommand)
             Dim RJtable As New DataTable()
@@ -58,7 +59,7 @@ Public Class Export_Data
                 .Columns(5).HeaderCell.Value = "Workstation Name"
                 .Columns(6).HeaderCell.Value = "Work Order"
                 .Columns(7).HeaderCell.Value = "Mold Brand"
-                .Columns(8).HeaderCell.Value = "Mold Prefix"
+                .Columns(8).HeaderCell.Value = "Product Line"
                 .Columns(9).HeaderCell.Value = "Mold Model"
                 .Columns(10).HeaderCell.Value = "Mold Serial"
                 .Columns(11).HeaderCell.Value = "Paint Code"
