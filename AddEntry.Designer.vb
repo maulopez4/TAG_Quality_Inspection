@@ -37,7 +37,7 @@ Partial Class AddEntry
         Me.PaintcodeDescription_ComboBox = New System.Windows.Forms.ComboBox()
         Me.PaintCodeComboBox = New System.Windows.Forms.ComboBox()
         Me.MoldBrandComboBox = New System.Windows.Forms.ComboBox()
-        Me.MoldPrefixComboBox = New System.Windows.Forms.ComboBox()
+        Me.ProductLineComboBox = New System.Windows.Forms.ComboBox()
         Me.MoldModelComboBox = New System.Windows.Forms.ComboBox()
         Me.WorkStationComboBox = New System.Windows.Forms.ComboBox()
         Me.PaintcodeDescription_Label = New System.Windows.Forms.Label()
@@ -165,7 +165,7 @@ Partial Class AddEntry
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintcodeDescription_ComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintCodeComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldBrandComboBox)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldPrefixComboBox)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.ProductLineComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldModelComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkStationComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintcodeDescription_Label)
@@ -194,7 +194,7 @@ Partial Class AddEntry
         Me.Button1.Enabled = False
         Me.Button1.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.GraphicsUnit.Point)
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(662, 10)
+        Me.Button1.Location = New System.Drawing.Point(662, 12)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(25, 23)
         Me.Button1.TabIndex = 21
@@ -324,16 +324,16 @@ Partial Class AddEntry
         Me.MoldBrandComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldBrandComboBox.TabIndex = 6
         '
-        'MoldPrefixComboBox
+        'ProductLineComboBox
         '
-        Me.MoldPrefixComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.MoldPrefixComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.MoldPrefixComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.MoldPrefixComboBox.FormattingEnabled = True
-        Me.MoldPrefixComboBox.Location = New System.Drawing.Point(257, 95)
-        Me.MoldPrefixComboBox.Name = "MoldPrefixComboBox"
-        Me.MoldPrefixComboBox.Size = New System.Drawing.Size(125, 23)
-        Me.MoldPrefixComboBox.TabIndex = 7
+        Me.ProductLineComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.ProductLineComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.ProductLineComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ProductLineComboBox.FormattingEnabled = True
+        Me.ProductLineComboBox.Location = New System.Drawing.Point(257, 95)
+        Me.ProductLineComboBox.Name = "ProductLineComboBox"
+        Me.ProductLineComboBox.Size = New System.Drawing.Size(125, 23)
+        Me.ProductLineComboBox.TabIndex = 7
         '
         'MoldModelComboBox
         '
@@ -378,18 +378,18 @@ Partial Class AddEntry
         Me.ModelBrandLabel.AutoSize = True
         Me.ModelBrandLabel.Location = New System.Drawing.Point(151, 77)
         Me.ModelBrandLabel.Name = "ModelBrandLabel"
-        Me.ModelBrandLabel.Size = New System.Drawing.Size(72, 15)
+        Me.ModelBrandLabel.Size = New System.Drawing.Size(41, 15)
         Me.ModelBrandLabel.TabIndex = 2
-        Me.ModelBrandLabel.Text = "Mold Brand:"
+        Me.ModelBrandLabel.Text = "Brand:"
         '
         'Mold_Prefix
         '
         Me.Mold_Prefix.AutoSize = True
         Me.Mold_Prefix.Location = New System.Drawing.Point(257, 77)
         Me.Mold_Prefix.Name = "Mold_Prefix"
-        Me.Mold_Prefix.Size = New System.Drawing.Size(71, 15)
+        Me.Mold_Prefix.Size = New System.Drawing.Size(77, 15)
         Me.Mold_Prefix.TabIndex = 2
-        Me.Mold_Prefix.Text = "&Mold Prefix:"
+        Me.Mold_Prefix.Text = "&Product Line:"
         '
         'MoldSerialLabel
         '
@@ -1483,7 +1483,7 @@ Partial Class AddEntry
     Friend WithEvents EditSelected_Button As Button
     Friend WithEvents CancelEdit_Button As Button
     Friend WithEvents Actions_GroupBox As GroupBox
-    Friend WithEvents MoldPrefixComboBox As ComboBox
+    Friend WithEvents ProductLineComboBox As ComboBox
     Friend WithEvents Mold_Prefix As Label
     Friend WithEvents ReportDefect_Button As Button
     Friend WithEvents Approved_Button As Button

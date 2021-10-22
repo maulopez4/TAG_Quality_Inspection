@@ -77,7 +77,7 @@ Public Class AddEntry
         WorkStationComboBox.Enabled = True
         WorkOrderTextBox.Enabled = False
         MoldBrandComboBox.Enabled = False
-        MoldPrefixComboBox.Enabled = False
+        ProductLineComboBox.Enabled = False
         MoldModelComboBox.Enabled = False
         MoldSerialComboBox.Enabled = False
         PaintCodeComboBox.Enabled = False
@@ -330,19 +330,19 @@ Public Class AddEntry
                 MoldModelComboBox.DisplayMember = "models_mold"
             End Using
         End With
-        With MoldPrefixComboBox
+        With ProductLineComboBox
             Using Pcommand As New MySqlCommand("Select DISTINCT `brands_prefix` FROM `brands` WHERE `brands_name` = @models_brand  ORDER BY `brands_prefix` asc", connection)
                 Pcommand.Parameters.Add("@models_brand", MySqlDbType.String).Value = models_brand
                 Dim Padapter As New MySqlDataAdapter(Pcommand)
                 Dim Ptable As New DataTable()
                 Padapter.Fill(Ptable)
-                MoldPrefixComboBox.DataSource = Ptable
-                MoldPrefixComboBox.ValueMember = "brands_prefix"
-                MoldPrefixComboBox.DisplayMember = "brands_prefix"
+                ProductLineComboBox.DataSource = Ptable
+                ProductLineComboBox.ValueMember = "brands_prefix"
+                ProductLineComboBox.DisplayMember = "brands_prefix"
             End Using
         End With
     End Sub
-    Private Sub ModelComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldModelComboBox.SelectedIndexChanged, MoldPrefixComboBox.SelectedIndexChanged
+    Private Sub ModelComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldModelComboBox.SelectedIndexChanged, ProductLineComboBox.SelectedIndexChanged
         Dim models_molde As String
         Dim toString As String = MoldModelComboBox.Text.ToString
         models_molde = toString
@@ -379,7 +379,7 @@ Public Class AddEntry
             WorkStationComboBox.SelectedValue = ReportedDataGridView.Item("workorder_workstation", ReportedDataGridView.SelectedRows(0).Index).Value
             WorkOrderTextBox.Text = ReportedDataGridView.Item("workorder_number", ReportedDataGridView.SelectedRows(0).Index).Value
             MoldBrandComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldbrand", ReportedDataGridView.SelectedRows(0).Index).Value
-            MoldPrefixComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldprefix", ReportedDataGridView.SelectedRows(0).Index).Value
+            ProductLineComboBox.SelectedValue = ReportedDataGridView.Item("workorder_productline", ReportedDataGridView.SelectedRows(0).Index).Value
             MoldModelComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldmodel", ReportedDataGridView.SelectedRows(0).Index).Value
             MoldSerialComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldserial", ReportedDataGridView.SelectedRows(0).Index).Value
             PaintCodeComboBox.SelectedValue = ReportedDataGridView.Item("workorder_paintcode", ReportedDataGridView.SelectedRows(0).Index).Value
@@ -415,7 +415,7 @@ Public Class AddEntry
         WorkStationComboBox.Enabled = False
         WorkOrderTextBox.Enabled = True
         MoldBrandComboBox.Enabled = True
-        MoldPrefixComboBox.Enabled = True
+        ProductLineComboBox.Enabled = True
         MoldModelComboBox.Enabled = True
         MoldSerialComboBox.Enabled = True
         PaintCodeComboBox.Enabled = True
@@ -425,7 +425,7 @@ Public Class AddEntry
         DefectLocationComboBox.Enabled = True
         WorkOrderTextBox.Clear()
         MoldBrandComboBox.SelectedItem = Nothing
-        MoldPrefixComboBox.SelectedItem = Nothing
+        ProductLineComboBox.SelectedItem = Nothing
         MoldModelComboBox.SelectedItem = Nothing
         MoldSerialComboBox.SelectedItem = Nothing
         PaintCodeComboBox.SelectedItem = Nothing
@@ -448,7 +448,7 @@ Public Class AddEntry
         WorkStationComboBox.Enabled = False
         WorkOrderTextBox.Enabled = False
         MoldBrandComboBox.Enabled = True
-        MoldPrefixComboBox.Enabled = True
+        ProductLineComboBox.Enabled = True
         MoldModelComboBox.Enabled = True
         MoldSerialComboBox.Enabled = True
         PaintCodeComboBox.Enabled = True
@@ -628,15 +628,15 @@ Public Class AddEntry
     Private Sub Insert_Data()
         If WorkOrderTextBox.TextLength > 0 Then
             Get_Images()
-            Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workorder_number`, `workorder_moldbrand`, `workorder_moldprefix`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_additionalerror`, `workorder_status`, `workorder_image1`, `workorder_image2`, `workorder_image3`, `workorder_comments`)
-            VALUES (@workorder_date, @workorder_time, @workorder_reportedby, @workorder_workstation, @workorder_number,  @workorder_moldbrand, @workorder_moldprefix, @workorder_moldmodel, @workorder_moldserial, @workorder_paintcode, @workorder_rework, @workorder_defect_origin, @workorder_defect, @workorder_defect_location, @workorder_additionalerror, @workorder_status, @workorder_image1, @workorder_image2, @workorder_image3, @workorder_comments)", connection)
+            Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workorder_number`, `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_additionalerror`, `workorder_status`, `workorder_image1`, `workorder_image2`, `workorder_image3`, `workorder_comments`)
+            VALUES (@workorder_date, @workorder_time, @workorder_reportedby, @workorder_workstation, @workorder_number,  @workorder_moldbrand, @workorder_productline, @workorder_moldmodel, @workorder_moldserial, @workorder_paintcode, @workorder_rework, @workorder_defect_origin, @workorder_defect, @workorder_defect_location, @workorder_additionalerror, @workorder_status, @workorder_image1, @workorder_image2, @workorder_image3, @workorder_comments)", connection)
             command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
             command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
             command.Parameters.Add("@workorder_reportedby", MySqlDbType.VarChar).Value = LoginForm.login_user
             command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
             command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
             command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = MoldBrandComboBox.SelectedValue
-            command.Parameters.Add("@workorder_moldprefix", MySqlDbType.VarChar).Value = MoldPrefixComboBox.SelectedValue
+            command.Parameters.Add("@workorder_productline", MySqlDbType.VarChar).Value = ProductLineComboBox.SelectedValue
             command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = MoldModelComboBox.SelectedValue
             If MoldSerialComboBox.SelectedValue Is Nothing Then
                 command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "NONE"
@@ -669,7 +669,7 @@ Public Class AddEntry
                 End If
             ElseIf additional_defects = True Then
                 If command.ExecuteNonQuery() = 1 Then
-                    Dim Entrylist As New List(Of String) From {LoginForm.login_user, WorkStationComboBox.SelectedValue, WorkOrderTextBox.Text, MoldBrandComboBox.SelectedValue, MoldPrefixComboBox.SelectedValue, MoldModelComboBox.SelectedValue, MoldSerialComboBox.SelectedValue, PaintCodeComboBox.SelectedValue}
+                    Dim Entrylist As New List(Of String) From {LoginForm.login_user, WorkStationComboBox.SelectedValue, WorkOrderTextBox.Text, MoldBrandComboBox.SelectedValue, ProductLineComboBox.SelectedValue, MoldModelComboBox.SelectedValue, MoldSerialComboBox.SelectedValue, PaintCodeComboBox.SelectedValue}
                     MessageBox.Show("Data Entered, Please enter next defect Data")
                     ReportedDataGroupBox.Visible = False
                     DefectDataGroupBox.Visible = True
@@ -683,7 +683,7 @@ Public Class AddEntry
                     WorkStationComboBox.SelectedValue = (Entrylist(1)).ToString
                     WorkOrderTextBox.Text = (Entrylist(2)).ToString
                     MoldBrandComboBox.SelectedValue = (Entrylist(3)).ToString
-                    MoldPrefixComboBox.SelectedValue = (Entrylist(4)).ToString
+                    ProductLineComboBox.SelectedValue = (Entrylist(4)).ToString
                     MoldModelComboBox.SelectedValue = (Entrylist(5)).ToString
                     MoldSerialComboBox.SelectedValue = (Entrylist(6)).ToString
                     PaintCodeComboBox.SelectedValue = (Entrylist(7)).ToString
@@ -710,7 +710,7 @@ Public Class AddEntry
         If WorkOrderTextBox.TextLength > 0 Then
             Get_Images()
             Dim update_command As New MySqlCommand("UPDATE `workorder` SET `workorder_reportedby` = @workorder_reportedby, `workorder_workstation` = @workorder_workstation, `workorder_number` = @workorder_number, `workorder_moldbrand` = @workorder_moldbrand,
-					                                                `workorder_moldprefix` = @workorder_moldprefix, `workorder_moldmodel` = @workorder_moldmodel, `workorder_moldserial` = @workorder_moldserial,
+					                                                `workorder_productline` = @workorder_productline, `workorder_moldmodel` = @workorder_moldmodel, `workorder_moldserial` = @workorder_moldserial,
 					                                                `workorder_paintcode` = @workorder_paintcode, `workorder_rework`= @workorder_rework, `workorder_defect_origin` = @workorder_defect_origin,
 					                                                `workorder_defect` = @workorder_defect, `workorder_defect_location` = @workorder_defect_location, `workorder_status` = @workorder_status,
                                                                     `workorder_image1` = @workorder_image1, `workorder_image2` = @workorder_image2, `workorder_image3` = @workorder_image3,
@@ -722,7 +722,7 @@ Public Class AddEntry
             update_command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
             update_command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
             update_command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = MoldBrandComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_moldprefix", MySqlDbType.VarChar).Value = MoldPrefixComboBox.SelectedValue
+            update_command.Parameters.Add("@workorder_productline", MySqlDbType.VarChar).Value = ProductLineComboBox.SelectedValue
             update_command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = MoldModelComboBox.SelectedValue
             If MoldSerialComboBox.SelectedValue Is Nothing Then
                 update_command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "NONE"
@@ -768,7 +768,7 @@ Public Class AddEntry
     End Sub
     Private Function Create_DataGridView() As DataTable
         Dim RJcommand As New MySqlCommand("SELECT `workorder_id`, `workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
-                                                    `workorder_moldbrand`, `workorder_moldprefix`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
+                                                    `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
                                                     `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
                                                     INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
@@ -785,7 +785,7 @@ Public Class AddEntry
     End Function
     Private Function Filter_DataGridView() As DataTable
         Dim RJcommand As New MySqlCommand("SELECT `workorder_id`, `workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
-                                                    `workorder_moldbrand`, `workorder_moldprefix`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
+                                                    `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
                                                     `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
                                                     INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
@@ -804,7 +804,7 @@ Public Class AddEntry
     End Function
     'Private Function FilterView_DataGridView() As DataTable
     '    Dim RJcommand As New MySqlCommand("SELECT `workorder_id`, `workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
-    '                                                `workorder_moldbrand`, `workorder_moldprefix`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
+    '                                                `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
     '                                                `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
     '                                                `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
     '                                                INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
@@ -833,10 +833,10 @@ Public Class AddEntry
             .Columns(4).Visible = False
             .Columns(5).HeaderCell.Value = "Workstation Name"
             .Columns(6).HeaderCell.Value = "Work Order"
-            .Columns(7).HeaderCell.Value = "Mold Brand"
-            .Columns(8).HeaderCell.Value = "Mold Prefix"
-            .Columns(9).HeaderCell.Value = "Mold Model"
-            .Columns(10).HeaderCell.Value = "Mold Serial"
+            .Columns(7).HeaderCell.Value = "Brand"
+            .Columns(8).HeaderCell.Value = "Product Line"
+            .Columns(9).HeaderCell.Value = "Model"
+            .Columns(10).HeaderCell.Value = "Serial"
             .Columns(11).HeaderCell.Value = "Paint Code"
             .Columns(12).HeaderCell.Value = "Defect Origin Code"
             .Columns(12).Visible = False
