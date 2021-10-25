@@ -573,46 +573,43 @@ Public Class AddEntry
         ReportedDataGridView_Load()
     End Sub
     Private Sub Approved_Button_Click(sender As Object, e As EventArgs) Handles Approved_Button.Click
-        If WorkOrderTextBox.TextLength > 0 Then
-            Dim rslt As New DialogResult
-            rslt = MessageBox.Show("SET WORKORDER " & WorkOrderTextBox.Text & " AS APPROVED?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
-            If rslt = Windows.Forms.DialogResult.Yes Then
-                workorder_status = "APPROVED"
-                Insert_Data()
-            End If
-        Else
-            MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
+        'If WorkOrderTextBox.TextLength > 0 Then
+        Dim rslt As DialogResult = MessageBox.Show("SET WORKORDER " & WorkOrderTextBox.Text & " AS APPROVED?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
+        If rslt = Windows.Forms.DialogResult.Yes Then
+            workorder_status = "APPROVED"
+            Insert_Data()
         End If
+        'Else
+        '    MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
+        'End If
     End Sub
     Private Sub ReportDefect_Button_Click(sender As Object, e As EventArgs) Handles ReportDefect_Button.Click
-        If WorkOrderTextBox.TextLength > 0 Then
-            DefectDataGroupBox.Visible = True
+        'If WorkOrderTextBox.TextLength > 0 Then
+        DefectDataGroupBox.Visible = True
             AddPicturesGroupBox.Visible = True
             ReportedDataGroupBox.Visible = False
-        Else
-            MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
-        End If
+        'Else
+        '    MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
+        'End If
     End Sub
     Private Sub Repaired_Button_Click(sender As Object, e As EventArgs) Handles Repaired_Button.Click
-        If WorkOrderTextBox.TextLength > 0 Then
-            Dim repair_rslt As New DialogResult
-            repair_rslt = MessageBox.Show("SET WORKORDER " & WorkOrderTextBox.Text & " AS REPAIRED?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
-            If repair_rslt = Windows.Forms.DialogResult.Yes Then
+        'If WorkOrderTextBox.TextLength > 0 Then
+        Dim repair_rslt As DialogResult = MessageBox.Show("SET WORKORDER " & WorkOrderTextBox.Text & " AS REPAIRED?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
+        If repair_rslt = Windows.Forms.DialogResult.Yes Then
                 workorder_status = "REPAIRED"
                 Update_Data()
             ElseIf repair_rslt = Windows.Forms.DialogResult.No Then
                 workorder_status = "REPORTED"
                 Update_Data()
             End If
-        Else
-            MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
-        End If
+        'Else
+        '    MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
+        'End If
     End Sub
     Private Sub SubmitDefect_Button_Click(sender As Object, e As EventArgs) Handles SubmitDefect_Button.Click
-        If WorkOrderTextBox.TextLength > 0 Then
-            Dim additional_rslt As New DialogResult
-            additional_rslt = MessageBox.Show("DEFECT ADDED TO WORKORDER " & WorkOrderTextBox.Text & vbCrLf & "ADD AN ADDITIONAL DEFECT TO WORKORDER " & WorkOrderTextBox.Text & "?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
-            If additional_rslt = Windows.Forms.DialogResult.Yes Then
+        'If WorkOrderTextBox.TextLength > 0 Then
+        Dim additional_rslt As DialogResult = MessageBox.Show("DEFECT ADDED TO WORKORDER " & WorkOrderTextBox.Text & vbCrLf & "ADD AN ADDITIONAL DEFECT TO WORKORDER " & WorkOrderTextBox.Text & "?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
+        If additional_rslt = Windows.Forms.DialogResult.Yes Then
                 workorder_status = "REPORTED"
                 additional_defects = True
                 Insert_Data()
@@ -621,11 +618,12 @@ Public Class AddEntry
                 additional_defects = False
                 Insert_Data()
             End If
-        Else
-            MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
-        End If
+        'Else
+        '    MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
+        'End If
     End Sub
     Private Sub Insert_Data()
+        connection.Close()
         If WorkOrderTextBox.TextLength > 0 Then
             Get_Images()
             Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workorder_number`, `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_additionalerror`, `workorder_status`, `workorder_image1`, `workorder_image2`, `workorder_image3`, `workorder_comments`)
@@ -707,6 +705,7 @@ Public Class AddEntry
         connection.Close()
     End Sub
     Private Sub Update_Data()
+        connection.Close()
         If WorkOrderTextBox.TextLength > 0 Then
             Get_Images()
             Dim update_command As New MySqlCommand("UPDATE `workorder` SET `workorder_reportedby` = @workorder_reportedby, `workorder_workstation` = @workorder_workstation, `workorder_number` = @workorder_number, `workorder_moldbrand` = @workorder_moldbrand,

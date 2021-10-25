@@ -337,7 +337,7 @@ Partial Class AddEntry
         '
         'MoldModelComboBox
         '
-        Me.MoldModelComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.MoldModelComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.MoldModelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldModelComboBox.FormattingEnabled = True
@@ -1366,8 +1366,8 @@ Partial Class AddEntry
         Me.Controls.Add(Me.CommentsGroupBox)
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.AddPicturesGroupBox)
-        Me.Controls.Add(Me.ReportedDataGroupBox)
         Me.Controls.Add(Me.DefectDataGroupBox)
+        Me.Controls.Add(Me.ReportedDataGroupBox)
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)

@@ -81,7 +81,7 @@ Public Class Export_Data
     Private Sub Export_Button_Click(sender As Object, e As EventArgs) Handles Export_Button.Click
         DataGridToCSV(ReportedDataGridView)
     End Sub
-    Private Sub DataGridToCSV(ByRef dt As DataGridView)
+    Private Sub DataGridToCSV(ByRef ReportedDataGridView As DataGridView)
         Dim NL As New List(Of String)
         For Each item As Object In Selection_ListBox.CheckedItems
             Dim row As DataRowView = TryCast(item, DataRowView)
@@ -95,14 +95,16 @@ Public Class Export_Data
             If TB.RowCount < 1 Then
                 MessageBox.Show("No records found on table", "ExControl", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
-            Dim Dg As New SaveFileDialog
-            Dg.FileName = fileName
-            Dg.Filter = "CSV|*.csv"
-            Dg.Title = "Save File"
+
+            Dim Dg As New SaveFileDialog With {
+                .FileName = fileName,
+                .Filter = "CSV|*.csv",
+                .Title = "Save File"
+            }
             Dg.ShowDialog()
             If Dg.FileName.Length > 3 Then
                 ' Write each directory name to a file.
-                Using fi As StreamWriter = New StreamWriter(Dg.FileName)
+                Using fi As New StreamWriter(Dg.FileName)
                     Dim c, f As Integer
                     Dim l As String = ""
                     For c = 0 To TB.ColumnCount - 1
