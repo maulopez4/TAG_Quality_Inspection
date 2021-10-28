@@ -411,7 +411,8 @@ Public Class AddEntry
     Private Sub NewEntry_Button_Click(sender As Object, e As EventArgs) Handles NewEntry_Button.Click
         ReportedDataGroupBox.Visible = False
         DefectDataGroupBox.Visible = False
-        AddPicturesGroupBox.Visible = True
+        AddPicturesGroupBox.Visible = False
+
         WorkStationComboBox.Enabled = False
         WorkOrderTextBox.Enabled = True
         MoldBrandComboBox.Enabled = True
@@ -419,32 +420,40 @@ Public Class AddEntry
         MoldModelComboBox.Enabled = True
         MoldSerialComboBox.Enabled = True
         PaintCodeComboBox.Enabled = True
-        ReworkComboBox.Enabled = True
-        DefectOriginComboBox.Enabled = True
-        DefectComboBox.Enabled = True
-        DefectLocationComboBox.Enabled = True
+
+        DefectOriginComboBox.Enabled = False
+        DefectComboBox.Enabled = False
+        DefectLocationComboBox.Enabled = False
+        ReworkComboBox.Enabled = False
+
         WorkOrderTextBox.Clear()
+
         MoldBrandComboBox.SelectedItem = Nothing
         ProductLineComboBox.SelectedItem = Nothing
         MoldModelComboBox.SelectedItem = Nothing
         MoldSerialComboBox.SelectedItem = Nothing
         PaintCodeComboBox.SelectedItem = Nothing
         PaintcodeDescription_ComboBox.SelectedItem = Nothing
-        ReworkComboBox.ResetText()
+
         DefectOriginComboBox.ResetText()
         DefectComboBox.ResetText()
         DefectLocationComboBox.ResetText()
+        ReworkComboBox.ResetText()
+
         Status_PictureBox.Image = My.Resources._NEW
         Status_Label.Text = "NEW ENTRY"
         Status_PictureBox.SizeMode = PictureBoxSizeMode.Zoom
+
         Approved_Button.Enabled = True
         ReportDefect_Button.Enabled = True
     End Sub
     Private Sub EditSelected_Button_Click(sender As Object, e As EventArgs) Handles EditSelected_Button.Click, ReportedDataGridView.CellDoubleClick
         WorkOrderId_TextBox.Text = ReportedDataGridView.Item("workorder_id", ReportedDataGridView.SelectedRows(0).Index).Value
+
         ReportedDataGroupBox.Visible = False
         DefectDataGroupBox.Visible = True
         AddPicturesGroupBox.Visible = True
+
         WorkStationComboBox.Enabled = False
         WorkOrderTextBox.Enabled = False
         MoldBrandComboBox.Enabled = True
@@ -452,14 +461,17 @@ Public Class AddEntry
         MoldModelComboBox.Enabled = True
         MoldSerialComboBox.Enabled = True
         PaintCodeComboBox.Enabled = True
-        ReworkComboBox.Enabled = True
+
         DefectOriginComboBox.Enabled = True
         DefectComboBox.Enabled = True
         DefectLocationComboBox.Enabled = True
+        ReworkComboBox.Enabled = True
+
         Dim Status_Name As String = ReportedDataGridView.Item("workorder_status", ReportedDataGridView.SelectedRows(0).Index).Value.ToString
         Status_Label.Text = Status_Name
         Status_PictureBox.Image = My.Resources.ResourceManager.GetObject(Status_Name)
         Status_PictureBox.SizeMode = PictureBoxSizeMode.Zoom
+
         Approved_Button.Enabled = False
         ReportDefect_Button.Enabled = False
         GetEditImages()
@@ -601,7 +613,6 @@ Public Class AddEntry
         End If
     End Sub
     Private Sub Repaired_Button_Click(sender As Object, e As EventArgs) Handles Repaired_Button.Click
-        'If WorkOrderTextBox.TextLength > 0 Then
         Dim repair_rslt As DialogResult = MessageBox.Show("SET WORKORDER " & WorkOrderTextBox.Text & " AS REPAIRED?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
         If repair_rslt = Windows.Forms.DialogResult.Yes Then
             workorder_status = "REPAIRED"
@@ -610,9 +621,6 @@ Public Class AddEntry
             workorder_status = Status_Label.Text
             Update_Data()
         End If
-        'Else
-        '    MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
-        'End If
     End Sub
     Private Sub SubmitDefect_Button_Click(sender As Object, e As EventArgs) Handles SubmitDefect_Button.Click
         Using IDcommand As New MySqlCommand("SELECT COUNT(*) `workorder_id` FROM `workorder` WHERE `workorder_id` = @workorder_id", connection)
@@ -624,6 +632,7 @@ Public Class AddEntry
                 If additional_rslt = Windows.Forms.DialogResult.Yes Then
                     workorder_status = "REPORTED"
                     additional_defects = True
+
                     Insert_Data()
                 ElseIf additional_rslt = Windows.Forms.DialogResult.No Then
                     workorder_status = "REPORTED"
@@ -814,25 +823,6 @@ Public Class AddEntry
         Dim RJ = RJadapter.Fill(RJtable)
         Return RJtable
     End Function
-    'Private Function FilterView_DataGridView() As DataTable
-    '    Dim RJcommand As New MySqlCommand("SELECT `workorder_id`, `workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
-    '                                                `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
-    '                                                `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
-    '                                                `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
-    '                                                INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
-    '                                                INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
-    '                                                INNER JOIN `rework` ON `workorder_rework` = `rework_code`
-    '                                                WHERE `workorder_workstation` = @workorder_workstation
-    '                                                AND `workorder_number` LIKE CONCAT (@Search, '%') 
-    '                                                AND `workorder_rework` != 'RW08' 
-    '                                                ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
-    '    RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-    '    RJcommand.Parameters.AddWithValue("@Filter", MySqlDbType.VarChar).Value = Filter_Name
-    '    Dim RJadapter As New MySqlDataAdapter(RJcommand)
-    '    Dim RJtable As New DataTable()
-    '    Dim RJ = RJadapter.Fill(RJtable)
-    '    Return RJtable
-    'End Function
     Private Sub DataGridViewHeaders()
         With ReportedDataGridView
             .RowHeadersVisible = True
@@ -864,19 +854,4 @@ Public Class AddEntry
             .Columns(20).HeaderCell.Value = "Comments"
         End With
     End Sub
-    'Private Sub Filter_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Filter_ComboBox.SelectedIndexChanged
-    '    Dim Selected_Text As String = Filter_ComboBox.SelectedText.ToString
-    '    Dim Filter_Name As String
-    '    Select Case Selected_Text
-    '        Case All
-    '            Filter_Name = "View All"
-    '        Case Reported
-    '            Filter_Name = "REPORTED"
-    '        Case Repaired
-    '            Filter_Name = "REPAIRED"
-    '        Case Approved
-    '            Filter_Name = "APPROVED"
-    '        Case Else
-    '    End Select
-    'End Sub
 End Class
