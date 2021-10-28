@@ -35,6 +35,7 @@ Partial Class Export_Data
         Me.Export_Button = New System.Windows.Forms.Button()
         Me.GetData_Button = New System.Windows.Forms.Button()
         Me.Date_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.FilterExport_ComboBox = New System.Windows.Forms.ComboBox()
         Me.RejectedDataGroupBox.SuspendLayout()
         CType(Me.ReportedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -123,6 +124,7 @@ Partial Class Export_Data
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Selection_ListBox)
+        Me.GroupBox2.Controls.Add(Me.FilterExport_ComboBox)
         Me.GroupBox2.Controls.Add(Me.Close_Button)
         Me.GroupBox2.Controls.Add(Me.Export_Button)
         Me.GroupBox2.Controls.Add(Me.GetData_Button)
@@ -181,6 +183,16 @@ Partial Class Export_Data
         Me.Date_GroupBox.TabStop = False
         Me.Date_GroupBox.Text = "Select Dates:"
         '
+        'FilterExport_ComboBox
+        '
+        Me.FilterExport_ComboBox.DisplayMember = "0"
+        Me.FilterExport_ComboBox.FormattingEnabled = True
+        Me.FilterExport_ComboBox.Items.AddRange(New Object() {"Show All", "Reported Only", "Repaired Only", "Accepted Only"})
+        Me.FilterExport_ComboBox.Location = New System.Drawing.Point(227, 22)
+        Me.FilterExport_ComboBox.Name = "FilterExport_ComboBox"
+        Me.FilterExport_ComboBox.Size = New System.Drawing.Size(143, 23)
+        Me.FilterExport_ComboBox.TabIndex = 29
+        '
         'Export_Data
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -212,4 +224,5 @@ Partial Class Export_Data
     Friend WithEvents Close_Button As Button
     Friend WithEvents Export_Button As Button
     Friend WithEvents Selection_ListBox As CheckedListBox
+    Friend WithEvents FilterExport_ComboBox As ComboBox
 End Class

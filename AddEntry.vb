@@ -702,7 +702,7 @@ Public Class AddEntry
 
             If additional_defects = False Then
                 If command.ExecuteNonQuery() = 1 Then
-                    MessageBox.Show("Data Entered")
+                    'MessageBox.Show("Data Entered")
                     Init_Form()
                 Else
                     MessageBox.Show("ERROR")
@@ -710,7 +710,7 @@ Public Class AddEntry
             ElseIf additional_defects = True Then
                 If command.ExecuteNonQuery() = 1 Then
                     Dim Entrylist As New List(Of String) From {LoginForm.login_user, WorkStationComboBox.SelectedValue, WorkOrderTextBox.Text, MoldBrandComboBox.SelectedValue, ProductLineComboBox.SelectedValue, MoldModelComboBox.SelectedValue, MoldSerialComboBox.SelectedValue, PaintCodeComboBox.SelectedValue}
-                    MessageBox.Show("Data Entered, Please enter next Data")
+                    MessageBox.Show("Please enter additional Data")
                     ReportedDataGroupBox.Visible = False
                     DefectDataGroupBox.Visible = True
                     AddPicturesGroupBox.Visible = True
@@ -785,7 +785,7 @@ Public Class AddEntry
             connection.Open()
 
             If update_command.ExecuteNonQuery() = 1 Then
-                MessageBox.Show("Data Entered")
+                'MessageBox.Show("Data Entered")
                 connection.Close()
                 Init_Form()
             Else
@@ -793,14 +793,18 @@ Public Class AddEntry
             End If
         End If
     End Sub
-    Private Sub SearchWO_Button_Click(sender As Object, e As EventArgs) Handles SearchWO_Button.Click, ClearSearchWO_Button.Click
-        ReportedDataGridView.DataSource = Filter_DataGridView()
-        DataGridViewHeaders()
-    End Sub
     Private Sub ClearSearchWO_Button_Click(sender As Object, e As EventArgs) Handles ClearSearchWO_Button.Click
         SearchWO_TextBox.Clear()
         ReportedDataGridView.DataSource = Create_DataGridView()
         DataGridViewHeaders()
+    End Sub
+    Private Sub SearchWO_Button_Click(sender As Object, e As EventArgs) Handles SearchWO_Button.Click, ClearSearchWO_Button.Click
+        ReportedDataGridView.DataSource = Search_DataGridView()
+        DataGridViewHeaders()
+    End Sub
+    Private Sub FilterView_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterView_ComboBox.SelectedIndexChanged
+        Filter_Show()
+        ReportedDataGridView.DataSource = Filter_DataGridView()
     End Sub
     Private Function Create_DataGridView() As DataTable
         Dim RJcommand As New MySqlCommand("SELECT 
@@ -840,7 +844,7 @@ ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
         Dim RJ = RJadapter.Fill(RJtable)
         Return RJtable
     End Function
-    Private Function Filter_DataGridView() As DataTable
+    Private Function Search_DataGridView() As DataTable
         Dim RJcommand As New MySqlCommand("SELECT 
 `workorder_id`, 
 `workorder_date`, 
@@ -870,45 +874,73 @@ INNER JOIN `origin` ON `workorder_defect_origin` = `origin_code`
 INNER JOIN `rework` ON `workorder_rework` = `rework_code`
 WHERE `workorder_workstation` = @workorder_workstation
 AND `workorder_rework` != 'RW08'
-AND `workorder_number` LIKE CONCAT (@Search, '%') 
+AND `workorder_number` LIKE CONCAT (@Search, '%')
+/* AND `workorder_status` LIKE CONCAT (@Filter, '%') */
 ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
         RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
         RJcommand.Parameters.AddWithValue("@Search", SearchWO_TextBox.Text.Trim())
+        ' RJcommand.Parameters.AddWithValue("@Filter", Filter_Show())
         Dim RJadapter As New MySqlDataAdapter(RJcommand)
         Dim RJtable As New DataTable()
         Dim RJ = RJadapter.Fill(RJtable)
         Return RJtable
     End Function
-    'Private Sub DataGridViewHeaders()
-    '    With ReportedDataGridView
-    '        .RowHeadersVisible = True
-    '        .Columns(0).HeaderCell.Value = "ID"
-    '        .Columns(0).Visible = False
-    '        .Columns(1).HeaderCell.Value = "Date"
-    '        .Columns(2).HeaderCell.Value = "Time"
-    '        .Columns(3).HeaderCell.Value = "Reported By"
-    '        .Columns(4).HeaderCell.Value = "Report Origin"
-    '        .Columns(5).HeaderCell.Value = "Work Order"
-    '        .Columns(6).HeaderCell.Value = "Brand"
-    '        .Columns(7).HeaderCell.Value = "Product Line"
-    '        .Columns(8).HeaderCell.Value = "Model"
-    '        .Columns(9).HeaderCell.Value = "Serial"
-    '        .Columns(10).HeaderCell.Value = "Paint Code"
-    '        .Columns(11).HeaderCell.Value = "Defect Origin Code"
-    '        .Columns(11).Visible = False
-    '        .Columns(12).HeaderCell.Value = "Defect Origin"
-    '        .Columns(13).HeaderCell.Value = "Defect Code"
-    '        .Columns(13).Visible = False
-    '        .Columns(14).HeaderCell.Value = "Defect Description"
-    '        .Columns(15).HeaderCell.Value = "Defect Location"
-    '        .Columns(16).HeaderCell.Value = "Rework Code"
-    '        .Columns(16).Visible = False
-    '        .Columns(17).HeaderCell.Value = "Rework Description"
-    '        .Columns(18).HeaderCell.Value = "Work Order Status"
-    '        .Columns(19).HeaderCell.Value = "Comments"
-    '    End With
-    'End Sub
-
+    Private Function Filter_DataGridView() As DataTable
+        Dim RJcommand As New MySqlCommand("SELECT 
+`workorder_id`, 
+`workorder_date`, 
+`workorder_time`, 
+`workorder_reportedby`, 
+`workorder_workstation`, 
+`workstation_description`, 
+`workorder_number`,
+`workorder_moldbrand`, 
+`workorder_productline`, 
+`workorder_moldmodel`, 
+`workorder_moldserial`, 
+`workorder_paintcode`, 
+`workorder_defect_origin`, 
+`origin_description`, 
+`workorder_defect`, 
+`defects_description`, 
+`workorder_defect_location`, 
+`workorder_rework`,
+`rework_description`, 
+`workorder_status`, 
+`workorder_comments` 
+FROM `workorder` 
+INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
+INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
+INNER JOIN `origin` ON `workorder_defect_origin` = `origin_code`
+INNER JOIN `rework` ON `workorder_rework` = `rework_code`
+WHERE `workorder_workstation` = @workorder_workstation
+AND `workorder_status` LIKE CONCAT (@Filter, '%')
+ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
+        RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
+        RJcommand.Parameters.AddWithValue("@Filter", Filter_Show())
+        Dim RJadapter As New MySqlDataAdapter(RJcommand)
+        Dim RJtable As New DataTable()
+        Dim RJ = RJadapter.Fill(RJtable)
+        Return RJtable
+    End Function
+    Public Function Filter_Show()
+        Dim case_view As String = FilterView_ComboBox.SelectedItem.ToString
+        Dim filter_view As String
+        Select Case case_view
+            Case "Approved Only"
+                filter_view = "APPROVED"
+                Return filter_view
+            Case "Repaired Only"
+                filter_view = "REPAIRED"
+                Return filter_view
+            Case "Reported Only"
+                filter_view = "REPORTED"
+                Return filter_view
+            Case Else
+                filter_view = ""
+                Return filter_view
+        End Select
+    End Function
     Private Sub DataGridViewHeaders()
         With ReportedDataGridView
             .RowHeadersVisible = True

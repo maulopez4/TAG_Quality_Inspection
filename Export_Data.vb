@@ -20,6 +20,63 @@ Public Class Export_Data
         End Using
 
     End Sub
+    'Private Sub GetData_Button_Click(sender As Object, e As EventArgs) Handles GetData_Button.Click
+    '    Dim SL As New List(Of String)
+    '    For Each item As Object In Selection_ListBox.CheckedItems
+    '        Dim row As DataRowView = TryCast(item, DataRowView)
+    '        SL.Add(row("workstation_code"))
+    '    Next
+    '    Dim SList As String = String.Join("','", SL).ToString
+    '    Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
+    '    Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
+    '    Dim sql As String = "SELECT `workorder_id`, DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
+    '                                                `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
+    '                                                `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
+    '                                                `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
+    '                                                INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
+    '                                                INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
+    '                                                INNER JOIN `rework` ON `workorder_rework` = `rework_code`
+    '                                                AND `workorder_workstation` IN ('" & SList & "') 
+    '                                                AND `workorder_date` >= CAST('" & From & "' AS DATE) 
+    '                                                AND `workorder_date` <= CAST('" & Till & "' AS DATE)
+    '                                                AND `workorder_rework` != 'RW08'
+    '                                                ORDER BY `workorder_date` desc, `workorder_time` desc"
+    '    Using RJcommand As New MySqlCommand(sql, connection)
+    '        Dim RJadapter As New MySqlDataAdapter(RJcommand)
+    '        Dim RJtable As New DataTable()
+    '        Dim RJ = RJadapter.Fill(RJtable)
+    '        ReportedDataGridView.DataSource = RJtable
+    '        With ReportedDataGridView
+    '            .RowHeadersVisible = True
+    '            .Columns(0).HeaderCell.Value = "ID"
+    '            .Columns(0).Visible = False
+    '            .Columns(1).HeaderCell.Value = "Date"
+    '            .Columns(2).HeaderCell.Value = "Time"
+    '            .Columns(3).HeaderCell.Value = "Reported By"
+    '            .Columns(4).HeaderCell.Value = "Workstation Code"
+    '            .Columns(4).Visible = False
+    '            .Columns(5).HeaderCell.Value = "Workstation Name"
+    '            .Columns(6).HeaderCell.Value = "Work Order"
+    '            .Columns(7).HeaderCell.Value = "Mold Brand"
+    '            .Columns(8).HeaderCell.Value = "Product Line"
+    '            .Columns(9).HeaderCell.Value = "Mold Model"
+    '            .Columns(10).HeaderCell.Value = "Mold Serial"
+    '            .Columns(11).HeaderCell.Value = "Paint Code"
+    '            .Columns(12).HeaderCell.Value = "Defect Origin Code"
+    '            .Columns(12).Visible = False
+    '            .Columns(13).HeaderCell.Value = "Defect Origin"
+    '            .Columns(14).HeaderCell.Value = "Defect Code"
+    '            .Columns(14).Visible = False
+    '            .Columns(15).HeaderCell.Value = "Defect Description"
+    '            .Columns(16).HeaderCell.Value = "Defect Location"
+    '            .Columns(17).HeaderCell.Value = "Rework Code"
+    '            .Columns(17).Visible = False
+    '            .Columns(18).HeaderCell.Value = "Rework Description"
+    '            .Columns(19).HeaderCell.Value = "Work Order Status"
+    '            .Columns(20).HeaderCell.Value = "Comments"
+    '        End With
+    '    End Using
+    'End Sub
     Private Sub GetData_Button_Click(sender As Object, e As EventArgs) Handles GetData_Button.Click
         Dim SL As New List(Of String)
         For Each item As Object In Selection_ListBox.CheckedItems
@@ -27,10 +84,9 @@ Public Class Export_Data
             SL.Add(row("workstation_code"))
         Next
         Dim SList As String = String.Join("','", SL).ToString
-
         Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
-        Dim sql As String = "SELECT `workorder_id`, DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
+        Using RJcommand As New MySqlCommand("SELECT `workorder_id`, DATE_FORMAT(`workorder_date`, '%m/%d/%Y'), `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
                                                     `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_defect_origin`,
                                                     `workstation_description`, `workorder_defect`, `defects_description`, `workorder_defect_location`, 
                                                     `workorder_rework`,`rework_description`, `workorder_status`, `workorder_comments` FROM `workorder` 
@@ -39,10 +95,11 @@ Public Class Export_Data
                                                     INNER JOIN `rework` ON `workorder_rework` = `rework_code`
                                                     AND `workorder_workstation` IN ('" & SList & "') 
                                                     AND `workorder_date` >= CAST('" & From & "' AS DATE) 
-                                                    AND `workorder_date` <= CAST('" & Till & "' AS DATE) 
+                                                    AND `workorder_date` <= CAST('" & Till & "' AS DATE)
+                                                    AND `workorder_status` LIKE CONCAT (@Filter, '%')
                                                     AND `workorder_rework` != 'RW08'
-                                                    ORDER BY `workorder_date` desc, `workorder_time` desc"
-        Using RJcommand As New MySqlCommand(sql, connection)
+                                                    ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
+            RJcommand.Parameters.AddWithValue("@Filter", Filter_Export())
             Dim RJadapter As New MySqlDataAdapter(RJcommand)
             Dim RJtable As New DataTable()
             Dim RJ = RJadapter.Fill(RJtable)
@@ -78,6 +135,24 @@ Public Class Export_Data
             End With
         End Using
     End Sub
+    Public Function Filter_Export()
+        Dim export_filter As String = FilterExport_ComboBox.SelectedItem.ToString
+        Dim filter_view As String
+        Select Case export_filter
+            Case "Approved Only"
+                filter_view = "APPROVED"
+                Return filter_view
+            Case "Repaired Only"
+                filter_view = "REPAIRED"
+                Return filter_view
+            Case "Reported Only"
+                filter_view = "REPORTED"
+                Return filter_view
+            Case Else
+                filter_view = ""
+                Return filter_view
+        End Select
+    End Function
     Private Sub Export_Button_Click(sender As Object, e As EventArgs) Handles Export_Button.Click
         DataGridToCSV(ReportedDataGridView)
     End Sub

@@ -123,7 +123,7 @@ Partial Class AddEntry
         Me.AddImageButton1 = New System.Windows.Forms.Button()
         Me.ReportedDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.FilterView_Label = New System.Windows.Forms.Label()
-        Me.Filter_ComboBox = New System.Windows.Forms.ComboBox()
+        Me.FilterView_ComboBox = New System.Windows.Forms.ComboBox()
         Me.ClearSearchWO_Button = New System.Windows.Forms.Button()
         Me.SearchWO_Button = New System.Windows.Forms.Button()
         Me.SearchWO_TextBox = New System.Windows.Forms.TextBox()
@@ -1226,7 +1226,7 @@ Partial Class AddEntry
         'ReportedDataGroupBox
         '
         Me.ReportedDataGroupBox.Controls.Add(Me.FilterView_Label)
-        Me.ReportedDataGroupBox.Controls.Add(Me.Filter_ComboBox)
+        Me.ReportedDataGroupBox.Controls.Add(Me.FilterView_ComboBox)
         Me.ReportedDataGroupBox.Controls.Add(Me.ClearSearchWO_Button)
         Me.ReportedDataGroupBox.Controls.Add(Me.SearchWO_Button)
         Me.ReportedDataGroupBox.Controls.Add(Me.SearchWO_TextBox)
@@ -1249,14 +1249,15 @@ Partial Class AddEntry
         Me.FilterView_Label.TabIndex = 25
         Me.FilterView_Label.Text = "Filter View:"
         '
-        'Filter_ComboBox
+        'FilterView_ComboBox
         '
-        Me.Filter_ComboBox.FormattingEnabled = True
-        Me.Filter_ComboBox.Items.AddRange(New Object() {"Show All", "Reported Only", "Repaired Only", "Approved Only"})
-        Me.Filter_ComboBox.Location = New System.Drawing.Point(988, 13)
-        Me.Filter_ComboBox.Name = "Filter_ComboBox"
-        Me.Filter_ComboBox.Size = New System.Drawing.Size(121, 23)
-        Me.Filter_ComboBox.TabIndex = 24
+        Me.FilterView_ComboBox.DisplayMember = "0"
+        Me.FilterView_ComboBox.FormattingEnabled = True
+        Me.FilterView_ComboBox.Items.AddRange(New Object() {"Show All", "Reported Only", "Repaired Only", "Accepted Only"})
+        Me.FilterView_ComboBox.Location = New System.Drawing.Point(988, 13)
+        Me.FilterView_ComboBox.Name = "FilterView_ComboBox"
+        Me.FilterView_ComboBox.Size = New System.Drawing.Size(121, 23)
+        Me.FilterView_ComboBox.TabIndex = 24
         '
         'ClearSearchWO_Button
         '
@@ -1498,5 +1499,5 @@ Partial Class AddEntry
     Friend WithEvents Button2 As Button
     Friend WithEvents CancelDefect_Button As Button
     Public WithEvents FilterView_Label As Label
-    Friend WithEvents Filter_ComboBox As ComboBox
+    Friend WithEvents FilterView_ComboBox As ComboBox
 End Class
