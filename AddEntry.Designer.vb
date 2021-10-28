@@ -23,7 +23,7 @@ Partial Class AddEntry
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -1064,10 +1064,10 @@ Partial Class AddEntry
         Me.ReportedDataGridView.AllowUserToAddRows = False
         Me.ReportedDataGridView.AllowUserToDeleteRows = False
         Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ReportedDataGridView.Location = New System.Drawing.Point(6, 43)
         Me.ReportedDataGridView.Name = "ReportedDataGridView"
@@ -1243,24 +1243,20 @@ Partial Class AddEntry
         'FilterView_Label
         '
         Me.FilterView_Label.AutoSize = True
-        Me.FilterView_Label.Enabled = False
         Me.FilterView_Label.Location = New System.Drawing.Point(918, 18)
         Me.FilterView_Label.Name = "FilterView_Label"
         Me.FilterView_Label.Size = New System.Drawing.Size(64, 15)
         Me.FilterView_Label.TabIndex = 25
         Me.FilterView_Label.Text = "Filter View:"
-        Me.FilterView_Label.Visible = False
         '
         'Filter_ComboBox
         '
-        Me.Filter_ComboBox.Enabled = False
         Me.Filter_ComboBox.FormattingEnabled = True
-        Me.Filter_ComboBox.Items.AddRange(New Object() {"All", "Reported Only", "Repaired Only", "Approved Only"})
+        Me.Filter_ComboBox.Items.AddRange(New Object() {"Show All", "Reported Only", "Repaired Only", "Approved Only"})
         Me.Filter_ComboBox.Location = New System.Drawing.Point(988, 13)
         Me.Filter_ComboBox.Name = "Filter_ComboBox"
         Me.Filter_ComboBox.Size = New System.Drawing.Size(121, 23)
         Me.Filter_ComboBox.TabIndex = 24
-        Me.Filter_ComboBox.Visible = False
         '
         'ClearSearchWO_Button
         '
@@ -1366,8 +1362,8 @@ Partial Class AddEntry
         Me.Controls.Add(Me.CommentsGroupBox)
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.AddPicturesGroupBox)
-        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Controls.Add(Me.ReportedDataGroupBox)
+        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)
