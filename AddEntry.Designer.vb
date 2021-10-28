@@ -234,7 +234,7 @@ Partial Class AddEntry
         'WorkOrderId_TextBox
         '
         Me.WorkOrderId_TextBox.Enabled = False
-        Me.WorkOrderId_TextBox.Location = New System.Drawing.Point(783, 10)
+        Me.WorkOrderId_TextBox.Location = New System.Drawing.Point(811, 12)
         Me.WorkOrderId_TextBox.Name = "WorkOrderId_TextBox"
         Me.WorkOrderId_TextBox.Size = New System.Drawing.Size(70, 23)
         Me.WorkOrderId_TextBox.TabIndex = 20
@@ -243,7 +243,7 @@ Partial Class AddEntry
         'CancelEdit_Button
         '
         Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.CancelEdit_Button.Location = New System.Drawing.Point(598, 38)
+        Me.CancelEdit_Button.Location = New System.Drawing.Point(625, 41)
         Me.CancelEdit_Button.Name = "CancelEdit_Button"
         Me.CancelEdit_Button.Size = New System.Drawing.Size(100, 25)
         Me.CancelEdit_Button.TabIndex = 19
@@ -253,7 +253,7 @@ Partial Class AddEntry
         'EditSelected_Button
         '
         Me.EditSelected_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.EditSelected_Button.Location = New System.Drawing.Point(492, 38)
+        Me.EditSelected_Button.Location = New System.Drawing.Point(519, 41)
         Me.EditSelected_Button.Name = "EditSelected_Button"
         Me.EditSelected_Button.Size = New System.Drawing.Size(100, 25)
         Me.EditSelected_Button.TabIndex = 19
@@ -263,7 +263,7 @@ Partial Class AddEntry
         'NewEntry_Button
         '
         Me.NewEntry_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.NewEntry_Button.Location = New System.Drawing.Point(386, 38)
+        Me.NewEntry_Button.Location = New System.Drawing.Point(413, 40)
         Me.NewEntry_Button.Name = "NewEntry_Button"
         Me.NewEntry_Button.Size = New System.Drawing.Size(100, 25)
         Me.NewEntry_Button.TabIndex = 19
@@ -273,7 +273,7 @@ Partial Class AddEntry
         'Export_Button
         '
         Me.Export_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.Export_Button.Location = New System.Drawing.Point(704, 38)
+        Me.Export_Button.Location = New System.Drawing.Point(731, 41)
         Me.Export_Button.Name = "Export_Button"
         Me.Export_Button.Size = New System.Drawing.Size(150, 25)
         Me.Export_Button.TabIndex = 18
