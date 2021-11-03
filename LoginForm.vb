@@ -3,8 +3,20 @@ Imports System.Configuration
 Public Class LoginForm
     Friend Shared login_role As String
     Friend Shared login_user As String
+    Friend Shared login_workstation As String
     Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Private ReadOnly connection As New MySqlConnection(connection_string)
+    Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Load Workstation DropDown Menu 
+        Using WScommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
+            Dim WSadapter As New MySqlDataAdapter(WScommand)
+            Dim WStable As New DataTable()
+            Dim WS = WSadapter.Fill(WStable)
+            LoginWorkstationComboBox.DataSource = WStable
+            LoginWorkstationComboBox.ValueMember = "workstation_code"
+            LoginWorkstationComboBox.DisplayMember = "workstation_description"
+        End Using
+    End Sub
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Login_OKButton.Click
         Dim command As New MySqlCommand("SELECT `users_username`, `users_password`, `users_role`, `users_status` FROM `users` WHERE `users_username` = @username AND `users_password` = @password", connection)
         command.Parameters.Add("@username", MySqlDbType.VarChar).Value = Login_UsernameTextBox.Text
@@ -34,5 +46,8 @@ Public Class LoginForm
         Else
             Login_PasswordTextBox.UseSystemPasswordChar = True
         End If
+    End Sub
+    Private Sub LoginWorkstationComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LoginWorkstationComboBox.SelectedIndexChanged
+        login_workstation = LoginWorkstationComboBox.SelectedValue.ToString
     End Sub
 End Class

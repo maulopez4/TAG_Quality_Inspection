@@ -15,13 +15,33 @@ Public Class AddEntry
     Dim arrImage1() As Byte
     Dim arrImage2() As Byte
     Dim arrImage3() As Byte
-    Dim workorder_status As String
-    Dim additional_defects As Boolean
+    Dim WO_User As String = LoginForm.login_user
+    Dim Current_Workstation As String
+    Dim WO_Workstation As String = LoginForm.login_workstation
+    Dim WO_Text As String
+    Dim WO_Id As String
+    Dim WO_Number As String
+    Dim WO_Brand As String
+    Dim WO_Product_Line As String
+    Dim WO_Model As String
+    Dim WO_Serial As String
+    Dim WO_Paintcode As String
+    Dim WO_Status As String
+    Dim WO_Defect_Origin As String
+    Dim WO_Defect_Origin_Text As String
+    Dim WO_Defect As String
+    Dim WO_Location As String
+    Dim WO_Rework As String
+    Dim WO_Additional_Defects As Boolean
+    Dim WO_Comments As String
     Private Sub AddEntry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        connection.Open()
+        'ReportedDataGridView_Load()
         Init_Form()
+        connection.Close()
     End Sub
     Private Sub Init_Form()
-        TimeTextBox.Text = Date.Now.ToString("HH:mm:ss")
+        'Load Workstation DropDown Menu 
         Using WScommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
             Dim WSadapter As New MySqlDataAdapter(WScommand)
             Dim WStable As New DataTable()
@@ -29,8 +49,8 @@ Public Class AddEntry
             WorkStationComboBox.DataSource = WStable
             WorkStationComboBox.ValueMember = "workstation_code"
             WorkStationComboBox.DisplayMember = "workstation_description"
-            'WorkStationComboBox.SelectedIndex = 1
         End Using
+        'Load Mold Brand DropDown Menu 
         Using MBcommand As New MySqlCommand("SELECT DISTINCT `models_brand` FROM `models`", connection)
             Dim MBadapter As New MySqlDataAdapter(MBcommand)
             Dim MBtable As New DataTable()
@@ -39,14 +59,61 @@ Public Class AddEntry
             MoldBrandComboBox.ValueMember = "models_brand"
             MoldBrandComboBox.DisplayMember = "models_brand"
         End Using
-        Using RWcommand As New MySqlCommand("SELECT `rework_code`, `rework_description` FROM `rework`", connection)
-            Dim RWadapter As New MySqlDataAdapter(RWcommand)
-            Dim RWtable As New DataTable()
-            Dim RW = RWadapter.Fill(RWtable)
-            ReworkComboBox.DataSource = RWtable
-            ReworkComboBox.ValueMember = "rework_code"
-            ReworkComboBox.DisplayMember = "rework_description"
+        'Load Product Line DropDown Menu 
+        Using PLcommand As New MySqlCommand("Select DISTINCT `brands_prefix` FROM `brands`", connection)
+            Dim PLadapter As New MySqlDataAdapter(PLcommand)
+            Dim PLtable As New DataTable()
+            PLadapter.Fill(PLtable)
+            ProductLineComboBox.DataSource = PLtable
+            ProductLineComboBox.ValueMember = "brands_prefix"
+            ProductLineComboBox.DisplayMember = "brands_prefix"
         End Using
+        'Load Model DropDown Menu 
+        Using MMcommand As New MySqlCommand("Select DISTINCT `models_mold` FROM `models`", connection)
+            Dim MMadapter As New MySqlDataAdapter(MMcommand)
+            Dim MMtable As New DataTable()
+            MMadapter.Fill(MMtable)
+            MoldModelComboBox.DataSource = MMtable
+            MoldModelComboBox.ValueMember = "models_mold"
+            MoldModelComboBox.DisplayMember = "models_mold"
+        End Using
+        'Load Serial DropDown Menu 
+        Using MScommand As New MySqlCommand("Select DISTINCT `models_serial` FROM `models`", connection)
+            Dim MSadapter As New MySqlDataAdapter(MScommand)
+            Dim MStable As New DataTable()
+            MSadapter.Fill(MStable)
+            MoldSerialComboBox.DataSource = MStable
+            MoldSerialComboBox.ValueMember = "models_serial"
+            MoldSerialComboBox.DisplayMember = "models_serial"
+        End Using
+        'Load Paintcode DropDown Menu
+        Using PCcommand As New MySqlCommand("SELECT `paintcode_code`, `paintcode_description` FROM `paintcode`", connection)
+            Dim PCadapter As New MySqlDataAdapter(PCcommand)
+            Dim PCtable As New DataTable()
+            PCadapter.Fill(PCtable)
+            PaintCodeComboBox.DataSource = PCtable
+            PaintCodeComboBox.ValueMember = "paintcode_code"
+            PaintCodeComboBox.DisplayMember = "paintcode_code"
+        End Using
+        'Load Defect Origin DropDown Menu
+        Using DOcommand As New MySqlCommand("Select `origin_code`, `origin_description` FROM `origin` WHERE `origin_status` = '1'", connection)
+            Dim DOadapter As New MySqlDataAdapter(DOcommand)
+            Dim DOtable As New DataTable()
+            DOadapter.Fill(DOtable)
+            DefectOriginComboBox.DataSource = DOtable
+            DefectOriginComboBox.ValueMember = "origin_code"
+            DefectOriginComboBox.DisplayMember = "origin_description"
+        End Using
+        'Load Defect DropDown Menu
+        Using DCcommand As New MySqlCommand("SELECT `defects_code`, `defects_description` FROM `defects`", connection)
+            Dim DCadapter As New MySqlDataAdapter(DCcommand)
+            Dim DCtable As New DataTable()
+            DCadapter.Fill(DCtable)
+            DefectComboBox.DataSource = DCtable
+            DefectComboBox.ValueMember = "defects_code"
+            DefectComboBox.DisplayMember = "defects_description"
+        End Using
+        'Load Defect Location DropDown Menu
         Using DLcommand As New MySqlCommand("SELECT `locations_code`, `locations_description` FROM `locations`", connection)
             Dim DLadapter As New MySqlDataAdapter(DLcommand)
             Dim DLtable As New DataTable()
@@ -55,39 +122,44 @@ Public Class AddEntry
             DefectLocationComboBox.ValueMember = "locations_code"
             DefectLocationComboBox.DisplayMember = "locations_description"
         End Using
-        '        Using WOcommand As New MySqlCommand("SELECT `origin_code`, `origin_description` FROM `origin`", connection)
-        Using WOcommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
-            Dim WOadapter As New MySqlDataAdapter(WOcommand)
-            Dim WOtable As New DataTable()
-            Dim WO = WOadapter.Fill(WOtable)
-            DefectOriginComboBox.DataSource = WOtable
-            DefectOriginComboBox.ValueMember = "workstation_code"
-            DefectOriginComboBox.DisplayMember = "workstation_description"
+        'Load Rework DropDown Menu
+        Using RWcommand As New MySqlCommand("SELECT `rework_code`, `rework_description` FROM `rework`", connection)
+            Dim RWadapter As New MySqlDataAdapter(RWcommand)
+            Dim RWtable As New DataTable()
+            Dim RW = RWadapter.Fill(RWtable)
+            ReworkComboBox.DataSource = RWtable
+            ReworkComboBox.ValueMember = "rework_code"
+            ReworkComboBox.DisplayMember = "rework_description"
         End Using
-        Using PCcommand As New MySqlCommand("SELECT `paintcode_code`, `paintcode_description` FROM `paintcode`", connection)
-            Dim PCadapter As New MySqlDataAdapter(PCcommand)
-            Dim PCtable As New DataTable()
-            Dim PC = PCadapter.Fill(PCtable)
-            PaintCodeComboBox.DataSource = PCtable
-            PaintCodeComboBox.ValueMember = "paintcode_code"
-            PaintCodeComboBox.DisplayMember = "paintcode_code"
-        End Using
-        ReportedDataGroupBox.Visible = True
-        DefectDataGroupBox.Visible = False
-        AddPicturesGroupBox.Visible = False
         WorkStationComboBox.Enabled = True
+
+        NewEntry_Button.Enabled = True
+
         WorkOrderTextBox.Enabled = False
         MoldBrandComboBox.Enabled = False
         ProductLineComboBox.Enabled = False
         MoldModelComboBox.Enabled = False
         MoldSerialComboBox.Enabled = False
         PaintCodeComboBox.Enabled = False
+
         DefectOriginComboBox.Enabled = False
         DefectComboBox.Enabled = False
         DefectLocationComboBox.Enabled = False
         Approved_Button.Enabled = False
         ReportDefect_Button.Enabled = False
+
+
+        ReportedDataGroupBox.Visible = True
+        DefectDataGroupBox.Visible = False
+        AddPicturesGroupBox.Visible = False
+
+        WorkStationComboBox.SelectedValue = WO_Workstation
+
         ReportedDataGridView_Load()
+    End Sub
+    Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
+        'Set Time
+        TimeTextBox.Text = Format(Now, "hh:mm:ss")
     End Sub
     Friend Shared Function GetWorkOrder()
         Return WorkOrderValue
@@ -95,13 +167,107 @@ Public Class AddEntry
     Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
         Close()
     End Sub
-    Private Sub DefectOriginComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectOriginComboBox.SelectedIndexChanged
-        Dim Defect_Origin As String
-        Dim toString As String = DefectOriginComboBox.Text.ToString
-        Defect_Origin = toString
+    'Private Sub WorkStationComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles WorkStationComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub MoldBrandComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldBrandComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub ProductLineComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ProductLineComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub ModelComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldModelComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub PaintcodeDescription_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PaintCodeComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub DefectOriginComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectOriginComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub DefectComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub DefectLocationComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectLocationComboBox.SelectedIndexChanged
+
+    'End Sub
+    'Private Sub ReworkComboBox_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ReworkComboBox.SelectedIndexChanged
+
+    'End Sub
+    Private Sub WorkStationComboBox_ValueChanged(sender As Object, e As EventArgs) Handles WorkStationComboBox.SelectionChangeCommitted
+        WO_Workstation = WorkStationComboBox.SelectedValue.ToString
+        ReportedDataGridView_Load()
+    End Sub
+    Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged
+        WO_Number = WorkOrderTextBox.Text
+    End Sub
+    Private Sub MoldBrandComboBox_ValueChanged(sender As Object, e As EventArgs) Handles MoldBrandComboBox.SelectionChangeCommitted
+        WO_Brand = MoldBrandComboBox.SelectedValue.ToString
+        With ProductLineComboBox
+            Using PLcommand As New MySqlCommand("Select DISTINCT `brands_prefix` FROM `brands` WHERE `brands_name` = @models_brand  ORDER BY `brands_prefix` asc", connection)
+                PLcommand.Parameters.Add("@models_brand", MySqlDbType.String).Value = WO_Brand
+                Dim PLadapter As New MySqlDataAdapter(PLcommand)
+                Dim PLtable As New DataTable()
+                PLadapter.Fill(PLtable)
+                ProductLineComboBox.DataSource = PLtable
+                ProductLineComboBox.ValueMember = "brands_prefix"
+                ProductLineComboBox.DisplayMember = "brands_prefix"
+            End Using
+        End With
+    End Sub
+    Private Sub ProductLineComboBox_ValueChanged(sender As Object, e As EventArgs) Handles ProductLineComboBox.SelectionChangeCommitted
+        WO_Product_Line = ProductLineComboBox.SelectedValue.ToString
+        'With MoldModelComboBox
+        '    Using MMcommand As New MySqlCommand("Select DISTINCT `models_mold` FROM `models` WHERE `models_prefix` = @product_line  ORDER BY `models_mold` asc", connection)
+        '        MMcommand.Parameters.Add("@product_line", MySqlDbType.String).Value = WO_Product_Line
+        '        Dim MMadapter As New MySqlDataAdapter(MMcommand)
+        '        Dim MMtable As New DataTable()
+        '        MMadapter.Fill(MMtable)
+        '        MoldModelComboBox.DataSource = MMtable
+        '        MoldModelComboBox.ValueMember = "models_mold"
+        '        MoldModelComboBox.DisplayMember = "models_mold"
+        '    End Using
+        'End With
+    End Sub
+    Private Sub MoldModelComboBox_ValueChanged(sender As Object, e As EventArgs) Handles MoldModelComboBox.SelectionChangeCommitted
+        WO_Model = MoldModelComboBox.SelectedValue.ToString
+        'Dim models_mold As String = WO_Model
+        'With MoldSerialComboBox
+        '    Using Mcommand As New MySqlCommand("Select `models_serial` FROM `models` WHERE `models_mold` = @models_mold", connection)
+        '        Mcommand.Parameters.Add("@models_mold", MySqlDbType.String).Value = models_mold
+        '        Dim Madapter As New MySqlDataAdapter(Mcommand)
+        '        Dim Mtable As New DataTable()
+        '        Madapter.Fill(Mtable)
+        '        MoldSerialComboBox.DataSource = Mtable
+        '        MoldSerialComboBox.ValueMember = "models_serial"
+        '        MoldSerialComboBox.DisplayMember = "models_serial"
+        '    End Using
+        'End With
+    End Sub
+    Private Sub MoldSerialComboBox_ValueChanged(sender As Object, e As EventArgs) Handles MoldSerialComboBox.SelectionChangeCommitted
+        WO_Serial = MoldSerialComboBox.SelectedValue.ToString
+    End Sub
+    Private Sub PaintCodeComboBox_ValueChanged(sender As Object, e As EventArgs) Handles PaintCodeComboBox.SelectionChangeCommitted
+        WO_Paintcode = PaintCodeComboBox.SelectedValue.ToString
+        Dim paint_code As String = PaintCodeComboBox.Text.ToString
+        With PaintcodeDescription_ComboBox
+            Using PDcommand As New MySqlCommand("Select `paintcode_description` FROM `paintcode` WHERE `paintcode_code` = @Paint_Code", connection)
+                PDcommand.Parameters.Add("@Paint_Code", MySqlDbType.String).Value = paint_code
+                Dim PDadapter As New MySqlDataAdapter(PDcommand)
+                Dim PDtable As New DataTable()
+                PDadapter.Fill(PDtable)
+                PaintcodeDescription_ComboBox.DataSource = PDtable
+                PaintcodeDescription_ComboBox.ValueMember = "paintcode_description"
+                PaintcodeDescription_ComboBox.DisplayMember = "paintcode_description"
+            End Using
+        End With
+    End Sub
+    Private Sub DefectOriginComboBox_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectOriginComboBox.SelectedValueChanged
+        WO_Defect_Origin_Text = DefectOriginComboBox.Text
+        WO_Text = WorkStationComboBox.Text
         With DefectComboBox
             Using DFcommand As New MySqlCommand("SELECT `defects_code`, `defects_description` FROM `defects` WHERE `defects_workstation` = @defects_origin", connection)
-                DFcommand.Parameters.Add("@defects_origin", MySqlDbType.String).Value = Defect_Origin
+                DFcommand.Parameters.Add("@defects_origin", MySqlDbType.String).Value = WO_Defect_Origin_Text
                 Dim DFadapter As New MySqlDataAdapter(DFcommand)
                 Dim DFtable As New DataTable()
                 DFadapter.Fill(DFtable)
@@ -110,13 +276,152 @@ Public Class AddEntry
                 DefectComboBox.DisplayMember = "defects_description"
             End Using
         End With
-        DefectOriginComboBox.Enabled = True
-        DefectComboBox.Enabled = True
-        DefectLocationComboBox.Enabled = True
-        ReworkComboBox.Enabled = True
+        With ReworkComboBox
+            Using RWcommand As New MySqlCommand("SELECT `rework_code`, `rework_description` FROM `rework` WHERE `rework_apply_to` = @workstation_name", connection)
+                RWcommand.Parameters.Add("@workstation_name", MySqlDbType.String).Value = WO_Text
+                Dim RWadapter As New MySqlDataAdapter(RWcommand)
+                Dim RWtable As New DataTable()
+                Dim RW = RWadapter.Fill(RWtable)
+                ReworkComboBox.DataSource = RWtable
+                ReworkComboBox.ValueMember = "rework_code"
+                ReworkComboBox.DisplayMember = "rework_description"
+            End Using
+        End With
     End Sub
-    Private Sub WorkOrderTextBox_TextChanged(sender As Object, e As EventArgs) Handles WorkOrderTextBox.TextChanged
-        WorkOrderValue = WorkOrderTextBox.Text
+    Private Sub DefectComboBox_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectComboBox.SelectionChangeCommitted
+        WO_Defect = DefectComboBox.SelectedValue.ToString
+    End Sub
+    Private Sub DefectLocationComboBox_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DefectLocationComboBox.SelectionChangeCommitted
+        WO_Location = DefectLocationComboBox.SelectedValue.ToString
+    End Sub
+    Private Sub ReworkComboBox_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ReworkComboBox.SelectionChangeCommitted
+        WO_Rework = ReworkComboBox.SelectedValue.ToString
+    End Sub
+    Private Sub ReportedDataGridView_Load()
+        FilterView_ComboBox.SelectedIndex = 0
+        ReportedDataGridView.DataSource = Create_DataGridView()
+        DataGridViewHeaders()
+    End Sub
+    Private Sub ReportedDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles ReportedDataGridView.SelectionChanged
+        If ReportedDataGridView.SelectedRows.Count = 1 Then
+            WorkOrderId_TextBox.Text = ReportedDataGridView.Item("workorder_id", ReportedDataGridView.SelectedRows(0).Index).Value
+            'WorkStationComboBox.SelectedValue = ReportedDataGridView.Item("workorder_workstation", ReportedDataGridView.SelectedRows(0).Index).Value
+            WorkOrderTextBox.Text = ReportedDataGridView.Item("workorder_number", ReportedDataGridView.SelectedRows(0).Index).Value
+            MoldBrandComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldbrand", ReportedDataGridView.SelectedRows(0).Index).Value
+            ProductLineComboBox.SelectedValue = ReportedDataGridView.Item("workorder_productline", ReportedDataGridView.SelectedRows(0).Index).Value
+            MoldModelComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldmodel", ReportedDataGridView.SelectedRows(0).Index).Value
+            MoldSerialComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldserial", ReportedDataGridView.SelectedRows(0).Index).Value
+            PaintCodeComboBox.SelectedValue = ReportedDataGridView.Item("workorder_paintcode", ReportedDataGridView.SelectedRows(0).Index).Value
+            DefectOriginComboBox.SelectedValue = ReportedDataGridView.Item("workorder_defect_origin", ReportedDataGridView.SelectedRows(0).Index).Value
+            DefectComboBox.SelectedValue = ReportedDataGridView.Item("workorder_defect", ReportedDataGridView.SelectedRows(0).Index).Value
+            DefectLocationComboBox.SelectedValue = ReportedDataGridView.Item("workorder_defect_location", ReportedDataGridView.SelectedRows(0).Index).Value
+            ReworkComboBox.SelectedValue = ReportedDataGridView.Item("workorder_rework", ReportedDataGridView.SelectedRows(0).Index).Value
+            Dim Status_Name As String = ReportedDataGridView.Item("workorder_status", ReportedDataGridView.SelectedRows(0).Index).Value.ToString
+            Status_Label.Text = Status_Name
+            Status_PictureBox.Image = My.Resources.ResourceManager.GetObject(Status_Name)
+            Status_PictureBox.SizeMode = PictureBoxSizeMode.Zoom
+        End If
+    End Sub
+    Private Function Create_DataGridView() As DataTable
+        Dim RJcommand As New MySqlCommand("SELECT 
+        `workorder_id`, 
+        `workorder_date`, 
+        `workorder_time`, 
+        `workorder_reportedby`, 
+        `workorder_workstation`, 
+        `workstation_description`, 
+        `workorder_number`,
+        `workorder_moldbrand`, 
+        `workorder_productline`, 
+        `workorder_moldmodel`, 
+        `workorder_moldserial`, 
+        `workorder_paintcode`, 
+        `workorder_defect_origin`, 
+        `origin_description`, 
+        `workorder_defect`, 
+        `defects_description`, 
+        `workorder_defect_location`, 
+        `workorder_rework`,
+        `rework_description`, 
+        `workorder_status`, 
+        `workorder_comments` 
+        FROM `workorder` 
+        INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
+        INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
+        INNER JOIN `origin` ON `workorder_defect_origin` = `origin_code`
+        INNER JOIN `rework` ON `workorder_rework` = `rework_code`
+        WHERE `workorder_workstation` = @workorder_workstation
+        AND `workorder_rework` NOT LIKE CONCAT('%','00')
+        AND `workorder_number` LIKE CONCAT (@Search, '%')
+        AND `workorder_status` LIKE CONCAT (@Filter, '%')
+        ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
+        RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WO_Workstation
+        RJcommand.Parameters.AddWithValue("@Search", SearchWO_TextBox.Text.Trim())
+        RJcommand.Parameters.AddWithValue("@Filter", Filter_Show())
+
+        Dim RJadapter As New MySqlDataAdapter(RJcommand)
+        Dim RJtable As New DataTable()
+        Dim RJ = RJadapter.Fill(RJtable)
+        Return RJtable
+    End Function
+    Public Function Filter_Show()
+        Dim case_view As String = FilterView_ComboBox.SelectedItem.ToString
+        Dim filter_view As String
+        Select Case case_view
+            Case "Approved Only"
+                filter_view = "APPROVED"
+                Return filter_view
+            Case "Repaired Only"
+                filter_view = "REPAIRED"
+                Return filter_view
+            Case "Reported Only"
+                filter_view = "REPORTED"
+                Return filter_view
+            Case Else
+                filter_view = ""
+                Return filter_view
+        End Select
+    End Function
+    Private Sub ClearSearchWO_Button_Click(sender As Object, e As EventArgs) Handles ClearSearchWO_Button.Click
+        SearchWO_TextBox.Clear()
+        ReportedDataGridView.DataSource = Create_DataGridView()
+    End Sub
+    Private Sub SearchWO_Button_Click(sender As Object, e As EventArgs) Handles SearchWO_Button.Click, ClearSearchWO_Button.Click
+        ReportedDataGridView.DataSource = Create_DataGridView()
+    End Sub
+    Private Sub FilterView_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterView_ComboBox.SelectedIndexChanged
+        ReportedDataGridView.DataSource = Create_DataGridView()
+    End Sub
+    Private Sub DataGridViewHeaders()
+        With ReportedDataGridView
+            .RowHeadersVisible = True
+            .Columns(0).HeaderCell.Value = "ID"
+            .Columns(0).Visible = False
+            .Columns(1).HeaderCell.Value = "Date"
+            .Columns(2).HeaderCell.Value = "Time"
+            .Columns(3).HeaderCell.Value = "Reported By"
+            .Columns(4).HeaderCell.Value = "Workstation Code"
+            .Columns(4).Visible = False
+            .Columns(5).HeaderCell.Value = "Reported From"
+            .Columns(6).HeaderCell.Value = "Work Order"
+            .Columns(7).HeaderCell.Value = "Brand"
+            .Columns(8).HeaderCell.Value = "Product Line"
+            .Columns(9).HeaderCell.Value = "Model"
+            .Columns(10).HeaderCell.Value = "Serial"
+            .Columns(11).HeaderCell.Value = "Paint Code"
+            .Columns(12).HeaderCell.Value = "Defect Origin Code"
+            .Columns(12).Visible = False
+            .Columns(13).HeaderCell.Value = "Defect Origin"
+            .Columns(14).HeaderCell.Value = "Defect Code"
+            .Columns(14).Visible = False
+            .Columns(15).HeaderCell.Value = "Defect Description"
+            .Columns(16).HeaderCell.Value = "Defect Location"
+            .Columns(17).HeaderCell.Value = "Rework Code"
+            .Columns(17).Visible = False
+            .Columns(18).HeaderCell.Value = "Rework Description"
+            .Columns(19).HeaderCell.Value = "Work Order Status"
+            .Columns(20).HeaderCell.Value = "Comments"
+        End With
     End Sub
     Private Sub PictureButton1_Click(sender As Object, e As EventArgs) Handles PictureButton1.Click
         Dim newForm As New AddPicture()
@@ -177,7 +482,6 @@ Public Class AddEntry
         End Try
     End Sub
     Private Sub AddImageButton3_Click(sender As Object, e As EventArgs) Handles AddImageButton3.Click
-        '.FileName = $"{WorkOrderValue}-*",
         Try
             Dim imgpath3 As String
             Dim OFD As FileDialog = New OpenFileDialog With {
@@ -317,98 +621,9 @@ Public Class AddEntry
     Private Sub LinkLabel39_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel39.LinkClicked
         DefectLocationComboBox.SelectedValue = LinkLabel39.Text
     End Sub
-    Private Sub BrandComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldBrandComboBox.SelectedIndexChanged
-        Dim models_brand As String
-        Dim toString As String = MoldBrandComboBox.Text.ToString
-        models_brand = toString
-        With MoldModelComboBox
-            Using Bcommand As New MySqlCommand("Select DISTINCT `models_mold` FROM `models` WHERE `models_brand` = @models_brand  ORDER BY `models_mold` asc", connection)
-                Bcommand.Parameters.Add("@models_brand", MySqlDbType.String).Value = models_brand
-                Dim Badapter As New MySqlDataAdapter(Bcommand)
-                Dim Btable As New DataTable()
-                Badapter.Fill(Btable)
-                MoldModelComboBox.DataSource = Btable
-                MoldModelComboBox.ValueMember = "models_mold"
-                MoldModelComboBox.DisplayMember = "models_mold"
-            End Using
-        End With
-        With ProductLineComboBox
-            Using Pcommand As New MySqlCommand("Select DISTINCT `brands_prefix` FROM `brands` WHERE `brands_name` = @models_brand  ORDER BY `brands_prefix` asc", connection)
-                Pcommand.Parameters.Add("@models_brand", MySqlDbType.String).Value = models_brand
-                Dim Padapter As New MySqlDataAdapter(Pcommand)
-                Dim Ptable As New DataTable()
-                Padapter.Fill(Ptable)
-                ProductLineComboBox.DataSource = Ptable
-                ProductLineComboBox.ValueMember = "brands_prefix"
-                ProductLineComboBox.DisplayMember = "brands_prefix"
-            End Using
-        End With
-    End Sub
-    Private Sub ModelComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MoldModelComboBox.SelectedIndexChanged, ProductLineComboBox.SelectedIndexChanged
-        Dim models_molde As String
-        Dim toString As String = MoldModelComboBox.Text.ToString
-        models_molde = toString
-        With MoldSerialComboBox
-            Using Mcommand As New MySqlCommand("Select `models_serial` FROM `models` WHERE `models_mold` = @models_molde", connection)
-                Mcommand.Parameters.Add("@models_molde", MySqlDbType.String).Value = models_molde
-                Dim Madapter As New MySqlDataAdapter(Mcommand)
-                Dim Mtable As New DataTable()
-                Madapter.Fill(Mtable)
-                MoldSerialComboBox.DataSource = Mtable
-                MoldSerialComboBox.ValueMember = "models_serial"
-                MoldSerialComboBox.DisplayMember = "models_serial"
-            End Using
-        End With
-    End Sub
-    Private Sub PaintcodeDescription_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PaintCodeComboBox.SelectedIndexChanged
-        Dim paint_code As String
-        Dim toString As String = PaintCodeComboBox.Text.ToString
-        paint_code = toString
-        With PaintcodeDescription_ComboBox
-            Using PDcommand As New MySqlCommand("Select `paintcode_description` FROM `paintcode` WHERE `paintcode_code` = @Paint_Code", connection)
-                PDcommand.Parameters.Add("@Paint_Code", MySqlDbType.String).Value = paint_code
-                Dim PDadapter As New MySqlDataAdapter(PDcommand)
-                Dim PDtable As New DataTable()
-                PDadapter.Fill(PDtable)
-                PaintcodeDescription_ComboBox.DataSource = PDtable
-                PaintcodeDescription_ComboBox.ValueMember = "paintcode_description"
-                PaintcodeDescription_ComboBox.DisplayMember = "paintcode_description"
-            End Using
-        End With
-    End Sub
-    Private Sub ReportedDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles ReportedDataGridView.SelectionChanged
-        If ReportedDataGridView.SelectedRows.Count = 1 Then
-            WorkStationComboBox.SelectedValue = ReportedDataGridView.Item("workorder_workstation", ReportedDataGridView.SelectedRows(0).Index).Value
-            WorkOrderTextBox.Text = ReportedDataGridView.Item("workorder_number", ReportedDataGridView.SelectedRows(0).Index).Value
-            MoldBrandComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldbrand", ReportedDataGridView.SelectedRows(0).Index).Value
-            ProductLineComboBox.SelectedValue = ReportedDataGridView.Item("workorder_productline", ReportedDataGridView.SelectedRows(0).Index).Value
-            MoldModelComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldmodel", ReportedDataGridView.SelectedRows(0).Index).Value
-            MoldSerialComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldserial", ReportedDataGridView.SelectedRows(0).Index).Value
-            PaintCodeComboBox.SelectedValue = ReportedDataGridView.Item("workorder_paintcode", ReportedDataGridView.SelectedRows(0).Index).Value
-            ReworkComboBox.SelectedValue = ReportedDataGridView.Item("workorder_rework", ReportedDataGridView.SelectedRows(0).Index).Value
-            DefectComboBox.SelectedValue = ReportedDataGridView.Item("workorder_defect", ReportedDataGridView.SelectedRows(0).Index).Value
-            DefectOriginComboBox.SelectedValue = ReportedDataGridView.Item("workorder_defect_origin", ReportedDataGridView.SelectedRows(0).Index).Value
-            DefectLocationComboBox.SelectedValue = ReportedDataGridView.Item("workorder_defect_location", ReportedDataGridView.SelectedRows(0).Index).Value
-
-            Dim Status_Name As String = ReportedDataGridView.Item("workorder_status", ReportedDataGridView.SelectedRows(0).Index).Value.ToString
-            Status_Label.Text = Status_Name
-            Status_PictureBox.Image = My.Resources.ResourceManager.GetObject(Status_Name)
-            Status_PictureBox.SizeMode = PictureBoxSizeMode.Zoom
-        End If
-    End Sub
     Private Sub Export_Button_Click(sender As Object, e As EventArgs) Handles Export_Button.Click
         Dim newForm As New Export_Data()
         newForm.Show()
-    End Sub
-    Private Sub WorkStationComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles WorkStationComboBox.SelectedIndexChanged
-        ReportedDataGroupBox.Visible = True
-        DefectDataGroupBox.Visible = False
-        AddPicturesGroupBox.Visible = False
-        ReportedDataGridView_Load()
-    End Sub
-    Private Sub ReportedDataGridView_Load()
-        ReportedDataGridView.DataSource = Create_DataGridView()
-        DataGridViewHeaders()
     End Sub
     Private Sub NewEntry_Button_Click(sender As Object, e As EventArgs) Handles NewEntry_Button.Click
         ReportedDataGroupBox.Visible = False
@@ -479,33 +694,64 @@ Public Class AddEntry
         GetEditImages()
     End Sub
     Private Sub CancelEdit_Button_Click(sender As Object, e As EventArgs) Handles CancelEdit_Button.Click, CancelDefect_Button.Click
-        'Dim WO_selected As String = WorkStationComboBox.SelectedItem.ToString
         WorkStationComboBox.Enabled = True
         ReportedDataGroupBox.Visible = True
         DefectDataGroupBox.Visible = False
-        AddPicturesGroupBox.Visible = False
-        'WorkStationComboBox.SelectedText = WO_selected
-        'ReportedDataGridView_Load()
     End Sub
     Private Sub Approved_Button_Click(sender As Object, e As EventArgs) Handles Approved_Button.Click
+        connection.Open()
         If String.IsNullOrEmpty(WorkOrderTextBox.Text.ToString()) Then
             MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
         Else
             Dim rslt As DialogResult = MessageBox.Show("SET WORKORDER " & WorkOrderTextBox.Text & " AS APPROVED?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
             If rslt = Windows.Forms.DialogResult.Yes Then
-                workorder_status = "APPROVED"
-                ReworkComboBox.ResetText()
-                DefectOriginComboBox.ResetText()
-                DefectComboBox.ResetText()
-                DefectLocationComboBox.ResetText()
-                ReworkComboBox.SelectedValue = "APP"
-                DefectOriginComboBox.SelectedValue = -1
-                DefectComboBox.SelectedValue = "APP"
-                DefectLocationComboBox.SelectedValue = -1
+                WO_User = LoginForm.login_user
+                WO_Workstation = WorkStationComboBox.SelectedValue.ToString
+                WO_Number = WorkOrderTextBox.Text
+                WO_Brand = MoldBrandComboBox.Text
+                WO_Product_Line = ProductLineComboBox.Text
+                WO_Model = MoldModelComboBox.Text
+                WO_Serial = MoldSerialComboBox.Text
+                WO_Paintcode = PaintCodeComboBox.Text
+                WO_Status = "APPROVED"
+                WO_Defect_Origin = "NN"
+                WO_Defect = "APP"
+                WO_Location = ""
+                WO_Rework = "NONE"
                 Insert_Data()
             End If
         End If
     End Sub
+    'Private Function Approved_Rework()
+    '    Dim defect_origin As String = WorkStationComboBox.SelectedValue.ToString
+    '    Dim app_rework As String
+    '    Select Case defect_origin
+    '        Case "CP1"
+    '            app_rework = "APLAM"
+    '            Return app_rework
+    '        Case "CP2"
+    '            app_rework = "APRYR"
+    '            Return app_rework
+    '        Case "CP3"
+    '            app_rework = "APALF"
+    '            Return app_rework
+    '        Case "CP4"
+    '            app_rework = "APPAP"
+    '            Return app_rework
+    '        Case "CP5"
+    '            app_rework = "APPIN"
+    '            Return app_rework
+    '        Case "CP6"
+    '            app_rework = "APINF"
+    '            Return app_rework
+    '        Case "CP7"
+    '            app_rework = "APSHR"
+    '            Return app_rework
+    '        Case Else
+    '            app_rework = "APPROVED"
+    '            Return app_rework
+    '    End Select
+    'End Function
     Private Sub ReportDefect_Button_Click(sender As Object, e As EventArgs) Handles ReportDefect_Button.Click
         If String.IsNullOrEmpty(WorkOrderTextBox.Text.ToString()) Then
             MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
@@ -521,46 +767,57 @@ Public Class AddEntry
         End If
     End Sub
     Private Sub Repaired_Button_Click(sender As Object, e As EventArgs) Handles Repaired_Button.Click
+        connection.Open()
         Dim repair_rslt As DialogResult = MessageBox.Show("SET WORKORDER " & WorkOrderTextBox.Text & " AS REPAIRED?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
         If repair_rslt = Windows.Forms.DialogResult.Yes Then
-            workorder_status = "REPAIRED"
+            WO_Status = "REPAIRED"
             Update_Data()
         ElseIf repair_rslt = Windows.Forms.DialogResult.No Then
-            workorder_status = Status_Label.Text
+            WO_Status = Status_Label.Text
             Update_Data()
         End If
     End Sub
     Private Sub SubmitDefect_Button_Click(sender As Object, e As EventArgs) Handles SubmitDefect_Button.Click
+        connection.Open()
+        WO_User = LoginForm.login_user
+        WO_Workstation = WorkStationComboBox.SelectedValue.ToString
+        WO_Number = WorkOrderTextBox.Text
+        WO_Brand = MoldBrandComboBox.Text
+        WO_Product_Line = ProductLineComboBox.Text
+        WO_Model = MoldModelComboBox.Text
+        WO_Serial = MoldSerialComboBox.Text
+        WO_Paintcode = PaintCodeComboBox.Text
+        WO_Defect_Origin = DefectOriginComboBox.SelectedValue.ToString
+        WO_Defect = DefectComboBox.SelectedValue.ToString
+        WO_Location = DefectLocationComboBox.SelectedValue.ToString
+        WO_Rework = ReworkComboBox.SelectedValue.ToString
         Using IDcommand As New MySqlCommand("SELECT COUNT(*) `workorder_id` FROM `workorder` WHERE `workorder_id` = @workorder_id", connection)
             IDcommand.Parameters.Add("@workorder_id", MySqlDbType.String).Value = WorkOrderId_TextBox.Text
-            connection.Open()
             Dim record_exist = IDcommand.ExecuteScalar()
-            If Convert.ToInt32(record_exist) < 1 Then
+            If Convert.ToInt32(record_exist) = 0 Then
                 Dim additional_rslt As DialogResult = MessageBox.Show("DEFECT ADDED TO WORKORDER " & WorkOrderTextBox.Text & vbCrLf & "ADD AN ADDITIONAL DEFECT TO WORKORDER " & WorkOrderTextBox.Text & "?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
                 If additional_rslt = Windows.Forms.DialogResult.Yes Then
-                    workorder_status = "REPORTED"
-                    additional_defects = True
+                    WO_Status = "REPORTED"
+                    WO_Additional_Defects = True
                     Insert_Data()
                 ElseIf additional_rslt = Windows.Forms.DialogResult.No Then
-                    workorder_status = "REPORTED"
-                    additional_defects = False
+                    WO_Status = "REPORTED"
+                    WO_Additional_Defects = False
                     Insert_Data()
                 End If
-            ElseIf Convert.ToInt32(record_exist) >= 1 Then
+            ElseIf Convert.ToInt32(record_exist) > 0 Then
                 MessageBox.Show("Workorder Entry Existed, Updating Entry", "WO ENTRY EXIST")
-                workorder_status = Status_Label.Text
-                Dim additional_rslt As DialogResult = MessageBox.Show("Workorder Entry " & WorkOrderTextBox.Text & "Exists, Updating Entry" & vbCrLf & "ADD AN ADDITIONAL DEFECT TO WORKORDER " & WorkOrderTextBox.Text & "?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
+                Dim additional_rslt As DialogResult = MessageBox.Show("Workorder Entry " & WorkOrderTextBox.Text & " Exists, Updating Entry" & vbCrLf & "ADD AN ADDITIONAL DEFECT TO WORKORDER " & WorkOrderTextBox.Text & "?", "PLEASE CONFIRM ACTION", MessageBoxButtons.YesNo)
                 If additional_rslt = Windows.Forms.DialogResult.Yes Then
-                    workorder_status = Status_Label.Text
-                    additional_defects = True
+                    WO_Status = "REPORTED"
+                    WO_Additional_Defects = True
                     Update_Data()
                 ElseIf additional_rslt = Windows.Forms.DialogResult.No Then
-                    workorder_status = "REPORTED"
-                    additional_defects = False
+                    WO_Status = "REPORTED"
+                    WO_Additional_Defects = False
                     Update_Data()
                 End If
             End If
-            connection.Close()
         End Using
     End Sub
     Private Sub GetEditImages()
@@ -604,28 +861,24 @@ Public Class AddEntry
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
-            connection.Close()
         End Try
     End Sub
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.DoubleClick
         Dim PopUp As New PopUp_Window
         PopUp.PopUp_PictureBox.Image = PictureBox1.Image
         PopUp.ShowDialog()
-        'Any actions after the user returns would be here
         PopUp.Dispose()
     End Sub
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.DoubleClick
         Dim PopUp As New PopUp_Window
         PopUp.PopUp_PictureBox.Image = PictureBox2.Image
         PopUp.ShowDialog()
-        'Any actions after the user returns would be here
         PopUp.Dispose()
     End Sub
     Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.DoubleClick
         Dim PopUp As New PopUp_Window
         PopUp.PopUp_PictureBox.Image = PictureBox3.Image
         PopUp.ShowDialog()
-        'Any actions after the user returns would be here
         PopUp.Dispose()
     End Sub
     Private Sub Get_Images()
@@ -663,52 +916,49 @@ Public Class AddEntry
         End If
     End Sub
     Private Sub Insert_Data()
-        connection.Close()
         If String.IsNullOrEmpty(WorkOrderTextBox.Text.ToString()) Then
             MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select Entry from DataGrid", "WO ERROR")
         Else
             Get_Images()
-            Dim command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workorder_number`, `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_additionalerror`, `workorder_status`, `workorder_image1`, `workorder_image2`, `workorder_image3`, `workorder_comments`)
+            Dim insert_command As New MySqlCommand("INSERT INTO `workorder`(`workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workorder_number`, `workorder_moldbrand`, `workorder_productline`, `workorder_moldmodel`, `workorder_moldserial`, `workorder_paintcode`, `workorder_rework`, `workorder_defect_origin`, `workorder_defect`, `workorder_defect_location`, `workorder_additionalerror`, `workorder_status`, `workorder_image1`, `workorder_image2`, `workorder_image3`, `workorder_comments`)
             VALUES (@workorder_date, @workorder_time, @workorder_reportedby, @workorder_workstation, @workorder_number,  @workorder_moldbrand, @workorder_productline, @workorder_moldmodel, @workorder_moldserial, @workorder_paintcode, @workorder_rework, @workorder_defect_origin, @workorder_defect, @workorder_defect_location, @workorder_additionalerror, @workorder_status, @workorder_image1, @workorder_image2, @workorder_image3, @workorder_comments)", connection)
-            command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
-            command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
-            command.Parameters.Add("@workorder_reportedby", MySqlDbType.VarChar).Value = LoginForm.login_user
-            command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-            command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
-            command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = MoldBrandComboBox.SelectedValue
-            command.Parameters.Add("@workorder_productline", MySqlDbType.VarChar).Value = ProductLineComboBox.SelectedValue
-            command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = MoldModelComboBox.SelectedValue
+            insert_command.Parameters.Add("@workorder_date", MySqlDbType.Date).Value = DatePicker.Value.ToString("yyyy/MM/dd")
+            insert_command.Parameters.Add("@workorder_time", MySqlDbType.VarChar).Value = TimeTextBox.Text
+            insert_command.Parameters.Add("@workorder_reportedby", MySqlDbType.VarChar).Value = WO_User
+            insert_command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WO_Workstation
+            insert_command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WO_Number
+            insert_command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = WO_Brand
+            insert_command.Parameters.Add("@workorder_productline", MySqlDbType.VarChar).Value = WO_Product_Line
+            insert_command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = WO_Model
             If MoldSerialComboBox.SelectedValue Is Nothing Then
-                command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "NONE"
+                insert_command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "NONE"
             Else
-                command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = MoldSerialComboBox.SelectedValue
+                insert_command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = WO_Serial
             End If
             If PaintCodeComboBox.SelectedValue Is Nothing Then
-                command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = "NONE"
+                insert_command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = "NONE"
             Else
-                command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = PaintCodeComboBox.SelectedValue
+                insert_command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = WO_Paintcode
             End If
-            command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkComboBox.SelectedValue
-            command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = DefectOriginComboBox.SelectedValue
-            command.Parameters.Add("@workorder_defect", MySqlDbType.VarChar).Value = DefectComboBox.SelectedValue
-            command.Parameters.Add("@workorder_defect_location", MySqlDbType.VarChar).Value = DefectLocationComboBox.SelectedValue
-            command.Parameters.Add("@workorder_additionalerror", MySqlDbType.Bit).Value = additional_defects
-            command.Parameters.Add("@workorder_status", MySqlDbType.VarChar).Value = workorder_status
-            command.Parameters.Add("@workorder_image1", MySqlDbType.LongBlob).Value = arrImage1
-            command.Parameters.Add("@workorder_image2", MySqlDbType.LongBlob).Value = arrImage2
-            command.Parameters.Add("@workorder_image3", MySqlDbType.LongBlob).Value = arrImage3
-            command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = CommentsRichTextBox.Text
-            connection.Open()
+            insert_command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = WO_Rework
+            insert_command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = WO_Defect_Origin
+            insert_command.Parameters.Add("@workorder_defect", MySqlDbType.VarChar).Value = WO_Defect
+            insert_command.Parameters.Add("@workorder_defect_location", MySqlDbType.VarChar).Value = WO_Location
+            insert_command.Parameters.Add("@workorder_additionalerror", MySqlDbType.Bit).Value = WO_Additional_Defects
+            insert_command.Parameters.Add("@workorder_status", MySqlDbType.VarChar).Value = WO_Status
+            insert_command.Parameters.Add("@workorder_image1", MySqlDbType.LongBlob).Value = arrImage1
+            insert_command.Parameters.Add("@workorder_image2", MySqlDbType.LongBlob).Value = arrImage2
+            insert_command.Parameters.Add("@workorder_image3", MySqlDbType.LongBlob).Value = arrImage3
+            insert_command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = WO_Comments
 
-            If additional_defects = False Then
-                If command.ExecuteNonQuery() = 1 Then
-                    'MessageBox.Show("Data Entered")
+            If WO_Additional_Defects = False Then
+                If insert_command.ExecuteNonQuery() = 1 Then
                     Init_Form()
                 Else
                     MessageBox.Show("ERROR")
                 End If
-            ElseIf additional_defects = True Then
-                If command.ExecuteNonQuery() = 1 Then
+            ElseIf WO_Additional_Defects = True Then
+                If insert_command.ExecuteNonQuery() = 1 Then
                     Dim Entrylist As New List(Of String) From {LoginForm.login_user, WorkStationComboBox.SelectedValue, WorkOrderTextBox.Text, MoldBrandComboBox.SelectedValue, ProductLineComboBox.SelectedValue, MoldModelComboBox.SelectedValue, MoldSerialComboBox.SelectedValue, PaintCodeComboBox.SelectedValue}
                     MessageBox.Show("Please enter additional Data")
                     ReportedDataGroupBox.Visible = False
@@ -733,6 +983,8 @@ Public Class AddEntry
                     DefectLocationComboBox.ResetText()
                     ReworkComboBox.ResetText()
 
+                    WorkOrderId_TextBox.ResetText()
+
                     DefectOriginComboBox.Enabled = True
                     DefectComboBox.Enabled = True
                     DefectLocationComboBox.Enabled = True
@@ -745,7 +997,6 @@ Public Class AddEntry
         connection.Close()
     End Sub
     Private Sub Update_Data()
-        connection.Close()
         If String.IsNullOrEmpty(WorkOrderTextBox.Text.ToString()) Then
             MessageBox.Show("WorkOrder Number Can Not Be Empty, Please enter WO Number or Select from Data Grid", "WO ERROR")
         Else
@@ -756,220 +1007,69 @@ Public Class AddEntry
 					                                                `workorder_defect` = @workorder_defect, `workorder_defect_location` = @workorder_defect_location, `workorder_status` = @workorder_status,
                                                                     `workorder_image1` = @workorder_image1, `workorder_image2` = @workorder_image2, `workorder_image3` = @workorder_image3,
 					                                                `workorder_comments` = @workorder_comments WHERE `workorder_id` =  @workorder_id", connection)
-            update_command.Parameters.Add("@workorder_id", MySqlDbType.VarChar).Value = WorkOrderId_TextBox.Text
+            update_command.Parameters.Add("@workorder_id", MySqlDbType.VarChar).Value = WO_Id
             update_command.Parameters.Add("@workorder_reportedby", MySqlDbType.VarChar).Value = LoginForm.login_user
-            update_command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WorkOrderTextBox.Text
-            update_command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = MoldBrandComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_productline", MySqlDbType.VarChar).Value = ProductLineComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = MoldModelComboBox.SelectedValue
-            If MoldSerialComboBox.SelectedValue Is Nothing Then
-                update_command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = "NONE"
-            Else
-                update_command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = MoldSerialComboBox.SelectedValue
-            End If
-            If PaintCodeComboBox.SelectedValue Is Nothing Then
-                update_command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = "NONE"
-            Else
-                update_command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = PaintCodeComboBox.SelectedValue
-            End If
-            update_command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = ReworkComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = DefectOriginComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_defect", MySqlDbType.VarChar).Value = DefectComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_defect_location", MySqlDbType.VarChar).Value = DefectLocationComboBox.SelectedValue
-            update_command.Parameters.Add("@workorder_status", MySqlDbType.VarChar).Value = workorder_status
+            update_command.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WO_Workstation
+            update_command.Parameters.Add("@workorder_number", MySqlDbType.VarChar).Value = WO_Number
+            update_command.Parameters.Add("@workorder_moldbrand", MySqlDbType.VarChar).Value = WO_Brand
+            update_command.Parameters.Add("@workorder_productline", MySqlDbType.VarChar).Value = WO_Product_Line
+            update_command.Parameters.Add("@workorder_moldmodel", MySqlDbType.VarChar).Value = WO_Model
+            update_command.Parameters.Add("@workorder_moldserial", MySqlDbType.VarChar).Value = WO_Serial
+            update_command.Parameters.Add("@workorder_paintcode", MySqlDbType.VarChar).Value = WO_Paintcode
+            update_command.Parameters.Add("@workorder_rework", MySqlDbType.VarChar).Value = WO_Rework
+            update_command.Parameters.Add("@workorder_defect_origin", MySqlDbType.VarChar).Value = WO_Defect_Origin
+            update_command.Parameters.Add("@workorder_defect", MySqlDbType.VarChar).Value = WO_Defect
+            update_command.Parameters.Add("@workorder_defect_location", MySqlDbType.VarChar).Value = WO_Location
+            update_command.Parameters.Add("@workorder_additionalerror", MySqlDbType.Bit).Value = WO_Additional_Defects
+            update_command.Parameters.Add("@workorder_status", MySqlDbType.VarChar).Value = WO_Status
             update_command.Parameters.Add("@workorder_image1", MySqlDbType.LongBlob).Value = arrImage1
             update_command.Parameters.Add("@workorder_image2", MySqlDbType.LongBlob).Value = arrImage2
             update_command.Parameters.Add("@workorder_image3", MySqlDbType.LongBlob).Value = arrImage3
-            update_command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = CommentsRichTextBox.Text
-            connection.Open()
+            update_command.Parameters.Add("@workorder_comments", MySqlDbType.VarChar).Value = WO_Comments
 
-            If update_command.ExecuteNonQuery() = 1 Then
-                'MessageBox.Show("Data Entered")
-                connection.Close()
-                Init_Form()
-            Else
-                MessageBox.Show("ERROR")
+            If WO_Additional_Defects = False Then
+                If update_command.ExecuteNonQuery() = 1 Then
+                    Init_Form()
+                Else
+                    MessageBox.Show("ERROR")
+                End If
+            ElseIf WO_Additional_Defects = True Then
+                If update_command.ExecuteNonQuery() = 1 Then
+                    Dim Entrylist As New List(Of String) From {LoginForm.login_user, WorkStationComboBox.SelectedValue, WorkOrderTextBox.Text, MoldBrandComboBox.SelectedValue, ProductLineComboBox.SelectedValue, MoldModelComboBox.SelectedValue, MoldSerialComboBox.SelectedValue, PaintCodeComboBox.SelectedValue}
+                    MessageBox.Show("Please enter additional Data")
+                    ReportedDataGroupBox.Visible = False
+                    DefectDataGroupBox.Visible = True
+                    AddPicturesGroupBox.Visible = True
+                    WorkOrderTextBox.Enabled = False
+                    MoldBrandComboBox.Enabled = False
+                    MoldModelComboBox.Enabled = False
+                    MoldSerialComboBox.Enabled = False
+                    PaintCodeComboBox.Enabled = False
+
+                    WorkStationComboBox.SelectedValue = (Entrylist(1)).ToString
+                    WorkOrderTextBox.Text = (Entrylist(2)).ToString
+                    MoldBrandComboBox.SelectedValue = (Entrylist(3)).ToString
+                    ProductLineComboBox.SelectedValue = (Entrylist(4)).ToString
+                    MoldModelComboBox.SelectedValue = (Entrylist(5)).ToString
+                    MoldSerialComboBox.SelectedValue = (Entrylist(6)).ToString
+                    PaintCodeComboBox.SelectedValue = (Entrylist(7)).ToString
+
+                    DefectOriginComboBox.ResetText()
+                    DefectComboBox.ResetText()
+                    DefectLocationComboBox.ResetText()
+                    ReworkComboBox.ResetText()
+
+                    WorkOrderId_TextBox.ResetText()
+
+                    DefectOriginComboBox.Enabled = True
+                    DefectComboBox.Enabled = True
+                    DefectLocationComboBox.Enabled = True
+                    ReworkComboBox.Enabled = True
+                Else
+                    MessageBox.Show("ERROR")
+                End If
             End If
         End If
-    End Sub
-    Private Sub ClearSearchWO_Button_Click(sender As Object, e As EventArgs) Handles ClearSearchWO_Button.Click
-        SearchWO_TextBox.Clear()
-        ReportedDataGridView.DataSource = Create_DataGridView()
-        DataGridViewHeaders()
-    End Sub
-    Private Sub SearchWO_Button_Click(sender As Object, e As EventArgs) Handles SearchWO_Button.Click, ClearSearchWO_Button.Click
-        ReportedDataGridView.DataSource = Search_DataGridView()
-        DataGridViewHeaders()
-    End Sub
-    Private Sub FilterView_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterView_ComboBox.SelectedIndexChanged
-        Filter_Show()
-        ReportedDataGridView.DataSource = Filter_DataGridView()
-    End Sub
-    Private Function Create_DataGridView() As DataTable
-        Dim RJcommand As New MySqlCommand("SELECT 
-`workorder_id`, 
-`workorder_date`, 
-`workorder_time`, 
-`workorder_reportedby`, 
-`workorder_workstation`, 
-`workstation_description`, 
-`workorder_number`,
-`workorder_moldbrand`, 
-`workorder_productline`, 
-`workorder_moldmodel`, 
-`workorder_moldserial`, 
-`workorder_paintcode`, 
-`workorder_defect_origin`, 
-`origin_description`, 
-`workorder_defect`, 
-`defects_description`, 
-`workorder_defect_location`, 
-`workorder_rework`,
-`rework_description`, 
-`workorder_status`, 
-`workorder_comments` 
-FROM `workorder` 
-INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
-INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
-INNER JOIN `origin` ON `workorder_defect_origin` = `origin_code`
-INNER JOIN `rework` ON `workorder_rework` = `rework_code`
-WHERE `workorder_workstation` = @workorder_workstation
-AND `workorder_rework` != 'RW08'
-ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
-        RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-        'RJcommand.Parameters.Add("@workorder_origin", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-        Dim RJadapter As New MySqlDataAdapter(RJcommand)
-        Dim RJtable As New DataTable()
-        Dim RJ = RJadapter.Fill(RJtable)
-        Return RJtable
-    End Function
-    Private Function Search_DataGridView() As DataTable
-        Dim RJcommand As New MySqlCommand("SELECT 
-`workorder_id`, 
-`workorder_date`, 
-`workorder_time`, 
-`workorder_reportedby`, 
-`workorder_workstation`, 
-`workstation_description`, 
-`workorder_number`,
-`workorder_moldbrand`, 
-`workorder_productline`, 
-`workorder_moldmodel`, 
-`workorder_moldserial`, 
-`workorder_paintcode`, 
-`workorder_defect_origin`, 
-`origin_description`, 
-`workorder_defect`, 
-`defects_description`, 
-`workorder_defect_location`, 
-`workorder_rework`,
-`rework_description`, 
-`workorder_status`, 
-`workorder_comments` 
-FROM `workorder` 
-INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
-INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
-INNER JOIN `origin` ON `workorder_defect_origin` = `origin_code`
-INNER JOIN `rework` ON `workorder_rework` = `rework_code`
-WHERE `workorder_workstation` = @workorder_workstation
-AND `workorder_rework` != 'RW08'
-AND `workorder_number` LIKE CONCAT (@Search, '%')
-/* AND `workorder_status` LIKE CONCAT (@Filter, '%') */
-ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
-        RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-        RJcommand.Parameters.AddWithValue("@Search", SearchWO_TextBox.Text.Trim())
-        ' RJcommand.Parameters.AddWithValue("@Filter", Filter_Show())
-        Dim RJadapter As New MySqlDataAdapter(RJcommand)
-        Dim RJtable As New DataTable()
-        Dim RJ = RJadapter.Fill(RJtable)
-        Return RJtable
-    End Function
-    Private Function Filter_DataGridView() As DataTable
-        Dim RJcommand As New MySqlCommand("SELECT 
-`workorder_id`, 
-`workorder_date`, 
-`workorder_time`, 
-`workorder_reportedby`, 
-`workorder_workstation`, 
-`workstation_description`, 
-`workorder_number`,
-`workorder_moldbrand`, 
-`workorder_productline`, 
-`workorder_moldmodel`, 
-`workorder_moldserial`, 
-`workorder_paintcode`, 
-`workorder_defect_origin`, 
-`origin_description`, 
-`workorder_defect`, 
-`defects_description`, 
-`workorder_defect_location`, 
-`workorder_rework`,
-`rework_description`, 
-`workorder_status`, 
-`workorder_comments` 
-FROM `workorder` 
-INNER JOIN `defects` ON `workorder_defect` = `defects_code` 
-INNER JOIN `workstation` ON `workorder_workstation` = `workstation_code`
-INNER JOIN `origin` ON `workorder_defect_origin` = `origin_code`
-INNER JOIN `rework` ON `workorder_rework` = `rework_code`
-WHERE `workorder_workstation` = @workorder_workstation
-AND `workorder_status` LIKE CONCAT (@Filter, '%')
-ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
-        RJcommand.Parameters.Add("@workorder_workstation", MySqlDbType.VarChar).Value = WorkStationComboBox.SelectedValue
-        RJcommand.Parameters.AddWithValue("@Filter", Filter_Show())
-        Dim RJadapter As New MySqlDataAdapter(RJcommand)
-        Dim RJtable As New DataTable()
-        Dim RJ = RJadapter.Fill(RJtable)
-        Return RJtable
-    End Function
-    Public Function Filter_Show()
-        Dim case_view As String = FilterView_ComboBox.SelectedItem.ToString
-        Dim filter_view As String
-        Select Case case_view
-            Case "Approved Only"
-                filter_view = "APPROVED"
-                Return filter_view
-            Case "Repaired Only"
-                filter_view = "REPAIRED"
-                Return filter_view
-            Case "Reported Only"
-                filter_view = "REPORTED"
-                Return filter_view
-            Case Else
-                filter_view = ""
-                Return filter_view
-        End Select
-    End Function
-    Private Sub DataGridViewHeaders()
-        With ReportedDataGridView
-            .RowHeadersVisible = True
-            .Columns(0).HeaderCell.Value = "ID"
-            .Columns(0).Visible = False
-            .Columns(1).HeaderCell.Value = "Date"
-            .Columns(2).HeaderCell.Value = "Time"
-            .Columns(3).HeaderCell.Value = "Reported By"
-            .Columns(4).HeaderCell.Value = "Workstation Code"
-            .Columns(4).Visible = False
-            .Columns(5).HeaderCell.Value = "Reported From"
-            .Columns(6).HeaderCell.Value = "Work Order"
-            .Columns(7).HeaderCell.Value = "Brand"
-            .Columns(8).HeaderCell.Value = "Product Line"
-            .Columns(9).HeaderCell.Value = "Model"
-            .Columns(10).HeaderCell.Value = "Serial"
-            .Columns(11).HeaderCell.Value = "Paint Code"
-            .Columns(12).HeaderCell.Value = "Defect Origin Code"
-            .Columns(12).Visible = False
-            .Columns(13).HeaderCell.Value = "Defect Origin"
-            .Columns(14).HeaderCell.Value = "Defect Code"
-            .Columns(14).Visible = False
-            .Columns(15).HeaderCell.Value = "Defect Description"
-            .Columns(16).HeaderCell.Value = "Defect Location"
-            .Columns(17).HeaderCell.Value = "Rework Code"
-            .Columns(17).Visible = False
-            .Columns(18).HeaderCell.Value = "Rework Description"
-            .Columns(19).HeaderCell.Value = "Work Order Status"
-            .Columns(20).HeaderCell.Value = "Comments"
-        End With
+        connection.Close()
     End Sub
 End Class

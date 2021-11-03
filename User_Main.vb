@@ -7,9 +7,7 @@
         Application.Exit()
     End Sub
     Private Sub User_Main_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim login_role As String
-        Dim login_user As String
-        login_role = LoginForm.login_role
+        Dim login_role As String = LoginForm.login_role
         Select Case login_role
             Case "USER"
                 UserGroupBox.Visible = True
@@ -25,8 +23,7 @@
                 AdminGroupBox.Visible = True
         End Select
 
-        login_user = LoginForm.login_user
-        CurrentUserTextBox.Text = "USER/ROLE: " & login_user.ToUpper & "/" & login_role.ToUpper
+        CurrentUserTextBox.Text = "USER/ROLE: " & LoginForm.login_user.ToUpper & "/" & login_role.ToUpper
     End Sub
     Private Sub AddUserButton_Click(sender As Object, e As EventArgs) Handles Admin_AddEditUserButton.Click, Super_AddEditUserButton.Click
         Dim newForm As New AddEditUser()

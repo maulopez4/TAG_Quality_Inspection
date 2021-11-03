@@ -162,9 +162,9 @@ Partial Class User_Main
         Me.CurrentUserTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.CurrentUserTextBox.Cursor = System.Windows.Forms.Cursors.No
         Me.CurrentUserTextBox.Enabled = False
-        Me.CurrentUserTextBox.Location = New System.Drawing.Point(545, 12)
+        Me.CurrentUserTextBox.Location = New System.Drawing.Point(516, 12)
         Me.CurrentUserTextBox.Name = "CurrentUserTextBox"
-        Me.CurrentUserTextBox.Size = New System.Drawing.Size(243, 16)
+        Me.CurrentUserTextBox.Size = New System.Drawing.Size(272, 16)
         Me.CurrentUserTextBox.TabIndex = 1
         Me.CurrentUserTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '

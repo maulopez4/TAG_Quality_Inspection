@@ -39,6 +39,8 @@ Partial Class LoginForm
         Me.Login_OKButton = New System.Windows.Forms.Button()
         Me.Login_CancelButton = New System.Windows.Forms.Button()
         Me.Login_ShowPasswordCheckBox = New System.Windows.Forms.CheckBox()
+        Me.LoginWorkstationComboBox = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,14 +49,15 @@ Partial Class LoginForm
         Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
         Me.LogoPictureBox.Location = New System.Drawing.Point(12, 0)
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(205, 203)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(233, 218)
+        Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
         'UsernameLabel
         '
         Me.UsernameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
-        Me.UsernameLabel.Location = New System.Drawing.Point(253, 26)
+        Me.UsernameLabel.Location = New System.Drawing.Point(253, 9)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
         Me.UsernameLabel.TabIndex = 0
@@ -64,7 +67,7 @@ Partial Class LoginForm
         'PasswordLabel
         '
         Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
-        Me.PasswordLabel.Location = New System.Drawing.Point(252, 78)
+        Me.PasswordLabel.Location = New System.Drawing.Point(252, 61)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
         Me.PasswordLabel.TabIndex = 2
@@ -73,14 +76,14 @@ Partial Class LoginForm
         '
         'Login_UsernameTextBox
         '
-        Me.Login_UsernameTextBox.Location = New System.Drawing.Point(252, 52)
+        Me.Login_UsernameTextBox.Location = New System.Drawing.Point(252, 35)
         Me.Login_UsernameTextBox.Name = "Login_UsernameTextBox"
         Me.Login_UsernameTextBox.Size = New System.Drawing.Size(220, 23)
         Me.Login_UsernameTextBox.TabIndex = 1
         '
         'Login_PasswordTextBox
         '
-        Me.Login_PasswordTextBox.Location = New System.Drawing.Point(252, 104)
+        Me.Login_PasswordTextBox.Location = New System.Drawing.Point(252, 87)
         Me.Login_PasswordTextBox.Name = "Login_PasswordTextBox"
         Me.Login_PasswordTextBox.Size = New System.Drawing.Size(220, 23)
         Me.Login_PasswordTextBox.TabIndex = 3
@@ -88,7 +91,7 @@ Partial Class LoginForm
         '
         'Login_OKButton
         '
-        Me.Login_OKButton.Location = New System.Drawing.Point(253, 180)
+        Me.Login_OKButton.Location = New System.Drawing.Point(252, 195)
         Me.Login_OKButton.Name = "Login_OKButton"
         Me.Login_OKButton.Size = New System.Drawing.Size(94, 23)
         Me.Login_OKButton.TabIndex = 4
@@ -97,7 +100,7 @@ Partial Class LoginForm
         'Login_CancelButton
         '
         Me.Login_CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Login_CancelButton.Location = New System.Drawing.Point(379, 180)
+        Me.Login_CancelButton.Location = New System.Drawing.Point(377, 195)
         Me.Login_CancelButton.Name = "Login_CancelButton"
         Me.Login_CancelButton.Size = New System.Drawing.Size(94, 23)
         Me.Login_CancelButton.TabIndex = 5
@@ -107,12 +110,30 @@ Partial Class LoginForm
         '
         Me.Login_ShowPasswordCheckBox.AutoSize = True
         Me.Login_ShowPasswordCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
-        Me.Login_ShowPasswordCheckBox.Location = New System.Drawing.Point(253, 133)
+        Me.Login_ShowPasswordCheckBox.Location = New System.Drawing.Point(253, 116)
         Me.Login_ShowPasswordCheckBox.Name = "Login_ShowPasswordCheckBox"
         Me.Login_ShowPasswordCheckBox.Size = New System.Drawing.Size(122, 21)
         Me.Login_ShowPasswordCheckBox.TabIndex = 6
         Me.Login_ShowPasswordCheckBox.Text = "Show Password"
         Me.Login_ShowPasswordCheckBox.UseVisualStyleBackColor = True
+        '
+        'LoginWorkstationComboBox
+        '
+        Me.LoginWorkstationComboBox.FormattingEnabled = True
+        Me.LoginWorkstationComboBox.Location = New System.Drawing.Point(252, 166)
+        Me.LoginWorkstationComboBox.Name = "LoginWorkstationComboBox"
+        Me.LoginWorkstationComboBox.Size = New System.Drawing.Size(219, 23)
+        Me.LoginWorkstationComboBox.TabIndex = 7
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(251, 140)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(220, 23)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "&Work Station:"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'LoginForm
         '
@@ -120,12 +141,14 @@ Partial Class LoginForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Login_CancelButton
-        Me.ClientSize = New System.Drawing.Size(493, 217)
+        Me.ClientSize = New System.Drawing.Size(493, 228)
+        Me.Controls.Add(Me.LoginWorkstationComboBox)
         Me.Controls.Add(Me.Login_ShowPasswordCheckBox)
         Me.Controls.Add(Me.Login_CancelButton)
         Me.Controls.Add(Me.Login_OKButton)
         Me.Controls.Add(Me.Login_PasswordTextBox)
         Me.Controls.Add(Me.Login_UsernameTextBox)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PasswordLabel)
         Me.Controls.Add(Me.UsernameLabel)
         Me.Controls.Add(Me.LogoPictureBox)
@@ -135,7 +158,7 @@ Partial Class LoginForm
         Me.Name = "LoginForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Login"
+        Me.Text = "Login V1.09.08"
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -143,4 +166,6 @@ Partial Class LoginForm
     End Sub
 
     Friend WithEvents Login_ShowPasswordCheckBox As CheckBox
+    Friend WithEvents LoginWorkstationComboBox As ComboBox
+    Friend WithEvents Label1 As Label
 End Class
