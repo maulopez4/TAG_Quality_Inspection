@@ -35,6 +35,24 @@ Public Class LoginForm
             Dim newForm As New User_Main()
             newForm.Show()
             Me.Hide()
+            'Dim role As String = LoginForm.login_role
+            'Select Case role
+            '    Case "USER"
+            '        Dim newForm As New AddEntry()
+            '        newForm.Show()
+            '        Me.Hide()
+            '    Case "SUPER"
+            '        Dim newForm As New User_Main()
+            '        newForm.Show()
+            '        Me.Hide()
+            '    Case "ADMIN"
+            '        Dim newForm As New User_Main()
+            '        newForm.Show()
+            '        Me.Hide()
+            'End Select
+
+
+
         End If
     End Sub
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Login_CancelButton.Click
@@ -47,6 +65,7 @@ Public Class LoginForm
             Login_PasswordTextBox.UseSystemPasswordChar = True
         End If
     End Sub
+
     Private Sub LoginWorkstationComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LoginWorkstationComboBox.SelectedIndexChanged
         login_workstation = LoginWorkstationComboBox.SelectedValue.ToString
     End Sub

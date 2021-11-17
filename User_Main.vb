@@ -22,7 +22,6 @@
                 SuperGroupBox.Visible = True
                 AdminGroupBox.Visible = True
         End Select
-
         CurrentUserTextBox.Text = "USER/ROLE: " & LoginForm.login_user.ToUpper & "/" & login_role.ToUpper
     End Sub
     Private Sub AddUserButton_Click(sender As Object, e As EventArgs) Handles Admin_AddEditUserButton.Click, Super_AddEditUserButton.Click

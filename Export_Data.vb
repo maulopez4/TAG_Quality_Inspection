@@ -18,7 +18,7 @@ Public Class Export_Data
             Selection_ListBox.ValueMember = "workstation_code"
             Selection_ListBox.DisplayMember = "workstation_description"
         End Using
-
+        FilterView_ComboBox.SelectedIndex = 0
     End Sub
     Private Sub GetData_Button_Click(sender As Object, e As EventArgs) Handles GetData_Button.Click
         Dim SL As New List(Of String)
@@ -42,7 +42,7 @@ Public Class Export_Data
                                                     AND `workorder_status` LIKE CONCAT (@Filter, '%')
                                                     AND `workorder_rework` != 'RW08'
                                                     ORDER BY `workorder_date` desc, `workorder_time` desc", connection)
-            RJcommand.Parameters.AddWithValue("@Filter", Filter_Export())
+            RJcommand.Parameters.AddWithValue("@Filter", Filter_Show())
             Dim RJadapter As New MySqlDataAdapter(RJcommand)
             Dim RJtable As New DataTable()
             Dim RJ = RJadapter.Fill(RJtable)
@@ -78,10 +78,28 @@ Public Class Export_Data
             End With
         End Using
     End Sub
-    Public Function Filter_Export()
-        Dim export_filter As String = FilterExport_ComboBox.SelectedItem.ToString
+    'Public Function Filter_Export()
+    '    Dim export_filter As String = FilterExport_ComboBox.SelectedItem.ToString
+    '    Dim filter_view As String
+    '    Select Case export_filter
+    '        Case "Approved Only"
+    '            filter_view = "APPROVED"
+    '            Return filter_view
+    '        Case "Repaired Only"
+    '            filter_view = "REPAIRED"
+    '            Return filter_view
+    '        Case "Reported Only"
+    '            filter_view = "REPORTED"
+    '            Return filter_view
+    '        Case Else
+    '            filter_view = ""
+    '            Return filter_view
+    '    End Select
+    'End Function
+    Public Function Filter_Show()
+        Dim case_view As String = FilterView_ComboBox.SelectedItem.ToString
         Dim filter_view As String
-        Select Case export_filter
+        Select Case case_view
             Case "Approved Only"
                 filter_view = "APPROVED"
                 Return filter_view

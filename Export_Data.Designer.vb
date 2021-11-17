@@ -22,7 +22,7 @@ Partial Class Export_Data
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.RejectedDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.ReportedDataGridView = New System.Windows.Forms.DataGridView()
         Me.From_DateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -31,11 +31,11 @@ Partial Class Export_Data
         Me.Till_Label = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Selection_ListBox = New System.Windows.Forms.CheckedListBox()
+        Me.FilterView_ComboBox = New System.Windows.Forms.ComboBox()
         Me.Close_Button = New System.Windows.Forms.Button()
         Me.Export_Button = New System.Windows.Forms.Button()
         Me.GetData_Button = New System.Windows.Forms.Button()
         Me.Date_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.FilterExport_ComboBox = New System.Windows.Forms.ComboBox()
         Me.RejectedDataGroupBox.SuspendLayout()
         CType(Me.ReportedDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -59,10 +59,10 @@ Partial Class Export_Data
         Me.ReportedDataGridView.AllowUserToDeleteRows = False
         Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.ReportedDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ReportedDataGridView.Location = New System.Drawing.Point(6, 22)
         Me.ReportedDataGridView.Name = "ReportedDataGridView"
@@ -124,7 +124,7 @@ Partial Class Export_Data
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Selection_ListBox)
-        Me.GroupBox2.Controls.Add(Me.FilterExport_ComboBox)
+        Me.GroupBox2.Controls.Add(Me.FilterView_ComboBox)
         Me.GroupBox2.Controls.Add(Me.Close_Button)
         Me.GroupBox2.Controls.Add(Me.Export_Button)
         Me.GroupBox2.Controls.Add(Me.GetData_Button)
@@ -142,6 +142,15 @@ Partial Class Export_Data
         Me.Selection_ListBox.Name = "Selection_ListBox"
         Me.Selection_ListBox.Size = New System.Drawing.Size(214, 130)
         Me.Selection_ListBox.TabIndex = 2
+        '
+        'FilterView_ComboBox
+        '
+        Me.FilterView_ComboBox.FormattingEnabled = True
+        Me.FilterView_ComboBox.Items.AddRange(New Object() {"Show All", "Reported Only", "Repaired Only", "Approved Only"})
+        Me.FilterView_ComboBox.Location = New System.Drawing.Point(227, 22)
+        Me.FilterView_ComboBox.Name = "FilterView_ComboBox"
+        Me.FilterView_ComboBox.Size = New System.Drawing.Size(143, 23)
+        Me.FilterView_ComboBox.TabIndex = 29
         '
         'Close_Button
         '
@@ -183,16 +192,6 @@ Partial Class Export_Data
         Me.Date_GroupBox.TabStop = False
         Me.Date_GroupBox.Text = "Select Dates:"
         '
-        'FilterExport_ComboBox
-        '
-        Me.FilterExport_ComboBox.DisplayMember = "0"
-        Me.FilterExport_ComboBox.FormattingEnabled = True
-        Me.FilterExport_ComboBox.Items.AddRange(New Object() {"Show All", "Reported Only", "Repaired Only", "Accepted Only"})
-        Me.FilterExport_ComboBox.Location = New System.Drawing.Point(227, 22)
-        Me.FilterExport_ComboBox.Name = "FilterExport_ComboBox"
-        Me.FilterExport_ComboBox.Size = New System.Drawing.Size(143, 23)
-        Me.FilterExport_ComboBox.TabIndex = 29
-        '
         'Export_Data
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -224,5 +223,5 @@ Partial Class Export_Data
     Friend WithEvents Close_Button As Button
     Friend WithEvents Export_Button As Button
     Friend WithEvents Selection_ListBox As CheckedListBox
-    Friend WithEvents FilterExport_ComboBox As ComboBox
+    Friend WithEvents FilterView_ComboBox As ComboBox
 End Class
