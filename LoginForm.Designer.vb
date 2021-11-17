@@ -86,7 +86,7 @@ Partial Class LoginForm
         Me.Login_PasswordTextBox.Location = New System.Drawing.Point(252, 87)
         Me.Login_PasswordTextBox.Name = "Login_PasswordTextBox"
         Me.Login_PasswordTextBox.Size = New System.Drawing.Size(220, 23)
-        Me.Login_PasswordTextBox.TabIndex = 3
+        Me.Login_PasswordTextBox.TabIndex = 2
         Me.Login_PasswordTextBox.UseSystemPasswordChar = True
         '
         'Login_OKButton
@@ -94,7 +94,7 @@ Partial Class LoginForm
         Me.Login_OKButton.Location = New System.Drawing.Point(252, 195)
         Me.Login_OKButton.Name = "Login_OKButton"
         Me.Login_OKButton.Size = New System.Drawing.Size(94, 23)
-        Me.Login_OKButton.TabIndex = 4
+        Me.Login_OKButton.TabIndex = 5
         Me.Login_OKButton.Text = "&OK"
         '
         'Login_CancelButton
@@ -103,7 +103,7 @@ Partial Class LoginForm
         Me.Login_CancelButton.Location = New System.Drawing.Point(377, 195)
         Me.Login_CancelButton.Name = "Login_CancelButton"
         Me.Login_CancelButton.Size = New System.Drawing.Size(94, 23)
-        Me.Login_CancelButton.TabIndex = 5
+        Me.Login_CancelButton.TabIndex = 6
         Me.Login_CancelButton.Text = "&Cancel"
         '
         'Login_ShowPasswordCheckBox
@@ -113,7 +113,7 @@ Partial Class LoginForm
         Me.Login_ShowPasswordCheckBox.Location = New System.Drawing.Point(253, 116)
         Me.Login_ShowPasswordCheckBox.Name = "Login_ShowPasswordCheckBox"
         Me.Login_ShowPasswordCheckBox.Size = New System.Drawing.Size(122, 21)
-        Me.Login_ShowPasswordCheckBox.TabIndex = 6
+        Me.Login_ShowPasswordCheckBox.TabIndex = 3
         Me.Login_ShowPasswordCheckBox.Text = "Show Password"
         Me.Login_ShowPasswordCheckBox.UseVisualStyleBackColor = True
         '
@@ -123,7 +123,7 @@ Partial Class LoginForm
         Me.LoginWorkstationComboBox.Location = New System.Drawing.Point(252, 166)
         Me.LoginWorkstationComboBox.Name = "LoginWorkstationComboBox"
         Me.LoginWorkstationComboBox.Size = New System.Drawing.Size(219, 23)
-        Me.LoginWorkstationComboBox.TabIndex = 7
+        Me.LoginWorkstationComboBox.TabIndex = 4
         '
         'Label1
         '
@@ -158,7 +158,7 @@ Partial Class LoginForm
         Me.Name = "LoginForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Login V1.09.08"
+        Me.Text = "Login V1.09.10"
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
