@@ -414,7 +414,7 @@ Public Class AddEntry
         FilterView_ComboBox.Visible = True
         ReportedDataGridView.ClearSelection()
     End Sub
-    Private Sub FilterView_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterView_ComboBox.SelectedIndexChanged
+    Private Sub FilterView_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterView_ComboBox.SelectedIndexChanged, From_DateTimePicker.ValueChanged, Till_DateTimePicker.ValueChanged
         ReportedDataGridView.DataSource = Create_DataGridView()
         DataGridViewHeaders()
         ReportedDataGridView.ClearSelection()
