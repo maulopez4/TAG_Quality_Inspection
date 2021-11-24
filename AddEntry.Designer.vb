@@ -24,7 +24,7 @@ Partial Class AddEntry
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
         Me.Delete_Button = New System.Windows.Forms.Button()
         Me.ClearSearchWO_Button = New System.Windows.Forms.Button()
@@ -43,7 +43,6 @@ Partial Class AddEntry
         Me.MoldModelComboBox = New System.Windows.Forms.ComboBox()
         Me.WorkStationComboBox = New System.Windows.Forms.ComboBox()
         Me.PaintcodeDescription_Label = New System.Windows.Forms.Label()
-        Me.WorkStationLabel = New System.Windows.Forms.Label()
         Me.ModelBrandLabel = New System.Windows.Forms.Label()
         Me.Mold_Prefix = New System.Windows.Forms.Label()
         Me.MoldSerialLabel = New System.Windows.Forms.Label()
@@ -52,8 +51,6 @@ Partial Class AddEntry
         Me.WorkOrderLabel = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TimeTextBox = New System.Windows.Forms.TextBox()
-        Me.TimeLabel = New System.Windows.Forms.Label()
-        Me.DateLabel = New System.Windows.Forms.Label()
         Me.DatePicker = New System.Windows.Forms.DateTimePicker()
         Me.FilterView_ComboBox = New System.Windows.Forms.ComboBox()
         Me.DefectDataGroupBox = New System.Windows.Forms.GroupBox()
@@ -137,6 +134,9 @@ Partial Class AddEntry
         Me.Status_Label = New System.Windows.Forms.Label()
         Me.Status_PictureBox = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.WorkStationLabel = New System.Windows.Forms.Label()
+        Me.TimeLabel = New System.Windows.Forms.Label()
+        Me.DateLabel = New System.Windows.Forms.Label()
         Me.WorkOrderInfoGroupBox.SuspendLayout()
         Me.DefectDataGroupBox.SuspendLayout()
         CType(Me.Zona42PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,17 +158,18 @@ Partial Class AddEntry
         '
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.Delete_Button)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.ClearSearchWO_Button)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.Export_Button)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.SearchWO_Button)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkOrderId_TextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.CancelEdit_Button)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.Export_Button)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkOrderId_TextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.EditSelected_Button)
-        Me.WorkOrderInfoGroupBox.Controls.Add(Me.SearchWO_TextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.NewEntry_Button)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.Filter_Label)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.SearchWO_Button)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldSerialComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintcodeDescription_ComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.PaintCodeComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldBrandComboBox)
+        Me.WorkOrderInfoGroupBox.Controls.Add(Me.SearchWO_TextBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.ProductLineComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.MoldModelComboBox)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.WorkStationComboBox)
@@ -196,9 +197,9 @@ Partial Class AddEntry
         'Delete_Button
         '
         Me.Delete_Button.Enabled = False
-        Me.Delete_Button.Location = New System.Drawing.Point(720, 15)
+        Me.Delete_Button.Location = New System.Drawing.Point(741, 14)
         Me.Delete_Button.Name = "Delete_Button"
-        Me.Delete_Button.Size = New System.Drawing.Size(125, 23)
+        Me.Delete_Button.Size = New System.Drawing.Size(100, 23)
         Me.Delete_Button.TabIndex = 21
         Me.Delete_Button.Text = "Delete Entry"
         Me.Delete_Button.UseVisualStyleBackColor = True
@@ -207,9 +208,9 @@ Partial Class AddEntry
         'ClearSearchWO_Button
         '
         Me.ClearSearchWO_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.ClearSearchWO_Button.Location = New System.Drawing.Point(639, 45)
+        Me.ClearSearchWO_Button.Location = New System.Drawing.Point(243, 93)
         Me.ClearSearchWO_Button.Name = "ClearSearchWO_Button"
-        Me.ClearSearchWO_Button.Size = New System.Drawing.Size(75, 23)
+        Me.ClearSearchWO_Button.Size = New System.Drawing.Size(100, 23)
         Me.ClearSearchWO_Button.TabIndex = 10
         Me.ClearSearchWO_Button.Text = "Clear"
         Me.ClearSearchWO_Button.UseVisualStyleBackColor = True
@@ -217,9 +218,9 @@ Partial Class AddEntry
         'Export_Button
         '
         Me.Export_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.Export_Button.Location = New System.Drawing.Point(720, 45)
+        Me.Export_Button.Location = New System.Drawing.Point(349, 93)
         Me.Export_Button.Name = "Export_Button"
-        Me.Export_Button.Size = New System.Drawing.Size(125, 23)
+        Me.Export_Button.Size = New System.Drawing.Size(169, 23)
         Me.Export_Button.TabIndex = 18
         Me.Export_Button.Text = "Export Data to Excel"
         Me.Export_Button.UseVisualStyleBackColor = True
@@ -227,7 +228,7 @@ Partial Class AddEntry
         'SearchWO_Button
         '
         Me.SearchWO_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.SearchWO_Button.Location = New System.Drawing.Point(530, 45)
+        Me.SearchWO_Button.Location = New System.Drawing.Point(137, 94)
         Me.SearchWO_Button.Name = "SearchWO_Button"
         Me.SearchWO_Button.Size = New System.Drawing.Size(100, 23)
         Me.SearchWO_Button.TabIndex = 7
@@ -237,7 +238,7 @@ Partial Class AddEntry
         'WorkOrderId_TextBox
         '
         Me.WorkOrderId_TextBox.Enabled = False
-        Me.WorkOrderId_TextBox.Location = New System.Drawing.Point(329, 15)
+        Me.WorkOrderId_TextBox.Location = New System.Drawing.Point(756, 96)
         Me.WorkOrderId_TextBox.Name = "WorkOrderId_TextBox"
         Me.WorkOrderId_TextBox.Size = New System.Drawing.Size(64, 23)
         Me.WorkOrderId_TextBox.TabIndex = 20
@@ -246,9 +247,9 @@ Partial Class AddEntry
         'CancelEdit_Button
         '
         Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.CancelEdit_Button.Location = New System.Drawing.Point(639, 15)
+        Me.CancelEdit_Button.Location = New System.Drawing.Point(635, 14)
         Me.CancelEdit_Button.Name = "CancelEdit_Button"
-        Me.CancelEdit_Button.Size = New System.Drawing.Size(75, 23)
+        Me.CancelEdit_Button.Size = New System.Drawing.Size(100, 23)
         Me.CancelEdit_Button.TabIndex = 9
         Me.CancelEdit_Button.Text = "Cancel Edit"
         Me.CancelEdit_Button.UseVisualStyleBackColor = True
@@ -256,7 +257,7 @@ Partial Class AddEntry
         'EditSelected_Button
         '
         Me.EditSelected_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.EditSelected_Button.Location = New System.Drawing.Point(530, 15)
+        Me.EditSelected_Button.Location = New System.Drawing.Point(529, 14)
         Me.EditSelected_Button.Name = "EditSelected_Button"
         Me.EditSelected_Button.Size = New System.Drawing.Size(100, 23)
         Me.EditSelected_Button.TabIndex = 8
@@ -265,7 +266,7 @@ Partial Class AddEntry
         '
         'SearchWO_TextBox
         '
-        Me.SearchWO_TextBox.Location = New System.Drawing.Point(399, 45)
+        Me.SearchWO_TextBox.Location = New System.Drawing.Point(6, 94)
         Me.SearchWO_TextBox.Name = "SearchWO_TextBox"
         Me.SearchWO_TextBox.PlaceholderText = "Search WO Number"
         Me.SearchWO_TextBox.Size = New System.Drawing.Size(125, 23)
@@ -275,7 +276,7 @@ Partial Class AddEntry
         '
         Me.NewEntry_Button.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.NewEntry_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.NewEntry_Button.Location = New System.Drawing.Point(399, 15)
+        Me.NewEntry_Button.Location = New System.Drawing.Point(398, 14)
         Me.NewEntry_Button.Name = "NewEntry_Button"
         Me.NewEntry_Button.Size = New System.Drawing.Size(125, 23)
         Me.NewEntry_Button.TabIndex = 4
@@ -288,7 +289,7 @@ Partial Class AddEntry
         Me.MoldSerialComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldSerialComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldSerialComboBox.FormattingEnabled = True
-        Me.MoldSerialComboBox.Location = New System.Drawing.Point(480, 95)
+        Me.MoldSerialComboBox.Location = New System.Drawing.Point(455, 58)
         Me.MoldSerialComboBox.Name = "MoldSerialComboBox"
         Me.MoldSerialComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldSerialComboBox.TabIndex = 15
@@ -301,7 +302,7 @@ Partial Class AddEntry
         Me.PaintcodeDescription_ComboBox.DropDownWidth = 1
         Me.PaintcodeDescription_ComboBox.Enabled = False
         Me.PaintcodeDescription_ComboBox.FormattingEnabled = True
-        Me.PaintcodeDescription_ComboBox.Location = New System.Drawing.Point(692, 95)
+        Me.PaintcodeDescription_ComboBox.Location = New System.Drawing.Point(667, 59)
         Me.PaintcodeDescription_ComboBox.Name = "PaintcodeDescription_ComboBox"
         Me.PaintcodeDescription_ComboBox.Size = New System.Drawing.Size(150, 23)
         Me.PaintcodeDescription_ComboBox.TabIndex = 17
@@ -312,7 +313,7 @@ Partial Class AddEntry
         Me.PaintCodeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.PaintCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.PaintCodeComboBox.FormattingEnabled = True
-        Me.PaintCodeComboBox.Location = New System.Drawing.Point(586, 95)
+        Me.PaintCodeComboBox.Location = New System.Drawing.Point(561, 58)
         Me.PaintCodeComboBox.Name = "PaintCodeComboBox"
         Me.PaintCodeComboBox.Size = New System.Drawing.Size(100, 23)
         Me.PaintCodeComboBox.TabIndex = 16
@@ -321,7 +322,7 @@ Partial Class AddEntry
         '
         Me.MoldBrandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldBrandComboBox.FormattingEnabled = True
-        Me.MoldBrandComboBox.Location = New System.Drawing.Point(137, 95)
+        Me.MoldBrandComboBox.Location = New System.Drawing.Point(137, 58)
         Me.MoldBrandComboBox.Name = "MoldBrandComboBox"
         Me.MoldBrandComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldBrandComboBox.TabIndex = 12
@@ -332,9 +333,9 @@ Partial Class AddEntry
         Me.ProductLineComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ProductLineComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ProductLineComboBox.FormattingEnabled = True
-        Me.ProductLineComboBox.Location = New System.Drawing.Point(243, 95)
+        Me.ProductLineComboBox.Location = New System.Drawing.Point(243, 59)
         Me.ProductLineComboBox.Name = "ProductLineComboBox"
-        Me.ProductLineComboBox.Size = New System.Drawing.Size(125, 23)
+        Me.ProductLineComboBox.Size = New System.Drawing.Size(100, 23)
         Me.ProductLineComboBox.TabIndex = 13
         '
         'MoldModelComboBox
@@ -343,7 +344,7 @@ Partial Class AddEntry
         Me.MoldModelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.MoldModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.MoldModelComboBox.FormattingEnabled = True
-        Me.MoldModelComboBox.Location = New System.Drawing.Point(374, 95)
+        Me.MoldModelComboBox.Location = New System.Drawing.Point(349, 58)
         Me.MoldModelComboBox.Name = "MoldModelComboBox"
         Me.MoldModelComboBox.Size = New System.Drawing.Size(100, 23)
         Me.MoldModelComboBox.TabIndex = 14
@@ -352,7 +353,7 @@ Partial Class AddEntry
         '
         Me.WorkStationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.WorkStationComboBox.FormattingEnabled = True
-        Me.WorkStationComboBox.Location = New System.Drawing.Point(243, 45)
+        Me.WorkStationComboBox.Location = New System.Drawing.Point(242, 14)
         Me.WorkStationComboBox.Name = "WorkStationComboBox"
         Me.WorkStationComboBox.Size = New System.Drawing.Size(150, 23)
         Me.WorkStationComboBox.TabIndex = 3
@@ -360,25 +361,16 @@ Partial Class AddEntry
         'PaintcodeDescription_Label
         '
         Me.PaintcodeDescription_Label.AutoSize = True
-        Me.PaintcodeDescription_Label.Location = New System.Drawing.Point(692, 78)
+        Me.PaintcodeDescription_Label.Location = New System.Drawing.Point(667, 40)
         Me.PaintcodeDescription_Label.Name = "PaintcodeDescription_Label"
         Me.PaintcodeDescription_Label.Size = New System.Drawing.Size(131, 15)
         Me.PaintcodeDescription_Label.TabIndex = 2
         Me.PaintcodeDescription_Label.Text = "Paint Code Description:"
         '
-        'WorkStationLabel
-        '
-        Me.WorkStationLabel.AutoSize = True
-        Me.WorkStationLabel.Location = New System.Drawing.Point(243, 25)
-        Me.WorkStationLabel.Name = "WorkStationLabel"
-        Me.WorkStationLabel.Size = New System.Drawing.Size(80, 15)
-        Me.WorkStationLabel.TabIndex = 1
-        Me.WorkStationLabel.Text = "&Work Station:"
-        '
         'ModelBrandLabel
         '
         Me.ModelBrandLabel.AutoSize = True
-        Me.ModelBrandLabel.Location = New System.Drawing.Point(137, 78)
+        Me.ModelBrandLabel.Location = New System.Drawing.Point(137, 40)
         Me.ModelBrandLabel.Name = "ModelBrandLabel"
         Me.ModelBrandLabel.Size = New System.Drawing.Size(41, 15)
         Me.ModelBrandLabel.TabIndex = 2
@@ -387,7 +379,7 @@ Partial Class AddEntry
         'Mold_Prefix
         '
         Me.Mold_Prefix.AutoSize = True
-        Me.Mold_Prefix.Location = New System.Drawing.Point(243, 78)
+        Me.Mold_Prefix.Location = New System.Drawing.Point(243, 41)
         Me.Mold_Prefix.Name = "Mold_Prefix"
         Me.Mold_Prefix.Size = New System.Drawing.Size(77, 15)
         Me.Mold_Prefix.TabIndex = 2
@@ -396,7 +388,7 @@ Partial Class AddEntry
         'MoldSerialLabel
         '
         Me.MoldSerialLabel.AutoSize = True
-        Me.MoldSerialLabel.Location = New System.Drawing.Point(480, 78)
+        Me.MoldSerialLabel.Location = New System.Drawing.Point(455, 40)
         Me.MoldSerialLabel.Name = "MoldSerialLabel"
         Me.MoldSerialLabel.Size = New System.Drawing.Size(39, 15)
         Me.MoldSerialLabel.TabIndex = 2
@@ -405,7 +397,7 @@ Partial Class AddEntry
         'MoldModelLabel
         '
         Me.MoldModelLabel.AutoSize = True
-        Me.MoldModelLabel.Location = New System.Drawing.Point(374, 78)
+        Me.MoldModelLabel.Location = New System.Drawing.Point(349, 40)
         Me.MoldModelLabel.Name = "MoldModelLabel"
         Me.MoldModelLabel.Size = New System.Drawing.Size(38, 15)
         Me.MoldModelLabel.TabIndex = 2
@@ -413,7 +405,7 @@ Partial Class AddEntry
         '
         'WorkOrderTextBox
         '
-        Me.WorkOrderTextBox.Location = New System.Drawing.Point(5, 95)
+        Me.WorkOrderTextBox.Location = New System.Drawing.Point(6, 59)
         Me.WorkOrderTextBox.Name = "WorkOrderTextBox"
         Me.WorkOrderTextBox.Size = New System.Drawing.Size(125, 23)
         Me.WorkOrderTextBox.TabIndex = 11
@@ -421,7 +413,7 @@ Partial Class AddEntry
         'WorkOrderLabel
         '
         Me.WorkOrderLabel.AutoSize = True
-        Me.WorkOrderLabel.Location = New System.Drawing.Point(5, 75)
+        Me.WorkOrderLabel.Location = New System.Drawing.Point(6, 41)
         Me.WorkOrderLabel.Name = "WorkOrderLabel"
         Me.WorkOrderLabel.Size = New System.Drawing.Size(119, 15)
         Me.WorkOrderLabel.TabIndex = 2
@@ -430,7 +422,7 @@ Partial Class AddEntry
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(586, 78)
+        Me.Label2.Location = New System.Drawing.Point(561, 40)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(67, 15)
         Me.Label2.TabIndex = 2
@@ -439,35 +431,17 @@ Partial Class AddEntry
         'TimeTextBox
         '
         Me.TimeTextBox.Enabled = False
-        Me.TimeTextBox.Location = New System.Drawing.Point(137, 45)
+        Me.TimeTextBox.Location = New System.Drawing.Point(136, 14)
         Me.TimeTextBox.Name = "TimeTextBox"
         Me.TimeTextBox.Size = New System.Drawing.Size(100, 23)
         Me.TimeTextBox.TabIndex = 2
         Me.TimeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TimeLabel
-        '
-        Me.TimeLabel.AutoSize = True
-        Me.TimeLabel.Location = New System.Drawing.Point(137, 25)
-        Me.TimeLabel.Name = "TimeLabel"
-        Me.TimeLabel.Size = New System.Drawing.Size(37, 15)
-        Me.TimeLabel.TabIndex = 2
-        Me.TimeLabel.Text = "&Time:"
-        '
-        'DateLabel
-        '
-        Me.DateLabel.AutoSize = True
-        Me.DateLabel.Location = New System.Drawing.Point(5, 25)
-        Me.DateLabel.Name = "DateLabel"
-        Me.DateLabel.Size = New System.Drawing.Size(35, 15)
-        Me.DateLabel.TabIndex = 1
-        Me.DateLabel.Text = "&Date:"
-        '
         'DatePicker
         '
         Me.DatePicker.CustomFormat = "mm/dd/yyyy"
         Me.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DatePicker.Location = New System.Drawing.Point(5, 45)
+        Me.DatePicker.Location = New System.Drawing.Point(5, 15)
         Me.DatePicker.MaxDate = New Date(2100, 12, 31, 0, 0, 0, 0)
         Me.DatePicker.MinDate = New Date(2000, 1, 1, 0, 0, 0, 0)
         Me.DatePicker.Name = "DatePicker"
@@ -480,9 +454,9 @@ Partial Class AddEntry
         Me.FilterView_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.FilterView_ComboBox.FormattingEnabled = True
         Me.FilterView_ComboBox.Items.AddRange(New Object() {"Show All", "Reported Only", "Repaired Only", "Approved Only"})
-        Me.FilterView_ComboBox.Location = New System.Drawing.Point(48, 22)
+        Me.FilterView_ComboBox.Location = New System.Drawing.Point(6, 21)
         Me.FilterView_ComboBox.Name = "FilterView_ComboBox"
-        Me.FilterView_ComboBox.Size = New System.Drawing.Size(145, 23)
+        Me.FilterView_ComboBox.Size = New System.Drawing.Size(126, 23)
         Me.FilterView_ComboBox.TabIndex = 6
         '
         'DefectDataGroupBox
@@ -1073,10 +1047,10 @@ Partial Class AddEntry
         Me.ReportedDataGridView.AllowUserToAddRows = False
         Me.ReportedDataGridView.AllowUserToDeleteRows = False
         Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ReportedDataGridView.Location = New System.Drawing.Point(5, 50)
         Me.ReportedDataGridView.Name = "ReportedDataGridView"
@@ -1246,7 +1220,6 @@ Partial Class AddEntry
         Me.ReportedDataGroupBox.Controls.Add(Me.From_DateTimePicker)
         Me.ReportedDataGroupBox.Controls.Add(Me.ReportedDataGridView)
         Me.ReportedDataGroupBox.Controls.Add(Me.FilterView_ComboBox)
-        Me.ReportedDataGroupBox.Controls.Add(Me.Filter_Label)
         Me.ReportedDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
         Me.ReportedDataGroupBox.Location = New System.Drawing.Point(10, 130)
         Me.ReportedDataGroupBox.Name = "ReportedDataGroupBox"
@@ -1262,7 +1235,7 @@ Partial Class AddEntry
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Till_Label.AutoSize = True
         Me.Till_Label.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.Till_Label.Location = New System.Drawing.Point(355, 28)
+        Me.Till_Label.Location = New System.Drawing.Point(296, 24)
         Me.Till_Label.Name = "Till_Label"
         Me.Till_Label.Size = New System.Drawing.Size(26, 15)
         Me.Till_Label.TabIndex = 29
@@ -1275,7 +1248,7 @@ Partial Class AddEntry
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_Label.AutoSize = True
         Me.From_Label.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
-        Me.From_Label.Location = New System.Drawing.Point(199, 28)
+        Me.From_Label.Location = New System.Drawing.Point(140, 24)
         Me.From_Label.Name = "From_Label"
         Me.From_Label.Size = New System.Drawing.Size(38, 15)
         Me.From_Label.TabIndex = 30
@@ -1287,9 +1260,9 @@ Partial Class AddEntry
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Till_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.Till_DateTimePicker.Location = New System.Drawing.Point(387, 22)
+        Me.Till_DateTimePicker.Location = New System.Drawing.Point(324, 21)
         Me.Till_DateTimePicker.Name = "Till_DateTimePicker"
-        Me.Till_DateTimePicker.Size = New System.Drawing.Size(99, 23)
+        Me.Till_DateTimePicker.Size = New System.Drawing.Size(106, 23)
         Me.Till_DateTimePicker.TabIndex = 27
         '
         'From_DateTimePicker
@@ -1298,7 +1271,7 @@ Partial Class AddEntry
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.From_DateTimePicker.Location = New System.Drawing.Point(243, 22)
+        Me.From_DateTimePicker.Location = New System.Drawing.Point(184, 21)
         Me.From_DateTimePicker.Name = "From_DateTimePicker"
         Me.From_DateTimePicker.Size = New System.Drawing.Size(106, 23)
         Me.From_DateTimePicker.TabIndex = 28
@@ -1306,11 +1279,12 @@ Partial Class AddEntry
         'Filter_Label
         '
         Me.Filter_Label.AutoSize = True
-        Me.Filter_Label.Location = New System.Drawing.Point(6, 30)
+        Me.Filter_Label.Location = New System.Drawing.Point(683, 102)
         Me.Filter_Label.Name = "Filter_Label"
         Me.Filter_Label.Size = New System.Drawing.Size(36, 15)
         Me.Filter_Label.TabIndex = 2
         Me.Filter_Label.Text = "Filter:"
+        Me.Filter_Label.Visible = False
         '
         'Actions_GroupBox
         '
@@ -1377,6 +1351,36 @@ Partial Class AddEntry
         '
         Me.Timer1.Enabled = True
         '
+        'WorkStationLabel
+        '
+        Me.WorkStationLabel.AutoSize = True
+        Me.WorkStationLabel.Location = New System.Drawing.Point(520, 101)
+        Me.WorkStationLabel.Name = "WorkStationLabel"
+        Me.WorkStationLabel.Size = New System.Drawing.Size(80, 15)
+        Me.WorkStationLabel.TabIndex = 1
+        Me.WorkStationLabel.Text = "&Work Station:"
+        Me.WorkStationLabel.Visible = False
+        '
+        'TimeLabel
+        '
+        Me.TimeLabel.AutoSize = True
+        Me.TimeLabel.Location = New System.Drawing.Point(600, 102)
+        Me.TimeLabel.Name = "TimeLabel"
+        Me.TimeLabel.Size = New System.Drawing.Size(37, 15)
+        Me.TimeLabel.TabIndex = 2
+        Me.TimeLabel.Text = "&Time:"
+        Me.TimeLabel.Visible = False
+        '
+        'DateLabel
+        '
+        Me.DateLabel.AutoSize = True
+        Me.DateLabel.Location = New System.Drawing.Point(642, 102)
+        Me.DateLabel.Name = "DateLabel"
+        Me.DateLabel.Size = New System.Drawing.Size(35, 15)
+        Me.DateLabel.TabIndex = 1
+        Me.DateLabel.Text = "&Date:"
+        Me.DateLabel.Visible = False
+        '
         'AddEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -1418,15 +1422,12 @@ Partial Class AddEntry
 
     Friend WithEvents WorkOrderInfoGroupBox As GroupBox
     Friend WithEvents TimeTextBox As TextBox
-    Friend WithEvents TimeLabel As Label
-    Friend WithEvents DateLabel As Label
     Friend WithEvents DatePicker As DateTimePicker
     Friend WithEvents DefectDataGroupBox As GroupBox
     Friend WithEvents MoldModelLabel As Label
     Friend WithEvents WorkOrderTextBox As TextBox
     Friend WithEvents WorkOrderLabel As Label
     Friend WithEvents WorkStationComboBox As ComboBox
-    Friend WithEvents WorkStationLabel As Label
     Friend WithEvents DefectLocationComboBox As ComboBox
     Friend WithEvents DefectLocationLabel As Label
     Friend WithEvents DefectComboBox As ComboBox
@@ -1528,4 +1529,7 @@ Partial Class AddEntry
     Friend WithEvents From_Label As Label
     Friend WithEvents Till_DateTimePicker As DateTimePicker
     Friend WithEvents From_DateTimePicker As DateTimePicker
+    Friend WithEvents WorkStationLabel As Label
+    Friend WithEvents TimeLabel As Label
+    Friend WithEvents DateLabel As Label
 End Class

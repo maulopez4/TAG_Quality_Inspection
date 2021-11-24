@@ -172,6 +172,14 @@ Public Class AddEntry
         Filter_Label.Visible = False
         FilterView_ComboBox.Enabled = False
         FilterView_ComboBox.Visible = False
+        From_Label.Enabled = False
+        From_Label.Visible = False
+        From_DateTimePicker.Enabled = False
+        From_DateTimePicker.Visible = False
+        Till_Label.Enabled = False
+        Till_Label.Visible = False
+        Till_DateTimePicker.Enabled = False
+        Till_DateTimePicker.Visible = False
 
     End Sub
     Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
@@ -401,6 +409,14 @@ Public Class AddEntry
         Filter_Label.Visible = False
         FilterView_ComboBox.Enabled = False
         FilterView_ComboBox.Visible = False
+        From_Label.Enabled = False
+        From_Label.Visible = False
+        From_DateTimePicker.Enabled = False
+        From_DateTimePicker.Visible = False
+        Till_Label.Enabled = False
+        Till_Label.Visible = False
+        Till_DateTimePicker.Enabled = False
+        Till_DateTimePicker.Visible = False
         ReportedDataGridView.ClearSelection()
         Clean_Form()
     End Sub
@@ -412,6 +428,14 @@ Public Class AddEntry
         Filter_Label.Visible = True
         FilterView_ComboBox.Enabled = True
         FilterView_ComboBox.Visible = True
+        From_Label.Enabled = True
+        From_Label.Visible = True
+        From_DateTimePicker.Enabled = True
+        From_DateTimePicker.Visible = True
+        Till_Label.Enabled = True
+        Till_Label.Visible = True
+        Till_DateTimePicker.Enabled = True
+        Till_DateTimePicker.Visible = True
         ReportedDataGridView.ClearSelection()
     End Sub
     Private Sub FilterView_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FilterView_ComboBox.SelectedIndexChanged, From_DateTimePicker.ValueChanged, Till_DateTimePicker.ValueChanged
