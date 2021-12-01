@@ -156,7 +156,7 @@ Public Class AddEditUser
         End If
     End Sub
     Function ValidatePassword(ByVal pwd As String,
-    Optional ByVal minLength As Integer = 6,
+    Optional ByVal minLength As Integer = 4,
     Optional ByVal numUpper As Integer = 1,
     Optional ByVal numLower As Integer = 1,
     Optional ByVal numNumbers As Integer = 1,
@@ -179,15 +179,15 @@ Public Class AddEditUser
         Return True
     End Function
     Private Sub PasswordTextBox_LostFocus(sender As Object, e As EventArgs) Handles User_PasswordTextBox.LostFocus
-        Dim strPwd As String
-        strPwd = User_PasswordTextBox.Text
-        If ValidatePassword(strPwd) = True Then
-            User_PasswordTextBox.Text = strPwd
-        Else
-            MessageBox.Show("Password is invalid." & vbCrLf & "Must be at least 6 Characters long." & vbCrLf & "Must contain at least 1 Uppercase Character." & vbCrLf & "Must contain at least 1 Lowercase Character." & vbCrLf & "Must contain at least 1 Number Character." & vbCrLf & "Please try again.")
-            User_PasswordTextBox.Clear()
-            User_PasswordTextBox.TabIndex = 3
-        End If
+        'Dim strPwd As String
+        'strPwd = User_PasswordTextBox.Text
+        'If ValidatePassword(strPwd) = True Then
+        '    User_PasswordTextBox.Text = strPwd
+        'Else
+        '    MessageBox.Show("Password is invalid." & vbCrLf & "Must be at least 6 Characters long." & vbCrLf & "Must contain at least 1 Uppercase Character." & vbCrLf & "Must contain at least 1 Lowercase Character." & vbCrLf & "Must contain at least 1 Number Character." & vbCrLf & "Please try again.")
+        '    User_PasswordTextBox.Clear()
+        '    User_PasswordTextBox.TabIndex = 3
+        'End If
     End Sub
     Private Sub ConfirmTextBox_LostFocus(sender As Object, e As EventArgs) Handles User_ConfirmTextBox.LostFocus
         If String.Compare(User_PasswordTextBox.Text, User_ConfirmTextBox.Text) = 0 Then
