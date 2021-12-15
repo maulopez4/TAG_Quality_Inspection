@@ -100,9 +100,10 @@ Public Class AddEntry
             DefectOriginComboBox.DataSource = DOtable
             DefectOriginComboBox.ValueMember = "defect_origins_origin"
             DefectOriginComboBox.DisplayMember = "defect_origins_origin"
+
         End Using
         'Load Defect DropDown Menu
-        Using DCcommand As New MySqlCommand("SELECT `defects_code`, `defects_description` FROM `defects`", connection)
+        Using DCcommand As New MySqlCommand("SELECT `defects_code`, `defects_description` FROM `defects` ORDER BY 'defect_description' ASC", connection)
             Dim DCadapter As New MySqlDataAdapter(DCcommand)
             Dim DCtable As New DataTable()
             DCadapter.Fill(DCtable)
@@ -272,7 +273,7 @@ Public Class AddEntry
         WO_Text = WorkStationComboBox.Text
         '--------------------------------------
         With DefectComboBox
-            Using DFcommand As New MySqlCommand("SELECT `defects_code`, `defects_description` FROM `defects` WHERE `defects_workstation` = @defects_origin", connection)
+            Using DFcommand As New MySqlCommand("SELECT `defects_code`, `defects_description` FROM `defects` WHERE `defects_workstation` = @defects_origin ORDER BY `defects_description` ASC", connection)
                 DFcommand.Parameters.Add("@defects_origin", MySqlDbType.String).Value = WO_Defect_Origin_Text
                 Dim DFadapter As New MySqlDataAdapter(DFcommand)
                 Dim DFtable As New DataTable()
@@ -280,12 +281,13 @@ Public Class AddEntry
                 DefectComboBox.DataSource = DFtable
                 DefectComboBox.ValueMember = "defects_code"
                 DefectComboBox.DisplayMember = "defects_description"
+                DefectComboBox.SelectedIndex = -1
                 DefectComboBox.Refresh()
             End Using
         End With
         '------------------------------------------------
         With ReworkComboBox
-            Using RWcommand As New MySqlCommand("SELECT `rework_code`, `rework_description` FROM `rework` WHERE `rework_apply_to_code` = @rework_apply_to_code", connection)
+            Using RWcommand As New MySqlCommand("SELECT `rework_code`, `rework_description` FROM `rework` WHERE `rework_apply_to_code` = @rework_apply_to_code ORDER BY `rework_description` ASC", connection)
                 RWcommand.Parameters.Add("@rework_apply_to_code", MySqlDbType.String).Value = WO_Workstation
                 Dim RWadapter As New MySqlDataAdapter(RWcommand)
                 Dim RWtable As New DataTable()
@@ -293,6 +295,7 @@ Public Class AddEntry
                 ReworkComboBox.DataSource = RWtable
                 ReworkComboBox.ValueMember = "rework_code"
                 ReworkComboBox.DisplayMember = "rework_description"
+                ReworkComboBox.SelectedIndex = -1
                 ReworkComboBox.Refresh()
             End Using
         End With
@@ -318,7 +321,7 @@ Public Class AddEntry
     Private Sub ReportedDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles ReportedDataGridView.SelectionChanged
         If ReportedDataGridView.SelectedRows.Count = 1 Then
             WorkOrderId_TextBox.Text = ReportedDataGridView.Item("workorder_id", ReportedDataGridView.SelectedRows(0).Index).Value
-            'WorkStationComboBox.SelectedValue = ReportedDataGridView.Item("workorder_workstation", ReportedDataGridView.SelectedRows(0).Index).Value
+            WorkStationComboBox.SelectedValue = ReportedDataGridView.Item("workorder_workstation", ReportedDataGridView.SelectedRows(0).Index).Value
             WorkOrderTextBox.Text = ReportedDataGridView.Item("workorder_number", ReportedDataGridView.SelectedRows(0).Index).Value
             MoldBrandComboBox.SelectedValue = ReportedDataGridView.Item("workorder_moldbrand", ReportedDataGridView.SelectedRows(0).Index).Value
             ProductLineComboBox.SelectedValue = ReportedDataGridView.Item("workorder_productline", ReportedDataGridView.SelectedRows(0).Index).Value
