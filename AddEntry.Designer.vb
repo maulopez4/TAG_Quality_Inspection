@@ -186,7 +186,7 @@ Partial Class AddEntry
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.TimeLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DateLabel)
         Me.WorkOrderInfoGroupBox.Controls.Add(Me.DatePicker)
-        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.WorkOrderInfoGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.WorkOrderInfoGroupBox.Location = New System.Drawing.Point(10, 5)
         Me.WorkOrderInfoGroupBox.Name = "WorkOrderInfoGroupBox"
         Me.WorkOrderInfoGroupBox.Size = New System.Drawing.Size(860, 125)
@@ -207,7 +207,7 @@ Partial Class AddEntry
         '
         'ClearSearchWO_Button
         '
-        Me.ClearSearchWO_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.ClearSearchWO_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ClearSearchWO_Button.Location = New System.Drawing.Point(243, 93)
         Me.ClearSearchWO_Button.Name = "ClearSearchWO_Button"
         Me.ClearSearchWO_Button.Size = New System.Drawing.Size(100, 23)
@@ -217,7 +217,7 @@ Partial Class AddEntry
         '
         'CancelEdit_Button
         '
-        Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.CancelEdit_Button.Location = New System.Drawing.Point(639, 15)
         Me.CancelEdit_Button.Name = "CancelEdit_Button"
         Me.CancelEdit_Button.Size = New System.Drawing.Size(75, 23)
@@ -227,7 +227,7 @@ Partial Class AddEntry
         '
         'Export_Button
         '
-        Me.Export_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Export_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Export_Button.Location = New System.Drawing.Point(349, 93)
         Me.Export_Button.Name = "Export_Button"
         Me.Export_Button.Size = New System.Drawing.Size(169, 23)
@@ -246,7 +246,7 @@ Partial Class AddEntry
         '
         'EditSelected_Button
         '
-        Me.EditSelected_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.EditSelected_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.EditSelected_Button.Location = New System.Drawing.Point(529, 14)
         Me.EditSelected_Button.Name = "EditSelected_Button"
         Me.EditSelected_Button.Size = New System.Drawing.Size(100, 23)
@@ -257,7 +257,7 @@ Partial Class AddEntry
         'NewEntry_Button
         '
         Me.NewEntry_Button.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.NewEntry_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.NewEntry_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.NewEntry_Button.Location = New System.Drawing.Point(398, 14)
         Me.NewEntry_Button.Name = "NewEntry_Button"
         Me.NewEntry_Button.Size = New System.Drawing.Size(125, 23)
@@ -277,7 +277,7 @@ Partial Class AddEntry
         '
         'SearchWO_Button
         '
-        Me.SearchWO_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.SearchWO_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.SearchWO_Button.Location = New System.Drawing.Point(137, 94)
         Me.SearchWO_Button.Name = "SearchWO_Button"
         Me.SearchWO_Button.Size = New System.Drawing.Size(100, 23)
@@ -480,6 +480,7 @@ Partial Class AddEntry
         'DatePicker
         '
         Me.DatePicker.CustomFormat = "mm/dd/yyyy"
+        Me.DatePicker.Enabled = False
         Me.DatePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DatePicker.Location = New System.Drawing.Point(5, 15)
         Me.DatePicker.MaxDate = New Date(2100, 12, 31, 0, 0, 0, 0)
@@ -554,7 +555,7 @@ Partial Class AddEntry
         Me.DefectDataGroupBox.Controls.Add(Me.DefectOriginLabel)
         Me.DefectDataGroupBox.Controls.Add(Me.ReworkComboBox)
         Me.DefectDataGroupBox.Controls.Add(Me.ReworkTypeLabel)
-        Me.DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.DefectDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.DefectDataGroupBox.Location = New System.Drawing.Point(10, 130)
         Me.DefectDataGroupBox.Name = "DefectDataGroupBox"
         Me.DefectDataGroupBox.Size = New System.Drawing.Size(1115, 331)
@@ -564,7 +565,7 @@ Partial Class AddEntry
         '
         'Repaired_Button
         '
-        Me.Repaired_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Repaired_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Repaired_Button.Location = New System.Drawing.Point(953, 30)
         Me.Repaired_Button.Name = "Repaired_Button"
         Me.Repaired_Button.Size = New System.Drawing.Size(75, 30)
@@ -585,7 +586,7 @@ Partial Class AddEntry
         '
         'SubmitDefect_Button
         '
-        Me.SubmitDefect_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.SubmitDefect_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.SubmitDefect_Button.Location = New System.Drawing.Point(872, 30)
         Me.SubmitDefect_Button.Name = "SubmitDefect_Button"
         Me.SubmitDefect_Button.Size = New System.Drawing.Size(75, 30)
@@ -1089,7 +1090,7 @@ Partial Class AddEntry
         Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.ReportedDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1116,7 +1117,7 @@ Partial Class AddEntry
         'CommentsGroupBox
         '
         Me.CommentsGroupBox.Controls.Add(Me.CommentsRichTextBox)
-        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.CommentsGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.CommentsGroupBox.Location = New System.Drawing.Point(756, 461)
         Me.CommentsGroupBox.Name = "CommentsGroupBox"
         Me.CommentsGroupBox.Size = New System.Drawing.Size(369, 200)
@@ -1143,7 +1144,7 @@ Partial Class AddEntry
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton3)
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton2)
         Me.AddPicturesGroupBox.Controls.Add(Me.AddImageButton1)
-        Me.AddPicturesGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.AddPicturesGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.AddPicturesGroupBox.Location = New System.Drawing.Point(10, 461)
         Me.AddPicturesGroupBox.Name = "AddPicturesGroupBox"
         Me.AddPicturesGroupBox.Size = New System.Drawing.Size(740, 200)
@@ -1185,7 +1186,7 @@ Partial Class AddEntry
         '
         Me.PictureButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.PictureButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.PictureButton3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.PictureButton3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.PictureButton3.Location = New System.Drawing.Point(510, 159)
         Me.PictureButton3.Name = "PictureButton3"
         Me.PictureButton3.Size = New System.Drawing.Size(90, 30)
@@ -1197,7 +1198,7 @@ Partial Class AddEntry
         '
         Me.PictureButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.PictureButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.PictureButton2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.PictureButton2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.PictureButton2.Location = New System.Drawing.Point(259, 159)
         Me.PictureButton2.Name = "PictureButton2"
         Me.PictureButton2.Size = New System.Drawing.Size(90, 30)
@@ -1209,7 +1210,7 @@ Partial Class AddEntry
         '
         Me.PictureButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.PictureButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.PictureButton1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.PictureButton1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.PictureButton1.Location = New System.Drawing.Point(6, 159)
         Me.PictureButton1.Name = "PictureButton1"
         Me.PictureButton1.Size = New System.Drawing.Size(90, 30)
@@ -1221,7 +1222,7 @@ Partial Class AddEntry
         '
         Me.AddImageButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.AddImageButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.AddImageButton3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.AddImageButton3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.AddImageButton3.Location = New System.Drawing.Point(621, 159)
         Me.AddImageButton3.Name = "AddImageButton3"
         Me.AddImageButton3.Size = New System.Drawing.Size(90, 30)
@@ -1233,7 +1234,7 @@ Partial Class AddEntry
         '
         Me.AddImageButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.AddImageButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.AddImageButton2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.AddImageButton2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.AddImageButton2.Location = New System.Drawing.Point(370, 159)
         Me.AddImageButton2.Name = "AddImageButton2"
         Me.AddImageButton2.Size = New System.Drawing.Size(90, 30)
@@ -1245,7 +1246,7 @@ Partial Class AddEntry
         '
         Me.AddImageButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver
         Me.AddImageButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.AddImageButton1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.AddImageButton1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.AddImageButton1.Location = New System.Drawing.Point(117, 159)
         Me.AddImageButton1.Name = "AddImageButton1"
         Me.AddImageButton1.Size = New System.Drawing.Size(90, 30)
@@ -1261,7 +1262,7 @@ Partial Class AddEntry
         Me.ReportedDataGroupBox.Controls.Add(Me.From_DateTimePicker)
         Me.ReportedDataGroupBox.Controls.Add(Me.ReportedDataGridView)
         Me.ReportedDataGroupBox.Controls.Add(Me.FilterView_ComboBox)
-        Me.ReportedDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.ReportedDataGroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ReportedDataGroupBox.Location = New System.Drawing.Point(10, 130)
         Me.ReportedDataGroupBox.Name = "ReportedDataGroupBox"
         Me.ReportedDataGroupBox.Size = New System.Drawing.Size(1115, 331)
@@ -1275,7 +1276,7 @@ Partial Class AddEntry
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Till_Label.AutoSize = True
-        Me.Till_Label.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Till_Label.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Till_Label.Location = New System.Drawing.Point(296, 24)
         Me.Till_Label.Name = "Till_Label"
         Me.Till_Label.Size = New System.Drawing.Size(26, 15)
@@ -1288,7 +1289,7 @@ Partial Class AddEntry
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_Label.AutoSize = True
-        Me.From_Label.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.From_Label.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.From_Label.Location = New System.Drawing.Point(140, 24)
         Me.From_Label.Name = "From_Label"
         Me.From_Label.Size = New System.Drawing.Size(38, 15)
@@ -1323,7 +1324,7 @@ Partial Class AddEntry
         Me.Actions_GroupBox.Controls.Add(Me.Cancel_Button)
         Me.Actions_GroupBox.Controls.Add(Me.Approved_Button)
         Me.Actions_GroupBox.Cursor = System.Windows.Forms.Cursors.PanWest
-        Me.Actions_GroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Actions_GroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Actions_GroupBox.Location = New System.Drawing.Point(970, 5)
         Me.Actions_GroupBox.Name = "Actions_GroupBox"
         Me.Actions_GroupBox.Size = New System.Drawing.Size(155, 125)
@@ -1353,7 +1354,7 @@ Partial Class AddEntry
         '
         Me.Status_GroupBox.Controls.Add(Me.Status_Label)
         Me.Status_GroupBox.Controls.Add(Me.Status_PictureBox)
-        Me.Status_GroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Status_GroupBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Status_GroupBox.Location = New System.Drawing.Point(876, 5)
         Me.Status_GroupBox.Name = "Status_GroupBox"
         Me.Status_GroupBox.Size = New System.Drawing.Size(88, 125)
@@ -1394,7 +1395,7 @@ Partial Class AddEntry
         Me.Controls.Add(Me.AddPicturesGroupBox)
         Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Controls.Add(Me.ReportedDataGroupBox)
-        Me.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.KeyPreview = True
         Me.Name = "AddEntry"
         Me.Text = "Add Entry"
