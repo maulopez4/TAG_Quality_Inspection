@@ -10,7 +10,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <AssemblyName>TBU</AssemblyName>
     <Version>1.09.15</Version>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
