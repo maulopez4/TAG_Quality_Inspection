@@ -9,6 +9,7 @@ Imports System.Text
 Public Class Export_Data
     Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Private ReadOnly connection As New MySqlConnection(connection_string)
+    Dim rs As New Resizer
     Public Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Using WScommand As New MySqlCommand("SELECT `workstation_code`, `workstation_description` FROM `workstation`", connection)
             Dim WSadapter As New MySqlDataAdapter(WScommand)
@@ -19,6 +20,10 @@ Public Class Export_Data
             Selection_ListBox.DisplayMember = "workstation_description"
         End Using
         FilterView_ComboBox.SelectedIndex = 0
+        rs.FindAllControls(Me)
+    End Sub
+    Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        rs.ResizeAllControls(Me)
     End Sub
     Private Sub GetData_Button_Click(sender As Object, e As EventArgs) Handles GetData_Button.Click
         Dim SL As New List(Of String)

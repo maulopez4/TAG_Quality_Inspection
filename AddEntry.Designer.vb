@@ -1385,8 +1385,9 @@ Partial Class AddEntry
         '
         'AddEntry
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
+        Me.AutoSize = True
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1134, 663)
         Me.Controls.Add(Me.Status_GroupBox)
         Me.Controls.Add(Me.Actions_GroupBox)
@@ -1398,6 +1399,8 @@ Partial Class AddEntry
         Me.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.KeyPreview = True
         Me.Name = "AddEntry"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Add Entry"
         Me.WorkOrderInfoGroupBox.ResumeLayout(False)
         Me.WorkOrderInfoGroupBox.PerformLayout()

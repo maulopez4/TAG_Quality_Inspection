@@ -11,6 +11,7 @@ Imports System.Windows.Forms
 Public Class AddEntry
     Private ReadOnly connection_string As String = ConfigurationManager.ConnectionStrings("tag_quality").ConnectionString
     Private ReadOnly connection As New MySqlConnection(connection_string)
+    Dim rs As New Resizer
     Public Shared Property WorkOrderValue As Object
     Dim arrImage1() As Byte
     Dim arrImage2() As Byte
@@ -35,6 +36,7 @@ Public Class AddEntry
     Dim WO_Additional_Defects As Boolean
     Dim WO_Comments As String
     Private Sub AddEntry_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        rs.FindAllControls(Me)
         Init_Form()
     End Sub
     Private Sub Init_Form()
@@ -130,6 +132,9 @@ Public Class AddEntry
             ReworkComboBox.DisplayMember = "rework_description"
         End Using
         Clean_Form()
+    End Sub
+    Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        rs.ResizeAllControls(Me)
     End Sub
     Private Sub Clean_Form()
         WorkStationComboBox.Enabled = True
