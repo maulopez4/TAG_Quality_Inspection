@@ -25,6 +25,15 @@ Public Class Export_Data
     Private Sub Form_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         rs.ResizeAllControls(Me)
     End Sub
+    'Get the first day of the month
+    Public Function FirstDayOfMonth(ByVal sourceDate As DateTime) As DateTime
+        Return New DateTime(sourceDate.Year, sourceDate.Month, 1)
+    End Function
+    'Get the last day of the month
+    Public Function LastDayOfMonth(ByVal sourceDate As DateTime) As DateTime
+        Dim lastDay As DateTime = New DateTime(sourceDate.Year, sourceDate.Month, 1)
+        Return lastDay.AddMonths(1).AddDays(-1)
+    End Function
     Private Sub GetData_Button_Click(sender As Object, e As EventArgs) Handles GetData_Button.Click
         Dim SL As New List(Of String)
         For Each item As Object In Selection_ListBox.CheckedItems
@@ -32,6 +41,8 @@ Public Class Export_Data
             SL.Add(row("workstation_code"))
         Next
         Dim SList As String = String.Join("','", SL).ToString
+        From_DateTimePicker.Value = FirstDayOfMonth(Today())
+        Till_DateTimePicker.Value = LastDayOfMonth(Today())
         Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Using RJcommand As New MySqlCommand("SELECT `workorder_id`,`workorder_date`, `workorder_time`, `workorder_reportedby`, `workorder_workstation`, `workstation_description`, `workorder_number`, 
@@ -173,4 +184,5 @@ Public Class Export_Data
     Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Close_Button.Click
         Close()
     End Sub
+
 End Class

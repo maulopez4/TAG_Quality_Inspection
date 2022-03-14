@@ -56,7 +56,7 @@ Partial Class LoginForm
         '
         'UsernameLabel
         '
-        Me.UsernameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
+        Me.UsernameLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.UsernameLabel.Location = New System.Drawing.Point(253, 9)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(220, 23)
@@ -66,7 +66,7 @@ Partial Class LoginForm
         '
         'PasswordLabel
         '
-        Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
+        Me.PasswordLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.PasswordLabel.Location = New System.Drawing.Point(252, 61)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(220, 23)
@@ -109,7 +109,7 @@ Partial Class LoginForm
         'Login_ShowPasswordCheckBox
         '
         Me.Login_ShowPasswordCheckBox.AutoSize = True
-        Me.Login_ShowPasswordCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
+        Me.Login_ShowPasswordCheckBox.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Login_ShowPasswordCheckBox.Location = New System.Drawing.Point(253, 116)
         Me.Login_ShowPasswordCheckBox.Name = "Login_ShowPasswordCheckBox"
         Me.Login_ShowPasswordCheckBox.Size = New System.Drawing.Size(122, 21)
@@ -127,7 +127,7 @@ Partial Class LoginForm
         '
         'Label1
         '
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label1.Location = New System.Drawing.Point(251, 140)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(220, 23)
@@ -158,7 +158,7 @@ Partial Class LoginForm
         Me.Name = "LoginForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Login V1.09.14"
+        Me.Text = "TBU V1.09.17"
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

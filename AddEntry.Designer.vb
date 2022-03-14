@@ -25,6 +25,7 @@ Partial Class AddEntry
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddEntry))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.WorkOrderInfoGroupBox = New System.Windows.Forms.GroupBox()
         Me.Delete_Button = New System.Windows.Forms.Button()
         Me.ClearSearchWO_Button = New System.Windows.Forms.Button()
@@ -220,7 +221,7 @@ Partial Class AddEntry
         Me.CancelEdit_Button.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.CancelEdit_Button.Location = New System.Drawing.Point(639, 15)
         Me.CancelEdit_Button.Name = "CancelEdit_Button"
-        Me.CancelEdit_Button.Size = New System.Drawing.Size(75, 23)
+        Me.CancelEdit_Button.Size = New System.Drawing.Size(96, 23)
         Me.CancelEdit_Button.TabIndex = 9
         Me.CancelEdit_Button.Text = "Cancel Edit"
         Me.CancelEdit_Button.UseVisualStyleBackColor = True
@@ -1087,13 +1088,21 @@ Partial Class AddEntry
         '
         Me.ReportedDataGridView.AllowUserToAddRows = False
         Me.ReportedDataGridView.AllowUserToDeleteRows = False
-        Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.ReportedDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.ReportedDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportedDataGridView.DefaultCellStyle = DataGridViewCellStyle2
         Me.ReportedDataGridView.Location = New System.Drawing.Point(5, 50)
         Me.ReportedDataGridView.Name = "ReportedDataGridView"
         Me.ReportedDataGridView.ReadOnly = True
@@ -1127,7 +1136,7 @@ Partial Class AddEntry
         '
         'CommentsRichTextBox
         '
-        Me.CommentsRichTextBox.Location = New System.Drawing.Point(4, 22)
+        Me.CommentsRichTextBox.Location = New System.Drawing.Point(4, 19)
         Me.CommentsRichTextBox.Name = "CommentsRichTextBox"
         Me.CommentsRichTextBox.Size = New System.Drawing.Size(360, 167)
         Me.CommentsRichTextBox.TabIndex = 18
@@ -1156,7 +1165,7 @@ Partial Class AddEntry
         '
         Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox3.InitialImage = Nothing
-        Me.PictureBox3.Location = New System.Drawing.Point(510, 25)
+        Me.PictureBox3.Location = New System.Drawing.Point(510, 22)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(200, 135)
         Me.PictureBox3.TabIndex = 1
@@ -1166,7 +1175,7 @@ Partial Class AddEntry
         '
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox2.InitialImage = Nothing
-        Me.PictureBox2.Location = New System.Drawing.Point(259, 25)
+        Me.PictureBox2.Location = New System.Drawing.Point(259, 22)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(200, 135)
         Me.PictureBox2.TabIndex = 1
@@ -1176,7 +1185,7 @@ Partial Class AddEntry
         '
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(5, 25)
+        Me.PictureBox1.Location = New System.Drawing.Point(5, 22)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(200, 135)
         Me.PictureBox1.TabIndex = 1
@@ -1314,6 +1323,7 @@ Partial Class AddEntry
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.From_DateTimePicker.Location = New System.Drawing.Point(184, 21)
+        Me.From_DateTimePicker.MinDate = New Date(2021, 1, 1, 0, 0, 0, 0)
         Me.From_DateTimePicker.Name = "From_DateTimePicker"
         Me.From_DateTimePicker.Size = New System.Drawing.Size(106, 23)
         Me.From_DateTimePicker.TabIndex = 28
@@ -1394,8 +1404,8 @@ Partial Class AddEntry
         Me.Controls.Add(Me.CommentsGroupBox)
         Me.Controls.Add(Me.WorkOrderInfoGroupBox)
         Me.Controls.Add(Me.AddPicturesGroupBox)
-        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Controls.Add(Me.ReportedDataGroupBox)
+        Me.Controls.Add(Me.DefectDataGroupBox)
         Me.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.KeyPreview = True
         Me.Name = "AddEntry"

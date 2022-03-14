@@ -23,6 +23,7 @@ Partial Class Export_Data
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.RejectedDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.ReportedDataGridView = New System.Windows.Forms.DataGridView()
         Me.From_DateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -45,7 +46,7 @@ Partial Class Export_Data
         'RejectedDataGroupBox
         '
         Me.RejectedDataGroupBox.Controls.Add(Me.ReportedDataGridView)
-        Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
+        Me.RejectedDataGroupBox.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.RejectedDataGroupBox.Location = New System.Drawing.Point(12, 183)
         Me.RejectedDataGroupBox.Name = "RejectedDataGroupBox"
         Me.RejectedDataGroupBox.Size = New System.Drawing.Size(1299, 382)
@@ -58,12 +59,20 @@ Partial Class Export_Data
         Me.ReportedDataGridView.AllowUserToAddRows = False
         Me.ReportedDataGridView.AllowUserToDeleteRows = False
         Me.ReportedDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.ReportedDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders
+        Me.ReportedDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ReportedDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.ReportedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ReportedDataGridView.DefaultCellStyle = DataGridViewCellStyle2
         Me.ReportedDataGridView.Location = New System.Drawing.Point(6, 22)
         Me.ReportedDataGridView.Name = "ReportedDataGridView"
         Me.ReportedDataGridView.ReadOnly = True
@@ -80,6 +89,7 @@ Partial Class Export_Data
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.From_DateTimePicker.Location = New System.Drawing.Point(6, 76)
+        Me.From_DateTimePicker.MinDate = New Date(2020, 1, 1, 0, 0, 0, 0)
         Me.From_DateTimePicker.Name = "From_DateTimePicker"
         Me.From_DateTimePicker.Size = New System.Drawing.Size(150, 23)
         Me.From_DateTimePicker.TabIndex = 23
@@ -91,6 +101,7 @@ Partial Class Export_Data
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Till_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.Till_DateTimePicker.Location = New System.Drawing.Point(187, 76)
+        Me.Till_DateTimePicker.MinDate = New Date(2020, 1, 1, 0, 0, 0, 0)
         Me.Till_DateTimePicker.Name = "Till_DateTimePicker"
         Me.Till_DateTimePicker.Size = New System.Drawing.Size(150, 23)
         Me.Till_DateTimePicker.TabIndex = 23
@@ -101,7 +112,7 @@ Partial Class Export_Data
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.From_Label.AutoSize = True
-        Me.From_Label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.GraphicsUnit.Point)
+        Me.From_Label.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.From_Label.Location = New System.Drawing.Point(6, 46)
         Me.From_Label.Name = "From_Label"
         Me.From_Label.Size = New System.Drawing.Size(50, 21)
@@ -114,7 +125,7 @@ Partial Class Export_Data
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Till_Label.AutoSize = True
-        Me.Till_Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.GraphicsUnit.Point)
+        Me.Till_Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Till_Label.Location = New System.Drawing.Point(187, 47)
         Me.Till_Label.Name = "Till_Label"
         Me.Till_Label.Size = New System.Drawing.Size(31, 20)
@@ -194,8 +205,8 @@ Partial Class Export_Data
         '
         'Export_Data
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1323, 577)
         Me.Controls.Add(Me.Date_GroupBox)
         Me.Controls.Add(Me.GroupBox2)

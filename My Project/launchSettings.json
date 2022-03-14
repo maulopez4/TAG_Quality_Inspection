@@ -4,9 +4,6 @@
       "commandName": "Project",
       "sqlDebugging": true,
       "nativeDebugging": true
-    },
-    "Profile 1": {
-      "commandName": "Executable"
     }
   }
 }

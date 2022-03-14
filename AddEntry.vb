@@ -343,7 +343,18 @@ Public Class AddEntry
             Status_PictureBox.SizeMode = PictureBoxSizeMode.Zoom
         End If
     End Sub
+    'Get the first day of the month
+    Public Function FirstDayOfMonth(ByVal sourceDate As DateTime) As DateTime
+        Return New DateTime(sourceDate.Year, sourceDate.Month, 1)
+    End Function
+    'Get the last day of the month
+    Public Function LastDayOfMonth(ByVal sourceDate As DateTime) As DateTime
+        Dim lastDay As DateTime = New DateTime(sourceDate.Year, sourceDate.Month, 1)
+        Return lastDay.AddMonths(1).AddDays(-1)
+    End Function
     Private Function Create_DataGridView() As DataTable
+        From_DateTimePicker.Value = FirstDayOfMonth(Today())
+        Till_DateTimePicker.Value = LastDayOfMonth(Today())
         Dim From As String = From_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim Till As String = Till_DateTimePicker.Value.ToString("yyyy-MM-dd")
         Dim RJcommand As New MySqlCommand("SELECT 
@@ -732,6 +743,7 @@ Public Class AddEntry
     End Sub
     Private Sub EditSelected_Button_Click(sender As Object, e As EventArgs) Handles EditSelected_Button.Click, ReportedDataGridView.CellDoubleClick
         WorkOrderId_TextBox.Text = ReportedDataGridView.Item("workorder_id", ReportedDataGridView.SelectedRows(0).Index).Value
+        'DefectOriginComboBox.SelectedText = ReportedDataGridView.Item("defect_origins_origin", ReportedDataGridView.SelectedRows(0).Index).Value
 
         ReportedDataGroupBox.Visible = False
         DefectDataGroupBox.Visible = True
@@ -791,6 +803,7 @@ Public Class AddEntry
                 WO_Defect = "APP"
                 WO_Location = ""
                 WO_Rework = "NONE"
+                WO_Comments = "NONE"
                 Insert_Data()
             End If
         End If
@@ -891,6 +904,7 @@ Public Class AddEntry
         WO_Defect = DefectComboBox.SelectedValue.ToString
         WO_Location = DefectLocationComboBox.SelectedValue.ToString
         WO_Rework = ReworkComboBox.SelectedValue.ToString
+        WO_Comments = CommentsRichTextBox.Text
 
         Using IDcommand As New MySqlCommand("SELECT COUNT(*) `workorder_id` FROM `workorder` WHERE `workorder_id` = @workorder_id", connection)
             IDcommand.Parameters.Add("@workorder_id", MySqlDbType.String).Value = WorkOrderId_TextBox.Text
@@ -1094,6 +1108,7 @@ Public Class AddEntry
                         DefectComboBox.ResetText()
                         DefectLocationComboBox.ResetText()
                         ReworkComboBox.ResetText()
+                        CommentsRichTextBox.ResetText()
 
                         DefectOriginComboBox.Enabled = True
                         DefectComboBox.Enabled = True
@@ -1180,6 +1195,7 @@ Public Class AddEntry
                         DefectComboBox.ResetText()
                         DefectLocationComboBox.ResetText()
                         ReworkComboBox.ResetText()
+                        CommentsRichTextBox.ResetText()
 
                         DefectOriginComboBox.Enabled = True
                         DefectComboBox.Enabled = True
